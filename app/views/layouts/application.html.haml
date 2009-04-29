@@ -1,0 +1,11 @@
+!!! XML
+!!!
+
+%html{html_attrs}
+  %body
+    - if flash.any?
+      #flash
+        - flash.each do |key, message|
+          %div{:class => key}=message
+
+    = yield
