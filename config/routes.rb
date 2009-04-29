@@ -1,3 +1,3 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :arrivals
+  map.resources :children
 end

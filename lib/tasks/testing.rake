@@ -15,7 +15,8 @@ task :test => 'test:units'
 begin
   require 'cucumber/rake/task'
   Cucumber::Rake::Task.new(:features) do |t|
-    t.cucumber_opts = "--format progress --no-color"
+    # t.cucumber_opts = "--format progress --no-color"
+    t.cucumber_opts = "--format pretty"
   end
   task :features => 'db:test:prepare'
   task :default => ['test', 'features']

@@ -1,0 +1,5 @@
+%h1= @child.name
+
+%ul
+  - @child.arrivals.each do |arrival|
+    %li= arrival.happened_on.to_s(:long)
