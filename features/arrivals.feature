@@ -13,3 +13,11 @@ Feature: Arrivals
     # TODO we like the idea of multiple flash messages per key
     # And I should see "Arrival at Amani recorded for Ramadhan Masawe."
     And I should see "April 29, 2009"
+    
+  Scenario: A Child Returns to Amani
+    Given child "Ramadhan Masawe" exists
+    When I go to the new child page
+    And I fill in "Name" with "Ramadhan Masawe"
+    And I select "April 29, 2009" as the date
+    And I press "Save"
+    Then I should not see "New case file started for Ramadhan Masawe."
