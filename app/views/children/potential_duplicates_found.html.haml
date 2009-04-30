@@ -1,0 +1,17 @@
+%h1 Potential Duplicates Found
+
+- @child.potential_duplicates.each do |child|
+  - form_for [child, @child.arrivals.last] do |form|
+    .hidden
+      = form.date_select :happened_on, {}, { :style => 'display:none' }
+    .submit
+      = form.submit child.name
+
+- form_for @child do |form|
+  .hidden
+    = form.hidden_field :name
+    - form.fields_for :arrivals do |arrival_form|
+      = arrival_form.date_select :happened_on, {}, { :style => 'display:none' }
+
+  .submit
+    = form.submit 'I really mean it', :name => 'child[ignore_potential_duplicates]'

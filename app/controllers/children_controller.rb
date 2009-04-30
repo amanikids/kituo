@@ -1,13 +1,22 @@
 class ChildrenController < ApplicationController
-  before_filter :build_child, :only => [:new, :create]
-  before_filter :load_child,  :only => [:show]
+  before_filter :build_child,   :only => [:new, :create]
+  before_filter :prepare_child, :only => [:new]
+  before_filter :load_child,    :only => [:show]
+
+  def index
+    @children = Child.all
+  end
 
   def create
     if @child.save
       flash[:notice] = "New case file started for #{@child.name}."
       redirect_to @child
     else
-      render :new
+      if @child.potential_duplicates.any?
+        render :potential_duplicates_found
+      else
+        render :new
+      end
     end
   end
 
@@ -15,7 +24,9 @@ class ChildrenController < ApplicationController
 
   def build_child
     @child = Child.new(params[:child])
-    # TODO what if we're not interested in creating an arrival?
+  end
+
+  def prepare_child
     @child.arrivals.build if @child.arrivals.empty?
   end
 

@@ -3,6 +3,5 @@ Given /^child "(.+)" does not exist$/ do |name|
 end
 
 Given /^child "(.+)" exists$/ do |name|
-  # TODO switch to Machinist
-  Child.create!(:name => name)
+  Child.make(:name => name)
 end
