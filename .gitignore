@@ -1,4 +1,5 @@
 config/database.yml
 db/*.sqlite*
 log
+public/stylesheets/*.css
 tmp

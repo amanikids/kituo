@@ -2,6 +2,7 @@
   .field
     = form.label :name
     = form.text_field :name
+    = form.error_message_on :name
 
   - form.fields_for :arrivals do |arrival_form|
     .field

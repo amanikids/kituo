@@ -2,6 +2,9 @@
 !!!
 
 %html{html_attrs}
+  %head
+    = stylesheet_link_tag 'screen', :cache => true
+
   %body
     - if flash.any?
       #flash

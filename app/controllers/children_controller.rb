@@ -7,6 +7,7 @@ class ChildrenController < ApplicationController
       flash[:notice] = "New case file started for #{@child.name}."
       redirect_to @child
     else
+      render :new
     end
   end
 
