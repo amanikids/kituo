@@ -23,14 +23,14 @@ Feature: Arrivals
   Scenario: Resolving a Duplicate Name by Creating a Duplicate Child
     Given child "Ramadhan Masawe" exists
     When I try to create a child named "Ramadhan Masawe" arriving on "April 29, 2009"
-    And I press "I really mean it"
+    And I press "Create a New Case File"
     Then I should see "New case file started for Ramadhan Masawe."
     And I should see "April 29, 2009"
 
   Scenario: Resolving a Duplicate Name by Selecting an Existing Child
     Given child "Ramadhan Masawe" exists
     When I try to create a child named "Ramadhan Masawe" arriving on "April 29, 2009"
-    And I press "Ramadhan Masawe"
+    And I press "Record Arrival on April 29, 2009"
     Then I should not see "New case file started for Ramadhan Masawe."
     And I should see "Arrival at Amani recorded for Ramadhan Masawe."
     And I should see "April 29, 2009"

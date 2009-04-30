@@ -1,2 +1,88 @@
-.formError
-  display: inline
+!page_width = 800px
+
+!black = #000
+!blue = #9bc
+!brown = #965
+!dark_brown = #311
+!light_blue = #bef
+!light_gold = #fc6
+!light_red = #f54
+!red = #911
+!white = #fff
+
+body
+  font-family: Georgia
+
+.centered
+  margin: auto
+  width= !page_width
+
+#flash
+  .error
+    background-color= !light_red
+    padding: 0.5em 0
+  .notice
+    background-color= !light_gold
+    padding: 0.5em 0
+
+#header
+  background-color= !brown
+  color= !dark_brown
+  padding-top: 1em
+
+  #title
+    font-size: 2em
+    a
+      color= !dark_brown
+      text-decoration: none
+
+  #navigation
+    margin: 1em 0 0
+    padding: 0
+    li
+      display: inline
+      a
+        background-color= !white
+        color= !black
+        display: inline-block
+        padding: 0.5em 1em
+        text-decoration: none
+
+#main
+  padding-top: 1em
+
+  #actions
+    background-color= !light_blue
+    border= 1px solid !blue
+    padding: 1em
+
+  h1
+    font-size: 2em
+    margin: 0.5em 0em
+
+  form
+    .field
+      margin-top: 1em
+      label
+        display: block
+      input, select
+        font-size: 1.5em
+
+
+    .submit
+      background-color: #eee
+      padding: 0.5em
+      margin-top: 1.5em
+      input
+        font-size: 1.5em
+
+
+    .fieldWithErrors
+      color= !red
+
+      input
+        outline= 2px solid !light_red
+
+    .formError
+      color= !red
+      display: inline

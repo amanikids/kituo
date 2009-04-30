@@ -3,12 +3,23 @@
 
 %html{html_attrs}
   %head
-    = stylesheet_link_tag 'screen', :cache => true
+    = stylesheet_link_tag 'reset', 'screen', :cache => true
 
   %body
     - if flash.any?
       #flash
         - flash.each do |key, message|
-          %div{:class => key}=message
+          %div{:class => key}
+            .centered
+              =message
 
-    = yield
+    #header
+      .centered
+        #title= link_to_unless_current("Amani Children's Home", '/')
+
+        %ul#navigation
+          %li= link_to('Children', children_path)
+
+    #main
+      .centered
+        = yield

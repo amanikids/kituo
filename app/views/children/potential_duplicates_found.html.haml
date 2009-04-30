@@ -5,7 +5,8 @@
     .hidden
       = form.date_select :happened_on, {}, { :style => 'display:none' }
     .submit
-      = form.submit child.name
+      = child.name
+      = form.submit "Record arrival on #{form.object.happened_on.to_s(:long)}"
 
 - form_for @child do |form|
   .hidden
@@ -14,4 +15,5 @@
       = arrival_form.date_select :happened_on, {}, { :style => 'display:none' }
 
   .submit
-    = form.submit 'I really mean it', :name => 'child[ignore_potential_duplicates]'
+    Or, if you're sure,
+    = form.submit 'Create a New Case File', :name => 'child[ignore_potential_duplicates]'
