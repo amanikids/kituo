@@ -26,7 +26,7 @@ end
 
 after 'deploy:update_code' do
   unless rails_env == 'production'
-    run "mysqladmin drop --force kituo_#{rails_env}; mysqladmin create kituo_#{rails_env}; mysqldump --opt kituo_production | mysql kituo_#{rails_env}"
+    run "mysqladmin --user root drop --force kituo_#{rails_env}; mysqladmin --user root create kituo_#{rails_env}; mysqldump --user root --opt kituo_production | mysql --user root kituo_#{rails_env}"
   end
 end
 
