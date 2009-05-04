@@ -15,4 +15,4 @@ set :scm, :git
 set :deploy_via, :remote_cache
 set :git_enable_submodules, true
 
-server ENV['HOST'], :web, :app, :db, :primary => true
+server 'mchungaji.amani', :web, :app, :db, :primary => true
