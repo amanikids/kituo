@@ -6,7 +6,7 @@ task(:staging)    { set :rails_env, 'staging' }
 task(:production) { set :rails_env, 'production' }
 
 after 'deploy:setup' do
-  environment = fetch(:rails_env, 'staging')
+  environment = fetch(:rails_env, 'production')
 
   database_config = {
     environment => {
@@ -27,6 +27,13 @@ after 'deploy:finalize_update' do
 end
 
 namespace :deploy do
+  desc 'Start the Application'
+  task :start do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  task(:stop) { }
+
   desc 'Restart the Application'
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
