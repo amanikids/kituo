@@ -2,10 +2,6 @@ load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
 load 'config/deploy'
 
-task :production do
-  set :rails_env, 'production'
-end
-
 after 'deploy:setup' do
   database_config = {
     rails_env => {
@@ -25,9 +21,15 @@ after 'deploy:finalize_update' do
 end
 
 after 'deploy:update_code' do
-  unless rails_env == 'production'
-    run "mysqladmin --user root drop --force kituo_#{rails_env}; mysqladmin --user root create kituo_#{rails_env}; mysqldump --user root --opt kituo_production | mysql --user root kituo_#{rails_env}"
+  if rails_env == 'staging'
+    run "mysqladmin --user root drop --force kituo_#{rails_env}"
+    run "mysqladmin --user root create kituo_#{rails_env}"
+    run "mysqldump  --user root --opt kituo_production | mysql --user root kituo_#{rails_env}"
   end
+end
+
+task :production do
+  set :rails_env, 'production'
 end
 
 namespace :deploy do
