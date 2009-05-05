@@ -8,3 +8,12 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+namespace :db do
+  task :seed => :environment do
+    names = Rails.root.join('test', 'unit', 'name_matcher_test.rb').read.split('__END__').last.strip.split("\n")
+    names.each do |name|
+      Child.create!(:name => name, :ignore_potential_duplicates => true)
+    end
+  end
+end

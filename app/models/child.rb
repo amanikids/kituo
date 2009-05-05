@@ -7,8 +7,9 @@ class Child < ActiveRecord::Base
   validate :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
   attr_accessor :ignore_potential_duplicates
 
+  # FIXME oh no we di'int
   def potential_duplicates
-    Child.find_all_by_name(name) - [self]
+    NameMatcher.new(Child.all.map(&:name)).match(self.name).map { |n| Child.find_all_by_name(n) }.flatten
   end
   memoize :potential_duplicates
 
