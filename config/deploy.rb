@@ -1,5 +1,6 @@
 set :application, 'kituo'
-set :repository,  'git://github.com/amanikids/kituo.git'
+set :repository,  '/var/www/apps/git/kituo.git'
+set :local_repository,  'deploy@mchungaji.amani:git/kituo.git'
 set :user, 'deploy'
 set :use_sudo, false
 set :rails_env, 'staging' # the 'production' task overrides this
