@@ -22,9 +22,14 @@ end
 
 after 'deploy:update_code' do
   if rails_env == 'staging'
+    # Replace our data with production data.
     run "mysqladmin --user root drop --force kituo_#{rails_env}"
     run "mysqladmin --user root create kituo_#{rails_env}"
     run "mysqldump  --user root --opt kituo_production | mysql --user root kituo_#{rails_env}"
+
+    # Replace our system files (think Paperclip) with production system files.
+    run "rm -rf #{shared_path}/system"
+    run "cp -r  #{shared_path.gsub('staging', 'production')}/system #{shared_path}"
   end
 end
 
