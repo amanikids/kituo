@@ -1,2 +1,2 @@
-class Arrival < ActiveRecord::Base
+class Arrival < Event
 end
