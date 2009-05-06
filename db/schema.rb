@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090429100136) do
+ActiveRecord::Schema.define(:version => 20090506094637) do
 
   create_table "arrivals", :force => true do |t|
     t.integer  "child_id"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(:version => 20090429100136) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "headshot_file_name"
+    t.string   "headshot_content_type"
+    t.integer  "headshot_file_size"
+    t.datetime "headshot_updated_at"
   end
 
 end

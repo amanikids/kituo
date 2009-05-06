@@ -5,6 +5,8 @@ class ChildTest < ActiveSupport::TestCase
   # TODO: reconsider if we really want to be so open with our arrivals
   should_accept_nested_attributes_for :arrivals
 
+  should_have_attached_file :headshot
+
   should_validate_presence_of :name
 
   context 'given an existing Child' do

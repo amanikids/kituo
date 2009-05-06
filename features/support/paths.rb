@@ -21,6 +21,9 @@ module NavigationHelpers
     when /the new child page/
       new_child_path
 
+    when /the child page for "(.+)"/
+      child_path(Child.find_by_name!($1))
+
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in features/support/paths.rb"

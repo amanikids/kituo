@@ -1,0 +1,12 @@
+%h1= link_to @child.name, @child
+%h2 Edit Headshot
+
+- form_for @child, :url => child_headshot_path(@child), :html => { :multipart => true } do |form|
+  = form.error_messages
+
+  .field
+    = form.label :headshot, 'Upload a New Image'
+    = form.file_field :headshot
+
+  .submit
+    = form.submit

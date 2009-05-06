@@ -72,21 +72,21 @@ body
     font-size: 2em
     margin: 0.5em 0em
 
+  h2
+    font-size: 1.7em
+    margin: 0.5em 0em
+
   form
     .field
       margin-top: 1em
       label
         display: block
-      input, select
-        font-size: 1.5em
 
 
     .submit
       background-color: #eee
       padding: 0.5em
       margin-top: 1.5em
-      input
-        font-size: 1.5em
 
 
     .fieldWithErrors
@@ -98,3 +98,19 @@ body
     .formError
       color= !red
       display: inline
+
+  form.headshot
+    display: inline-block
+    margin: 0 1em 1em 0
+    vertical-align: top
+    width: 150px
+
+    .submit
+      background-color: #fff
+      padding: 0
+
+  .headshot
+    img, input
+      border= 3px solid !brown
+      display: block
+      margin-bottom: 0.5em
