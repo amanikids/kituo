@@ -1,6 +1,6 @@
 %h1= @child.name
 
-#headshot
+.headshot
   = image_tag @child.headshot.url
   = link_to 'Edit Headshot', edit_child_headshot_path(@child)
 
