@@ -38,6 +38,11 @@ task :production do
 end
 
 namespace :deploy do
+  desc 'Deploy hte app, running migrations.'
+  task :default do
+    migrations
+  end
+
   desc 'Start the Application'
   task :start do
     run "touch #{current_path}/tmp/restart.txt"
