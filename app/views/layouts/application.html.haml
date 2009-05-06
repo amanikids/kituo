@@ -9,7 +9,8 @@
     - if Rails.env.staging?
       #staging
         .centered
-          Warning! This is the Staging environment. Your data will be deleted at random.
+          Warning! This is the practice server. Information entered here will be deleted. The real server is
+          = link_to('kituo.amani', 'http://kituo.amani').concat('.')
 
     - if flash.any?
       #flash
