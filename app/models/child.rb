@@ -3,6 +3,8 @@ class Child < ActiveRecord::Base
 
   named_scope :boarding_offsite, :joins => :events, :conditions => 'events.type = "OffsiteBoarding" AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
   named_scope :dropped_out,      :joins => :events, :conditions => 'events.type = "Dropout"         AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
+  named_scope :reunified,        :joins => :events, :conditions => 'events.type = "Reunification"   AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
+  named_scope :terminated,       :joins => :events, :conditions => 'events.type = "Termination"     AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
 
   has_many :events
 

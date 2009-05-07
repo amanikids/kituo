@@ -9,3 +9,14 @@ Feature: Terminations
   Scenario: I Mark a Child as Terminated
     When I record a termination for "Ramadhan Masawe"
     Then I should see "Termination recorded for Ramadhan Masawe."
+
+  Scenario: A Child Who Hasn't Been Terminated
+    When I go to the terminated children page
+    Then I should not see "Ramadhan Masawe"
+
+  Scenario: A Child Who Has Been Terminated
+    When I record a termination for "Ramadhan Masawe"
+    And I go to the terminated children page
+    Then I should see "Ramadhan Masawe"
+
+

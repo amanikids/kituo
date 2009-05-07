@@ -26,6 +26,12 @@ module NavigationHelpers
     when /the dropped out children page/
       dropped_out_children_path
 
+    when /the reunified children page/
+      reunified_children_path
+
+    when /the terminated children page/
+      terminated_children_path
+
     when /the child page for "(.+)"/
       child_path(Child.find_by_name!($1))
 
