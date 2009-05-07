@@ -1,0 +1,2 @@
+class OffsiteBoarding < Event
+end
