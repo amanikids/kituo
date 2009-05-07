@@ -3,6 +3,7 @@ class Child < ActiveRecord::Base
 
   has_many :arrivals
   accepts_nested_attributes_for :arrivals
+  has_many :reunifications
 
   has_attached_file :headshot,
     :styles => { :default => '150x150#' },

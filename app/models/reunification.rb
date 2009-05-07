@@ -1,0 +1,2 @@
+class Reunification < Event
+end

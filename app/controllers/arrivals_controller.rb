@@ -1,6 +1,6 @@
 class ArrivalsController < ApplicationController
-  before_filter :load_child,    :only => [:index, :new, :create]
-  before_filter :build_arrival, :only => [:new, :create]
+  before_filter :load_child
+  before_filter :build_arrival
 
   def create
     if @arrival.save
