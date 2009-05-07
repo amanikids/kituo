@@ -20,6 +20,9 @@ module NavigationHelpers
     when /the new child page/
       new_child_path
 
+    when /the boarding offsite children page/
+      boarding_offsite_children_path
+
     when /the dropped out children page/
       dropped_out_children_path
 

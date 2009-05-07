@@ -3,10 +3,18 @@ Feature: Offsite Boardings
   As an Amani Caregiver
   I want to mark a child as boarding somewhere else, like school
 
-  Scenario: I Mark a Child as Boarding Offsite
+  Background:
     Given child "Ramadhan Masawe" exists
-    And I am on the child page for "Ramadhan Masawe"
-    When I follow "Offsite Boarding"
-    And I select "May 7, 2009" as the date
-    And I press "Save"
+
+  Scenario: I Mark a Child as Boarding Offsite
+    When I record an offsite boarding for "Ramadhan Masawe"
     Then I should see "Offsite Boarding recorded for Ramadhan Masawe."
+
+  Scenario: A Child Who Isn't Boarding Offsite
+    When I go to the boarding offsite children page
+    Then I should not see "Ramadhan Masawe"
+
+  Scenario: A Child Who Is Boarding Offsite
+    When I record an offsite boarding for "Ramadhan Masawe"
+    And I go to the boarding offsite children page
+    Then I should see "Ramadhan Masawe"

@@ -23,9 +23,11 @@ class ChildrenController < ApplicationController
 
   # ===========================================================================
   # Custom Collection Actions
-  def dropped_out
-    @children = Child.dropped_out
-    render :index
+  # ===========================================================================
+  %w(boarding_offsite dropped_out).each do |status|
+    define_method(status) do
+      @children = Child.send(status); render :index
+    end
   end
 
   protected
