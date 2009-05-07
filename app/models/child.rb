@@ -1,4 +1,6 @@
 class Child < ActiveRecord::Base
+  default_scope :order => :name
+
   has_many :events
 
   has_many :arrivals

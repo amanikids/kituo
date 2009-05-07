@@ -3,6 +3,4 @@
 %ul.actions
   %li= link_to 'New Child', new_child_path
 
-%ul
-  - @children.each do |child|
-    %li= link_to child.name, child
+= render @children
