@@ -1,0 +1,11 @@
+%h1
+  = link_to @child.name, @child
+
+%h2 Dropout
+
+- form_for [@child, @dropout] do |form|
+  .field
+    = form.label :happened_on, 'Dropped out on'
+    = form.date_select :happened_on
+  .submit
+    = form.submit 'Save'

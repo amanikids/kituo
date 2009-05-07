@@ -1,0 +1,2 @@
+class Dropout < Event
+end
