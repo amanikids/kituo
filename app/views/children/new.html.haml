@@ -5,11 +5,5 @@
     = form.label :name
     = form.text_field :name, :autocomplete => 'off'
     = form.error_message_on :name
-
-  - form.fields_for :arrivals do |arrival_form|
-    .field
-      = arrival_form.label :happened_on, 'Arrived on'
-      = arrival_form.date_select :happened_on
-
   .submit
     = form.submit 'Save New Child'

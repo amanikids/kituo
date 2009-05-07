@@ -1,9 +1,13 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class ChildTest < ActiveSupport::TestCase
+  should_have_many :events
+
   should_have_many :arrivals
-  # TODO: reconsider if we really want to be so open with our arrivals
-  should_accept_nested_attributes_for :arrivals
+  should_have_many :offsite_boardings
+  should_have_many :reunifications
+  should_have_many :dropouts
+  should_have_many :terminations
 
   should_have_attached_file :headshot
 

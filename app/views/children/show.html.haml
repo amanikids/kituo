@@ -1,8 +1,7 @@
 %h1= @child.name
 
-.headshot
-  = image_tag @child.headshot.url
-  = link_to 'Edit Headshot', edit_child_headshot_path(@child)
+= image_tag @child.headshot.url, :class => 'headshot'
+= link_to 'Edit Headshot', edit_child_headshot_path(@child)
 
 %h2 Timeline
 

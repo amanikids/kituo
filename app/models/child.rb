@@ -2,7 +2,6 @@ class Child < ActiveRecord::Base
   has_many :events
 
   has_many :arrivals
-  accepts_nested_attributes_for :arrivals
   has_many :offsite_boardings
   has_many :reunifications
   has_many :dropouts
