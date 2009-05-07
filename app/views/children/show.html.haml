@@ -10,6 +10,7 @@
   %li Record:
   %li= link_to 'Reunification', new_child_reunification_path(@child)
   %li= link_to 'Dropout', new_child_dropout_path(@child)
+  %li= link_to 'Termination', new_child_termination_path(@child)
 
 %table.timeline
   = render @child.events

@@ -1,0 +1,2 @@
+class Termination < Event
+end

@@ -1,0 +1,11 @@
+%h1
+  = link_to @child.name, @child
+
+%h2 Termination
+
+- form_for [@child, @termination] do |form|
+  .field
+    = form.label :happened_on, 'Terminated on'
+    = form.date_select :happened_on
+  .submit
+    = form.submit 'Save'
