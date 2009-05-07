@@ -21,6 +21,13 @@ class ChildrenController < ApplicationController
     end
   end
 
+  # ===========================================================================
+  # Custom Collection Actions
+  def dropped_out
+    @children = Child.dropped_out
+    render :index
+  end
+
   protected
 
   def build_child

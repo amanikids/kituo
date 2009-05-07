@@ -3,10 +3,18 @@ Feature: Dropouts
   As an Amani Caregiver
   I want to mark a child as having dropped out
 
-  Scenario: I Mark a Child as Dropped Out
+  Background:
     Given child "Ramadhan Masawe" exists
-    And I am on the child page for "Ramadhan Masawe"
-    When I follow "Dropout"
-    And I select "May 7, 2009" as the date
-    And I press "Save"
+
+  Scenario: I Mark a Child as Dropped Out
+    When I record a dropout for "Ramadhan Masawe"
     Then I should see "Dropout recorded for Ramadhan Masawe."
+
+  Scenario: A Child Who Hasn't Dropped Out
+    When I go to the dropped out children page
+    Then I should not see "Ramadhan Masawe"
+
+  Scenario: A Child Who Has Dropped Out
+    When I record a dropout for "Ramadhan Masawe"
+    And I go to the dropped out children page
+    Then I should see "Ramadhan Masawe"

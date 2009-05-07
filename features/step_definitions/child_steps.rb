@@ -3,4 +3,3 @@ When(/^I try to create a child named "(.*?)"$/) do |name|
   And "I fill in \"Name\" with \"#{name}\""
   And 'I press "Save"'
 end
-

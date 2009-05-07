@@ -17,9 +17,11 @@ module NavigationHelpers
     when /the homepage/
       root_path
 
-    # Add more page name => path mappings here
     when /the new child page/
       new_child_path
+
+    when /the dropped out children page/
+      dropped_out_children_path
 
     when /the child page for "(.+)"/
       child_path(Child.find_by_name!($1))

@@ -1,6 +1,8 @@
 class Child < ActiveRecord::Base
   default_scope :order => :name
 
+  named_scope :dropped_out, :joins => :events, :conditions => 'events.type = "Dropout" AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
+
   has_many :events
 
   has_many :arrivals
