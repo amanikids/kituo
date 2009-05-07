@@ -4,6 +4,6 @@
   = image_tag @child.headshot.url
   = link_to 'Edit Headshot', edit_child_headshot_path(@child)
 
-%ul
-  - @child.arrivals.each do |arrival|
-    %li= arrival.happened_on.to_s(:long)
+%h2 Timeline
+%table.timeline
+  = render @child.events
