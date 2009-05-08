@@ -1,0 +1,7 @@
+%h1 Children
+
+%ul.actions
+  %li= link_to 'New Child', new_child_path
+  %li= link_to 'Roll Call Sheet', onsite_children_path(:format => :pdf)
+
+= render @children

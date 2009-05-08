@@ -27,7 +27,6 @@ class ChildrenController < ApplicationController
   %w(pending onsite boarding_offsite reunified dropped_out terminated).each do |status|
     define_method(status) do
       @children = Child.send(status)
-      render :index
     end
   end
 
