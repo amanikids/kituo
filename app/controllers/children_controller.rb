@@ -20,32 +20,11 @@ class ChildrenController < ApplicationController
     end
   end
 
-  # ===========================================================================
-  # Custom Collection Actions
-  # ===========================================================================
-  def boarding_offsite
-    @children = Child.is(OffsiteBoarding).as_of(Date.today)
-    render :index
-  end
-
-  def dropped_out
-    @children = Child.is(Dropout).as_of(Date.today)
-    render :index
-  end
-
-  def onsite
-    @children = Child.is(Arrival).as_of(Date.today)
-    render :index
-  end
-
-  def reunified
-    @children = Child.is(Reunification).as_of(Date.today)
-    render :index
-  end
-
-  def terminated
-    @children = Child.is(Termination).as_of(Date.today)
-    render :index
+  %w(onsite boarding_offsite reunified dropped_out terminated).each do |status|
+    define_method(status) do
+      @children = Child.send(status)
+      render :index
+    end
   end
 
   protected

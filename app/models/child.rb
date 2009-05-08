@@ -1,10 +1,32 @@
 class Child < ActiveRecord::Base
   default_scope :order => :name
 
-  named_scope :as_of, lambda { |date|        { :joins => :events, :conditions => "events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= \"#{date.to_s(:db)}\" ORDER BY happened_on DESC, created_at DESC LIMIT 1)" }}
-  named_scope :is,    lambda { |event_class| { :joins => :events, :conditions => { :events => { :type => event_class.name }}}}
+  named_scope :with_events, :joins => :events
+  named_scope :is,    lambda { |event_class| { :conditions => ['events.type = ?', event_class.name] }}
+  named_scope :as_of, lambda { |date|        { :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date] }}
+
+  def self.onsite(date = Date.today)
+    with_events.is(Arrival).as_of(date)
+  end
+
+  def self.boarding_offsite(date = Date.today)
+    with_events.is(OffsiteBoarding).as_of(date)
+  end
+
+  def self.reunified(date = Date.today)
+    with_events.is(Reunification).as_of(date)
+  end
+
+  def self.dropped_out(date = Date.today)
+    with_events.is(Dropout).as_of(date)
+  end
+
+  def self.terminated(date = Date.today)
+    with_events.is(Termination).as_of(date)
+  end
 
   has_many :events
+
   has_many :arrivals
   has_many :offsite_boardings
   has_many :reunifications
