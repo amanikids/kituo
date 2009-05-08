@@ -3,7 +3,11 @@ class ChildrenController < ApplicationController
   before_filter :load_child,  :only => [:show]
 
   def index
-    redirect_to pending_children_path
+    if Child.pending.count.zero?
+      redirect_to onsite_children_path
+    else
+      redirect_to pending_children_path
+    end
   end
 
   def create

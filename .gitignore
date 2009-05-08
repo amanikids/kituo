@@ -1,5 +1,7 @@
 config/database.yml
 db/*.sqlite*
+db/seed
 log
 public/stylesheets/*.css
+public/system/headshots
 tmp
