@@ -3,7 +3,7 @@ class ChildrenController < ApplicationController
   before_filter :load_child,  :only => [:show]
 
   def index
-    @children = Child.all
+    redirect_to pending_children_path
   end
 
   def create

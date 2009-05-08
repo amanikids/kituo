@@ -24,7 +24,13 @@
         #title= link_to_unless_current("Amani Children's Home", '/')
 
         %ul#navigation
-          %li= link_to('Children', children_path)
+          - pending_count = Child.pending.count
+          %li= link_to_with_current 'Pending'.concat(pending_count.zero? ? '' : content_tag(:span, pending_count, :class => 'badge')), pending_children_path
+          %li= link_to_with_current 'Onsite', onsite_children_path
+          %li= link_to_with_current 'Boarding Offsite', boarding_offsite_children_path
+          %li= link_to_with_current 'Reunified', reunified_children_path
+          %li= link_to_with_current 'Terminated', terminated_children_path
+          %li= link_to_with_current 'Dropped Out', dropped_out_children_path
 
     #main
       .centered

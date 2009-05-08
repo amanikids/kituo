@@ -7,6 +7,7 @@
 !light_blue = #bef
 !light_gold = #fc6
 !light_red = #f54
+!medium_brown = #633
 !red = #911
 !white = #fff
 
@@ -48,17 +49,27 @@ body
       color= !dark_brown
       text-decoration: none
 
+  .badge
+    background-color= !red
+    color= !white
+    margin-left: 0.5em
+    padding: 0 0.25em
+
   #navigation
     margin: 1em 0 0
     padding: 0
     li
       display: inline
+
       a
-        background-color= !white
+        background-color= !medium_brown
         color= !black
         display: inline-block
         padding: 0.5em 1em
         text-decoration: none
+
+      a.current
+        background-color= !white
 
 #main
   padding-top: 1em
