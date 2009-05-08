@@ -11,10 +11,10 @@ Feature: Dropouts
     Then I should see "Dropout recorded for Ramadhan Masawe."
 
   Scenario: A Child Who Hasn't Dropped Out
-    When I go to the dropouts children page
+    When I go to the dropped out children page
     Then I should not see "Ramadhan Masawe"
 
   Scenario: A Child Who Has Dropped Out
     When I record a dropout for "Ramadhan Masawe"
-    And I go to the dropouts children page
+    And I go to the dropped out children page
     Then I should see "Ramadhan Masawe"

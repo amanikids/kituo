@@ -1,4 +1,4 @@
-%w(offsite_boarding reunification dropout termination).each do |event|
+%w(arrival offsite_boarding reunification dropout termination).each do |event|
   When(/^I record an? #{event.humanize.downcase} for "(.*?)"$/) do |name|
     When "I am on the child page for \"#{name}\""
     And "I follow \"#{event.titleize}\""

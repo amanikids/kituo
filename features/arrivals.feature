@@ -3,10 +3,18 @@ Feature: Arrivals
   As an Amani Caregiver
   I want to mark a child as having arrived
 
-  Scenario: I Mark a Child as Arrived
+  Background:
     Given child "Ramadhan Masawe" exists
-    And I am on the child page for "Ramadhan Masawe"
-    When I follow "Arrival"
-    And I select "May 7, 2009" as the date
-    And I press "Save"
+
+  Scenario: I Mark a Child as Arrived
+    When I record an arrival for "Ramadhan Masawe"
     Then I should see "Arrival at Amani recorded for Ramadhan Masawe."
+
+  Scenario: A Child Who Hasn't Arrived
+    When I go to the onsite children page
+    Then I should not see "Ramadhan Masawe"
+
+  Scenario: A Child Who Has Arrived
+    When I record an arrival for "Ramadhan Masawe"
+    When I go to the onsite children page
+    Then I should see "Ramadhan Masawe"

@@ -20,17 +20,20 @@ module NavigationHelpers
     when /the new child page/
       new_child_path
 
-    when /the offsite boardings children page/
-      offsite_boardings_children_path
+    when /the onsite children page/
+      onsite_children_path
 
-    when /the dropouts children page/
-      dropouts_children_path
+    when /the boarding offsite children page/
+      boarding_offsite_children_path
 
-    when /the reunifications children page/
-      reunifications_children_path
+    when /the dropped out children page/
+      dropped_out_children_path
 
-    when /the terminations children page/
-      terminations_children_path
+    when /the reunified children page/
+      reunified_children_path
+
+    when /the terminated children page/
+      terminated_children_path
 
     when /the child page for "(.+)"/
       child_path(Child.find_by_name!($1))

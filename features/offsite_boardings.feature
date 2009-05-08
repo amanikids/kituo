@@ -11,10 +11,10 @@ Feature: Offsite Boardings
     Then I should see "Offsite Boarding recorded for Ramadhan Masawe."
 
   Scenario: A Child Who Isn't Boarding Offsite
-    When I go to the offsite boardings children page
+    When I go to the boarding offsite children page
     Then I should not see "Ramadhan Masawe"
 
   Scenario: A Child Who Is Boarding Offsite
     When I record an offsite boarding for "Ramadhan Masawe"
-    And I go to the offsite boardings children page
+    And I go to the boarding offsite children page
     Then I should see "Ramadhan Masawe"

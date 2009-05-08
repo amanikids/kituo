@@ -1,7 +1,6 @@
 class ChildrenController < ApplicationController
-  before_filter :build_child,   :only => [:new, :create]
-  before_filter :prepare_child, :only => [:new]
-  before_filter :load_child,    :only => [:show]
+  before_filter :build_child, :only => [:new, :create]
+  before_filter :load_child,  :only => [:show]
 
   def index
     @children = Child.all
@@ -24,21 +23,35 @@ class ChildrenController < ApplicationController
   # ===========================================================================
   # Custom Collection Actions
   # ===========================================================================
-  %w(offsite_boardings reunifications dropouts terminations).each do |status|
-    define_method(status) do
-      @children = Child.is(status.classify.constantize).as_of(Date.today)
-      render :index
-    end
+  def boarding_offsite
+    @children = Child.is(OffsiteBoarding).as_of(Date.today)
+    render :index
+  end
+
+  def dropped_out
+    @children = Child.is(Dropout).as_of(Date.today)
+    render :index
+  end
+
+  def onsite
+    @children = Child.is(Arrival).as_of(Date.today)
+    render :index
+  end
+
+  def reunified
+    @children = Child.is(Reunification).as_of(Date.today)
+    render :index
+  end
+
+  def terminated
+    @children = Child.is(Termination).as_of(Date.today)
+    render :index
   end
 
   protected
 
   def build_child
     @child = Child.new(params[:child])
-  end
-
-  def prepare_child
-    @child.arrivals.build if @child.arrivals.empty?
   end
 
   def load_child
