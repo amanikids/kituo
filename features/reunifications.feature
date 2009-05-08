@@ -11,10 +11,10 @@ Feature: Reunifications
     Then I should see "Family Reunification recorded for Ramadhan Masawe."
 
   Scenario: A Child Who Hasn't Been Reunified
-    When I go to the reunified children page
+    When I go to the reunifications children page
     Then I should not see "Ramadhan Masawe"
 
   Scenario: A Child Who Hasn't Been Reunified
     When I record a reunification for "Ramadhan Masawe"
-    And I go to the reunified children page
+    And I go to the reunifications children page
     Then I should see "Ramadhan Masawe"

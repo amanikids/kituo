@@ -1,13 +1,10 @@
 class Child < ActiveRecord::Base
   default_scope :order => :name
 
-  named_scope :boarding_offsite, :joins => :events, :conditions => 'events.type = "OffsiteBoarding" AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
-  named_scope :dropped_out,      :joins => :events, :conditions => 'events.type = "Dropout"         AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
-  named_scope :reunified,        :joins => :events, :conditions => 'events.type = "Reunification"   AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
-  named_scope :terminated,       :joins => :events, :conditions => 'events.type = "Termination"     AND events.id = (SELECT id FROM events WHERE child_id = children.id ORDER BY happened_on DESC, created_at DESC LIMIT 1)'
+  named_scope :as_of, lambda { |date|        { :joins => :events, :conditions => "events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= \"#{date.to_s(:db)}\" ORDER BY happened_on DESC, created_at DESC LIMIT 1)" }}
+  named_scope :is,    lambda { |event_class| { :joins => :events, :conditions => { :events => { :type => event_class.name }}}}
 
   has_many :events
-
   has_many :arrivals
   has_many :offsite_boardings
   has_many :reunifications

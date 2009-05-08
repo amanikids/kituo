@@ -11,12 +11,12 @@ Feature: Terminations
     Then I should see "Termination recorded for Ramadhan Masawe."
 
   Scenario: A Child Who Hasn't Been Terminated
-    When I go to the terminated children page
+    When I go to the terminations children page
     Then I should not see "Ramadhan Masawe"
 
   Scenario: A Child Who Has Been Terminated
     When I record a termination for "Ramadhan Masawe"
-    And I go to the terminated children page
+    And I go to the terminations children page
     Then I should see "Ramadhan Masawe"
 
 

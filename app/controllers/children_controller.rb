@@ -24,9 +24,10 @@ class ChildrenController < ApplicationController
   # ===========================================================================
   # Custom Collection Actions
   # ===========================================================================
-  %w(boarding_offsite dropped_out reunified terminated).each do |status|
+  %w(offsite_boardings reunifications dropouts terminations).each do |status|
     define_method(status) do
-      @children = Child.send(status); render :index
+      @children = Child.is(status.classify.constantize).as_of(Date.today)
+      render :index
     end
   end
 
