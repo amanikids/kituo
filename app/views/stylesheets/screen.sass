@@ -2,12 +2,13 @@
 
 !black = #000
 !blue = #9bc
-!brown = #965
+!light_brown = #965
 !dark_brown = #311
 !light_blue = #bef
 !light_gold = #fc6
 !light_red = #f54
 !medium_brown = #633
+!medium_light_brown = #784840
 !red = #911
 !white = #fff
 
@@ -39,7 +40,7 @@ body
     padding: 0.5em 0
 
 #header
-  background-color= !brown
+  background-color= !light_brown
   color= !dark_brown
   padding-top: 1em
 
@@ -63,13 +64,18 @@ body
 
       a
         background-color= !medium_brown
-        color= !black
+        color: #caa
         display: inline-block
         padding: 0.5em 1em
         text-decoration: none
 
-      a.current
+      a:hover
+        background-color= !medium_light_brown
+        color= !white
+
+      a.current, a.current:hover
         background-color= !white
+        color= !black
 
 #main
   padding-top: 1em
@@ -119,7 +125,7 @@ body
     width: 156px
 
   img.headshot
-    border= 3px solid !brown
+    border= 3px solid !light_brown
     display: block
     margin-bottom: 0.5em
 
