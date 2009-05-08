@@ -20,6 +20,9 @@ module NavigationHelpers
     when /the new child page/
       new_child_path
 
+    when /the pending children page/
+      pending_children_path
+
     when /the onsite children page/
       onsite_children_path
 
@@ -35,6 +38,19 @@ module NavigationHelpers
     when /the terminated children page/
       terminated_children_path
 
+    # I'm including this "dynamic" path here despite the warning above because
+    # cucumber complains about ambiguous steps when I make a separate "When I
+    # go to ..." step.
+    #
+    # You can fix this by adding --guess to the command-line options, but
+    # there's nowhere to do that when you're running a single feature in
+    # TextMate except for the TM_CUCUMBER_OPTS environment variable.
+    #
+    # I wouldn't generally want to mess with TM_CUCUMBER_OPTS, because (1) I
+    # might want ambiguity warnings for other projects, and (2) other
+    # developers would have to know to do the same thing.
+    #
+    # Or, perhaps I could set the variable in a .tmproj file?
     when /the child page for "(.+)"/
       child_path(Child.find_by_name!($1))
 
