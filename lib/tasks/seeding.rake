@@ -22,9 +22,7 @@ namespace :db do
         local_filename = "db/seed/#{File.basename(child[:url], '?*')}"
         unless File.exists?(local_filename)
           puts "fetching photo for #{child[:name]}..."
-          File.open(local_filename, 'w') do |file|
-            file.write open("http://amanikids.org#{child[:url]}").read
-          end
+          File.open(local_filename, 'w') { |file| file.write open("http://amanikids.org#{child[:url]}").read }
         end
         attributes[:headshot] = File.open(local_filename)
       end
@@ -32,8 +30,7 @@ namespace :db do
       if attributes[:name] =~ /\band\b/
         puts "Please split these kids up into separate lines, followed by a blank line:"
         puts attributes[:name]
-        names = []
-        until (name = $stdin.gets).blank?
+        until((name = $stdin.gets).blank?)
           Child.create!(attributes.merge(:name => name.strip))
         end
       else
