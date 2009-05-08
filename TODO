@@ -1,5 +1,0 @@
-* TODO Improve date picker when recording arrival
-* TODO Make duplicate name detection more sophisticated
-* FIXME Duplicate name detection should only happen on create, not on update
-* TODO I18n
-* TODO Don't allow creating a second arrival for the same kid on the same day
