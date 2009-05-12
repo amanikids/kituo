@@ -17,3 +17,8 @@ require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
 
 require File.join(File.dirname(__FILE__), '..', '..', 'test', 'blueprints')
+
+Before do
+  # Reset to English before each Scenario
+  I18n.locale = :en
+end

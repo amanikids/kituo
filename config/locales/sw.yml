@@ -1,2 +1,6 @@
-en:
-  hello: "Habari yako?"
+sw:
+  locale_name: Kiswahili
+
+  activerecord:
+    models:
+      arrival: Kufika

@@ -24,6 +24,10 @@
       .centered
         #title= link_to_unless_current("Amani Children's Home", '/')
 
+        %ul#locales
+          - other_locales.each do |locale, locale_name|
+            %li= link_to image_tag("#{locale}.png", :alt => locale_name, :title => locale_name), params.merge(:locale => locale), :method => (request.get? ? nil : request.method)
+
         %ul#navigation
           - pending_count = Child.pending.count
           %li= link_to_with_current 'Pending'.concat(pending_count.zero? ? '' : content_tag(:span, pending_count, :class => 'badge')), pending_children_path

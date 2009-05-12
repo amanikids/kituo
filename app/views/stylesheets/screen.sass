@@ -17,6 +17,7 @@ body
 
 .centered
   margin: auto
+  position: relative
   width= !page_width
 
 #staging
@@ -49,6 +50,13 @@ body
     a
       color= !dark_brown
       text-decoration: none
+
+  #locales
+    position: absolute
+    top: 0
+    right: 0
+    li
+      display: inline-block
 
   .badge
     background-color= !red
