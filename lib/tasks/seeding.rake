@@ -1,10 +1,11 @@
 require 'csv'
+require 'highline'
+require 'net/ssh'
 require 'open-uri'
 
 directory 'db/seed/images'
 
 file 'db/seed/children.yml' => 'db/seed' do
-  require 'net/ssh'
   Net::SSH.start('amanikids', 'deploy') do |ssh|
     File.open('db/seed/children.yml', 'w') do |file|
       file.write ssh.exec!('cd website/current; RAILS_ENV=production rake --silent db:children')
@@ -14,8 +15,6 @@ end
 
 namespace :db do
   task :seed => [:environment, 'db/seed/children.yml', 'db/seed/images'] do
-    require 'highline'
-
     YAML.load_file('db/seed/children.yml').each do |child|
       attributes = {}
       attributes[:name] = child[:name].strip
