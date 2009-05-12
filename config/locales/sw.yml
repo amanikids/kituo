@@ -1,6 +1,56 @@
 sw:
   locale_name: Kiswahili
 
+  title: Kituo cha Watoto Amani
+  staging: "Warning! This is the practice server. Information entered here will be deleted. The real server is {{link}}."
+
+  arrivals:
+    new:
+      submit: Save
+    create:
+      notice: "Arrival at Amani recorded for {{name}}."
+
+  children:
+    create:
+      error: "Whoops! Check your work."
+      notice: "New case file started for {{name}}."
+    pending:
+      title: Pending
+    onsite:
+      title: Onsite
+    boarding_offsite:
+      title: Boarding Offsite
+    reunified:
+      title: Reunified
+    terminated:
+      title: Terminated
+    dropped_out:
+      title: Dropped Out
+
+  dropouts:
+    create:
+      notice: "Dropout recorded for {{name}}."
+
+  headshots:
+    update:
+      notice: "Updated Headshot for {{name}}."
+
+  offsite_boardings:
+    create:
+      notice: "Offsite Boarding recorded for {{name}}."
+
+  reunifications:
+    create:
+      notice: "Family Reunification recorded for {{name}}."
+
+  terminations:
+    create:
+      notice: "Termination recorded for {{name}}."
+
   activerecord:
+    attributes:
+      child:
+        name: Jina
+
     models:
       arrival: Kufika

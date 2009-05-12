@@ -4,7 +4,7 @@ class ReunificationsController < ApplicationController
 
   def create
     if @reunification.save
-      flash[:notice] = "Family Reunification recorded for #{@child.name}."
+      flash[:notice] = t('reunifications.create.notice', :name => @child.name)
       redirect_to @child
     else
       render :new

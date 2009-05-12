@@ -1,2 +1,90 @@
 en:
   locale_name: English
+
+  title: Amani Children's Home
+  staging: "Warning! This is the practice server. Information entered here will be deleted. The real server is {{link}}."
+
+  # ===========================================================================
+  # = ActionPack Translations                                                 =
+  # ===========================================================================
+  arrivals:
+    new:
+      submit: Save
+    create:
+      notice: "Arrival at Amani recorded for {{name}}."
+
+  children:
+    new:
+      link: New Child
+      title: New Child
+      submit: Save New Child
+    create:
+      error: "Whoops! Check your work."
+      notice: "New case file started for {{name}}."
+
+    boarding_offsite:
+      tab: Boarding Offsite
+      title: Children Boarding Offsite
+    dropped_out:
+      tab: Dropped Out
+      title: Children Dropped out
+    onsite:
+      tab: Onsite
+      title: Children Onsite
+      pdf:
+        link: Roll Call Sheet
+        title: Children at Amani
+        subtitle: "Week of {{begin_date}} through {{end_date}}"
+    pending:
+      tab: Pending
+      title: Children Pending
+    reunified:
+      tab: Reunified
+      title: Children Reunified
+    terminated:
+      tab: Terminated
+      title: Children Terminated
+
+  dropouts:
+    new:
+      submit: Save
+    create:
+      notice: "Dropout recorded for {{name}}."
+
+  headshots:
+    update:
+      notice: "Updated Headshot for {{name}}."
+
+  offsite_boardings:
+    new:
+      submit: Save
+    create:
+      notice: "Offsite Boarding recorded for {{name}}."
+
+  reunifications:
+    new:
+      submit: Save
+    create:
+      notice: "Family Reunification recorded for {{name}}."
+
+  terminations:
+    new:
+      submit: Save
+    create:
+      notice: "Termination recorded for {{name}}."
+
+  # ===========================================================================
+  # = ActiveRecord Translations                                               =
+  # ===========================================================================
+  activerecord:
+    attributes:
+      arrival:
+        happened_on: Arrived at
+      dropout:
+        happened_on: Dropped out on
+      offsite_boarding:
+        happened_on: Boarded on
+      reunification:
+        happened_on: Reunified on
+      termination:
+        happened_on: Terminated on

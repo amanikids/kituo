@@ -12,13 +12,13 @@ class ChildrenController < ApplicationController
 
   def create
     if @child.save
-      flash[:notice] = "New case file started for #{@child.name}."
+      flash[:notice] = t('children.create.notice', :name => @child.name)
       redirect_to @child
     else
       if @child.potential_duplicates.any?
         render :potential_duplicates_found
       else
-        flash.now[:error] = "Whoops! Check your work."
+        flash.now[:error] = t('children.create.error')
         render :new
       end
     end

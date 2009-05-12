@@ -4,7 +4,7 @@ class OffsiteBoardingsController < ApplicationController
 
   def create
     if @offsite_boarding.save
-      flash[:notice] = "Offsite Boarding recorded for #{@child.name}."
+      flash[:notice] = t('offsite_boardings.create.notice', :name => @child.name)
       redirect_to @child
     else
       render :new

@@ -1,6 +1,6 @@
-%h1 Children
+%h1= t('children.dropped_out.title')
 
 %ul.actions
-  %li= link_to 'New Child', new_child_path
+  %li= link_to t('children.new.link'), new_child_path
 
 = render @children

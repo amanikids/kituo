@@ -3,7 +3,7 @@ class HeadshotsController < ApplicationController
 
   def update
     if @child.update_attributes(params[:child])
-      flash[:notice] = "Updated Headshot for #{@child.name}."
+      flash[:notice] = t('headshots.update.notice', :name => @child.name)
       redirect_to @child
     else
       render :edit

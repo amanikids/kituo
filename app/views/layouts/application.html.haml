@@ -3,15 +3,13 @@
 
 %html{html_attrs}
   %head
-    %title Amani Children's Home
+    %title= t(:title)
     = stylesheet_link_tag 'reset', 'screen', :cache => true
 
   %body
     - if Rails.env.staging?
       #staging
-        .centered
-          Warning! This is the practice server. Information entered here will be deleted. The real server is
-          = link_to('kituo.amani', 'http://kituo.amani').concat('.')
+        .centered= t(:staging, :link => link_to('kituo.amani', 'http://kituo.amani'))
 
     - if flash.any?
       #flash
@@ -22,7 +20,7 @@
 
     #header
       .centered
-        #title= link_to_unless_current("Amani Children's Home", '/')
+        #title= link_to t(:title), root_path
 
         %ul#locales
           - other_locales.each do |locale, locale_name|
@@ -30,12 +28,12 @@
 
         %ul#navigation
           - pending_count = Child.pending.count
-          %li= link_to_with_current 'Pending'.concat(pending_count.zero? ? '' : content_tag(:span, pending_count, :class => 'badge')), pending_children_path
-          %li= link_to_with_current 'Onsite', onsite_children_path
-          %li= link_to_with_current 'Boarding Offsite', boarding_offsite_children_path
-          %li= link_to_with_current 'Reunified', reunified_children_path
-          %li= link_to_with_current 'Terminated', terminated_children_path
-          %li= link_to_with_current 'Dropped Out', dropped_out_children_path
+          %li= link_to_with_current t('children.pending.tab').concat(pending_count.zero? ? '' : content_tag(:span, pending_count, :class => 'badge')), pending_children_path
+          %li= link_to_with_current t('children.onsite.tab'), onsite_children_path
+          %li= link_to_with_current t('children.boarding_offsite.tab'), boarding_offsite_children_path
+          %li= link_to_with_current t('children.reunified.tab'), reunified_children_path
+          %li= link_to_with_current t('children.terminated.tab'), terminated_children_path
+          %li= link_to_with_current t('children.dropped_out.tab'), dropped_out_children_path
 
     #main
       .centered

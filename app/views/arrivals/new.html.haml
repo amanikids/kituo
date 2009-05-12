@@ -1,11 +1,11 @@
 %h1
   = link_to @child.name, @child
 
-%h2 Arrival
+%h2= Arrival.human_name
 
 - form_for [@child, @arrival] do |form|
   .field
-    = form.label :happened_on, 'Arrived on'
+    = form.label :happened_on
     = form.date_select :happened_on
   .submit
-    = form.submit 'Save'
+    = form.submit t('arrivals.new.submit')

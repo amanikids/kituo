@@ -4,7 +4,7 @@ class ArrivalsController < ApplicationController
 
   def create
     if @arrival.save
-      flash[:notice] = "Arrival at Amani recorded for #{@child.name}."
+      flash[:notice] = t('arrivals.create.notice', :name => @child.name)
       redirect_to @child
     else
       render :new

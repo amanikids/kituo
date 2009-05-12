@@ -1,11 +1,11 @@
 %h1
   = link_to @child.name, @child
 
-%h2 Dropout
+%h2= Dropout.human_name
 
 - form_for [@child, @dropout] do |form|
   .field
-    = form.label :happened_on, 'Dropped out on'
+    = form.label :happened_on
     = form.date_select :happened_on
   .submit
-    = form.submit 'Save'
+    = form.submit t('dropouts.new.submit')

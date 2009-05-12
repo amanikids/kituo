@@ -4,7 +4,7 @@ class DropoutsController < ApplicationController
 
   def create
     if @dropout.save
-      flash[:notice] = "Dropout recorded for #{@child.name}."
+      flash[:notice] = t('dropouts.create.notice', :name => @child.name)
       redirect_to @child
     else
       render :new

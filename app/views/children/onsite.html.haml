@@ -1,7 +1,7 @@
-%h1 Children
+%h1= t('children.onsite.title')
 
 %ul.actions
-  %li= link_to 'New Child', new_child_path
-  %li= link_to 'Roll Call Sheet', onsite_children_path(:format => :pdf)
+  %li= link_to t('children.new.link'), new_child_path
+  %li= link_to t('children.onsite.pdf.link'), onsite_children_path(:format => :pdf)
 
 = render @children
