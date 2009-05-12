@@ -38,7 +38,7 @@ task :production do
 end
 
 namespace :deploy do
-  desc 'Deploy hte app, running migrations.'
+  desc 'Deploy the app, running migrations.'
   task :default do
     migrations
   end
