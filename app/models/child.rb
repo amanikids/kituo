@@ -43,8 +43,12 @@ class Child < ActiveRecord::Base
   attr_accessor :ignore_potential_duplicates
 
   # FIXME oh no we di'int
+  def self.search(name)
+    NameMatcher.new(Child.all.map(&:name)).match(name).map { |n| Child.find_all_by_name(n) }.flatten
+  end
+
   def potential_duplicates
-    NameMatcher.new(Child.all.map(&:name)).match(self.name).map { |n| Child.find_all_by_name(n) }.flatten
+    Child.search(name)
   end
 
   extend ActiveSupport::Memoizable

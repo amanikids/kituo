@@ -1,115 +1,114 @@
-type	name	date	age	comments
-Arrival	Emanuel Anthony	2009-4-24	14
-Arrival	Shatii Athuniani	2009-2-18	13
-Arrival	Godfrey Leshoele	2005	16
-Arrival	Victor Juma	2009-2	14
-Arrival	Issa Habibu	2009-2-18	12
-Arrival	Gerald Paul	2009-5-1	14
-Arrival	Ramadhan Shaaban	2009-4-2	13
-Arrival	Margerth Joesph	2009-4-19	13
-Arrival	Baraka Jonas	2009-3-first_week	8
-Arrival	Elibariki Good Luck	2009-4-23	12
-Arrival	Milaji Juma	2009-4-19	12
-Arrival	James Ibraham	2009-3-28	14
-Arrival	Joseph Leonard	2009-3-23	17
-Arrival	Omega Lazaro	2009-3-28	14
-Arrival	Ramadhani Selemani	2009-3-28	12
-Arrival	Iddy Tulo Mehinu	2009-4-2
-Arrival	Edward Nicodem	2009-3-12	14
-Arrival	Dustan Deo	2009-3-12	14
-Arrival	Faraja Godfrey	2009-3-12	14
-Arrival	Amani Francis Joseph Peter Mwachi (first bound page)	2009-3-9	12
-Arrival	Maria Abdul	2009-3-5	12
-Arrival	Julius John		14
-Arrival	Samueli Michael	2009-3-13	12
-Arrival	George Mwangi	2009-3-13	14
-Arrival	Denis Frank Lasevai		14	dropped out and came back
-Arrival	Baraka Jonas	2009-2	8
-Arrival	Mohammed Hamidu	2009-2	14
-Arrival	Ayoubu Makaa	2009-2-6	11
-Arrival	Bahati Abasi	2009-2-6	12
-Arrival	Augustino Blas	2009-2-5	14
-Arrival	Rashid Mohammed	2009-2-2	13
-Arrival	Elia Peter Orota	2009-2-2	14
-Arrival	Ibrahim Simoni Lyimo	2009-2-2	12
-Arrival	Zacharia Damas	2009-2-2	14
-Arrival	Hassan Habib	2008-3-22
-Arrival	Emanuel Erado	2009-1-27	7
-Arrival	Joseph Erado	2009-1-27	10
-Arrival	James Israel Jackson	2008
-Reunification	Gerald Godfrey		16
-Reunification	Nucodem Edward		
-Reunification	Ramadhan Abdallah		
-Reunification	Ludovic Ezekial	2008-12
-Reunification	Ludovic Ezekial	2008-9
-Reunification	Juma Wandi	2008-12-15
-Reunification	Lumi Wandi	2008-12-15
-Reunification	Steven Wilbard	2009-1-19
-Reunification	Hassan Habib	2008-12-22
-Reunification	Alphan Babuu	2008-12-15
-Reunification	James Israel Jackson	2008-9
-Arrival	James Israel Jackson	2009-1-27
-Dropout	Joseph Saltare	2009-3-week of 9 through 13
-Dropout	Joseph Erasto	2009-3-week of 9 through 13
-Dropout	Joseph Onesmo	2009-3-week of 9 through 13
-Dropout	Joseph Peter	2009-3-week of 9 through 13
-Dropout	Joseph Shayo	2009-3-week of 9 through 13
-Dropout	Ludovic Ezekiel	2009-3-week of 16 through 20
-Dropout	Ludovic Ezekial	2008-9
-Arrival	Fakidi Idd	2008-7
-Arrival	Fakidi Idd	2009-1-22	15
-Arrival	Ismael Athumani	2005	17
-Arrival	Lucas John	2009-4-1	15
-Arrival	Charles Marwa	2003	15
-Arrival	Idd Bakim Hamisi	2007	14
-Arrival	Gerald Jofrey	2008-11	14
-Arrival	Omar Juma Selemani Samakafi	2003 or 2004	16
-Arrival	Benson John Himara	2008-7
-Dropout	Benson John Himara	2008-8
-Arrival	Benson John Himara	2008-11	14
-Arrival Abdallah Juma Swalehe	2008-11	14
-Arrival	Bahati Simon Silvester	2008-11	13
-Arrival Ludovic Ezekial	2008	14
-Arrival	Martha Neema Gabriel	2008-11	14
-Arrival Zulfa John	2008-10	3
-Arrival Anoma John	2008-10	4
-Arrival Ramadhan John	2008-10	6
-Arrival	Hassan Habib Shilangasi	2008-6	14
-Arrival	Bahati Patrice Ambross	2008-8	9
-Arrival	Salim Mohammed	2008-5	8
-Arrival Deunis Petie Lenarta	2007
-Arrival Deunis Petie Lenarta	2008-11-26	11
-Arrival	Yusuph Haimedi	2002
-Dropout	Yusuph Haimedi	2004
-Arrival	Yusuph Haimedi	2008-8	13
-Arrival	Ramadhan Issa Athamani		12
-Arrival	Victor Haruma Michael	2004
-Reunification	Victor Haruma Michael	2004
-Arrival	Victor Haruma Michael	2006
-Dropout	Victor Haruma Michael	
-Arrival	Victor Haruma Michael		11
-Arrival	Emanuel Ramadhan Donat	2003
-Arrival	Emanuel Ramadhan Donat	2003
-Reunification	Emanuel Ramadhan Donat	2003
-Arrival	Emanuel Ramadhan Donat		14
-Arrival	Lumi Gidioni	2005	12
-Arrival	Zainabu Amani	2005	10
-Arrival	Joseph Gabriel Peter	2005	15
-Arrival	Huruma Vincent	2008-1	14
-Arrival	Jordan Lema John	2007	11
-Arrival	Damiano Lawai	2005	17
-Arrival	Emanuel Leshoki	2005	13
-Arrival	Alphan Babuu	2008-4	12
-Arrival	Shafi Mohammed	2008-9	13
-Arrival	Emanuel Stephano	2008-7	14
-Arrival	Benson Wafula	2008-7	13
-Arrival	Bahiti Charles Amadeus	2007	13
-Arrival Bahiti Charles Amadeus	2008-11
-Arrival	Dennis Yahaya	2007-11	11
-Arrival	Juma Michael Kandi	2008	15
-Arrival	Tumaini Alex	2006	11
-Arrival Johnson John Nyangusii	2007-9	13
-Arrival	Godfrey John Mkenda	2008-8	15
-Arrival	Emanuel David	2004-5	14
-Arrival	Ibrahim Hamis	2007	14
-Arrival	Mussa Mohammed Issah	2008-9-11	12
+Arrival,Emanuel Anthony,2009-4-24,14
+Arrival,Shatii Athuniani,2009-2-18,13
+Arrival,Godfrey Leshoele,2005,16
+Arrival,Victor Juma,2009-2,14
+Arrival,Issa Habibu,2009-2-18,12
+Arrival,Gerald Paul,2009-5-1,14
+Arrival,Ramadhan Shaaban,2009-4-2,13
+Arrival,Margerth Joesph,2009-4-19,13
+Arrival,Baraka Jonas,2009-3-first_week,8
+Arrival,Elibariki Good Luck,2009-4-23,12
+Arrival,Milaji Juma,2009-4-19,12
+Arrival,James Ibraham,2009-3-28,14
+Arrival,Joseph Leonard,2009-3-23,17
+Arrival,Omega Lazaro,2009-3-28,14
+Arrival,Ramadhani Selemani,2009-3-28,12
+Arrival,Iddy Tulo Mehinu,2009-4-2
+Arrival,Edward Nicodem,2009-3-12,14
+Arrival,Dustan Deo,2009-3-12,14
+Arrival,Faraja Godfrey,2009-3-12,14
+Arrival,Amani Francis Joseph Peter Mwachi (first bound page),2009-3-9,12
+Arrival,Maria Abdul,2009-3-5,12
+Arrival,Julius John,,14
+Arrival,Samueli Michael,2009-3-13,12
+Arrival,George Mwangi,2009-3-13,14
+Arrival,Denis Frank Lasevai,,14,dropped out and came back
+Arrival,Baraka Jonas,2009-2,8
+Arrival,Mohammed Hamidu,2009-2,14
+Arrival,Ayoubu Makaa,2009-2-6,11
+Arrival,Bahati Abasi,2009-2-6,12
+Arrival,Augustino Blas,2009-2-5,14
+Arrival,Rashid Mohammed,2009-2-2,13
+Arrival,Elia Peter Orota,2009-2-2,14
+Arrival,Ibrahim Simoni Lyimo,2009-2-2,12
+Arrival,Zacharia Damas,2009-2-2,14
+Arrival,Hassan Habib,2008-3-22
+Arrival,Emanuel Erado,2009-1-27,7
+Arrival,Joseph Erado,2009-1-27,10
+Arrival,James Israel Jackson,2008
+Reunification,Gerald Godfrey,,16
+Reunification,Nucodem Edward,,
+Reunification,Ramadhan Abdallah,,
+Reunification,Ludovic Ezekial,2008-12
+Reunification,Ludovic Ezekial,2008-9
+Reunification,Juma Wandi,2008-12-15
+Reunification,Lumi Wandi,2008-12-15
+Reunification,Steven Wilbard,2009-1-19
+Reunification,Hassan Habib,2008-12-22
+Reunification,Alphan Babuu,2008-12-15
+Reunification,James Israel Jackson,2008-9
+Arrival,James Israel Jackson,2009-1-27
+Dropout,Joseph Saltare,2009-3-week of 9 through 13
+Dropout,Joseph Erasto,2009-3-week of 9 through 13
+Dropout,Joseph Onesmo,2009-3-week of 9 through 13
+Dropout,Joseph Peter,2009-3-week of 9 through 13
+Dropout,Joseph Shayo,2009-3-week of 9 through 13
+Dropout,Ludovic Ezekiel,2009-3-week of 16 through 20
+Dropout,Ludovic Ezekial,2008-9
+Arrival,Fakidi Idd,2008-7
+Arrival,Fakidi Idd,2009-1-22,15
+Arrival,Ismael Athumani,2005,17
+Arrival,Lucas John,2009-4-1,15
+Arrival,Charles Marwa,2003,15
+Arrival,Idd Bakim Hamisi,2007,14
+Arrival,Gerald Jofrey,2008-11,14
+Arrival,Omar Juma Selemani Samakafi,2003,16
+Arrival,Benson John Himara,2008-7
+Dropout,Benson John Himara,2008-8
+Arrival,Benson John Himara,2008-11,14
+Arrival,Abdallah Juma Swalehe,2008-11,14
+Arrival,Bahati Simon Silvester,2008-11,13
+Arrival,Ludovic Ezekial,2008,14
+Arrival,Martha Neema Gabriel,2008-11,14
+Arrival,Zulfa John,2008-10,3
+Arrival,Anoma John,2008-10,4
+Arrival,Ramadhan John,2008-10,6
+Arrival,Hassan Habib Shilangasi,2008-6,14
+Arrival,Bahati Patrice Ambross,2008-8,9
+Arrival,Salim Mohammed,2008-5,8
+Arrival,Deunis Petie Lenarta,2007
+Arrival,Deunis Petie Lenarta,2008-11-26,11
+Arrival,Yusuph Haimedi,2002
+Dropout,Yusuph Haimedi,2004
+Arrival,Yusuph Haimedi,2008-8,13
+Arrival,Ramadhan Issa Athamani,,12
+Arrival,Victor Haruma Michael,2004
+Reunification,Victor Haruma Michael,2004
+Arrival,Victor Haruma Michael,2006
+Dropout,Victor Haruma Michael,
+Arrival,Victor Haruma Michael,,11
+Arrival,Emanuel Ramadhan Donat,2003
+Arrival,Emanuel Ramadhan Donat,2003
+Reunification,Emanuel Ramadhan Donat,2003
+Arrival,Emanuel Ramadhan Donat,,14
+Arrival,Lumi Gidioni,2005,12
+Arrival,Zainabu Amani,2005,10
+Arrival,Joseph Gabriel Peter,2005,15
+Arrival,Huruma Vincent,2008-1,14
+Arrival,Jordan Lema John,2007,11
+Arrival,Damiano Lawai,2005,17
+Arrival,Emanuel Leshoki,2005,13
+Arrival,Alphan Babuu,2008-4,12
+Arrival,Shafi Mohammed,2008-9,13
+Arrival,Emanuel Stephano,2008-7,14
+Arrival,Benson Wafula,2008-7,13
+Arrival,Bahiti Charles Amadeus,2007,13
+Arrival,Bahiti Charles Amadeus,2008-11
+Arrival,Dennis Yahaya,2007-11,11
+Arrival,Juma Michael Kandi,2008,15
+Arrival,Tumaini Alex,2006,11
+Arrival,Johnson John Nyangusii,2007-9,13
+Arrival,Godfrey John Mkenda,2008-8,15
+Arrival,Emanuel David,2004-5,14
+Arrival,Ibrahim Hamis,2007,14
+Arrival,Mussa Mohammed Issah,2008-9-11,12
