@@ -1,9 +1,9 @@
-require 'net/ssh'
 require 'open-uri'
 
 directory 'db/seed'
 
 file 'db/seed/config.yml' => 'db/seed' do
+  require 'net/ssh'
   Net::SSH.start('amanikids', 'deploy') do |ssh|
     File.open('db/seed/config.yml', 'w') do |file|
       file.write ssh.exec!('cd website/current; RAILS_ENV=production rake --silent db:children')
