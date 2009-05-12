@@ -1,6 +1,6 @@
 config/database.yml
 db/*.sqlite*
-db/seed
+db/seed/images
 log
 public/stylesheets/*.css
 public/system/headshots

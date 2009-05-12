@@ -1,25 +1,25 @@
 require 'open-uri'
 
-directory 'db/seed'
+directory 'db/seed/images'
 
-file 'db/seed/config.yml' => 'db/seed' do
+file 'db/seed/children.yml' => 'db/seed' do
   require 'net/ssh'
   Net::SSH.start('amanikids', 'deploy') do |ssh|
-    File.open('db/seed/config.yml', 'w') do |file|
+    File.open('db/seed/children.yml', 'w') do |file|
       file.write ssh.exec!('cd website/current; RAILS_ENV=production rake --silent db:children')
     end
   end
 end
 
 namespace :db do
-  task :seed => [:environment, 'db/seed/config.yml'] do
-    YAML.load_file('db/seed/config.yml').each do |child|
+  task :seed => [:environment, 'db/seed/children.yml', 'db/seed/images'] do
+    YAML.load_file('db/seed/children.yml').each do |child|
       attributes = {}
       attributes[:name] = child[:name].strip
       attributes[:ignore_potential_duplicates] = true
 
       if child[:url]
-        local_filename = "db/seed/#{File.basename(child[:url], '?*')}"
+        local_filename = "db/seed/images/#{File.basename(child[:url], '?*')}"
         unless File.exists?(local_filename)
           puts "fetching photo for #{child[:name]}..."
           File.open(local_filename, 'w') { |file| file.write open("http://amanikids.org#{child[:url]}").read }
