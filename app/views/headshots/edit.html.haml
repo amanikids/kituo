@@ -1,14 +1,14 @@
 %h1
   = link_to @child.name, @child
 
-%h2 Edit Headshot
+%h2= t('headshots.edit.title')
 
 - form_for @child, :url => child_headshot_path(@child), :html => { :multipart => true } do |form|
   = form.error_messages
 
   .field
-    = form.label :headshot, 'Upload a New Image'
+    = form.label :headshot
     = form.file_field :headshot
 
   .submit
-    = form.submit
+    = form.submit t('headshots.edit.submit')

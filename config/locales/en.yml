@@ -9,6 +9,7 @@ en:
   # ===========================================================================
   arrivals:
     new:
+      link: Arrival
       submit: Save
     create:
       notice: "Arrival at Amani recorded for {{name}}."
@@ -21,6 +22,14 @@ en:
     create:
       error: "Whoops! Check your work."
       notice: "New case file started for {{name}}."
+      potential_duplicates:
+        title: Potential Duplicates Found
+        subtitle: Did you mean one of these children?
+        submit_leader: "Or, if you're sure,"
+        submit: "Create a New Case File for {{name}}"
+    show:
+      timeline: Timeline
+      record: 'Record:'
 
     boarding_offsite:
       tab: Boarding Offsite
@@ -47,28 +56,36 @@ en:
 
   dropouts:
     new:
+      link: Dropout
       submit: Save
     create:
       notice: "Dropout recorded for {{name}}."
 
   headshots:
+    edit:
+      link: Edit Headshot
+      title: Edit Headshot
+      submit: Save
     update:
       notice: "Updated Headshot for {{name}}."
 
   offsite_boardings:
     new:
+      link: Offsite Boarding
       submit: Save
     create:
       notice: "Offsite Boarding recorded for {{name}}."
 
   reunifications:
     new:
+      link: Reunification
       submit: Save
     create:
       notice: "Family Reunification recorded for {{name}}."
 
   terminations:
     new:
+      link: Termination
       submit: Save
     create:
       notice: "Termination recorded for {{name}}."
@@ -80,6 +97,8 @@ en:
     attributes:
       arrival:
         happened_on: Arrived at
+      child:
+        headshot: Upload a New Image
       dropout:
         happened_on: Dropped out on
       offsite_boarding:

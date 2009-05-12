@@ -1,17 +1,17 @@
 %h1= @child.name
 
 = image_tag @child.headshot.url, :class => 'headshot'
-= link_to 'Edit Headshot', edit_child_headshot_path(@child)
+= link_to t('headshots.edit.link'), edit_child_headshot_path(@child)
 
-%h2 Timeline
+%h2= t('children.show.timeline')
 
 %ul.actions
-  %li Record:
-  %li= link_to 'Arrival', new_child_arrival_path(@child)
-  %li= link_to 'Offsite Boarding', new_child_offsite_boarding_path(@child)
-  %li= link_to 'Reunification', new_child_reunification_path(@child)
-  %li= link_to 'Dropout', new_child_dropout_path(@child)
-  %li= link_to 'Termination', new_child_termination_path(@child)
+  %li= t('children.show.record')
+  %li= link_to t('arrivals.new.link'), new_child_arrival_path(@child)
+  %li= link_to t('offsite_boardings.new.link'), new_child_offsite_boarding_path(@child)
+  %li= link_to t('reunifications.new.link'), new_child_reunification_path(@child)
+  %li= link_to t('dropouts.new.link'), new_child_dropout_path(@child)
+  %li= link_to t('terminations.new.link'), new_child_termination_path(@child)
 
 %table.timeline
   = render @child.events
