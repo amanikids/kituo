@@ -10,6 +10,7 @@
 !medium_brown = #633
 !medium_light_brown = #784840
 !red = #911
+!very_light_brown = #caa
 !white = #fff
 
 body
@@ -19,6 +20,9 @@ body
   margin: auto
   position: relative
   width= !page_width
+
+.grouped
+  position: relative
 
 #staging
   background-color: #000
@@ -54,10 +58,18 @@ body
 
   #locales
     position: absolute
-    top: 0
+    bottom: 0
     right: 0
     li
-      display: inline-block
+      display: inline
+      a
+        background-color= !light_brown
+        color= !dark_brown
+        display: inline-block
+        padding: 0.25em
+        text-decoration: none
+        &:hover
+          background-color= !very_light_brown
 
   .badge
     background-color= !red
@@ -73,7 +85,7 @@ body
 
       a
         background-color= !medium_brown
-        color: #caa
+        color= !very_light_brown
         display: inline-block
         padding: 0.5em 1em
         text-decoration: none
