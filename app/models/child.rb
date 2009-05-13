@@ -3,7 +3,7 @@ class Child < ActiveRecord::Base
 
   named_scope :pending, :joins => 'LEFT JOIN events on events.child_id = children.id', :conditions => 'events.id IS NULL'
   named_scope :is,    lambda { |event_class| { :joins => :events, :conditions => ['events.type = ?', event_class.name] }}
-  named_scope :as_of, lambda { |date|        { :joins => :events, :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date] }}
+  named_scope :as_of, lambda { |date|        { :joins => :events, :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, ['Arrival', 'OffsiteBoarding', 'Reunification', 'Dropout', 'Termination']] }}
 
   def self.onsite(date = Date.today)
     is(Arrival).as_of(date)

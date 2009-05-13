@@ -9,3 +9,9 @@ Feature: Home Visits
   Scenario: I Record a Home Visit
     When I record a home visit for "Ramadhan Masawe"
     Then I should see "Home Visit recorded for Ramadhan Masawe."
+
+  Scenario: Recording a Home Visit for a Child at Amani Should Keep Them on the Onsite Children Page
+    When I record an arrival for "Ramadhan Masawe" on "January 13, 2006"
+    And I record a home visit for "Ramadhan Masawe"
+    And I go to the onsite children page
+    Then I should see "Ramadhan Masawe"
