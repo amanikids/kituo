@@ -31,6 +31,7 @@
           - pending_count = Child.pending.count
           %li= link_to_with_current t('children.pending.tab').concat(pending_count.zero? ? '' : content_tag(:span, pending_count, :class => 'badge')), pending_children_path
           %li= link_to_with_current t('children.onsite.tab'), onsite_children_path
+          %li= link_to_with_current t('children.needing_home_visit.tab'), needing_home_visit_children_path
           %li= link_to_with_current t('children.boarding_offsite.tab'), boarding_offsite_children_path
           %li= link_to_with_current t('children.reunified.tab'), reunified_children_path
           %li= link_to_with_current t('children.terminated.tab'), terminated_children_path

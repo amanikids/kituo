@@ -26,6 +26,9 @@ module NavigationHelpers
     when /the onsite children page/
       onsite_children_path
 
+    when /the needing home visit children page/
+      needing_home_visit_children_path
+
     when /the boarding offsite children page/
       boarding_offsite_children_path
 

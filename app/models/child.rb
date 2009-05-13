@@ -2,11 +2,15 @@ class Child < ActiveRecord::Base
   default_scope :order => :name
 
   named_scope :pending, :joins => 'LEFT JOIN events on events.child_id = children.id', :conditions => 'events.id IS NULL'
-  named_scope :location_as_of, lambda { |date|        { :joins => :events, :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, [Arrival, OffsiteBoarding, Reunification, Dropout, Termination].map(&:name)] }}
-  named_scope :is,             lambda { |event_class| { :joins => :events, :conditions => ['events.type = ?', event_class.name] }}
+  named_scope :location_as_of, lambda { |date|           { :joins => :events, :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, [Arrival, OffsiteBoarding, Reunification, Dropout, Termination].map(&:name)] }}
+  named_scope :is,             lambda { |*event_classes| { :joins => :events, :conditions => ['events.type IN (?)', event_classes.map(&:name)] }}
 
   def self.onsite(date = Date.today)
     location_as_of(date).is(Arrival)
+  end
+
+  def self.needing_home_visit(date = Date.today)
+    location_as_of(date).is(Arrival).scoped(:joins => :events, :conditions => ['(SELECT count(*) FROM events WHERE child_id = children.id AND type = ?) = 0', HomeVisit.name])
   end
 
   def self.boarding_offsite(date = Date.today)

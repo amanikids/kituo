@@ -36,6 +36,9 @@ en:
     dropped_out:
       tab: Dropped Out
       title: Children Dropped out
+    needing_home_visit:
+      tab: Needing Home Visit
+      title: Children Needing Home Visit
     onsite:
       tab: Onsite
       title: Children Onsite
