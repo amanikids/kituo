@@ -2,27 +2,27 @@ class Child < ActiveRecord::Base
   default_scope :order => :name
 
   named_scope :pending, :joins => 'LEFT JOIN events on events.child_id = children.id', :conditions => 'events.id IS NULL'
-  named_scope :is,    lambda { |event_class| { :joins => :events, :conditions => ['events.type = ?', event_class.name] }}
-  named_scope :as_of, lambda { |date|        { :joins => :events, :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, ['Arrival', 'OffsiteBoarding', 'Reunification', 'Dropout', 'Termination']] }}
+  named_scope :location_as_of, lambda { |date|        { :joins => :events, :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, [Arrival, OffsiteBoarding, Reunification, Dropout, Termination].map(&:name)] }}
+  named_scope :is,             lambda { |event_class| { :joins => :events, :conditions => ['events.type = ?', event_class.name] }}
 
   def self.onsite(date = Date.today)
-    is(Arrival).as_of(date)
+    location_as_of(date).is(Arrival)
   end
 
   def self.boarding_offsite(date = Date.today)
-    is(OffsiteBoarding).as_of(date)
+    location_as_of(date).is(OffsiteBoarding)
   end
 
   def self.reunified(date = Date.today)
-    is(Reunification).as_of(date)
+    location_as_of(date).is(Reunification)
   end
 
   def self.dropped_out(date = Date.today)
-    is(Dropout).as_of(date)
+    location_as_of(date).is(Dropout)
   end
 
   def self.terminated(date = Date.today)
-    is(Termination).as_of(date)
+    location_as_of(date).is(Termination)
   end
 
   has_many :events
