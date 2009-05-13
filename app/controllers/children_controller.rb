@@ -18,7 +18,6 @@ class ChildrenController < ApplicationController
       if @child.potential_duplicates.any?
         render :potential_duplicates_found
       else
-        flash.now[:error] = t('children.create.error')
         render :new
       end
     end

@@ -20,7 +20,6 @@ en:
       title: New Child
       submit: Save New Child
     create:
-      error: "Whoops! Check your work."
       notice: "New case file started for {{name}}."
       potential_duplicates:
         title: Potential Duplicates Found

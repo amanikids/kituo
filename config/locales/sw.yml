@@ -1,56 +1,118 @@
 sw:
   locale_name: Kiswahili
 
-  title: Kituo cha Watoto Amani
-  staging: "Warning! This is the practice server. Information entered here will be deleted. The real server is {{link}}."
+  title: Kituo cha Amani
+  staging: "Tahadhari! Database hii ni ya kujifunzia tu. Taarifa yote inayoingizwa itafutwa. Database yenyewe iko: {{link}}."
 
+  # ===========================================================================
+  # = ActionPack Translations                                                 =
+  # ===========================================================================
   arrivals:
     new:
-      submit: Save
+      link: Alipoingia kituoni
+      submit: Ingiza taarifa
     create:
-      notice: "Arrival at Amani recorded for {{name}}."
+      notice: "Tarehe alipoingia kituoni imerikodiwa kama {{name}}."
 
   children:
+    new:
+      link: Fungua Faili ya Mtoto Mgeni
+      title: Mtoto Mgeni
+      submit: Ingiza taarifa ya mtoto mgeni
     create:
-      error: "Whoops! Check your work."
-      notice: "New case file started for {{name}}."
-    pending:
-      title: Pending
-    onsite:
-      title: Onsite
+      notice: "Umefungua faili ya {{name}}."
+      potential_duplicates:
+        title: Inawezekana huyu mtoto tayari anayo faili.
+        subtitle: "Je, ulimaanisha mtoto kati ya hawa?"
+        submit_leader: "Ukiwa na uhakika huyu mtoto hayupo kati ya hawa hapa juu,"
+        submit: "Fungua faili ya {{name}}"
+    show:
+      timeline: Historia
+      record: 'Tukio:'
+
     boarding_offsite:
-      title: Boarding Offsite
-    reunified:
-      title: Reunified
-    terminated:
-      title: Terminated
+      tab: Boarding
+      title: Watoto wanaokaa boarding
     dropped_out:
-      title: Dropped Out
+      tab: Watoro
+      title: Watoto waliotoroka
+    onsite:
+      tab: Kituoni
+      title: Watoto wanaokaa kituoni
+      pdf:
+        link: Mahudhurio
+        title: Watoto wanaokaa kituoni
+        subtitle: "Wiki ya {{begin_date}} hadi {{end_date}}"
+    pending:
+      tab: Taarifa haitoshi
+      title: Watoto ambao taarifa zao hazijaingizwa
+    reunified:
+      tab: Walioshikamanishwa
+      title: Watoto ambao wameshikamanishwa nyumbani
+    terminated:
+      tab: Terminated
+      title: Watoto ambao wamekuwa terminated
 
   dropouts:
+    new:
+      link: Alipotoroka
+      submit: Ingiza taarifa
     create:
-      notice: "Dropout recorded for {{name}}."
+      notice: "Tarehe alipotoroka kituoni imerikodiwa kama {{name}}."
 
   headshots:
+    edit:
+      link: Badilisha picha
+      title: Badilisha picha
+      submit: Ingiza picha mpya
     update:
-      notice: "Updated Headshot for {{name}}."
+      notice: "Picha mpya ya {{name}} umerikodiwa."
 
   offsite_boardings:
+    new:
+      link: Alipoenda boarding
+      submit: Ingiza taarifa
     create:
-      notice: "Offsite Boarding recorded for {{name}}."
+      notice: "Tarehe ya kwenda boarding imerikodiwa kwa {{name}}."
 
   reunifications:
+    new:
+      link: Alipounganishwa
+      submit: Ingiza taarifa
     create:
-      notice: "Family Reunification recorded for {{name}}."
+      notice: "Tarehe ya kuunganishwa na familia imerikodiwa kwa {{name}}."
 
   terminations:
+    new:
+      link: Alipokuwa terminated
+      submit: Ingiza taarifa
     create:
-      notice: "Termination recorded for {{name}}."
+      notice: "Tarehe ya termination ya {{name}} imerikodiwa."
 
+  # ===========================================================================
+  # = ActiveRecord Translations                                               =
+  # ===========================================================================
   activerecord:
     attributes:
+      arrival:
+        happened_on: Tarehe
       child:
+        headshot: Upload Picha Mpya
+        ignore_potential_duplicates: "THIS SHOULDN'T SHOW UP ON THE SCREEN"
         name: Jina
+      dropout:
+        happened_on: Tarehe
+      offsite_boarding:
+        happened_on: Tarehe
+      reunification:
+        happened_on: Tarehe
+      termination:
+        happened_on: Tarehe
 
     models:
-      arrival: Kufika
+      arrival: Alipoingia kituoni
+      child: Mtoto
+      dropout: Alipotoroka
+      offsite_boarding: Alipoenda boarding
+      reunification: Alipounganishwa na familia
+      termination: Alipokuwa terminated

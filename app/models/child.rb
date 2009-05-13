@@ -41,6 +41,7 @@ class Child < ActiveRecord::Base
   validates_presence_of :name
   validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
   attr_accessor :ignore_potential_duplicates
+  attr_accessible :name, :headshot, :ignore_potential_duplicates
 
   # FIXME oh no we di'int
   def self.search(name)
