@@ -1,5 +1,4 @@
-class DropoutsController < ApplicationController
-  before_filter :load_child
+class DropoutsController < EventsController
   before_filter :build_dropout
 
   def create
@@ -12,10 +11,6 @@ class DropoutsController < ApplicationController
   end
 
   private
-
-  def load_child
-    @child = Child.find(params[:child_id])
-  end
 
   def build_dropout
     @dropout = @child.dropouts.build(params[:dropout])

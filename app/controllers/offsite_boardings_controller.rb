@@ -1,5 +1,4 @@
-class OffsiteBoardingsController < ApplicationController
-  before_filter :load_child
+class OffsiteBoardingsController < EventsController
   before_filter :build_offsite_boarding
 
   def create
@@ -12,10 +11,6 @@ class OffsiteBoardingsController < ApplicationController
   end
 
   private
-
-  def load_child
-    @child = Child.find(params[:child_id])
-  end
 
   def build_offsite_boarding
     @offsite_boarding = @child.offsite_boardings.build(params[:offsite_boarding])

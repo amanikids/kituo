@@ -1,5 +1,4 @@
-class ArrivalsController < ApplicationController
-  before_filter :load_child
+class ArrivalsController < EventsController
   before_filter :build_arrival
 
   def create
@@ -12,10 +11,6 @@ class ArrivalsController < ApplicationController
   end
 
   private
-
-  def load_child
-    @child = Child.find(params[:child_id])
-  end
 
   def build_arrival
     @arrival = @child.arrivals.build(params[:arrival])

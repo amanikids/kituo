@@ -30,7 +30,8 @@ class SwahiliLocaleTest < ActiveSupport::TestCase
   end
 
   def assert_has_all_of(expected, actual)
-    (expected - actual).tap { |missing| assert missing.empty?, "These keys are missing:\n#{missing.sort.to_yaml}" }
+    missing = expected - actual
+    assert missing.empty?, "These keys are missing:\n#{missing.sort.to_yaml}"
   end
 
   context 'the Swahili locale' do

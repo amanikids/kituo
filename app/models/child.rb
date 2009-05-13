@@ -28,6 +28,7 @@ class Child < ActiveRecord::Base
   has_many :events
 
   has_many :arrivals
+  has_many :home_visits
   has_many :offsite_boardings
   has_many :reunifications
   has_many :dropouts

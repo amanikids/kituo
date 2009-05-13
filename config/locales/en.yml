@@ -68,6 +68,13 @@ en:
     update:
       notice: "Updated Headshot for {{name}}."
 
+  home_visits:
+    new:
+      link: Home Visit
+      submit: Save
+    create:
+      notice: "Home Visit recorded for {{name}}."
+
   offsite_boardings:
     new:
       link: Offsite Boarding

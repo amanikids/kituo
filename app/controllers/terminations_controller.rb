@@ -1,5 +1,4 @@
-class TerminationsController < ApplicationController
-  before_filter :load_child
+class TerminationsController < EventsController
   before_filter :build_termination
 
   def create
@@ -12,10 +11,6 @@ class TerminationsController < ApplicationController
   end
 
   private
-
-  def load_child
-    @child = Child.find(params[:child_id])
-  end
 
   def build_termination
     @termination = @child.terminations.build(params[:termination])

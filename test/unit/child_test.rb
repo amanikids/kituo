@@ -4,6 +4,7 @@ class ChildTest < ActiveSupport::TestCase
   should_have_many :events
 
   should_have_many :arrivals
+  should_have_many :home_visits
   should_have_many :offsite_boardings
   should_have_many :reunifications
   should_have_many :dropouts

@@ -1,0 +1,11 @@
+%h1
+  = link_to @child.name, @child
+
+%h2= HomeVisit.human_name
+
+- form_for [@child, @home_visit] do |form|
+  .field
+    = form.label :happened_on
+    = form.date_select :happened_on
+  .submit
+    = form.submit t('home_visits.new.submit')

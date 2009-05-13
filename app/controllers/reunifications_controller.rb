@@ -1,5 +1,4 @@
-class ReunificationsController < ApplicationController
-  before_filter :load_child
+class ReunificationsController < EventsController
   before_filter :build_reunification
 
   def create
@@ -12,10 +11,6 @@ class ReunificationsController < ApplicationController
   end
 
   private
-
-  def load_child
-    @child = Child.find(params[:child_id])
-  end
 
   def build_reunification
     @reunification = @child.reunifications.build(params[:reunification])
