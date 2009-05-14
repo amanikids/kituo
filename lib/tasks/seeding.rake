@@ -37,13 +37,6 @@ namespace :db do
       end
     end
 
-    # FIXME heinous -- alias_method?
-    class Child < ActiveRecord::Base
-      def to_s
-        name
-      end
-    end
-
     CSV.open(Rails.root.join('db', 'seed', 'events.csv'), 'r') do |row|
       type, name, date = row
 
@@ -61,10 +54,12 @@ def find_child(name)
     return child
   end
 
-  choose("Who is #{name}?") do |menu|
-    menu.choices(*Child.search(name))
+  name = choose("Who is #{name}?") do |menu|
+    menu.choices(*Child.search(name).map(&:name))
     menu.choice(nil)
   end
+
+  Child.find_by_name(name)
 end
 
 def parse_date(date)
