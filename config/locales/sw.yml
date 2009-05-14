@@ -4,6 +4,17 @@ sw:
   title: Kituo cha Amani
   staging: "Tahadhari! Database hii ni ya kujifunzia tu. Taarifa yote inayoingizwa itafutwa. Database yenyewe iko: {{link}}."
 
+  datetime:
+    distance_in_weeks:
+      zero: wiki hii
+      one: wiki 1
+      other: 'wiki {{count}}'
+
+  due:
+    past: '{{phrase}} iliyopita' # FIXME pluralize zilizopita
+    present: '{{phrase}}'
+    future: '{{phrase}} baadaye' # FIXME pluralize zijazo
+
   # ===========================================================================
   # = ActionPack Translations                                                 =
   # ===========================================================================
@@ -15,6 +26,8 @@ sw:
       notice: "Tarehe alipoingia kituoni imerikodiwa kama {{name}}."
 
   children:
+    index:
+      tab: Watoto
     new:
       link: Fungua Faili ya Mtoto Mgeni
       title: Mtoto Mgeni
@@ -43,9 +56,6 @@ sw:
         link: Mahudhurio
         title: Watoto wanaokaa kituoni
         subtitle: "Wiki ya {{begin_date}} hadi {{end_date}}"
-    pending:
-      tab: Taarifa haitoshi
-      title: Watoto ambao taarifa zao hazijaingizwa
     reunified:
       tab: Walioshikamanishwa
       title: Watoto ambao wameshikamanishwa nyumbani
@@ -82,6 +92,13 @@ sw:
     create:
       notice: "Tarehe ya kuunganishwa na familia imerikodiwa kwa {{name}}."
 
+  tasks:
+    index:
+      tab: Shughuli
+    unrecorded_arrivals:
+      tab: Taarifa Haitoshi
+      title: Taarifa Haitoshi
+
   terminations:
     new:
       link: Alipokuwa terminated
@@ -102,6 +119,8 @@ sw:
         name: Jina
       dropout:
         happened_on: Tarehe
+      home_visit:
+        happened_on: Tarehe
       offsite_boarding:
         happened_on: Tarehe
       reunification:
@@ -113,6 +132,7 @@ sw:
       arrival: Alipoingia kituoni
       child: Mtoto
       dropout: Alipotoroka
+      home_visit: Matembezi nyumbani
       offsite_boarding: Alipoenda boarding
       reunification: Alipounganishwa na familia
       termination: Alipokuwa terminated
