@@ -32,16 +32,6 @@ module ApplicationHelper
     I18n.available_locales.each { |locale| other_locales[locale] = t(:locale_name, :locale => locale) }
     other_locales.except(I18n.locale)
   end
-
-  def subnavigation
-    try_render(@controller.class.subnavigation_template || 'subnavigation')
-  end
-
-  def try_render(*args)
-    render *args
-  rescue ActionView::MissingTemplate
-    nil
-  end
 end
 
 module ActionView
