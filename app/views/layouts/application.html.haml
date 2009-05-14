@@ -28,8 +28,8 @@
               %li= link_to image_tag("#{locale}.png") + ' ' + locale_name, params.merge(:locale => locale), :method => (request.get? ? nil : request.method)
 
         %ul#navigation
-          %li= link_to_with_current t('tasks.index.tab'), tasks_path
-          %li= link_to_with_current t('children.index.tab'), children_path
+          %li= link_to_with_current_partial_path t('tasks.index.tab'), 'tasks', tasks_path
+          %li= link_to_with_current_partial_path t('children.index.tab'), 'children', children_path
 
     #main
       .centered

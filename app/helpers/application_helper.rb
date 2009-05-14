@@ -14,9 +14,17 @@ module ApplicationHelper
     content_tag(:td, t("due.#{due_in_the}", :phrase => t('datetime.distance_in_weeks', :count => distance_in_weeks.abs)), :class => "due #{due_in_the}")
   end
 
-  def link_to_with_current(name, options = {}, html_options = {})
-    html_options.merge!(:class => 'current') if current_page?(options)
+  def link_to_with_current(name, current, options = {}, html_options = {})
+    html_options.merge!(:class => 'current') if current
     link_to name, options, html_options
+  end
+
+  def link_to_with_current_full_path(name, options = {}, html_options = {})
+    link_to_with_current(name, current_page?(options), options, html_options)
+  end
+
+  def link_to_with_current_partial_path(name, segment, options = {}, html_options = {})
+    link_to_with_current name, request.path.include?("/#{segment}/"), options, html_options
   end
 
   def other_locales
