@@ -1,3 +1,7 @@
 %h1= t('tasks.unrecorded_arrivals.title')
 
-= render @children
+%table.todo_list
+  - @children.each do |child|
+    %tr
+      %td= link_to child.name, new_child_arrival_path(child)
+      = due_date_td child.created_at.to_date

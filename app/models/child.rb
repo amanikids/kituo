@@ -7,7 +7,7 @@ class Child < ActiveRecord::Base
   named_scope :without,        lambda { |*event_classes| { :conditions => ['(SELECT COUNT(*) FROM events WHERE events.child_id = children.id AND events.type IN (?)) = 0', event_classes.map(&:name)] } }
 
   def self.unrecorded_arrivals
-    without(*LOCATION_CHANGING_EVENTS).by_name
+    without(*LOCATION_CHANGING_EVENTS).scoped(:order => :created_at)
   end
 
   def self.upcoming_home_visits(date = Date.today)

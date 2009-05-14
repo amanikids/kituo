@@ -110,6 +110,7 @@ body
     li
       display: inline
       a
+        background-color= !light_blue
         border= 1px solid !blue
         color= !dark_blue
         display: inline-block
@@ -118,7 +119,9 @@ body
       a:hover
         background-color= !very_light_blue
       a.current, a.current:hover
-        background-color= !light_blue
+        background-color= !white
+        border= 1px solid !white
+        color= !black
 
   .actions
     background-color= !light_blue
@@ -176,16 +179,17 @@ body
   table.todo_list
     width: 100%
     tr
-      background-color= !very_light_brown
-      border-bottom= 1px solid !light_brown
+      background-color= !very_light_blue
+      border-bottom= 3px solid !white
     td
       a
-        color= !dark_brown
+        color= !black
         display: block
         padding: 0.5em
         text-decoration: none
-        &:hover
-          background-color= !very_very_light_brown
+      a:hover
+        background-color= !white
+
     td.due
       font-family= !sans_serif
       font-size: 80%
@@ -193,6 +197,8 @@ body
       padding: 0.5em
       width: 10em
     td.due.past
-      background-color= !light_red
+      background-color: #ffc8c8
     td.due.present
-      background-color= !light_gold
+      background-color: #fda
+    td.due.future
+      background-color: #e0e0f0
