@@ -1,3 +1,6 @@
+!sans_serif = "Century Gothic", Verdana, Arial, "sans-serif"
+!serif = Constantia, Georgia, "Times New Roman", serif
+
 !page_width = 800px
 
 !black = #000
@@ -11,10 +14,11 @@
 !medium_light_brown = #784840
 !red = #911
 !very_light_brown = #caa
+!very_very_light_brown = #ecc
 !white = #fff
 
 body
-  font-family: Georgia
+  font-family= !serif
 
 .centered
   margin: auto
@@ -152,4 +156,28 @@ body
 
   table.timeline
     td
-      padding: .25em
+      padding: 0.25em
+
+  table.todo_list
+    width: 100%
+    tr
+      background-color= !very_light_brown
+      border-bottom= 1px solid !light_brown
+    td
+      a
+        color= !dark_brown
+        display: block
+        padding: 0.5em
+        text-decoration: none
+        &:hover
+          background-color= !very_very_light_brown
+    td.due
+      font-family= !sans_serif
+      font-size: 80%
+      text-align: center
+      padding: 0.5em
+      width: 10em
+    td.due.past
+      background-color= !light_red
+    td.due.present
+      background-color= !light_gold

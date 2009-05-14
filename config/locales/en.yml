@@ -4,6 +4,16 @@ en:
   title: Amani Children's Home
   staging: "Warning! This is the practice server. Information entered here will be deleted. The real server is {{link}}."
 
+  datetime:
+    distance_in_weeks:
+      zero: this week
+      one: 1 week
+      other: '{{count}} weeks'
+  due:
+    past: '{{phrase}} overdue'
+    present: 'due {{phrase}}'
+    future: 'in {{phrase}}'
+
   # ===========================================================================
   # = ActionPack Translations                                                 =
   # ===========================================================================

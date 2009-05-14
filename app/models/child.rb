@@ -9,8 +9,9 @@ class Child < ActiveRecord::Base
     location_as_of(date).is(Arrival)
   end
 
+  # TODO can we make this happen in SQL?
   def self.needing_home_visit(date = Date.today)
-    location_as_of(date).is(Arrival).scoped(:joins => :events, :conditions => ['(SELECT count(*) FROM events WHERE child_id = children.id AND type = ?) = 0', HomeVisit.name])
+    location_as_of(date).is(Arrival).scoped(:include => [:arrivals, :home_visits]).select { |child| child.home_visits.empty? }.sort_by { |child| child.arrivals.first.happened_on }
   end
 
   def self.boarding_offsite(date = Date.today)
