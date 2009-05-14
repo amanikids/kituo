@@ -1,5 +1,13 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def badged(text, count)
+    if count.zero?
+      text
+    else
+      text + ' ' + content_tag(:span, count, :class => 'badge')
+    end
+  end
+
   def due_date_td(due_date)
     distance_in_weeks = (due_date.to_time - Date.today.to_time).to_i / 1.week
     due_in_the = %w(present future past)[distance_in_weeks <=> 0]

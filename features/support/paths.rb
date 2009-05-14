@@ -20,14 +20,8 @@ module NavigationHelpers
     when /the new child page/
       new_child_path
 
-    when /the pending children page/
-      pending_children_path
-
     when /the onsite children page/
       onsite_children_path
-
-    when /the needing home visit children page/
-      needing_home_visit_children_path
 
     when /the boarding offsite children page/
       boarding_offsite_children_path
@@ -40,6 +34,12 @@ module NavigationHelpers
 
     when /the terminated children page/
       terminated_children_path
+
+    when /the unrecorded arrivals tasks page/
+      unrecorded_arrivals_tasks_path
+
+    when /the upcoming home visits tasks page/
+      upcoming_home_visits_tasks_path
 
     # I'm including this "dynamic" path here despite the warning above because
     # cucumber complains about ambiguous steps when I make a separate "When I

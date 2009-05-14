@@ -16,17 +16,17 @@ Feature: Home Visits
     And I go to the onsite children page
     Then I should see "Ramadhan Masawe"
 
-  Scenario: Pending Children Do Not Require a Home Visit
-    When I go to the needing home visit children page
+  Scenario: Children Without a Recorded Arrival Do Not Require a Home Visit
+    When I go to the upcoming home visits tasks page
     Then I should not see "Ramadhan Masawe"
 
   Scenario: Arrived Children Do Require a Home Visit
     When I record an arrival for "Ramadhan Masawe" on "January 13, 2006"
-    And I go to the needing home visit children page
+    And I go to the upcoming home visits tasks page
     Then I should see "Ramadhan Masawe"
 
   Scenario: Visited Children Do Not Require a Home Visit
     When I record an arrival for "Ramadhan Masawe" on "January 13, 2006"
     And I record a home visit for "Ramadhan Masawe"
-    And I go to the needing home visit children page
+    And I go to the upcoming home visits tasks page
     Then I should not see "Ramadhan Masawe"

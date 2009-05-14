@@ -3,11 +3,7 @@ class ChildrenController < ApplicationController
   before_filter :load_child,  :only => [:show]
 
   def index
-    if Child.pending.count.zero?
-      redirect_to onsite_children_path
-    else
-      redirect_to pending_children_path
-    end
+    redirect_to onsite_children_path
   end
 
   def create
@@ -23,7 +19,7 @@ class ChildrenController < ApplicationController
     end
   end
 
-  %w(pending onsite needing_home_visit boarding_offsite reunified dropped_out terminated).each do |status|
+  %w(onsite boarding_offsite reunified dropped_out terminated).each do |status|
     define_method(status) do
       @children = Child.send(status)
     end

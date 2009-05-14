@@ -8,10 +8,10 @@ Feature: Children
     When I try to create a child named "Ramadhan Masawe"
     Then I should see "New case file started for Ramadhan Masawe."
 
-  Scenario: saving a New Child Puts Him on the Pending Page
+  Scenario: saving a New Child Puts Him on the Unrecorded Arrivals Page
     Given child "Ramadhan Masawe" does not exist
     When I try to create a child named "Ramadhan Masawe"
-    And I go to the pending children page
+    And I go to the unrecorded arrivals tasks page
     Then I should see "Ramadhan Masawe"
 
   Scenario: I Try to Save a Child Without a Name
