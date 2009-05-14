@@ -11,7 +11,7 @@ module ApplicationHelper
   def due_date_td(due_date)
     distance_in_weeks = (due_date.to_time - Date.today.to_time).to_i / 1.week
     due_in_the = %w(present future past)[distance_in_weeks <=> 0]
-    content_tag(:td, t("due.#{due_in_the}", :phrase => t('datetime.distance_in_weeks', :count => distance_in_weeks.abs)), :class => "due #{due_in_the}")
+    content_tag(:td, t("due.#{due_in_the}", :count => distance_in_weeks.abs, :phrase => t('datetime.distance_in_weeks', :count => distance_in_weeks.abs)), :class => "due #{due_in_the}")
   end
 
   def link_to_with_current(name, current, options = {}, html_options = {})
