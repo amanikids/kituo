@@ -1,3 +1,3 @@
 %ul#subnavigation
-  %li= link_to_with_current badged(t('tasks.unrecorded_arrivals.tab'), Child.pending.count), unrecorded_arrivals_tasks_path
-  %li= link_to_with_current badged(t('tasks.home_visits.tab'), Child.needing_home_visit.count), home_visits_tasks_path
+  %li= link_to_with_current badged(t('tasks.unrecorded_arrivals.tab'), Child.unrecorded_arrivals.count), unrecorded_arrivals_tasks_path
+  %li= link_to_with_current badged(t('tasks.home_visits.tab'), Child.upcoming_home_visits.count), upcoming_home_visits_tasks_path

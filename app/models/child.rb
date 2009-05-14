@@ -1,33 +1,37 @@
 class Child < ActiveRecord::Base
-  default_scope :order => :name
+  LOCATION_CHANGING_EVENTS = [Arrival, OffsiteBoarding, Reunification, Dropout, Termination]
 
-  named_scope :pending, :joins => 'LEFT JOIN events on events.child_id = children.id', :conditions => 'events.id IS NULL'
-  named_scope :location_as_of, lambda { |date|           { :joins => :events, :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, [Arrival, OffsiteBoarding, Reunification, Dropout, Termination].map(&:name)] }}
-  named_scope :is,             lambda { |*event_classes| { :joins => :events, :conditions => ['events.type IN (?)', event_classes.map(&:name)] }}
+  named_scope :by_name, :order => :name
+  named_scope :location_as_of, lambda { |date|           { :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, LOCATION_CHANGING_EVENTS.map(&:name)], :joins => :events }}
+  named_scope :is,             lambda { |*event_classes| { :conditions => ['events.type IN (?)', event_classes.map(&:name)], :joins => :events }}
+  named_scope :without,        lambda { |*event_classes| { :conditions => ['(SELECT COUNT(*) FROM events WHERE events.child_id = children.id AND events.type IN (?)) = 0', event_classes.map(&:name)] } }
 
-  def self.onsite(date = Date.today)
-    location_as_of(date).is(Arrival)
+  def self.unrecorded_arrivals
+    without(*LOCATION_CHANGING_EVENTS).by_name
   end
 
-  # TODO can we make this happen in SQL?
-  def self.needing_home_visit(date = Date.today)
-    location_as_of(date).is(Arrival).scoped(:include => [:arrivals, :home_visits]).select { |child| child.home_visits.empty? }.sort_by { |child| child.arrivals.first.happened_on }
+  def self.upcoming_home_visits(date = Date.today)
+    location_as_of(date).is(Arrival).without(HomeVisit).scoped(:include => :arrivals).sort_by { |child| child.arrivals.first.happened_on }
+  end
+
+  def self.onsite(date = Date.today)
+    location_as_of(date).is(Arrival).by_name
   end
 
   def self.boarding_offsite(date = Date.today)
-    location_as_of(date).is(OffsiteBoarding)
+    location_as_of(date).is(OffsiteBoarding).by_name
   end
 
   def self.reunified(date = Date.today)
-    location_as_of(date).is(Reunification)
+    location_as_of(date).is(Reunification).by_name
   end
 
   def self.dropped_out(date = Date.today)
-    location_as_of(date).is(Dropout)
+    location_as_of(date).is(Dropout).by_name
   end
 
   def self.terminated(date = Date.today)
-    location_as_of(date).is(Termination)
+    location_as_of(date).is(Termination).by_name
   end
 
   has_many :events

@@ -5,12 +5,10 @@ class TasksController < ApplicationController
 
   # TODO make a pseudo Task model
   def unrecorded_arrivals
-    # TODO rename pending
-    # TODO fix bug with pending (non-location events disqualify)
-    @children = Child.pending
+    @children = Child.unrecorded_arrivals
   end
 
   def upcoming_home_visits
-    @children = Child.needing_home_visit
+    @children = Child.upcoming_home_visits
   end
 end
