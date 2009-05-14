@@ -15,7 +15,7 @@ end
 
 namespace :db do
   task :seed => [:environment, 'db/seed/children.yml', 'db/seed/images'] do
-    YAML.load_file('db/seed/children.yml').each do |child|
+    YAML.load_file('db/seed/children.yml').sort_by { |child| child[:name] }.each do |child|
       attributes = {}
       attributes[:name] = child[:name].strip
       attributes[:ignore_potential_duplicates] = true
