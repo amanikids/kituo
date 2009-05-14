@@ -25,6 +25,8 @@ en:
       notice: "Arrival at Amani recorded for {{name}}."
 
   children:
+    index:
+      tab: Children
     new:
       link: New Child
       title: New Child

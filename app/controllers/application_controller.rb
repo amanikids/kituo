@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   before_filter :set_locale
+  cattr_accessor :subnavigation_template
   # filter_parameter_logging :password
   helper :all
   prawnto :prawn => { :page_size => 'A4', :top_margin => 72 }

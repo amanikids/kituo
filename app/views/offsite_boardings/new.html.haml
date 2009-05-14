@@ -1,6 +1,4 @@
-%h1
-  = link_to @child.name, @child
-
+= render :partial => 'children/header', :locals => { :child => @child }
 %h2= OffsiteBoarding.human_name
 
 - form_for [@child, @offsite_boarding] do |form|

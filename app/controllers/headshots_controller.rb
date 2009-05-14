@@ -1,4 +1,6 @@
 class HeadshotsController < ApplicationController
+  self.subnavigation_template = 'children/subnavigation'
+
   before_filter :load_child
 
   def update
