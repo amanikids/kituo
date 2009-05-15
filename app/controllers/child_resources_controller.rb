@@ -1,5 +1,6 @@
 class ChildResourcesController < ApplicationController
   before_filter :load_child
+  layout 'children'
 
   private
 

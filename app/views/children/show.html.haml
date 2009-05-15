@@ -1,4 +1,6 @@
-= render :partial => 'header', :locals => { :child => @child }
+%h1= @child.name
+
+= image_tag @child.headshot.url, :class => 'headshot'
 = link_to t('headshots.edit.link'), edit_child_headshot_path(@child)
 
 %h2= t('children.show.timeline')
