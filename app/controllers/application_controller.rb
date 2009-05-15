@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   helper :all
   prawnto :prawn => { :page_size => 'A4', :top_margin => 72 }
   protect_from_forgery
+  # skip_after_filter Footnotes::Filter
 
   # We may want to turn off footnotes in development mode from time to time to
   # see how the layout looks:
