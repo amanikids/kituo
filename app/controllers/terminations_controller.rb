@@ -1,4 +1,4 @@
-class TerminationsController < EventsController
+class TerminationsController < ChildResourcesController
   before_filter :build_termination
 
   def create

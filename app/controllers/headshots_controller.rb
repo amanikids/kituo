@@ -1,6 +1,4 @@
-class HeadshotsController < ApplicationController
-  before_filter :load_child
-
+class HeadshotsController < ChildResourcesController
   def update
     if @child.update_attributes(params[:child])
       flash[:notice] = t('headshots.update.notice', :name => @child.name)
@@ -8,11 +6,5 @@ class HeadshotsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  protected
-
-  def load_child
-    @child = Child.find(params[:child_id])
   end
 end

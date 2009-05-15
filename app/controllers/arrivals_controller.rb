@@ -1,4 +1,4 @@
-class ArrivalsController < EventsController
+class ArrivalsController < ChildResourcesController
   before_filter :build_arrival
 
   def create

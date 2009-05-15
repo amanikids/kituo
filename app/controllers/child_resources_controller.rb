@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class ChildResourcesController < ApplicationController
   before_filter :load_child
 
   private

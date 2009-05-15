@@ -122,6 +122,7 @@ en:
   activerecord:
     models:
       home_visit: Home Visit
+      offsite_boarding: Offsite Boarding
 
     attributes:
       arrival:
