@@ -8,6 +8,10 @@ module ApplicationHelper
     end
   end
 
+  def distance_of_time_in_weeks(from_time)
+    t('datetime.distance_in_weeks', :count => (from_time / 1.week).to_i)
+  end
+
   def due_date_td(due_date)
     distance_in_weeks = (due_date.to_time - Date.today.to_time).to_i / 1.week
     due_in_the = %w(present future past)[distance_in_weeks <=> 0]

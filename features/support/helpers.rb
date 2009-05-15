@@ -3,10 +3,13 @@ module Kituo
     module Helpers
 
       def parse_date(date)
-        if date
-          Date.parse(date) rescue Chronic.parse(date).to_date
-        else
+        case date
+        when nil
           Date.today
+        when /ago/
+          Chronic.parse(date).to_date
+        else
+          Date.parse(date)
         end
       end
 
