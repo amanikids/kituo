@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def link_to_with_current_partial_path(name, segment, options = {}, html_options = {})
-    link_to_with_current name, request.path.include?("/#{segment}/"), options, html_options
+    link_to_with_current name, request.path.include?("/#{segment}"), options, html_options
   end
 
   def other_locales

@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     child.resources :arrivals, :home_visits, :offsite_boardings, :reunifications, :dropouts, :terminations
   end
 
+  map.resources :statistics
   map.resources :tasks, :collection => { :unrecorded_arrivals => :get, :upcoming_home_visits => :get }
 
   map.root :controller => 'children'

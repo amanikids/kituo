@@ -35,6 +35,9 @@ module NavigationHelpers
     when /the terminated children page/
       terminated_children_path
 
+    when /the statistics page/
+      statistics_path
+
     when /the unrecorded arrivals tasks page/
       unrecorded_arrivals_tasks_path
 

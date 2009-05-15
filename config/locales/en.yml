@@ -99,6 +99,11 @@ en:
     create:
       notice: "Family Reunification recorded for {{name}}."
 
+  statistics:
+    index:
+      tab: Statistics
+      title: Statistics
+
   tasks:
     index:
       tab: Tasks
