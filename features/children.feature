@@ -8,7 +8,7 @@ Feature: Children
     When I try to create a child named "Ramadhan Masawe"
     Then I should see "New case file started for Ramadhan Masawe."
 
-  Scenario: saving a New Child Puts Him on the Unrecorded Arrivals Page
+  Scenario: Saving a New Child Puts Him on the Unrecorded Arrivals Page
     Given child "Ramadhan Masawe" does not exist
     When I try to create a child named "Ramadhan Masawe"
     And I go to the unrecorded arrivals tasks page
@@ -35,3 +35,12 @@ Feature: Children
     And I follow "Ramadhan Masawe"
     Then I should not see "New case file started for Ramadhan Masawe."
     And I should see "Ramadhan Masawe"
+
+  Scenario: I Edit a Child's Name
+    Given child "Ramadhan Masawe" exists
+    When I go to the child page for "Ramadhan Masawe"
+    And I follow "Edit Name"
+    And I fill in "Name" with "Ramadani Masawe"
+    And I press "Save"
+    Then I should see "Case file updated for Ramadani Masawe."
+    And I should not see "Ramadhan Masawe"

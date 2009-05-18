@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
   before_filter :build_child, :only => [:new, :create]
-  before_filter :load_child,  :only => [:show]
+  before_filter :load_child,  :only => [:show, :edit, :update]
 
   def index
     redirect_to onsite_children_path
@@ -16,6 +16,15 @@ class ChildrenController < ApplicationController
       else
         render :new
       end
+    end
+  end
+
+  def update
+    if @child.update_attributes(params[:child])
+      flash[:notice] = t('children.update.notice', :name => @child.name)
+      redirect_to @child
+    else
+      render :edit
     end
   end
 

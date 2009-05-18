@@ -44,6 +44,12 @@ en:
     show:
       timeline: Timeline
       record: 'Record:'
+    edit:
+      link: Edit Name
+      title: Edit Name
+      submit: Save Child
+    update:
+      notice: "Case file updated for {{name}}."
 
     boarding_offsite:
       tab: Boarding Offsite

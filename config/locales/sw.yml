@@ -44,6 +44,12 @@ sw:
     show:
       timeline: Historia
       record: 'Tukio:'
+    edit:
+      link: Badilisha jina
+      title: Badilisha jina
+      submit: Ingiza taarifa
+    update:
+      notice: "Umebadilisha jina ya {{name}}."
 
     boarding_offsite:
       tab: Wanokaa boarding
