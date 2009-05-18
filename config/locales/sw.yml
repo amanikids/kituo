@@ -82,10 +82,10 @@ sw:
 
   home_visits:
     new:
-      # link:
+      link: Alipotembelewa nyumbani
       submit: Ingiza taarifa
     create:
-      # notice: "Tarehe ya home visit imrekodiwa kama {{name}}."
+      notice: "Tarehe ya home visit imerikodiwa kama {{name}}."
 
   offsite_boardings:
     new:
@@ -105,8 +105,8 @@ sw:
     index:
       tab: Shughuli
     home_visits:
-      # tab:
-      # title: Watoto wanaohitaji Home Visit
+      tab: Watoto wanaotakiwa kufanyiwa kazi
+      title: Watoto wanaohitaji Home Visit
     unrecorded_arrivals:
       tab: Taarifa Haitoshi
       title: Taarifa Haitoshi
@@ -144,7 +144,7 @@ sw:
       arrival: Alipoingia kituoni
       child: Mtoto
       dropout: Alipotoroka
-      # home_visit:
+      home_visit: Home visit
       offsite_boarding: Alipoenda boarding
       reunification: Alipounganishwa na familia
       termination: Alipokuwa terminated
