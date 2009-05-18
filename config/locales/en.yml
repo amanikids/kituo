@@ -11,7 +11,9 @@ en:
       other: '{{count}} weeks'
 
   due:
-    past: '{{phrase}} overdue'
+    past:
+      one: '{{phrase}} overdue'
+      other: '{{phrase}} overdue'
     present: 'due {{phrase}}'
     future: 'in {{phrase}}'
 
