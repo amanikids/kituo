@@ -1,7 +1,7 @@
 = render :partial => 'children/header', :locals => { :child => @child }
-%h2= t('headshots.edit.title')
+%h2= t('children.headshot.title')
 
-- form_for @child, :url => child_headshot_path(@child), :html => { :multipart => true } do |form|
+- form_for @child, :html => { :multipart => true } do |form|
   = form.error_messages
 
   .field
@@ -9,4 +9,4 @@
     = form.file_field :headshot
 
   .submit
-    = form.submit t('headshots.edit.submit')
+    = form.submit t('children.headshot.submit')

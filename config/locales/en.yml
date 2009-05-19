@@ -72,6 +72,11 @@ en:
       submit: Save Child
     update:
       notice: "Case file updated for {{name}}."
+    headshot:
+      link: Edit Headshot
+      title: Edit Headshot
+      submit: Save
+      notice: "Updated Headshot for {{name}}."
 
     boarding_offsite:
       tab: Boarding Offsite
@@ -99,14 +104,6 @@ en:
       submit: Save
     create:
       notice: "Dropout recorded for {{name}}."
-
-  headshots:
-    edit:
-      link: Edit Headshot
-      title: Edit Headshot
-      submit: Save
-    update:
-      notice: "Updated Headshot for {{name}}."
 
   home_visits:
     new:

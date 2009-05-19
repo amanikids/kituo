@@ -72,6 +72,11 @@ sw:
       submit: Ingiza taarifa
     update:
       notice: "Umebadilisha jina ya {{name}}."
+    headshot:
+      link: Badilisha picha
+      title: Badilisha picha
+      submit: Ingiza picha mpya
+      notice: "Picha mpya ya {{name}} umerikodiwa."
 
     boarding_offsite:
       tab: Wanokaa boarding
@@ -99,14 +104,6 @@ sw:
       submit: Ingiza taarifa
     create:
       notice: "Tarehe alipotoroka kituoni imerikodiwa kama {{name}}."
-
-  headshots:
-    edit:
-      link: Badilisha picha
-      title: Badilisha picha
-      submit: Ingiza picha mpya
-    update:
-      notice: "Picha mpya ya {{name}} umerikodiwa."
 
   home_visits:
     new:
