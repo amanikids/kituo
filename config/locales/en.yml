@@ -27,6 +27,17 @@ en:
     create:
       notice: "Arrival at Amani recorded for {{name}}."
 
+  caregivers:
+    index:
+      tab: Caregivers
+      title: Caregivers
+    new:
+      link: New Caregiver
+      title: New Caregiver
+      submit: Save
+    create:
+      notice: "Created caregiver {{name}}."
+
   children:
     index:
       tab: Children

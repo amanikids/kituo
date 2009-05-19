@@ -27,6 +27,17 @@ sw:
     create:
       notice: "Tarehe alipoingia kituoni imerikodiwa kama {{name}}."
 
+  caregivers:
+    index:
+      tab: Walezi
+      title: Walezi
+    new:
+      link: Mlezi Mgeni
+      title: Mlezi Mgeni
+      submit: Ingiza taarifa
+    create:
+      notice: "Umefungua faili ya {{name}}."
+
   children:
     index:
       tab: Watoto
@@ -131,6 +142,8 @@ sw:
     attributes:
       arrival:
         happened_on: Tarehe
+      caregiver:
+        name: Jina
       child:
         headshot: Upload Picha Mpya
         ignore_potential_duplicates: "THIS SHOULDN'T SHOW UP ON THE SCREEN"
@@ -148,6 +161,7 @@ sw:
 
     models:
       arrival: Alipoingia kituoni
+      caregiver: Mlezi
       child: Mtoto
       dropout: Alipotoroka
       home_visit: Home visit

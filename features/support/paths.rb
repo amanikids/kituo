@@ -17,6 +17,12 @@ module NavigationHelpers
     when /the homepage/
       root_path
 
+    when /the unrecorded arrivals tasks page/
+      unrecorded_arrivals_tasks_path
+
+    when /the upcoming home visits tasks page/
+      upcoming_home_visits_tasks_path
+
     when /the new child page/
       new_child_path
 
@@ -35,15 +41,6 @@ module NavigationHelpers
     when /the terminated children page/
       terminated_children_path
 
-    when /the statistics page/
-      statistics_path
-
-    when /the unrecorded arrivals tasks page/
-      unrecorded_arrivals_tasks_path
-
-    when /the upcoming home visits tasks page/
-      upcoming_home_visits_tasks_path
-
     # I'm including this "dynamic" path here despite the warning above because
     # cucumber complains about ambiguous steps when I make a separate "When I
     # go to ..." step.
@@ -59,6 +56,9 @@ module NavigationHelpers
     # Or, perhaps I could set the variable in a .tmproj file?
     when /the child page for "(.+)"/
       child_path(Child.find_by_name!($1))
+
+    when /the new caregiver page/
+      new_caregiver_path
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
