@@ -1,4 +1,4 @@
-class OffsiteBoardingsController < ChildResourcesController
+class Children::OffsiteBoardingsController < Children::BaseController
   before_filter :build_offsite_boarding
 
   def create

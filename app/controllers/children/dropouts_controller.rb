@@ -1,4 +1,4 @@
-class DropoutsController < ChildResourcesController
+class Children::DropoutsController < Children::BaseController
   before_filter :build_dropout
 
   def create

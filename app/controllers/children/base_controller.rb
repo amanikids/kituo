@@ -1,5 +1,6 @@
 class Children::BaseController < ApplicationController
   before_filter :load_child
+  layout 'children'
 
   private
 

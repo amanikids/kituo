@@ -1,4 +1,4 @@
-class ReunificationsController < ChildResourcesController
+class Children::ReunificationsController < Children::BaseController
   before_filter :build_reunification
 
   def create

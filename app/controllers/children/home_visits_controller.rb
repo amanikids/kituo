@@ -1,4 +1,4 @@
-class HomeVisitsController < ChildResourcesController
+class Children::HomeVisitsController < Children::BaseController
   before_filter :build_home_visit
 
   def create

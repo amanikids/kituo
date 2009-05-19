@@ -8,7 +8,9 @@
   - unless @child.case_assignment
     %li= link_to t('children.case_assignment.new.link'), new_child_case_assignment_path(@child)
 
-= render @child.case_assignment if @child.case_assignment
+- if @child.case_assignment
+  %h2= link_to @child.social_worker.name, @child.social_worker
+  = image_tag @child.social_worker.headshot.url, :class => 'headshot'
 
 %h2= t('children.show.timeline')
 
@@ -22,4 +24,7 @@
   %li= link_to t('terminations.new.link'), new_child_termination_path(@child)
 
 %table.timeline
-  = render @child.events
+  - @child.events.each do |event|
+    %tr
+      %td= event.class.human_name
+      %td= l event.happened_on, :format => :long
