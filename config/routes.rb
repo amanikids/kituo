@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :tasks, :collection => { :unrecorded_arrivals => :get, :upcoming_home_visits => :get }
 
-  map.resources :children, :collection => { :onsite => :get, :boarding_offsite => :get, :dropped_out => :get, :reunified => :get, :terminated => :get }, :member => { :headshot => :get } do |child|
+  map.resources :children, :collection => { :onsite => :get, :boarding_offsite => :get, :dropped_out => :get, :reunified => :get, :terminated => :get } do |child|
     child.resources :arrivals, :controller => 'children/arrivals'
     child.resources :home_visits, :controller => 'children/home_visits'
     child.resources :offsite_boardings, :controller => 'children/offsite_boardings'
@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
     child.resources :terminations, :controller => 'children/terminations'
 
     child.resource :case_assignment, :controller => 'children/case_assignments'
+    child.resource :headshot, :controller => 'children/headshots'
   end
 
   map.resources :caregivers, :member => { :headshot => :get }

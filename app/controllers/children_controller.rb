@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
   before_filter :build_child, :only => [:new, :create]
-  before_filter :load_child,  :only => [:show, :edit, :headshot, :update]
+  before_filter :load_child,  :only => [:show, :edit, :update]
 
   def index
     redirect_to onsite_children_path
@@ -21,10 +21,10 @@ class ChildrenController < ApplicationController
 
   def update
     if @child.update_attributes(params[:child])
-      flash[:notice] = t(updating_headshot? ? 'children.headshot.notice' : 'children.update.notice', :name => @child.name)
+      flash[:notice] = t('children.update.notice', :name => @child.name)
       redirect_to @child
     else
-      render updating_headshot? ? :headshot : :edit
+      render :edit
     end
   end
 
@@ -42,9 +42,5 @@ class ChildrenController < ApplicationController
 
   def load_child
     @child = Child.find(params[:id])
-  end
-
-  def updating_headshot?
-    params[:child].try(:has_key?, :headshot)
   end
 end

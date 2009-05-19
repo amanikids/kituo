@@ -73,12 +73,6 @@ sw:
     update:
       notice: "Umebadilisha jina ya {{name}}."
 
-    headshot:
-      link: Badilisha picha
-      title: Badilisha picha
-      submit: Ingiza picha mpya
-      notice: "Picha mpya ya {{name}} umerikodiwa."
-
     case_assignment:
       new:
         link: Assign to a Social Worker
@@ -86,6 +80,14 @@ sw:
         submit: Ingiza taarifa
       create:
         notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."
+
+    headshot:
+      edit:
+        link: Badilisha picha
+        title: Badilisha picha
+        submit: Ingiza picha mpya
+      update:
+        notice: "Picha mpya ya {{name}} umerikodiwa."
 
     boarding_offsite:
       tab: Wanokaa boarding
