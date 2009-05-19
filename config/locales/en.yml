@@ -107,12 +107,6 @@ en:
     create:
       notice: "Family Reunification recorded for {{name}}."
 
-  statistics:
-    index:
-      tab: Statistics
-      title: Statistics
-      average_stay: 'Average Stay at Amani: {{average_stay}}'
-
   tasks:
     index:
       tab: Tasks
