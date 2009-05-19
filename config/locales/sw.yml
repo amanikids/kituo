@@ -72,11 +72,20 @@ sw:
       submit: Ingiza taarifa
     update:
       notice: "Umebadilisha jina ya {{name}}."
+
     headshot:
       link: Badilisha picha
       title: Badilisha picha
       submit: Ingiza picha mpya
       notice: "Picha mpya ya {{name}} umerikodiwa."
+
+    case_assignment:
+      new:
+        link: Assign to a Social Worker
+        title: Assign to a Social Worker
+        submit: Ingiza taarifa
+      create:
+        notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."
 
     boarding_offsite:
       tab: Wanokaa boarding
@@ -153,6 +162,8 @@ sw:
       caregiver:
         headshot: Upload Picha Mpya
         name: Jina
+      case_assignment:
+        social_worker_id: Social worker
       child:
         headshot: Upload Picha Mpya
         ignore_potential_duplicates: "THIS SHOULDN'T SHOW UP ON THE SCREEN"
@@ -171,6 +182,7 @@ sw:
     models:
       arrival: Alipoingia kituoni
       caregiver: Mlezi
+      case_assignment: Case assignment # this shouldn't show up
       child: Mtoto
       dropout: Alipotoroka
       home_visit: Home visit

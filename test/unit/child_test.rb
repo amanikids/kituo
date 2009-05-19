@@ -10,6 +10,9 @@ class ChildTest < ActiveSupport::TestCase
   should_have_many :dropouts
   should_have_many :terminations
 
+  should_have_one :case_assignment
+  should_have_one :social_worker
+
   should_have_attached_file :headshot
 
   should_validate_presence_of :name

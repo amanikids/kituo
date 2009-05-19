@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class CaregiverTest < ActiveSupport::TestCase
   should_have_attached_file :headshot

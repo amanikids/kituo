@@ -44,6 +44,9 @@ class Child < ActiveRecord::Base
   has_many :dropouts
   has_many :terminations
 
+  has_one :case_assignment
+  has_one :social_worker, :through => :case_assignment
+
   has_attached_file :headshot,
     :url => '/system/:class/:attachment/:id/:style/:basename.:extension',
     :path => ':rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension',
@@ -54,7 +57,7 @@ class Child < ActiveRecord::Base
   validates_presence_of :name
   validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
   attr_accessor :ignore_potential_duplicates
-  attr_accessible :name, :headshot, :ignore_potential_duplicates
+  attr_accessible :name, :ignore_potential_duplicates, :headshot
 
   # FIXME oh no we di'int
   def self.search(name)

@@ -72,11 +72,20 @@ en:
       submit: Save Child
     update:
       notice: "Case file updated for {{name}}."
+
     headshot:
       link: Edit Headshot
       title: Edit Headshot
       submit: Save
       notice: "Updated Headshot for {{name}}."
+
+    case_assignment:
+      new:
+        link: Assign to a Social Worker
+        title: Assign to a Social Worker
+        submit: Save
+      create:
+        notice: "{{child_name}}'s social worker is now {{social_worker_name}}."
 
     boarding_offsite:
       tab: Boarding Offsite

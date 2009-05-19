@@ -1,0 +1,11 @@
+= render :partial => 'children/header', :locals => { :child => @child }
+
+%h2= t('children.case_assignment.new.title')
+
+- form_for [@child, @case_assignment], :url => child_case_assignment_url(@child) do |form|
+  .field
+    = form.label :social_worker_id
+    = form.collection_select :social_worker_id, Caregiver.by_name, :id, :name, :prompt => true
+    = form.error_message_on :social_worker_id
+  .submit
+    = form.submit t('children.case_assignment.new.submit')

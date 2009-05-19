@@ -53,3 +53,19 @@ Feature: Children
     And I press "Save"
     Then I should see "can't be blank"
     And I should see "Ramadhan Masawe"
+
+  Scenario: I Assign a Child to a Social Worker
+    Given child "Ramadhan Masawe" exists
+    And caregiver "Japhary Salum" exists
+    When I go to the child page for "Ramadhan Masawe"
+    And I follow "Assign to a Social Worker"
+    And I select "Japhary Salum" from "Social Worker"
+    And I press "Save"
+    Then I should see "Ramadhan Masawe's social worker is now Japhary Salum."
+
+  Scenario: I Assign a Child to no Social Worker
+    Given child "Ramadhan Masawe" exists
+    When I go to the child page for "Ramadhan Masawe"
+    And I follow "Assign to a Social Worker"
+    And I press "Save"
+    Then I should see "can't be blank"

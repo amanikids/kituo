@@ -5,6 +5,10 @@
 %ul
   %li= link_to t('children.edit.link'), edit_child_path(@child)
   %li= link_to t('children.headshot.link'), headshot_child_path(@child)
+  - unless @child.case_assignment
+    %li= link_to t('children.case_assignment.new.link'), new_child_case_assignment_path(@child)
+
+= render @child.case_assignment if @child.case_assignment
 
 %h2= t('children.show.timeline')
 
