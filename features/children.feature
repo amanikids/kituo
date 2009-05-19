@@ -44,3 +44,12 @@ Feature: Children
     And I press "Save"
     Then I should see "Case file updated for Ramadani Masawe."
     And I should not see "Ramadhan Masawe"
+
+  Scenario: I Edit a Child's Name, Setting It to Blank
+    Given child "Ramadhan Masawe" exists
+    When I go to the child page for "Ramadhan Masawe"
+    And I follow "Edit Name"
+    And I fill in "Name" with ""
+    And I press "Save"
+    Then I should see "can't be blank"
+    And I should see "Ramadhan Masawe"

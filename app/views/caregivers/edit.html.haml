@@ -1,0 +1,13 @@
+%h1= link_to((@caregiver.name.blank? ? @caregiver.name_was : @caregiver.name), @caregiver)
+
+= image_tag @caregiver.headshot.url, :class => 'headshot'
+
+%h2= t('caregivers.edit.title')
+
+- form_for @caregiver do |form|
+  .field
+    = form.label :name
+    = form.text_field :name, :autocomplete => 'off'
+    = form.error_message_on :name
+  .submit
+    = form.submit t('caregivers.edit.submit')

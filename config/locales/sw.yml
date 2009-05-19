@@ -37,12 +37,17 @@ sw:
       submit: Ingiza taarifa
     create:
       notice: "Umefungua faili ya {{name}}."
+    edit:
+      link: Badilisha jina
+      title: Badilisha jina
+      submit: Ingiza taarifa
     update:
-      notice: "Umebadilisha faili ya {{name}}."
+      notice: "Umebadilisha jina ya {{name}}."
     headshot:
       link: Badilisha picha
       title: Badilisha picha
       submit: Ingiza picha mpya
+      notice: "Picha mpya ya {{name}} umerikodiwa."
 
   children:
     index:

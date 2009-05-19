@@ -9,7 +9,7 @@ Feature: Headshots
     When I follow "Edit Headshot"
     And I attach the file at "features/support/sample_headshot.jpg" to "Upload a New Image"
     And I press "Save"
-    Then I should see "Updated caregiver Japhary Salum."
+    Then I should see "Updated Headshot for Japhary Salum."
 
   Scenario: Adding a new headshot for a Child
     Given child "Ramadhan Masawe" exists

@@ -37,12 +37,17 @@ en:
       submit: Save
     create:
       notice: "Created caregiver {{name}}."
+    edit:
+      link: Edit Name
+      title: Edit Name
+      submit: Save
     update:
       notice: "Updated caregiver {{name}}."
     headshot:
       link: Edit Headshot
       title: Edit Headshot
       submit: Save
+      notice: "Updated Headshot for {{name}}."
 
   children:
     index:
