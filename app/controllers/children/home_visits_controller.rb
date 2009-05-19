@@ -3,7 +3,7 @@ class Children::HomeVisitsController < Children::BaseController
 
   def create
     if @home_visit.save
-      flash[:notice] = t('home_visits.create.notice', :name => @child.name)
+      flash[:notice] = t('children.home_visits.create.notice', :name => @child.name)
       redirect_to @child
     else
       render :new

@@ -20,13 +20,6 @@ en:
   # ===========================================================================
   # = ActionPack Translations                                                 =
   # ===========================================================================
-  arrivals:
-    new:
-      link: Arrival
-      submit: Save
-    create:
-      notice: "Arrival at Amani recorded for {{name}}."
-
   caregivers:
     index:
       tab: Caregivers
@@ -73,22 +66,7 @@ en:
     update:
       notice: "Case file updated for {{name}}."
 
-    case_assignment:
-      new:
-        link: Assign to a Social Worker
-        title: Assign to a Social Worker
-        submit: Save
-      create:
-        notice: "{{child_name}}'s social worker is now {{social_worker_name}}."
-
-    headshot:
-      edit:
-        link: Edit Headshot
-        title: Edit Headshot
-        submit: Save
-      update:
-        notice: "Updated Headshot for {{name}}."
-
+    # children collection actions
     boarding_offsite:
       tab: Boarding Offsite
       title: Children Boarding Offsite
@@ -109,33 +87,59 @@ en:
       tab: Terminated
       title: Children Terminated
 
-  dropouts:
-    new:
-      link: Dropout
-      submit: Save
-    create:
-      notice: "Dropout recorded for {{name}}."
+    # plural nested child resources
+    arrivals:
+      new:
+        link: Arrival
+        submit: Save
+      create:
+        notice: "Arrival at Amani recorded for {{name}}."
+    dropouts:
+      new:
+        link: Dropout
+        submit: Save
+      create:
+        notice: "Dropout recorded for {{name}}."
+    home_visits:
+      new:
+        link: Home Visit
+        submit: Save
+      create:
+        notice: "Home Visit recorded for {{name}}."
+    offsite_boardings:
+      new:
+        link: Offsite Boarding
+        submit: Save
+      create:
+        notice: "Offsite Boarding recorded for {{name}}."
+    reunifications:
+      new:
+        link: Reunification
+        submit: Save
+      create:
+        notice: "Family Reunification recorded for {{name}}."
+    terminations:
+      new:
+        link: Termination
+        submit: Save
+      create:
+        notice: "Termination recorded for {{name}}."
 
-  home_visits:
-    new:
-      link: Home Visit
-      submit: Save
-    create:
-      notice: "Home Visit recorded for {{name}}."
-
-  offsite_boardings:
-    new:
-      link: Offsite Boarding
-      submit: Save
-    create:
-      notice: "Offsite Boarding recorded for {{name}}."
-
-  reunifications:
-    new:
-      link: Reunification
-      submit: Save
-    create:
-      notice: "Family Reunification recorded for {{name}}."
+    # singular nested child resources
+    case_assignment:
+      new:
+        link: Assign to a Social Worker
+        title: Assign to a Social Worker
+        submit: Save
+      create:
+        notice: "{{child_name}}'s social worker is now {{social_worker_name}}."
+    headshot:
+      edit:
+        link: Edit Headshot
+        title: Edit Headshot
+        submit: Save
+      update:
+        notice: "Updated Headshot for {{name}}."
 
   tasks:
     index:
@@ -147,12 +151,6 @@ en:
       tab: Unrecorded Arrivals
       title: Unrecorded Arrivals
 
-  terminations:
-    new:
-      link: Termination
-      submit: Save
-    create:
-      notice: "Termination recorded for {{name}}."
 
   # ===========================================================================
   # = ActiveRecord Translations                                               =

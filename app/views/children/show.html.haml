@@ -16,12 +16,12 @@
 
 %ul.actions
   %li= t('children.show.record')
-  %li= link_to t('arrivals.new.link'), new_child_arrival_path(@child)
-  %li= link_to t('home_visits.new.link'), new_child_home_visit_path(@child)
-  %li= link_to t('offsite_boardings.new.link'), new_child_offsite_boarding_path(@child)
-  %li= link_to t('reunifications.new.link'), new_child_reunification_path(@child)
-  %li= link_to t('dropouts.new.link'), new_child_dropout_path(@child)
-  %li= link_to t('terminations.new.link'), new_child_termination_path(@child)
+  %li= link_to t('children.arrivals.new.link'), new_child_arrival_path(@child)
+  %li= link_to t('children.home_visits.new.link'), new_child_home_visit_path(@child)
+  %li= link_to t('children.offsite_boardings.new.link'), new_child_offsite_boarding_path(@child)
+  %li= link_to t('children.reunifications.new.link'), new_child_reunification_path(@child)
+  %li= link_to t('children.dropouts.new.link'), new_child_dropout_path(@child)
+  %li= link_to t('children.terminations.new.link'), new_child_termination_path(@child)
 
 %table.timeline
   - @child.events.each do |event|

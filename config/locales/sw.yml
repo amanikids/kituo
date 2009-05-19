@@ -20,13 +20,6 @@ sw:
   # ===========================================================================
   # = ActionPack Translations                                                 =
   # ===========================================================================
-  arrivals:
-    new:
-      link: Alipoingia kituoni
-      submit: Ingiza taarifa
-    create:
-      notice: "Tarehe alipoingia kituoni imerikodiwa kama {{name}}."
-
   caregivers:
     index:
       tab: Walezi
@@ -73,22 +66,7 @@ sw:
     update:
       notice: "Umebadilisha jina ya {{name}}."
 
-    case_assignment:
-      new:
-        link: Assign to a Social Worker
-        title: Assign to a Social Worker
-        submit: Ingiza taarifa
-      create:
-        notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."
-
-    headshot:
-      edit:
-        link: Badilisha picha
-        title: Badilisha picha
-        submit: Ingiza picha mpya
-      update:
-        notice: "Picha mpya ya {{name}} umerikodiwa."
-
+    # children collection actions
     boarding_offsite:
       tab: Wanokaa boarding
       title: Watoto wanaokaa boarding
@@ -109,33 +87,59 @@ sw:
       tab: Terminated
       title: Watoto ambao wamekuwa terminated
 
-  dropouts:
-    new:
-      link: Alipotoroka
-      submit: Ingiza taarifa
-    create:
-      notice: "Tarehe alipotoroka kituoni imerikodiwa kama {{name}}."
+    # plural nested child resources
+    arrivals:
+      new:
+        link: Alipoingia kituoni
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe alipoingia kituoni imerikodiwa kama {{name}}."
+    dropouts:
+      new:
+        link: Alipotoroka
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe alipotoroka kituoni imerikodiwa kama {{name}}."
+    home_visits:
+      new:
+        link: Alipotembelewa nyumbani
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe ya home visit imerikodiwa kama {{name}}."
+    offsite_boardings:
+      new:
+        link: Alipoenda boarding
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe ya kwenda boarding imerikodiwa kwa {{name}}."
+    reunifications:
+      new:
+        link: Alipounganishwa
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe ya kuunganishwa na familia imerikodiwa kwa {{name}}."
+    terminations:
+      new:
+        link: Alipokuwa terminated
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe ya termination ya {{name}} imerikodiwa."
 
-  home_visits:
-    new:
-      link: Alipotembelewa nyumbani
-      submit: Ingiza taarifa
-    create:
-      notice: "Tarehe ya home visit imerikodiwa kama {{name}}."
-
-  offsite_boardings:
-    new:
-      link: Alipoenda boarding
-      submit: Ingiza taarifa
-    create:
-      notice: "Tarehe ya kwenda boarding imerikodiwa kwa {{name}}."
-
-  reunifications:
-    new:
-      link: Alipounganishwa
-      submit: Ingiza taarifa
-    create:
-      notice: "Tarehe ya kuunganishwa na familia imerikodiwa kwa {{name}}."
+    # singular nested child resources
+    case_assignment:
+      new:
+        link: Assign to a Social Worker
+        title: Assign to a Social Worker
+        submit: Ingiza taarifa
+      create:
+        notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."
+    headshot:
+      edit:
+        link: Badilisha picha
+        title: Badilisha picha
+        submit: Ingiza picha mpya
+      update:
+        notice: "Picha mpya ya {{name}} umerikodiwa."
 
   tasks:
     index:
@@ -147,12 +151,6 @@ sw:
       tab: Taarifa Haitoshi
       title: Taarifa Haitoshi
 
-  terminations:
-    new:
-      link: Alipokuwa terminated
-      submit: Ingiza taarifa
-    create:
-      notice: "Tarehe ya termination ya {{name}} imerikodiwa."
 
   # ===========================================================================
   # = ActiveRecord Translations                                               =

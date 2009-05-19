@@ -3,7 +3,7 @@ class Children::DropoutsController < Children::BaseController
 
   def create
     if @dropout.save
-      flash[:notice] = t('dropouts.create.notice', :name => @child.name)
+      flash[:notice] = t('children.dropouts.create.notice', :name => @child.name)
       redirect_to @child
     else
       render :new

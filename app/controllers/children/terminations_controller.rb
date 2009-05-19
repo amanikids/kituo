@@ -3,7 +3,7 @@ class Children::TerminationsController < Children::BaseController
 
   def create
     if @termination.save
-      flash[:notice] = t('terminations.create.notice', :name => @child.name)
+      flash[:notice] = t('children.terminations.create.notice', :name => @child.name)
       redirect_to @child
     else
       render :new
