@@ -36,11 +36,15 @@ sw:
       submit: Ingiza taarifa
     update:
       notice: "Umebadilisha jina ya {{name}}."
+
+    # singular nested caregiver resources
     headshot:
-      link: Badilisha picha
-      title: Badilisha picha
-      submit: Ingiza picha mpya
-      notice: "Picha mpya ya {{name}} umerikodiwa."
+      edit:
+        link: Badilisha picha
+        title: Badilisha picha
+        submit: Ingiza picha mpya
+      update:
+        notice: "Picha mpya ya {{name}} umerikodiwa."
 
   children:
     index:

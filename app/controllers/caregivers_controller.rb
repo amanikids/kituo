@@ -1,6 +1,6 @@
 class CaregiversController < ApplicationController
   before_filter :build_caregiver, :only => [:new, :create]
-  before_filter :load_caregiver,  :only => [:show, :edit, :headshot, :update]
+  before_filter :load_caregiver,  :only => [:show, :edit, :update]
 
   def index
     @caregivers = Caregiver.by_name
@@ -17,10 +17,10 @@ class CaregiversController < ApplicationController
 
   def update
     if @caregiver.update_attributes(params[:caregiver])
-      flash[:notice] = t(updating_headshot? ? 'caregivers.headshot.notice' : 'caregivers.update.notice', :name => @caregiver.name)
+      flash[:notice] = t('caregivers.update.notice', :name => @caregiver.name)
       redirect_to @caregiver
     else
-      render updating_headshot? ? :headshot : :edit
+      render :edit
     end
   end
 
@@ -32,9 +32,5 @@ class CaregiversController < ApplicationController
 
   def load_caregiver
     @caregiver = Caregiver.find(params[:id])
-  end
-
-  def updating_headshot?
-    params[:caregiver].try(:has_key?, :headshot)
   end
 end

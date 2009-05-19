@@ -36,11 +36,15 @@ en:
       submit: Save
     update:
       notice: "Updated caregiver {{name}}."
+
+    # singular nested caregiver resources
     headshot:
-      link: Edit Headshot
-      title: Edit Headshot
-      submit: Save
-      notice: "Updated Headshot for {{name}}."
+      edit:
+        link: Edit Headshot
+        title: Edit Headshot
+        submit: Save
+      update:
+        notice: "Updated Headshot for {{name}}."
 
   children:
     index:

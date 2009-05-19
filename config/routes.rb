@@ -15,7 +15,9 @@ ActionController::Routing::Routes.draw do |map|
     child.resource :headshot, :controller => 'children/headshots'
   end
 
-  map.resources :caregivers, :member => { :headshot => :get }
+  map.resources :caregivers do |caregiver|
+    caregiver.resource :headshot, :controller => 'caregivers/headshots'
+  end
 
   map.root :controller => 'children'
 end
