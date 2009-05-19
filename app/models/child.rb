@@ -45,9 +45,11 @@ class Child < ActiveRecord::Base
   has_many :terminations
 
   has_attached_file :headshot,
+    :url => '/system/:class/:attachment/:id/:style/:basename.:extension',
+    :path => ':rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension',
     :styles => { :default => '150x150#' },
     :default_style => :default,
-    :default_url => "/images/headshot-:style.jpg"
+    :default_url => '/images/headshot-:style.jpg'
 
   validates_presence_of :name
   validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates

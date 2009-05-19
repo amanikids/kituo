@@ -1,9 +1,9 @@
 class CaregiversController < ApplicationController
   before_filter :build_caregiver, :only => [:new, :create]
-  before_filter :load_caregiver,  :only => [:show]
+  before_filter :load_caregiver,  :only => [:show, :headshot, :update]
 
   def index
-    @caregivers = Caregiver.all
+    @caregivers = Caregiver.by_name
   end
 
   def create
@@ -12,6 +12,15 @@ class CaregiversController < ApplicationController
       redirect_to caregiver_path(@caregiver)
     else
       render :new
+    end
+  end
+
+  def update
+    if @caregiver.update_attributes(params[:caregiver])
+      flash[:notice] = t('caregivers.update.notice', :name => @caregiver.name)
+      redirect_to @caregiver
+    else
+      render :headshot # FIXME this is hinky
     end
   end
 

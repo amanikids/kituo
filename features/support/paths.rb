@@ -41,9 +41,12 @@ module NavigationHelpers
     when /the terminated children page/
       terminated_children_path
 
-    # I'm including this "dynamic" path here despite the warning above because
-    # cucumber complains about ambiguous steps when I make a separate "When I
-    # go to ..." step.
+    when /the new caregiver page/
+      new_caregiver_path
+
+    # I'm including these "dynamic" paths here despite the warning above
+    # because cucumber complains about ambiguous steps when I make a separate
+    # "When I go to ..." step.
     #
     # You can fix this by adding --guess to the command-line options, but
     # there's nowhere to do that when you're running a single feature in
@@ -57,8 +60,8 @@ module NavigationHelpers
     when /the child page for "(.+)"/
       child_path(Child.find_by_name!($1))
 
-    when /the new caregiver page/
-      new_caregiver_path
+    when /the caregiver page for "(.+)"/
+      caregiver_path(Caregiver.find_by_name!($1))
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +

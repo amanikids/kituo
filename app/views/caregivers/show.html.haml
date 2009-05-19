@@ -1,1 +1,6 @@
 %h1= @caregiver.name
+
+= image_tag @caregiver.headshot.url, :class => 'headshot'
+
+%ul
+  %li= link_to t('caregivers.headshot.link'), headshot_caregiver_path(@caregiver)

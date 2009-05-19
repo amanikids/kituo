@@ -2,5 +2,6 @@ config/database.yml
 db/*.sqlite*
 log
 public/stylesheets/*.css
-public/system/headshots
+public/system/caregivers/headshots
+public/system/children/headshots
 tmp

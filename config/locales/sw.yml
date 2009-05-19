@@ -37,6 +37,12 @@ sw:
       submit: Ingiza taarifa
     create:
       notice: "Umefungua faili ya {{name}}."
+    update:
+      notice: "Umebadilisha faili ya {{name}}."
+    headshot:
+      link: Badilisha picha
+      title: Badilisha picha
+      submit: Ingiza picha mpya
 
   children:
     index:
@@ -143,6 +149,7 @@ sw:
       arrival:
         happened_on: Tarehe
       caregiver:
+        headshot: Upload Picha Mpya
         name: Jina
       child:
         headshot: Upload Picha Mpya

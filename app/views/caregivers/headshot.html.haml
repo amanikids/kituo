@@ -1,0 +1,15 @@
+%h1= link_to @caregiver.name, @caregiver
+
+= image_tag @caregiver.headshot.url, :class => 'headshot'
+
+%h2= t('caregivers.headshot.title')
+
+- form_for @caregiver, :html => { :multipart => true } do |form|
+  = form.error_messages
+
+  .field
+    = form.label :headshot
+    = form.file_field :headshot
+
+  .submit
+    = form.submit t('caregivers.headshot.submit')

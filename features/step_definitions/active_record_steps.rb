@@ -1,7 +1,8 @@
-Given /^child "(.+)" does not exist$/ do |name|
-  assert_nil Child.find_by_name(name)
+Given /^(.+) "(.+)" does not exist$/ do |klass, name|
+  assert_nil klass.classify.constantize.find_by_name(name)
 end
 
-Given /^child "(.+)" exists$/ do |name|
-  Child.make(:name => name)
+Given /^(.+) "(.+)" exists$/ do |klass, name|
+  klass.classify.constantize.make(:name => name)
 end
+
