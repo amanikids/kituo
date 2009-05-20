@@ -6,12 +6,14 @@
     - content_tag :label do
       = form.radio_button :social_worker_id, nil
       = t('children.social_worker.edit.unassigned')
-  
-  - Caregiver.by_name.each do |caregiver|
-    .field
-      - content_tag :label do
+
+  .field
+    - Caregiver.by_name.each do |caregiver|
+      %label.flow
         = form.radio_button :social_worker_id, caregiver.id
-        = caregiver.name
+        .target
+          = image_tag caregiver.headshot.url, :class => 'headshot'
+          = caregiver.name
 
   .submit
     = form.submit t('children.social_worker.edit.submit')
