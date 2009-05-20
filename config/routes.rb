@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.filter :locale
 
-  map.resources :tasks, :collection => { :unrecorded_arrivals => :get, :upcoming_home_visits => :get }
+  map.resources :tasks, :collection => { :unrecorded_arrivals => :get, :unassigned_children => :get, :upcoming_home_visits => :get }
 
   map.resources :children, :collection => { :onsite => :get, :boarding_offsite => :get, :dropped_out => :get, :reunified => :get, :terminated => :get } do |child|
     child.resources :arrivals, :controller => 'children/arrivals'

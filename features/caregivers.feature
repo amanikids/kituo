@@ -4,11 +4,11 @@ Feature: Caregivers
   I want to enter Caregivers into the system
 
   Scenario: I Save a New Caregiver
-    When I try to create a caregiver named "Japhary Salum"
+    When I create a caregiver named "Japhary Salum"
     Then I should see "Created caregiver Japhary Salum."
 
   Scenario: I Try to Save a Caregiver Without a Name
-    When I try to create a caregiver named ""
+    When I create a caregiver named ""
     Then I should see "can't be blank"
 
   Scenario: I Edit a Caregiver's Name

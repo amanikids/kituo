@@ -150,12 +150,15 @@ sw:
   tasks:
     index:
       tab: Shughuli
-    home_visits:
-      tab: Watoto wanaotakiwa kufanyiwa kazi
-      title: Watoto wanaohitaji Home Visit
     unrecorded_arrivals:
       tab: Taarifa Haitoshi
       title: Taarifa Haitoshi
+    unassigned_children:
+      tab: Wanaohitaji Social Worker
+      title: Watoto wanaohitaji Social Worker
+    upcoming_home_visits:
+      tab: Wanaotakiwa kufanyiwa kazi
+      title: Watoto wanaohitaji Home Visit
 
 
   # ===========================================================================

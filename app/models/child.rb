@@ -13,6 +13,10 @@ class Child < ActiveRecord::Base
     without(*LOCATION_CHANGING_EVENTS).scoped(:order => :created_at)
   end
 
+  def self.without_social_worker
+    scoped(:conditions => '(SELECT COUNT(social_worker_id) FROM case_assignments WHERE case_assignments.child_id = children.id) = 0', :order => :created_at)
+  end
+
   def self.upcoming_home_visits(date = Date.today)
     location_as_of(date).is(Arrival).without(HomeVisit).scoped(:include => :arrivals).sort_by { |child| child.arrivals.first.happened_on }
   end

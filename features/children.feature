@@ -5,33 +5,27 @@ Feature: Children
 
   Scenario: I Save a New Child
     Given child "Ramadhan Masawe" does not exist
-    When I try to create a child named "Ramadhan Masawe"
+    When I create a child named "Ramadhan Masawe"
     Then I should see "New case file started for Ramadhan Masawe."
 
-  Scenario: Saving a New Child Puts Him on the Unrecorded Arrivals Page
-    Given child "Ramadhan Masawe" does not exist
-    When I try to create a child named "Ramadhan Masawe"
-    And I go to the unrecorded arrivals tasks page
-    Then I should see "Ramadhan Masawe"
-
-  Scenario: I Try to Save a Child Without a Name
-    When I try to create a child named ""
+  Scenario: I Save a Child Without a Name
+    When I create a child named ""
     Then I should see "can't be blank"
 
-  Scenario: I Try to Save a Child We Already Know About
+  Scenario: I Save a Child We Already Know About
     Given child "Ramadhan Masawe" exists
-    When I try to create a child named "Ramadhan Masawe"
+    When I create a child named "Ramadhan Masawe"
     Then I should see "Potential Duplicates Found"
 
   Scenario: Resolving a Duplicate Name by Creating a Duplicate Child
     Given child "Ramadhan Masawe" exists
-    When I try to create a child named "Ramadhan Masawe"
+    When I create a child named "Ramadhan Masawe"
     And I press "Create a New Case File"
     Then I should see "New case file started for Ramadhan Masawe."
 
   Scenario: Resolving a Duplicate Name by Selecting an Existing Child
     Given child "Ramadhan Masawe" exists
-    When I try to create a child named "Ramadhan Masawe"
+    When I create a child named "Ramadhan Masawe"
     And I follow "Ramadhan Masawe"
     Then I should not see "New case file started for Ramadhan Masawe."
     And I should see "Ramadhan Masawe"
@@ -57,8 +51,5 @@ Feature: Children
   Scenario: I Assign a Child to a Social Worker
     Given child "Ramadhan Masawe" exists
     And caregiver "Japhary Salum" exists
-    When I go to the child page for "Ramadhan Masawe"
-    And I follow "Edit Social Worker"
-    And I select "Japhary Salum" from "Social Worker"
-    And I press "Save"
+    When I assign "Ramadhan Masawe" to "Japhary Salum"
     Then I should see "Ramadhan Masawe's social worker is now Japhary Salum."

@@ -20,6 +20,9 @@ module NavigationHelpers
     when /the unrecorded arrivals tasks page/
       unrecorded_arrivals_tasks_path
 
+    when /the unassigned children tasks page/
+      unassigned_children_tasks_path
+
     when /the upcoming home visits tasks page/
       upcoming_home_visits_tasks_path
 

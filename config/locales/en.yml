@@ -150,12 +150,15 @@ en:
   tasks:
     index:
       tab: Tasks
-    home_visits:
-      tab: Upcoming Home Visits
-      title: Upcoming Home Visits
     unrecorded_arrivals:
       tab: Unrecorded Arrivals
       title: Unrecorded Arrivals
+    unassigned_children:
+      tab: Unassigned Children
+      title: Unassigned Children
+    upcoming_home_visits:
+      tab: Upcoming Home Visits
+      title: Upcoming Home Visits
 
 
   # ===========================================================================
