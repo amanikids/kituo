@@ -61,8 +61,10 @@ sw:
         submit_leader: "Ukiwa na uhakika huyu mtoto hayupo kati ya hawa hapa juu,"
         submit: "Fungua faili ya {{name}}"
     show:
-      timeline: Historia
       record: 'Tukio:'
+      social_worker:
+        unassigned: Hana
+      timeline: Historia
     edit:
       link: Badilisha jina
       title: Badilisha jina
@@ -130,13 +132,6 @@ sw:
         notice: "Tarehe ya termination ya {{name}} imerikodiwa."
 
     # singular nested child resources
-    case_assignment:
-      new:
-        link: Assign to a Social Worker
-        title: Assign to a Social Worker
-        submit: Ingiza taarifa
-      create:
-        notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."
     headshot:
       edit:
         link: Badilisha picha
@@ -144,6 +139,13 @@ sw:
         submit: Ingiza picha mpya
       update:
         notice: "Picha mpya ya {{name}} umerikodiwa."
+    social_worker:
+      edit:
+        link: Badilisha Social Worker
+        title: Badilisha Social Worker
+        submit: Ingiza taarifa
+      update:
+        notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."
 
   tasks:
     index:
@@ -167,11 +169,13 @@ sw:
         headshot: Upload Picha Mpya
         name: Jina
       case_assignment:
+        child_id: Mtoto
         social_worker_id: Social worker
       child:
         headshot: Upload Picha Mpya
         ignore_potential_duplicates: "THIS SHOULDN'T SHOW UP ON THE SCREEN"
         name: Jina
+        social_worker_id: Social worker
       dropout:
         happened_on: Tarehe
       home_visit:
@@ -186,7 +190,7 @@ sw:
     models:
       arrival: Alipoingia kituoni
       caregiver: Mlezi
-      case_assignment: Case assignment # this shouldn't show up
+      case_assignment: Case assignment # this shouldn't show up, so English is okay
       child: Mtoto
       dropout: Alipotoroka
       home_visit: Home visit

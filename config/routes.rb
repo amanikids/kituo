@@ -11,8 +11,8 @@ ActionController::Routing::Routes.draw do |map|
     child.resources :dropouts, :controller => 'children/dropouts'
     child.resources :terminations, :controller => 'children/terminations'
 
-    child.resource :case_assignment, :controller => 'children/case_assignments'
     child.resource :headshot, :controller => 'children/headshots'
+    child.resource :social_worker, :controller => 'children/social_workers'
   end
 
   map.resources :caregivers do |caregiver|

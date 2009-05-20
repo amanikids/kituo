@@ -1,4 +1,6 @@
 class Child < ActiveRecord::Base
+  extend ActiveSupport::Memoizable
+
   LOCATION_CHANGING_EVENTS = [Arrival, OffsiteBoarding, Reunification, Dropout, Termination]
 
   named_scope :by_name, :order => :name
@@ -57,7 +59,7 @@ class Child < ActiveRecord::Base
   validates_presence_of :name
   validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
   attr_accessor :ignore_potential_duplicates
-  attr_accessible :name, :ignore_potential_duplicates, :headshot
+  attr_accessible :name, :ignore_potential_duplicates, :headshot, :social_worker_id
 
   # FIXME oh no we di'int
   def self.search(name)
@@ -67,9 +69,13 @@ class Child < ActiveRecord::Base
   def potential_duplicates
     Child.search(name)
   end
-
-  extend ActiveSupport::Memoizable
   memoize :potential_duplicates
+
+  delegate :id,   :to => :social_worker, :prefix => true, :allow_nil => true
+  delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
+  def social_worker_id=(social_worker_id)
+    build_case_assignment(:social_worker_id => social_worker_id)
+  end
 
   private
 

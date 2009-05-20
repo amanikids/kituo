@@ -61,8 +61,10 @@ en:
         submit_leader: "Or, if you're sure,"
         submit: "Create a New Case File for {{name}}"
     show:
-      timeline: Timeline
       record: 'Record:'
+      social_worker:
+        unassigned: Unassigned
+      timeline: Timeline
     edit:
       link: Edit Name
       title: Edit Name
@@ -130,13 +132,6 @@ en:
         notice: "Termination recorded for {{name}}."
 
     # singular nested child resources
-    case_assignment:
-      new:
-        link: Assign to a Social Worker
-        title: Assign to a Social Worker
-        submit: Save
-      create:
-        notice: "{{child_name}}'s social worker is now {{social_worker_name}}."
     headshot:
       edit:
         link: Edit Headshot
@@ -144,6 +139,13 @@ en:
         submit: Save
       update:
         notice: "Updated Headshot for {{name}}."
+    social_worker:
+      edit:
+        link: Edit Social Worker
+        title: Edit Social Worker
+        submit: Save
+      update:
+        notice: "{{child_name}}'s social worker is now {{social_worker_name}}."
 
   tasks:
     index:

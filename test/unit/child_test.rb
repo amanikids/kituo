@@ -55,4 +55,48 @@ class ChildTest < ActiveSupport::TestCase
       end
     end
   end
+
+  context 'social worker id' do
+    setup do
+      @child = Child.make
+      @social_worker = Caregiver.make
+    end
+
+    should 'be nil by default' do
+      assert_nil @child.social_worker_id
+    end
+
+    should 'reflect assigned social worker' do
+      @child.social_worker = @social_worker
+      assert_equal @social_worker.id, @child.social_worker_id
+    end
+
+    should 'be assignable' do
+      @child.update_attributes(:social_worker_id => @social_worker.id)
+      assert_equal @social_worker, @child.social_worker
+    end
+
+    should 'be assignable to nil' do
+      @child.update_attributes(:social_worker_id => nil)
+      assert_nil @child.social_worker
+    end
+
+    context 're-assignment' do
+      setup do
+        @child.social_worker = @social_worker
+        @new_social_worker = Caregiver.make
+      end
+
+      should 'work' do
+        @child.update_attributes(:social_worker_id => @new_social_worker.id)
+        assert_equal @new_social_worker, @child.social_worker(true)
+      end
+
+      should_eventually 'not create a new case assignment' do
+        assert_no_difference 'CaseAssignment.count' do
+          @child.update_attributes(:social_worker_id => @new_social_worker.id)
+        end
+      end
+    end
+  end
 end

@@ -1,0 +1,10 @@
+= render :partial => 'children/header', :locals => { :child => @child }
+%h2= t('children.social_worker.edit.title')
+
+- form_for @child, :url => child_social_worker_path(@child) do |form|
+  .field
+    = form.label :social_worker_id
+    = form.collection_select :social_worker_id, Caregiver.by_name, :id, :name, :include_blank => true
+
+  .submit
+    = form.submit t('children.social_worker.edit.submit')

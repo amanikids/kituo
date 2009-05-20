@@ -5,12 +5,13 @@
 %ul
   %li= link_to t('children.edit.link'), edit_child_path(@child)
   %li= link_to t('children.headshot.edit.link'), edit_child_headshot_path(@child)
-  - unless @child.case_assignment
-    %li= link_to t('children.case_assignment.new.link'), new_child_case_assignment_path(@child)
+  %li
+    = link_to t('children.social_worker.edit.link'), edit_child_social_worker_path(@child)
+    - if @child.social_worker
+      = link_to @child.social_worker_name, @child.social_worker
+    - else
+      = t('children.show.social_worker.unassigned')
 
-- if @child.case_assignment
-  %h2= link_to @child.social_worker.name, @child.social_worker
-  = image_tag @child.social_worker.headshot.url, :class => 'headshot'
 
 %h2= t('children.show.timeline')
 
