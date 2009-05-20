@@ -13,6 +13,6 @@ end
 When(/^I assign "(.+)" to "(.+)"$/) do |child, social_worker|
   When "I go to the child page for \"#{child}\""
   And 'I follow "Edit Social Worker"'
-  And "I select \"#{social_worker}\" from \"Social Worker\""
+  And "I choose \"#{social_worker}\""
   And 'I press "Save"'
 end

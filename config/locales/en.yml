@@ -143,6 +143,7 @@ en:
       edit:
         link: Edit Social Worker
         title: Edit Social Worker
+        unassigned: Unassigned
         submit: Save
       update:
         notice: "{{child_name}}'s social worker is now {{social_worker_name}}."

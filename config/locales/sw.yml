@@ -143,6 +143,7 @@ sw:
       edit:
         link: Badilisha Social Worker
         title: Badilisha Social Worker
+        unassigned: Hana
         submit: Ingiza taarifa
       update:
         notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."

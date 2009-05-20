@@ -3,8 +3,15 @@
 
 - form_for @child, :url => child_social_worker_path(@child) do |form|
   .field
-    = form.label :social_worker_id
-    = form.collection_select :social_worker_id, Caregiver.by_name, :id, :name, :include_blank => true
+    - content_tag :label do
+      = form.radio_button :social_worker_id, nil
+      = t('children.social_worker.edit.unassigned')
+  
+  - Caregiver.by_name.each do |caregiver|
+    .field
+      - content_tag :label do
+        = form.radio_button :social_worker_id, caregiver.id
+        = caregiver.name
 
   .submit
     = form.submit t('children.social_worker.edit.submit')
