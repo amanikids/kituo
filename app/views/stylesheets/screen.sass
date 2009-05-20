@@ -180,20 +180,26 @@ body
 
   table.todo_list
     width: 100%
+
     tr
       background-color= !very_light_blue
       border-bottom= 3px solid !white
+    tr:hover
+      background-color= !white
+
     td
       a
         color= !black
         display: block
         padding: 0.5em
         text-decoration: none
-      a:hover
-        background-color= !white
+
+    td.detail
+      font-size: 80%
+      padding: 0.5em
+      width: 10em
 
     td.due
-      font-family= !serif
       font-size: 80%
       text-align: center
       padding: 0.5em
