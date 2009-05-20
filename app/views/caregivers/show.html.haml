@@ -5,3 +5,6 @@
 %ul
   %li= link_to t('caregivers.edit.link'), edit_caregiver_path(@caregiver)
   %li= link_to t('caregivers.headshot.edit.link'), edit_caregiver_headshot_path(@caregiver)
+
+%h2= t('caregivers.show.case_load', :count => @caregiver.children.count)
+.secondary= render @caregiver.children.by_name

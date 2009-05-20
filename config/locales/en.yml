@@ -30,6 +30,10 @@ en:
       submit: Save
     create:
       notice: "Created caregiver {{name}}."
+    show:
+      case_load:
+        one: "Case Load: 1 Child"
+        other: "Case Load: {{count}} Children"
     edit:
       link: Edit Name
       title: Edit Name

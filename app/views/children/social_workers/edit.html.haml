@@ -7,11 +7,11 @@
       = form.radio_button :social_worker_id, nil
       = t('children.social_worker.edit.unassigned')
 
-  .field
+  .field.secondary
     - Caregiver.by_name.each do |caregiver|
       %label.flow
         = form.radio_button :social_worker_id, caregiver.id
-        .target
+        .headshot_partial
           = image_tag caregiver.headshot.url, :class => 'headshot'
           = caregiver.name
 

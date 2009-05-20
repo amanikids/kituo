@@ -53,3 +53,10 @@ Feature: Children
     And caregiver "Japhary Salum" exists
     When I assign "Ramadhan Masawe" to "Japhary Salum"
     Then I should see "Ramadhan Masawe's social worker is now Japhary Salum."
+
+  Scenario: Assigning a Child to a Social Worker Puts Him on the Social Worker's page
+    Given child "Ramadhan Masawe" exists
+    And caregiver "Japhary Salum" exists
+    When I assign "Ramadhan Masawe" to "Japhary Salum"
+    And I go to the caregiver page for "Japhary Salum"
+    Then I should see "Ramadhan Masawe"

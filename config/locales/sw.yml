@@ -30,6 +30,10 @@ sw:
       submit: Ingiza taarifa
     create:
       notice: "Umefungua faili ya {{name}}."
+    show:
+      case_load:
+        one: "Case Load: Mtoto 1"
+        other: "Case Load: Watoto {{count}}"
     edit:
       link: Badilisha jina
       title: Badilisha jina
