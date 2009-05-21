@@ -160,9 +160,11 @@ en:
   tasks:
     index:
       tab: Tasks
+      title: Tasks
     unrecorded_arrivals:
       tab: Unrecorded Arrivals
       title: Unrecorded Arrivals
+      item: "Record an Arrival for {{name}}"
     unassigned_children:
       tab: Unassigned Children
       title: Unassigned Children

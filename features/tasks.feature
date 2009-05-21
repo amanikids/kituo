@@ -25,3 +25,10 @@ Feature: Tasks
     And I assign "Ramadhan Masawe" to "Japhary Salum"
     And I go to the unassigned children tasks page
     Then I should not see "Ramadhan Masawe"
+
+  Scenario: Assigning a New Child to a Social Worker places an "Unrecorded Arrival" Task on the Social Worker's Page
+    Given caregiver "Japhary Salum" exists
+    And child "Ramadhan Masawe" exists
+    When I assign "Ramadhan Masawe" to "Japhary Salum"
+    And I go to the caregiver page for "Japhary Salum"
+    Then I should see "Record an Arrival for Ramadhan Masawe"

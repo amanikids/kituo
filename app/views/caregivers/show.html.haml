@@ -6,6 +6,13 @@
   %li= link_to t('caregivers.edit.link'), edit_caregiver_path(@caregiver)
   %li= link_to t('caregivers.headshot.edit.link'), edit_caregiver_headshot_path(@caregiver)
 
+%h2= badged(t('tasks.index.title'), @caregiver.children.unrecorded_arrivals.count(:id))
+%table.todo_list
+  - @caregiver.children.unrecorded_arrivals.each do |child|
+    %tr
+      %td= link_to t('tasks.unrecorded_arrivals.item', :name => content_tag(:strong, child.name)), new_child_arrival_path(child)
+      = due_date_td child.created_at.to_date
+
 %h2= t('children.index.title')
 - %w(unrecorded_arrivals onsite boarding_offsite reunified terminated dropped_out).each do |status|
   - count = @caregiver.children.send(status).count(:id)

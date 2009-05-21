@@ -159,9 +159,11 @@ sw:
   tasks:
     index:
       tab: Shughuli
+      title: Shughuli
     unrecorded_arrivals:
       tab: Taarifa Haitoshi
       title: Taarifa Haitoshi
+      item: "Tukio tarehe Alipoingia kituoni kama {{name}}"
     unassigned_children:
       tab: Wanaohitaji Social Worker
       title: Watoto wanaohitaji Social Worker
