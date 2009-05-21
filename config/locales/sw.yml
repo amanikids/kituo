@@ -54,6 +54,7 @@ sw:
     index:
       tab: Watoto
       title: Watoto
+      empty: Huna Watoto
     new:
       link: Fungua Faili ya Mtoto Mgeni
       title: Mtoto Mgeni
@@ -160,6 +161,7 @@ sw:
     index:
       tab: Shughuli
       title: Shughuli
+      empty: Huna Shughuli
     unrecorded_arrivals:
       tab: Taarifa Haitoshi
       title: Taarifa Haitoshi

@@ -7,11 +7,17 @@
   %li= link_to t('caregivers.headshot.edit.link'), edit_caregiver_headshot_path(@caregiver)
 
 %h2= badged(t('tasks.index.title'), @caregiver.tasks.count)
-%table.task_list= render @caregiver.tasks
+- if @caregiver.tasks.any?
+  %table.task_list= render @caregiver.tasks
+- else
+  .empty= t('tasks.index.empty')
 
 %h2= t('children.index.title')
-- %w(unrecorded_arrivals onsite boarding_offsite reunified terminated dropped_out).each do |status|
-  - count = @caregiver.children.send(status).count(:id)
-  - unless count.zero?
-    %h3= t("children.#{status}.title", :count => count)
-    .secondary= render @caregiver.children.send(status)
+- if @caregiver.children.any?
+  - %w(unrecorded_arrivals onsite boarding_offsite reunified terminated dropped_out).each do |status|
+    - count = @caregiver.children.send(status).count(:id)
+    - unless count.zero?
+      %h3= t("children.#{status}.title", :count => count)
+      .secondary= render @caregiver.children.send(status)
+- else
+  .empty= t('children.index.empty')

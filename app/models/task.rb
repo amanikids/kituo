@@ -1,4 +1,5 @@
 class Task < Struct.new(:for, :by, :due_at, :description, :resolve_path)
+  # TODO these url_for hashes are hinky
   class << self
     def assign_social_worker(child)
       new(child, nil, child.created_at.to_date, :unassigned_children, { :controller => 'children/social_workers', :action => 'edit', :child_id => child.id })

@@ -54,6 +54,7 @@ en:
     index:
       tab: Children
       title: Children
+      empty: No Children
     new:
       link: New Child
       title: New Child
@@ -161,6 +162,7 @@ en:
     index:
       tab: Tasks
       title: Tasks
+      empty: No Tasks
     unrecorded_arrivals:
       tab: Unrecorded Arrivals
       title: Unrecorded Arrivals
