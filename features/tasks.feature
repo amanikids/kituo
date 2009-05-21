@@ -32,3 +32,11 @@ Feature: Tasks
     When I assign "Ramadhan Masawe" to "Japhary Salum"
     And I go to the caregiver page for "Japhary Salum"
     Then I should see "Record an Arrival for Ramadhan Masawe"
+
+  Scenario: Assigning an Arrived Child to a Social Worker places an "Upcoming Home Visit" Task on the Social Worker's Page
+    Given caregiver "Japhary Salum" exists
+    And child "Ramadhan Masawe" exists
+    And arrival for "Ramadhan Masawe" exists
+    When I assign "Ramadhan Masawe" to "Japhary Salum"
+    And I go to the caregiver page for "Japhary Salum"
+    Then I should see "Make a Home Visit for Ramadhan Masawe"

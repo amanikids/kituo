@@ -1,6 +1,6 @@
 %h1= t('tasks.unrecorded_arrivals.title')
 
-%table.todo_list
+%table.task_list
   - @children.each do |child|
     %tr
       %td= link_to child.name, new_child_arrival_path(child)

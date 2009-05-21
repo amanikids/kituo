@@ -1,6 +1,6 @@
 %h1= t('tasks.upcoming_home_visits.title')
 
-%table.todo_list
+%table.task_list
   - @children.each do |child|
     %tr
       %td= link_to child.name, new_child_home_visit_path(child)

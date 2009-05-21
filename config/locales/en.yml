@@ -171,6 +171,7 @@ en:
     upcoming_home_visits:
       tab: Upcoming Home Visits
       title: Upcoming Home Visits
+      item: "Make a Home Visit for {{name}}"
 
 
   # ===========================================================================

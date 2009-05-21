@@ -1,6 +1,6 @@
 %h1= t('tasks.unassigned_children.title')
 
-%table.todo_list
+%table.task_list
   - @children.each do |child|
     %tr
       %td= link_to child.name, edit_child_social_worker_path(child)

@@ -170,6 +170,7 @@ sw:
     upcoming_home_visits:
       tab: Wanaotakiwa kufanyiwa kazi
       title: Watoto wanaohitaji Home Visit
+      item: "Mtembelee nyumbani {{name}}"
 
 
   # ===========================================================================
