@@ -53,6 +53,7 @@ sw:
   children:
     index:
       tab: Watoto
+      title: Watoto
     new:
       link: Fungua Faili ya Mtoto Mgeni
       title: Mtoto Mgeni
@@ -79,26 +80,26 @@ sw:
     # children collection actions
     boarding_offsite:
       tab: Wanokaa boarding
-      title: Watoto wanaokaa boarding
+      title: "Watoto wanaokaa boarding ({{count}})"
     dropped_out:
       tab: Watoro
-      title: Watoto waliotoroka
+      title: "Watoto waliotoroka ({{count}})"
     onsite:
       tab: Wanoakaa kituoni
-      title: Watoto wanaokaa kituoni
+      title: "Watoto wanaokaa kituoni ({{count}})"
       pdf:
         link: Mahudhurio
         title: Watoto wanaokaa kituoni
         subtitle: "Wiki ya {{begin_date}} hadi {{end_date}}"
     reunified:
       tab: Walioshikamanishwa
-      title: Watoto ambao wameshikamanishwa nyumbani
+      title: "Watoto ambao wameshikamanishwa nyumbani ({{count}})"
     terminated:
       tab: Terminated
-      title: Watoto ambao wamekuwa terminated
+      title: "Watoto ambao wamekuwa terminated ({{count}})"
     unrecorded_arrivals:
       tab: Taarifa Haitoshi
-      title: Taarifa Haitoshi
+      title: "Taarifa Haitoshi ({{count}})"
 
     # plural nested child resources
     arrivals:

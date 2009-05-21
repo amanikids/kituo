@@ -1,4 +1,4 @@
-%h1= t('children.dropped_out.title')
+%h1= t('children.dropped_out.title', :count => @children.count)
 
 %ul.actions
   %li= link_to t('children.new.link'), new_child_path

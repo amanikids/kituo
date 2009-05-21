@@ -53,6 +53,7 @@ en:
   children:
     index:
       tab: Children
+      title: Children
     new:
       link: New Child
       title: New Child
@@ -79,26 +80,26 @@ en:
     # children collection actions
     boarding_offsite:
       tab: Boarding Offsite
-      title: Children Boarding Offsite
+      title: "Children Boarding Offsite ({{count}})"
     dropped_out:
       tab: Dropped Out
-      title: Children Dropped out
+      title: "Children Dropped Out ({{count}})"
     onsite:
       tab: Onsite
-      title: Children Onsite
+      title: "Children Onsite ({{count}})"
       pdf:
         link: Roll Call Sheet
         title: Children at Amani
         subtitle: "Week of {{begin_date}} through {{end_date}}"
     reunified:
       tab: Reunified
-      title: Children Reunified
+      title: "Children Reunified ({{count}})"
     terminated:
       tab: Terminated
-      title: Children Terminated
+      title: "Children Terminated ({{count}})"
     unrecorded_arrivals:
       tab: Unrecorded Arrivals
-      title: Unrecorded Arrivals
+      title: "Unrecorded Arrivals ({{count}})"
 
 
     # plural nested child resources

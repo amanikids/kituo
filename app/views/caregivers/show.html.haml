@@ -6,9 +6,9 @@
   %li= link_to t('caregivers.edit.link'), edit_caregiver_path(@caregiver)
   %li= link_to t('caregivers.headshot.edit.link'), edit_caregiver_headshot_path(@caregiver)
 
-%h2= t('children.index.tab')
+%h2= t('children.index.title')
 - %w(unrecorded_arrivals onsite boarding_offsite reunified terminated dropped_out).each do |status|
   - count = @caregiver.children.send(status).count(:id)
   - unless count.zero?
-    %h3= t("children.#{status}.tab", :count => count)
+    %h3= t("children.#{status}.title", :count => count)
     .secondary= render @caregiver.children.send(status)

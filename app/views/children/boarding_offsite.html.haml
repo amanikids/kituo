@@ -1,4 +1,4 @@
-%h1= t('children.boarding_offsite.title')
+%h1= t('children.boarding_offsite.title', :count => @children.count)
 
 %ul.actions
   %li= link_to t('children.new.link'), new_child_path
