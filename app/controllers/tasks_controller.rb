@@ -9,7 +9,6 @@ class TasksController < ApplicationController
     @tasks = Child.unrecorded_arrivals.map { |child| Task.record_arrival(child, child.social_worker) }
   end
 
-  # TODO implement Task.assign_social_worker
   def unassigned_children
     @tasks = Child.without_social_worker.map { |child| Task.assign_social_worker(child) }
   end
