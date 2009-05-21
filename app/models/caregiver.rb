@@ -21,10 +21,10 @@ class Caregiver < ActiveRecord::Base
   private
 
   def unrecorded_arrivals
-    children.unrecorded_arrivals.map { |child| Task.record_arrival(child, self) }
+    children.unrecorded_arrivals.map { |child| Task.record_arrival(child) }
   end
 
   def upcoming_home_visits
-    children.upcoming_home_visits.map { |child| Task.home_visit(child, self) }
+    children.upcoming_home_visits.map { |child| Task.home_visit(child) }
   end
 end

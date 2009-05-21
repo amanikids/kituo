@@ -1,0 +1,4 @@
+%tr
+  %td= link_to t("tasks.#{task.description}.description", :name => content_tag(:strong, task.for.name)), task.resolve_path
+  %td.detail= link_to task.by.name, task.by if task.by
+  = due_date_td task.due_at

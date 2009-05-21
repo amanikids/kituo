@@ -163,14 +163,15 @@ sw:
     unrecorded_arrivals:
       tab: Taarifa Haitoshi
       title: Taarifa Haitoshi
-      item: "Tukio tarehe Alipoingia kituoni kama {{name}}"
+      description: "Tukio tarehe Alipoingia kituoni kama {{name}}"
     unassigned_children:
       tab: Wanaohitaji Social Worker
       title: Watoto wanaohitaji Social Worker
+      description: "Mpe {{name}} Social Worker"
     upcoming_home_visits:
       tab: Wanaotakiwa kufanyiwa kazi
       title: Watoto wanaohitaji Home Visit
-      item: "Mtembelee nyumbani {{name}}"
+      description: "Mtembelee nyumbani {{name}}"
 
 
   # ===========================================================================

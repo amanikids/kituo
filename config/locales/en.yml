@@ -164,14 +164,15 @@ en:
     unrecorded_arrivals:
       tab: Unrecorded Arrivals
       title: Unrecorded Arrivals
-      item: "Record an Arrival for {{name}}"
+      description: "Record an Arrival for {{name}}"
     unassigned_children:
       tab: Unassigned Children
       title: Unassigned Children
+      description: "Assign {{name}} to a Social Worker"
     upcoming_home_visits:
       tab: Upcoming Home Visits
       title: Upcoming Home Visits
-      item: "Make a Home Visit for {{name}}"
+      description: "Make a Home Visit for {{name}}"
 
 
   # ===========================================================================

@@ -7,11 +7,7 @@
   %li= link_to t('caregivers.headshot.edit.link'), edit_caregiver_headshot_path(@caregiver)
 
 %h2= badged(t('tasks.index.title'), @caregiver.tasks.count)
-%table.task_list
-  - @caregiver.tasks.each do |task|
-    %tr
-      %td= link_to t("tasks.#{task.description}.item", :name => content_tag(:strong, task.for.name)), new_polymorphic_path(task.resolve_path)
-      = due_date_td task.due_at
+%table.task_list= render @caregiver.tasks
 
 %h2= t('children.index.title')
 - %w(unrecorded_arrivals onsite boarding_offsite reunified terminated dropped_out).each do |status|
