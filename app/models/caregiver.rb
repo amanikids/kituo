@@ -13,4 +13,18 @@ class Caregiver < ActiveRecord::Base
 
   validates_presence_of :name
   attr_accessible :name, :headshot
+
+  def tasks
+    (unrecorded_arrivals + upcoming_home_visits).sort
+  end
+
+  private
+
+  def unrecorded_arrivals
+    children.unrecorded_arrivals.map { |child| Task.record_arrival(child, self) }
+  end
+
+  def upcoming_home_visits
+    children.upcoming_home_visits.map { |child| Task.home_visit(child, self) }
+  end
 end

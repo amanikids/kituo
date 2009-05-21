@@ -81,6 +81,14 @@ class Child < ActiveRecord::Base
     build_case_assignment(:social_worker_id => social_worker_id)
   end
 
+  def record_arrival_task
+    Task.record_arrival(self)
+  end
+
+  def home_visit_task
+
+  end
+
   private
 
   def no_potential_duplicates_found

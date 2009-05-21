@@ -6,17 +6,12 @@
   %li= link_to t('caregivers.edit.link'), edit_caregiver_path(@caregiver)
   %li= link_to t('caregivers.headshot.edit.link'), edit_caregiver_headshot_path(@caregiver)
 
-- task_count = @caregiver.children.upcoming_home_visits.count + @caregiver.children.unrecorded_arrivals.count(:id)
-%h2= badged(t('tasks.index.title'), task_count)
+%h2= badged(t('tasks.index.title'), @caregiver.tasks.count)
 %table.task_list
-  - @caregiver.children.upcoming_home_visits.each do |child|
+  - @caregiver.tasks.each do |task|
     %tr
-      %td= link_to t('tasks.upcoming_home_visits.item', :name => content_tag(:strong, child.name)), new_child_home_visit_path(child)
-      = due_date_td 2.weeks.since(child.arrivals.first.happened_on)
-  - @caregiver.children.unrecorded_arrivals.each do |child|
-    %tr
-      %td= link_to t('tasks.unrecorded_arrivals.item', :name => content_tag(:strong, child.name)), new_child_arrival_path(child)
-      = due_date_td child.created_at.to_date
+      %td= link_to t("tasks.#{task.description}.item", :name => content_tag(:strong, task.for.name)), new_polymorphic_path(task.resolve_path)
+      = due_date_td task.due_at
 
 %h2= t('children.index.title')
 - %w(unrecorded_arrivals onsite boarding_offsite reunified terminated dropped_out).each do |status|

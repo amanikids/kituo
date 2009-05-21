@@ -11,6 +11,8 @@ end
 
 When /^I dump the database$/ do
   Tempfile.open(['database', '.txt']) do |file|
+    file.write(Caregiver.all.map(&:attributes).to_yaml)
+    file.write(CaseAssignment.all.map(&:attributes).to_yaml)
     file.write(Child.all.map(&:attributes).to_yaml)
     file.write(Event.all.map(&:attributes).to_yaml)
     file.flush
