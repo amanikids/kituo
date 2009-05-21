@@ -96,6 +96,10 @@ en:
     terminated:
       tab: Terminated
       title: Children Terminated
+    unrecorded_arrivals:
+      tab: Unrecorded Arrivals
+      title: Unrecorded Arrivals
+
 
     # plural nested child resources
     arrivals:

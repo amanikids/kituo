@@ -96,6 +96,9 @@ sw:
     terminated:
       tab: Terminated
       title: Watoto ambao wamekuwa terminated
+    unrecorded_arrivals:
+      tab: Taarifa Haitoshi
+      title: Taarifa Haitoshi
 
     # plural nested child resources
     arrivals:
