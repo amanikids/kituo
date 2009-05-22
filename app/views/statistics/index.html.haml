@@ -1,4 +1,2 @@
 %h1= t('statistics.index.title')
-
-%h2= t('statistics.index.average_stay', :average_stay => distance_of_time_in_weeks(@statistics.average_stay))
 = tag(:object, :type => Mime::Type.lookup_by_extension('svg'), :data => statistics_path(:format => :svg), :width => 400, :height => 200)

@@ -1,5 +1,5 @@
 class StatisticsController < ApplicationController
   def index
-    @statistics = Statistic.new
+    @statistic = Statistic.count(Child.all.map(&:name), :length)
   end
 end

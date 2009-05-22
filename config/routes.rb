@@ -19,5 +19,7 @@ ActionController::Routing::Routes.draw do |map|
     caregiver.resource :headshot, :controller => 'caregivers/headshots'
   end
 
+  map.resources :statistics
+
   map.root :controller => 'children'
 end
