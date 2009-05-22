@@ -83,9 +83,9 @@ class Child < ActiveRecord::Base
 
   def tasks
     [].tap do |tasks|
-      tasks << Task.assign_social_worker(self)          if Child.without_social_worker.find_by_id(id)
-      tasks << Task.record_arrival(self, social_worker) if Child.unrecorded_arrivals.find_by_id(id)
-      tasks << Task.home_visit(self, social_worker)     if Child.upcoming_home_visits.find_by_id(id)
+      tasks << Task.assign_social_worker(self) if Child.without_social_worker.find_by_id(id)
+      tasks << Task.record_arrival(self)       if Child.unrecorded_arrivals.find_by_id(id)
+      tasks << Task.home_visit(self)           if Child.upcoming_home_visits.find_by_id(id)
     end.sort
   end
 

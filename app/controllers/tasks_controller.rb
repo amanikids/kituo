@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   # TODO pull the mapping inside of Task
   # TODO can we do the same inside Caregiver?
   def unrecorded_arrivals
-    @tasks = Child.unrecorded_arrivals.map { |child| Task.record_arrival(child, child.social_worker) }.sort
+    @tasks = Child.unrecorded_arrivals.map { |child| Task.record_arrival(child) }.sort
   end
 
   def unassigned_children
@@ -14,6 +14,6 @@ class TasksController < ApplicationController
   end
 
   def upcoming_home_visits
-    @tasks = Child.upcoming_home_visits.map { |child| Task.home_visit(child, child.social_worker) }.sort
+    @tasks = Child.upcoming_home_visits.map { |child| Task.home_visit(child) }.sort
   end
 end
