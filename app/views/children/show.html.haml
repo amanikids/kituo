@@ -12,6 +12,11 @@
     - else
       = t('children.show.social_worker.unassigned')
 
+%h2= badged(t('tasks.index.title'), @child.tasks.count)
+- if @child.tasks.any?
+  %table.task_list= render @child.tasks
+- else
+  .empty= t('tasks.index.empty')
 
 %h2= t('children.show.timeline')
 

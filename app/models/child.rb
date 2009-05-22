@@ -18,7 +18,7 @@ class Child < ActiveRecord::Base
   end
 
   def self.upcoming_home_visits(date = Date.today)
-    location_as_of(date).is(Arrival).without(HomeVisit).scoped(:include => :arrivals).sort_by { |child| child.arrivals.first.happened_on }
+    location_as_of(date).is(Arrival).without(HomeVisit).scoped(:include => :arrivals)
   end
 
   def self.onsite(date = Date.today)
@@ -81,12 +81,10 @@ class Child < ActiveRecord::Base
     build_case_assignment(:social_worker_id => social_worker_id)
   end
 
-  def record_arrival_task
-    Task.record_arrival(self)
-  end
-
-  def home_visit_task
-
+  def tasks
+    [].tap do |tasks|
+      tasks << Task.home_visit(self, social_worker) if Child.upcoming_home_visits.find_by_id(id)
+    end
   end
 
   private

@@ -3,6 +3,7 @@ Feature: Tasks
   As an Amani Caregiver
   I want to see what tasks I have scheduled
 
+  # Top-level tasks
   Scenario: Saving a New Child Puts Him on the Unrecorded Arrivals Page
     When I create a child named "Ramadhan Masawe"
     And I go to the unrecorded arrivals tasks page
@@ -26,6 +27,7 @@ Feature: Tasks
     And I go to the unassigned children tasks page
     Then I should not see "Ramadhan Masawe"
 
+  # Social-worker specific tasks
   Scenario: Assigning a New Child to a Social Worker places an "Unrecorded Arrival" Task on the Social Worker's Page
     Given caregiver "Japhary Salum" exists
     And child "Ramadhan Masawe" exists
@@ -40,3 +42,5 @@ Feature: Tasks
     When I assign "Ramadhan Masawe" to "Japhary Salum"
     And I go to the caregiver page for "Japhary Salum"
     Then I should see "Make a Home Visit for Ramadhan Masawe"
+
+  # Child-specific tasks
