@@ -1,13 +1,21 @@
 @import constants.sass
 
 svg
-  background-color= !very_light_blue
+  background-color= !white
+  font-family= !sans_serif
+  font-size: 11px
 
-  .bar
-    fill= !medium_brown
   .whitespace
     fill= !very_light_blue
+  .bar
+    fill= !medium_brown
+  .label
+    fill= !white
 
   .column:hover
+    .whitespace
+      fill= !light_blue
     .bar
       fill= !medium_light_brown
+    .label
+      fill= !very_light_gold
