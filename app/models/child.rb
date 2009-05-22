@@ -10,7 +10,7 @@ class Child < ActiveRecord::Base
   named_scope :without,        lambda { |*event_classes| { :conditions => ['(SELECT COUNT(*) FROM events WHERE events.child_id = children.id AND events.type IN (?)) = 0', event_classes.map(&:name)] } }
 
   def self.unrecorded_arrivals
-    without(*LOCATION_CHANGING_EVENTS).scoped(:order => :created_at)
+    without(*LOCATION_CHANGING_EVENTS)
   end
 
   def self.without_social_worker
@@ -83,8 +83,10 @@ class Child < ActiveRecord::Base
 
   def tasks
     [].tap do |tasks|
-      tasks << Task.home_visit(self, social_worker) if Child.upcoming_home_visits.find_by_id(id)
-    end
+      tasks << Task.assign_social_worker(self)          if Child.without_social_worker.find_by_id(id)
+      tasks << Task.record_arrival(self, social_worker) if Child.unrecorded_arrivals.find_by_id(id)
+      tasks << Task.home_visit(self, social_worker)     if Child.upcoming_home_visits.find_by_id(id)
+    end.sort
   end
 
   private

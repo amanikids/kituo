@@ -31,7 +31,7 @@ Feature: Home Visits
     And I go to the upcoming home visits tasks page
     Then I should not see "Ramadhan Masawe"
 
-  Scenario: Social Workers See Home Visit Tasks for Their Children
+  Scenario: Social Workers Show Home Visit Tasks for Their Children
     Given caregiver "Japhary Salum" exists
     And arrival for "Ramadhan Masawe" exists
     When I assign "Ramadhan Masawe" to "Japhary Salum"
