@@ -3,7 +3,7 @@ class ChildrenController < ApplicationController
   before_filter :load_child,  :only => [:show, :edit, :update]
 
   def index
-    redirect_to onsite_children_path
+    redirect_to onsite_children_path, :skip_contextual_magic => true
   end
 
   def create

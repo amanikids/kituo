@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    redirect_to :action => 'unrecorded_arrivals'
+    redirect_to unrecorded_arrivals_tasks_path, :skip_contextual_magic => true
   end
 
   # TODO pull the mapping inside of Task
