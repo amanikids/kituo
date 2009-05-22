@@ -8,7 +8,7 @@ class ChildrenController < ApplicationController
 
   def create
     if @child.save
-      flash[:notice] = t('children.create.notice', :name => @child.name)
+      flash[:notice] = t('children.create.notice', :name => @template.link_to(@child.name, @child))
       redirect_to @child
     else
       if @child.potential_duplicates.any?
@@ -21,7 +21,7 @@ class ChildrenController < ApplicationController
 
   def update
     if @child.update_attributes(params[:child])
-      flash[:notice] = t('children.update.notice', :name => @child.name)
+      flash[:notice] = t('children.update.notice', :name => @template.link_to(@child.name, @child))
       redirect_to @child
     else
       render :edit

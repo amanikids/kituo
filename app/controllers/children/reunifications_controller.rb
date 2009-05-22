@@ -3,7 +3,7 @@ class Children::ReunificationsController < Children::BaseController
 
   def create
     if @reunification.save
-      flash[:notice] = t('children.reunifications.create.notice', :name => @child.name)
+      flash[:notice] = t('children.reunifications.create.notice', :name => @template.link_to(@child.name, @child))
       redirect_to @child
     else
       render :new

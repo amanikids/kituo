@@ -8,7 +8,7 @@ class CaregiversController < ApplicationController
 
   def create
     if @caregiver.save
-      flash[:notice] = t('caregivers.create.notice', :name => @caregiver.name)
+      flash[:notice] = t('caregivers.create.notice', :name => @template.link_to(@caregiver.name, @caregiver))
       redirect_to caregiver_path(@caregiver)
     else
       render :new
@@ -17,7 +17,7 @@ class CaregiversController < ApplicationController
 
   def update
     if @caregiver.update_attributes(params[:caregiver])
-      flash[:notice] = t('caregivers.update.notice', :name => @caregiver.name)
+      flash[:notice] = t('caregivers.update.notice', :name => @template.link_to(@caregiver.name, @caregiver))
       redirect_to @caregiver
     else
       render :edit

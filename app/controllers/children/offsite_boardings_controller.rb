@@ -3,7 +3,7 @@ class Children::OffsiteBoardingsController < Children::BaseController
 
   def create
     if @offsite_boarding.save
-      flash[:notice] = t('children.offsite_boardings.create.notice', :name => @child.name)
+      flash[:notice] = t('children.offsite_boardings.create.notice', :name => @template.link_to(@child.name, @child))
       redirect_to @child
     else
       render :new
