@@ -1,6 +1,6 @@
 class BarGraph
   def initialize(data, number_of_bars)
-    @data           = data.dup.compact
+    @data           = data.compact
     @number_of_bars = number_of_bars
 
     @width          = 400
@@ -16,16 +16,14 @@ class BarGraph
   end
 
   def bars
-    bars = []
-    partitions.each_with_index do |value, index|
+    partitions.enum_for(:map).with_index do |value, index|
       x          = index * width_of_one_bar
       height     = value * height_of_one_unit
       y          = height_for_bars - height
       show_label = index.succ % @label_interval == 0
 
-      bars << Bar.new(x, y, width_of_one_bar, height, value, label_for(index), @label_height, show_label)
+      Bar.new(x, y, width_of_one_bar, height, value, label_for(index), @label_height, show_label)
     end
-    bars
   end
 
   private
