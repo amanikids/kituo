@@ -14,10 +14,6 @@ bars               = partitioned_data.data
 width_of_one_bar   = width / number_of_bars
 height_of_one_unit = height_for_bars / bars.values.max
 
-xml.instruct!(:xml, :standalone => 'no')
-xml.instruct!('xml-stylesheet', :type => 'text/css', :href => stylesheet_path('graphs'))
-xml.declare!(:DOCTYPE, :svg, :PUBLIC, '-//W3C//DTD SVG 1.1//EN', 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd')
-xml.svg(:width => width, :height => height, :version => '1.1', :xmlns => 'http://www.w3.org/2000/svg') do
   bars.each do |key, value|
     bar_number = key / partitioned_data.partition_size
     x = (bar_number - 1) * width_of_one_bar
@@ -52,4 +48,3 @@ xml.svg(:width => width, :height => height, :version => '1.1', :xmlns => 'http:/
       xml.text(key, :x => x + (width_of_one_bar / 2), :y => height, 'text-anchor' => 'middle') if bar_number % label_interval == 0
     end
   end
-end
