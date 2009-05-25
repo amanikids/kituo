@@ -160,6 +160,13 @@ sw:
       update:
         notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."
 
+  statistics:
+    index:
+      tab: Ripoti
+      title: Ripoti
+    length_of_stay:
+      title: Muda Wanaokaa Kituoni (Miezi)
+
   tasks:
     index:
       tab: Shughuli
