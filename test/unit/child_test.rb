@@ -56,6 +56,54 @@ class ChildTest < ActiveSupport::TestCase
     end
   end
 
+  context 'length of stay' do
+    setup { @child = Child.make }
+
+    should 'be nil for a child with no Arrivals' do
+      assert_nil @child.length_of_stay
+    end
+
+    context 'for a child who arrived 3 weeks ago' do
+      setup do
+        @child.arrivals.make(:happened_on => 3.weeks.ago)
+      end
+
+      should 'be number of days since Arrival' do
+        assert_equal 21, @child.length_of_stay
+      end
+
+      context 'measuring from a different day' do
+        should 'adjust the result' do
+          assert_equal 14, @child.length_of_stay(1.week.ago)
+        end
+
+        should 'exclude newer events' do
+          assert_nil @child.length_of_stay(4.weeks.ago)
+        end
+      end
+
+      context 'and dropped out 2 weeks ago' do
+        setup do
+          @child.dropouts.make(:happened_on => 2.weeks.ago)
+        end
+
+        should 'be number of days from Arrival to Dropout' do
+          assert_equal 7, @child.length_of_stay
+        end
+      end
+
+      context 'and who, oops, also arrived 5 weeks ago (so that we make sure we honor ordering)' do
+        setup do
+          @child.arrivals.make(:happened_on => 5.weeks.ago)
+        end
+
+        should 'be number of days since Arrival' do
+          assert_equal 35, @child.length_of_stay
+        end
+      end
+    end
+  end
+
   context 'social worker id' do
     setup do
       @child = Child.make

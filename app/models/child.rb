@@ -1,16 +1,15 @@
 class Child < ActiveRecord::Base
   extend ActiveSupport::Memoizable
 
-  LOCATION_CHANGING_EVENTS = [Arrival, OffsiteBoarding, Reunification, Dropout, Termination]
-
   named_scope :by_name, :order => :name
-  named_scope :location_as_of, lambda { |date|           { :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, LOCATION_CHANGING_EVENTS.map(&:name)], :joins => :events }}
+  named_scope :location_as_of, lambda { |date|           { :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, Event.location_changing_event_names], :joins => :events }}
   named_scope :is,             lambda { |*event_classes| { :conditions => ['events.type IN (?)', event_classes.map(&:name)], :joins => :events }}
+  # TODO audit: do we ever say "with"?
   named_scope :with,           lambda { |*event_classes| { :conditions => ['(SELECT COUNT(*) FROM events WHERE events.child_id = children.id AND events.type IN (?)) > 0', event_classes.map(&:name)] } }
   named_scope :without,        lambda { |*event_classes| { :conditions => ['(SELECT COUNT(*) FROM events WHERE events.child_id = children.id AND events.type IN (?)) = 0', event_classes.map(&:name)] } }
 
   def self.unrecorded_arrivals
-    without(*LOCATION_CHANGING_EVENTS)
+    without(*Event.location_changing_events)
   end
 
   def self.without_social_worker
@@ -70,9 +69,29 @@ class Child < ActiveRecord::Base
     NameMatcher.new(Child.all.map(&:name)).match(name).map { |n| Child.find_all_by_name(n) }.flatten
   end
 
-  def length_of_stay
-    return nil if arrivals.empty?
-    Date.today - arrivals.first.happened_on
+  # Maybe this should use some sort of counter object? (YAGNI, until we need it more than once.)
+  def length_of_stay(measured_on = Date.today)
+    return nil if arrivals.happened_by(measured_on).empty?
+
+    length_of_stay = 0
+    current_stay_started_at = nil
+
+    events.location_changing.happened_by(measured_on).each do |event|
+      if current_stay_started_at
+        length_of_stay += (event.happened_on - current_stay_started_at)
+        current_stay_started_at = nil
+      end
+
+      if event.is_a?(Arrival)
+        current_stay_started_at = event.happened_on
+      end
+    end
+
+    if current_stay_started_at
+      length_of_stay += (measured_on.to_date - current_stay_started_at)
+    end
+
+    length_of_stay
   end
 
   def potential_duplicates
