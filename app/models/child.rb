@@ -70,6 +70,11 @@ class Child < ActiveRecord::Base
     NameMatcher.new(Child.all.map(&:name)).match(name).map { |n| Child.find_all_by_name(n) }.flatten
   end
 
+  def length_of_stay
+    return nil if arrivals.empty?
+    Date.today - arrivals.first.happened_on
+  end
+
   def potential_duplicates
     Child.search(name)
   end

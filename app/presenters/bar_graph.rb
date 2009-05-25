@@ -1,6 +1,6 @@
 class BarGraph
   def initialize(data, number_of_bars)
-    @data           = data
+    @data           = data.dup.compact
     @number_of_bars = number_of_bars
 
     @width          = 400
@@ -35,10 +35,12 @@ class BarGraph
   end
 
   def height_of_one_unit
+    return 0 if partitions.max.zero?
     height_for_bars / partitions.max
   end
 
   def label_for(index)
+    return index if @data.min.nil?
     @data.min + (index.succ * partition_size)
   end
 
@@ -55,6 +57,7 @@ class BarGraph
   end
 
   def partition_size
+    return 0 if @data.max.nil?
     (@data.max - @data.min).quo(@number_of_bars).ceil
   end
 
