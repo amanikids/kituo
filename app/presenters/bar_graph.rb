@@ -3,7 +3,8 @@ class BarGraph
     @data           = data.compact
     @number_of_bars = number_of_bars
 
-    @width          = 400
+    @width          = 600
+    @legend_width   = 200
     @height         = 200
     @label_height   = 16
     @label_interval = 3
@@ -24,6 +25,29 @@ class BarGraph
 
       Bar.new(x, y, width_of_one_bar, height, value, label_for(index), @label_height, show_label)
     end
+  end
+
+  def mean
+    return 0 if @data.empty?
+    @data.sum / @data.length
+  end
+
+  def median
+    return 0 if @data.empty?
+    @data.sort[@data.length / 2]
+  end
+
+  def mode
+    return 0 if @data.empty?
+
+    counter = Hash.new(0).tap do |counter|
+      @data.each do |number|
+        counter[number] += 1
+      end
+    end
+
+    mode_value = counter.values.max
+    counter.select { |k, v| v == mode_value }.map { |pair| pair.first }
   end
 
   private
@@ -75,7 +99,11 @@ class BarGraph
     (maximum_value - minimum_value).quo(@number_of_bars).ceil
   end
 
+  def width_for_bars
+    @width - @legend_width
+  end
+
   def width_of_one_bar
-    @width / @number_of_bars
+    width_for_bars / @number_of_bars
   end
 end

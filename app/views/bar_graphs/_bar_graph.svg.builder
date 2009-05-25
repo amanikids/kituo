@@ -7,3 +7,8 @@ bar_graph.bars.each do |bar|
     xml.text(bar.label, :x => bar.centered_x, :y => bar.y + bar.height + bar.label_height, 'text-anchor' => 'middle') if bar.show_label
   end
 end
+
+# FIXME don't hardcode these x and y values
+xml.text(t('statistics.bar_graph.mean',   :mean => bar_graph.mean), :x => 416, :y => 32)
+xml.text(t('statistics.bar_graph.median', :median => bar_graph.median), :x => 416, :y => 48)
+xml.text(t('statistics.bar_graph.mode',   :mode => bar_graph.mode.to_sentence), :x => 416, :y => 64)

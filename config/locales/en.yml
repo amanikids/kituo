@@ -167,6 +167,10 @@ en:
       title: Statistics
     length_of_stay:
       title: Length of Stay at Amani (in Months)
+    bar_graph:
+      mean: "Mean: {{mean}}"
+      median: "Median: {{median}}"
+      mode: "Mode: {{mode}}"
 
   tasks:
     index:
