@@ -1,6 +1,6 @@
 class BarGraph
-  def initialize(statistic, number_of_bars)
-    @statistic      = statistic
+  def initialize(data, number_of_bars)
+    @data           = data
     @number_of_bars = number_of_bars
 
     @width          = 400
@@ -16,16 +16,16 @@ class BarGraph
   end
 
   def bars
-    partitioned_data.data.map do |key, value|
-      bar_number = key / partitioned_data.partition_size
+    bars = []
+    partitions.each_with_index do |value, index|
+      x          = index * width_of_one_bar
+      height     = value * height_of_one_unit
+      y          = height_for_bars - height
+      show_label = index.succ % @label_interval == 0
 
-      x = (bar_number - 1) * width_of_one_bar
-      height = value * height_of_one_unit
-      y = height_for_bars - height
-      show_label = bar_number % @label_interval == 0
-
-      Bar.new(x, y, width_of_one_bar, height, value, key, @label_height, show_label)
+      bars << Bar.new(x, y, width_of_one_bar, height, value, sentinel_partition_value_for(index), @label_height, show_label)
     end
+    bars
   end
 
   private
@@ -35,11 +35,27 @@ class BarGraph
   end
 
   def height_of_one_unit
-    height_for_bars / partitioned_data.data.values.max
+    height_for_bars / partitions.max
   end
 
-  def partitioned_data
-    @statistic.partitioned(@number_of_bars)
+  def partitions
+    Array.new(@number_of_bars, 0).tap do |partitions|
+      @data.each do |value|
+        partitions[partition_index_for(value)] += 1
+      end
+    end
+  end
+
+  def partition_index_for(value)
+    (value - @data.min).quo(partition_size).floor
+  end
+
+  def partition_size
+    (@data.max - @data.min).quo(@number_of_bars).ceil
+  end
+
+  def sentinel_partition_value_for(index)
+    @data.min + (index.succ * partition_size)
   end
 
   def width_of_one_bar
