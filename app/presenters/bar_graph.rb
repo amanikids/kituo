@@ -19,7 +19,7 @@ class BarGraph
     partitions.enum_for(:map).with_index do |value, index|
       x          = index * width_of_one_bar
       height     = value * height_of_one_unit
-      y          = height_for_bars - height
+      y          = @label_height + height_for_bars - height
       show_label = index.succ % @label_interval == 0
 
       Bar.new(x, y, width_of_one_bar, height, value, label_for(index), @label_height, show_label)
@@ -29,7 +29,7 @@ class BarGraph
   private
 
   def height_for_bars
-    @height - @label_height
+    @height - (2 * @label_height)
   end
 
   def height_of_one_unit
