@@ -23,7 +23,7 @@ class BarGraph
       y          = height_for_bars - height
       show_label = index.succ % @label_interval == 0
 
-      bars << Bar.new(x, y, width_of_one_bar, height, value, sentinel_partition_value_for(index), @label_height, show_label)
+      bars << Bar.new(x, y, width_of_one_bar, height, value, label_for(index), @label_height, show_label)
     end
     bars
   end
@@ -36,6 +36,10 @@ class BarGraph
 
   def height_of_one_unit
     height_for_bars / partitions.max
+  end
+
+  def label_for(index)
+    @data.min + (index.succ * partition_size)
   end
 
   def partitions
@@ -52,10 +56,6 @@ class BarGraph
 
   def partition_size
     (@data.max - @data.min).quo(@number_of_bars).ceil
-  end
-
-  def sentinel_partition_value_for(index)
-    @data.min + (index.succ * partition_size)
   end
 
   def width_of_one_bar
