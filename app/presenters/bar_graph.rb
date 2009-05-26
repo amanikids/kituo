@@ -14,6 +14,18 @@ class BarGraph
     def centered_x
       x + (width / 2)
     end
+
+    def label_box_y
+      y + height
+    end
+
+    def label_y
+      y + height + label_height
+    end
+
+    def value_y
+      y - 2
+    end
   end
 
   def bars
@@ -25,6 +37,14 @@ class BarGraph
 
       Bar.new(x, y, width_of_one_bar, height, value, label_for(index), @label_height, show_label)
     end
+  end
+
+  def legend_x
+    width_for_bars + @label_height
+  end
+
+  def legend_y_row(row)
+    row.succ.succ * @label_height
   end
 
   def mean

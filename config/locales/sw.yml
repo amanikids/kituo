@@ -166,6 +166,10 @@ sw:
       title: Ripoti
     length_of_stay:
       title: Muda Wanaokaa Kituoni (Miezi)
+    bar_graph:
+      mean: "Mean: {{mean}}"
+      median: "Median: {{median}}"
+      mode: "Mode: {{mode}}"
 
   tasks:
     index:
