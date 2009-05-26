@@ -2,7 +2,7 @@ sw:
   locale_name: Kiswahili
 
   title: Kituo cha Amani
-  staging: "Tahadhari! Database hii ni ya kujifunzia tu. Taarifa yote inayoingizwa itafutwa. Database yenyewe iko: {{link}}."
+  staging: "Tahadhari! Database hii ni ya kujifunzia tu. Database yenyewe iko: {{link}}."
 
   datetime:
     distance_in_weeks:

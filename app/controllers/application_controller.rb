@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   # see how the layout looks:
   # skip_after_filter Footnotes::Filter
 
+  private
+
   def redirect_to(*args)
     return super if args.extract_options![:skip_contextual_magic]
 
@@ -22,8 +24,6 @@ class ApplicationController < ActionController::Base
       super
     end
   end
-
-  private
 
   def set_locale
     I18n.locale = params[:locale] if params[:locale]

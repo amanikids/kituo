@@ -2,7 +2,7 @@ en:
   locale_name: English
 
   title: Amani Children's Home
-  staging: "Warning! This is the practice server. Information entered here will be deleted. The real server is {{link}}."
+  staging: "Warning! This is the practice server. The real server is {{link}}."
 
   datetime:
     distance_in_weeks:
