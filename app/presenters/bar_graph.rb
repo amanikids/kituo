@@ -1,4 +1,6 @@
 class BarGraph
+  extend ActiveSupport::Memoizable
+
   def initialize(data, number_of_bars=21)
     @data           = data.compact
     @number_of_bars = number_of_bars
@@ -58,7 +60,7 @@ class BarGraph
   end
 
   def mode
-    return 0 if @data.empty?
+    return [0] if @data.empty?
 
     counter = Hash.new(0).tap do |counter|
       @data.each do |number|
@@ -75,11 +77,13 @@ class BarGraph
   def height_for_bars
     @height - (2 * @label_height)
   end
+  memoize :height_for_bars
 
   def height_of_one_unit
     return 0 if partitions.max.zero?
     height_for_bars / partitions.max
   end
+  memoize :height_of_one_unit
 
   def label_for(index)
     return index if @data.min.nil?
@@ -93,6 +97,7 @@ class BarGraph
     maximum_value += 1 until maximum_value % @number_of_bars == 0
     maximum_value
   end
+  memoize :maximum_value
 
   def minimum_value
     return nil if @data.min.nil?
@@ -101,6 +106,7 @@ class BarGraph
     minimum_value -= 1 until minimum_value % @number_of_bars == 0
     minimum_value
   end
+  memoize :minimum_value
 
   def partitions
     Array.new(@number_of_bars, 0).tap do |partitions|
@@ -118,12 +124,15 @@ class BarGraph
     return 0 if maximum_value.nil?
     (maximum_value - minimum_value).quo(@number_of_bars).ceil
   end
+  memoize :partition_size
 
   def width_for_bars
     @width - @legend_width
   end
+  memoize :width_for_bars
 
   def width_of_one_bar
     width_for_bars / @number_of_bars
   end
+  memoize :width_of_one_bar
 end
