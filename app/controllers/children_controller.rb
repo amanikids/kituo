@@ -9,7 +9,7 @@ class ChildrenController < ApplicationController
   def create
     if @child.save
       flash[:notice] = t('children.create.notice', :name => @template.link_to(@child.name, @child))
-      redirect_to @child
+      redirect_to @child, :skip_contextual_magic => true
     else
       if @child.potential_duplicates.any?
         render :potential_duplicates_found

@@ -35,7 +35,7 @@ after 'deploy:update_code' do
 end
 
 after 'deploy:update_code' do
-  notifier = DeployNotifier.new('Jennifer Hicks')
+  notifier = DeployNotifier.new('Joe Ventura', 'Japhary Salum', 'Valerie Todd')
   changes  = `git log --pretty=format:'* %s' #{current_revision}..`
   notifier.spam("\nJust deployed to\n#{application_url}\n\n#{changes}")
 end
