@@ -16,10 +16,6 @@ after 'deploy:setup' do
   put database_config.to_yaml, "#{shared_path}/database.yml"
 end
 
-after 'deploy:finalize_update' do
-  run "ln -sf #{shared_path}/database.yml #{latest_release}/config/database.yml"
-end
-
 after 'deploy:update_code' do
   if rails_env == 'staging'
     # Replace our data with production data.
@@ -32,6 +28,12 @@ after 'deploy:update_code' do
     run "cp -r  #{shared_path.gsub('staging', 'production')}/system #{shared_path}"
   end
 end
+
+after 'deploy:finalize_update' do
+  run "ln -sf #{shared_path}/database.yml #{latest_release}/config/database.yml"
+end
+
+after 'deploy', 'deploy:notify'
 
 task :production do
   set :rails_env, 'production'
@@ -53,5 +55,27 @@ namespace :deploy do
   desc 'Restart the Application'
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  task :notify do
+    require File.join('lib', 'deploy_notifier')
+    # notifier = DeployNotifier.new('Joe Ventura', 'Japhary Salum')
+    notifier = DeployNotifier.new('Jennifer Hicks')
+
+    url = case rails_env
+    when 'staging'
+      'http://kituo-mazoezi.amani'
+    when 'production'
+      'http://kituo.amani'
+    end
+
+    changes = `git log --pretty=format:'* %s' #{previous_revision}..`
+    notifier.spam(<<-END.gsub(/^      /, ''))
+
+      Just deployed to
+      #{url}
+
+      #{changes}
+    END
   end
 end
