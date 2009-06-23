@@ -69,7 +69,7 @@ namespace :deploy do
       'http://kituo.amani'
     end
 
-    changes = `git log --pretty=format:'* %s' #{previous_revision}..`
+    changes = `git log --pretty=format:'* %s' #{current_revision}..`
     notifier.spam(<<-END.gsub(/^      /, ''))
 
       Just deployed to
