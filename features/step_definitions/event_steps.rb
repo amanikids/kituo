@@ -5,4 +5,12 @@
     And "I select \"#{parse_date(date)}\" as the date"
     And 'I press "Save"'
   end
+
+  When(/^I delete an? #{event.humanize.downcase} for "(.*?)"$/) do |name|
+    child = Child.find_by_name!(name)
+    visit(child_path(child))
+    within(child.send(event.tableize).last) do
+      click_link('Delete')
+    end
+  end
 end

@@ -19,6 +19,12 @@ Feature: Arrivals
     When I go to the onsite children page
     Then I should see "Ramadhan Masawe"
 
+  Scenario: Deleting an Arrival
+    Given arrival for "Ramadhan Masawe" exists
+    When I delete an arrival for "Ramadhan Masawe"
+    When I go to the onsite children page
+    Then I should not see "Ramadhan Masawe"
+
   # Tasks
   # Top-level
   Scenario: New Children Show Up on the Unrecorded Arrivals Page

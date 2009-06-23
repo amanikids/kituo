@@ -31,6 +31,7 @@
 
 %table.timeline
   - @child.events.each do |event|
-    %tr
+    %tr{:id => dom_id(event)}
       %td= event.class.human_name
       %td= l event.happened_on, :format => :long
+      %td= link_to t("children.#{event.class.name.tableize}.destroy.link"), [@child, event], :method => :delete, :confirm => t("children.#{event.class.name.tableize}.destroy.confirm")

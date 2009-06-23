@@ -113,6 +113,10 @@ en:
         submit: Save
       create:
         notice: "Arrival at Amani recorded for {{name}}."
+      destroy:
+        link: Delete
+        confirm: Are you sure?
+        notice: "Deleted Arrival for {{name}}."
     dropouts:
       new:
         link: Dropout

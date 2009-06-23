@@ -112,6 +112,10 @@ sw:
         submit: Ingiza taarifa
       create:
         notice: "Tarehe alipoingia kituoni imerikodiwa kama {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe alipoingia kituoni ya {{name}}."
     dropouts:
       new:
         link: Alipotoroka
