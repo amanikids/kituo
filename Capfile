@@ -1,6 +1,7 @@
 load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
 load 'config/deploy'
+require File.join('lib', 'deploy_notifier')
 
 after 'deploy:setup' do
   database_config = {
@@ -16,6 +17,10 @@ after 'deploy:setup' do
   put database_config.to_yaml, "#{shared_path}/database.yml"
 end
 
+after 'deploy:finalize_update' do
+  run "ln -sf #{shared_path}/database.yml #{latest_release}/config/database.yml"
+end
+
 after 'deploy:update_code' do
   if rails_env == 'staging'
     # Replace our data with production data.
@@ -29,14 +34,15 @@ after 'deploy:update_code' do
   end
 end
 
-after 'deploy:finalize_update' do
-  run "ln -sf #{shared_path}/database.yml #{latest_release}/config/database.yml"
+after 'deploy:update_code' do
+  notifier = DeployNotifier.new('Jennifer Hicks')
+  changes  = `git log --pretty=format:'* %s' #{current_revision}..`
+  notifier.spam("\nJust deployed to\n#{application_url}\n\n#{changes}")
 end
-
-after 'deploy', 'deploy:notify'
 
 task :production do
   set :rails_env, 'production'
+  set :application_url, 'http://kituo.amani'
 end
 
 namespace :deploy do
@@ -55,27 +61,5 @@ namespace :deploy do
   desc 'Restart the Application'
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
-  end
-
-  task :notify do
-    require File.join('lib', 'deploy_notifier')
-    # notifier = DeployNotifier.new('Joe Ventura', 'Japhary Salum')
-    notifier = DeployNotifier.new('Jennifer Hicks')
-
-    url = case rails_env
-    when 'staging'
-      'http://kituo-mazoezi.amani'
-    when 'production'
-      'http://kituo.amani'
-    end
-
-    changes = `git log --pretty=format:'* %s' #{current_revision}..`
-    notifier.spam(<<-END.gsub(/^      /, ''))
-
-      Just deployed to
-      #{url}
-
-      #{changes}
-    END
   end
 end
