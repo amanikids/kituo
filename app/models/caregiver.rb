@@ -1,6 +1,4 @@
 class Caregiver < ActiveRecord::Base
-  extend ActiveSupport::Memoizable
-
   named_scope :by_name, :order => :name
 
   has_many :case_assignments, :foreign_key => :social_worker_id
@@ -17,17 +15,6 @@ class Caregiver < ActiveRecord::Base
   attr_accessible :name, :headshot
 
   def tasks
-    (unrecorded_arrivals + upcoming_home_visits).sort
-  end
-  memoize :tasks
-
-  private
-
-  def unrecorded_arrivals
-    children.unrecorded_arrivals.map { |child| Task.record_arrival(child) }
-  end
-
-  def upcoming_home_visits
-    children.upcoming_home_visits.map { |child| Task.home_visit(child) }
+    Task.for_caregiver(self)
   end
 end
