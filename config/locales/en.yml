@@ -133,6 +133,10 @@ en:
         submit: Save
       create:
         notice: "Home Visit recorded for {{name}}."
+      destroy:
+        link: Delete
+        confirm: Are you sure?
+        notice: "Deleted Home Visit for {{name}}."
     offsite_boardings:
       new:
         link: Offsite Boarding

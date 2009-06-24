@@ -132,6 +132,10 @@ sw:
         submit: Ingiza taarifa
       create:
         notice: "Tarehe ya home visit imerikodiwa kama {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe ya home visit ya {{name}}."
     offsite_boardings:
       new:
         link: Alipoenda boarding

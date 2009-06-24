@@ -42,3 +42,10 @@ Feature: Home Visits
     Given arrival for "Ramadhan Masawe" exists
     When I go to the child page for "Ramadhan Masawe"
     Then I should see "Make a Home Visit for Ramadhan Masawe"
+
+  Scenario: Deleting a Home Visit
+    Given arrival for "Ramadhan Masawe" exists
+    And home visit for "Ramadhan Masawe" exists
+    When I delete a home visit for "Ramadhan Masawe"
+    And I go to the upcoming home visits tasks page
+    Then I should see "Ramadhan Masawe"
