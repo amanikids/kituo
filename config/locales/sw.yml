@@ -182,8 +182,8 @@ sw:
         notice: "Picha mpya ya {{name}} umerikodiwa."
     social_worker:
       edit:
-        link: Badilisha Social Worker
-        title: Badilisha Social Worker
+        link: Badilisha social worker
+        title: Badilisha social worker
         unassigned: Hana
         submit: Ingiza taarifa
       update:
@@ -204,7 +204,7 @@ sw:
     index:
       tab: Shughuli
       title: Shughuli
-      empty: Huna Shughuli
+      empty: Hakuna shughuli
     unrecorded_arrivals:
       tab: Wanaohitaji historia
       title: Wanaohitaji historia
