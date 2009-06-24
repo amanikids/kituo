@@ -144,7 +144,7 @@ class ChildTest < ActiveSupport::TestCase
         assert_equal @new_social_worker, @child.social_worker(true)
       end
 
-      should_eventually 'not create a new case assignment' do
+      should 'not create a new case assignment' do
         assert_no_difference 'CaseAssignment.count' do
           @child.update_attributes(:social_worker_id => @new_social_worker.id)
         end

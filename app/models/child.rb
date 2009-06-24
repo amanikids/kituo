@@ -103,7 +103,17 @@ class Child < ActiveRecord::Base
   delegate :id,   :to => :social_worker, :prefix => true, :allow_nil => true
   delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
   def social_worker_id=(social_worker_id)
-    build_case_assignment(:social_worker_id => social_worker_id)
+    if social_worker_id
+      if case_assignment
+        case_assignment.update_attributes(:social_worker_id => social_worker_id)
+      else
+        build_case_assignment(:social_worker_id => social_worker_id)
+      end
+    else
+      if case_assignment
+        case_assignment.destroy
+      end
+    end
   end
 
   def tasks
