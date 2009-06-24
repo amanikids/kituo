@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090519112132) do
+ActiveRecord::Schema.define(:version => 20090624112540) do
 
   create_table "caregivers", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(:version => 20090519112132) do
     t.datetime "updated_at"
   end
 
+  add_index "case_assignments", ["child_id"], :name => "index_case_assignments_on_child_id"
+  add_index "case_assignments", ["social_worker_id"], :name => "index_case_assignments_on_social_worker_id"
+
   create_table "children", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -45,5 +48,10 @@ ActiveRecord::Schema.define(:version => 20090519112132) do
     t.datetime "updated_at"
     t.string   "type"
   end
+
+  add_index "events", ["child_id"], :name => "index_events_on_child_id"
+  add_index "events", ["created_at"], :name => "index_events_on_created_at"
+  add_index "events", ["happened_on"], :name => "index_events_on_happened_on"
+  add_index "events", ["type"], :name => "index_events_on_type"
 
 end
