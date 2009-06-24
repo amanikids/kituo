@@ -3,24 +3,24 @@ require 'appscript'
 class DeployNotifier
   include Appscript
 
-  def initialize(*recipients)
-    @application = app('iChat')
-    @recipients  = recipients
+  def initialize(*names)
+    @ichat    = app('iChat')
+    @accounts = names.map { |name| bonjour_account(name) }
   end
 
   def spam(message)
-    @recipients.each do |recipient|
-      begin
-        @application.send_(message, :to => bonjour_account(recipient))
-      rescue
-        $stderr.puts "Could not spam Bonjour account named #{recipient}."
-      end
-    end
+    @accounts.each { |account| send_spam(message, account) }
   end
 
   private
 
-  def bonjour_account(recipient)
-    @application.services['Bonjour'].accounts[recipient]
+  def bonjour_account(name)
+    @ichat.services['Bonjour'].accounts[name]
+  end
+
+  def send_spam(message, account)
+    @ichat.send_(message, :to => @account)
+  rescue
+    $stderr.puts "Error spamming #{account}."
   end
 end
