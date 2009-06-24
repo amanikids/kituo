@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
   before_filter :build_child, :only => [:new, :create]
-  before_filter :load_child,  :only => [:show, :edit, :update]
+  before_filter :load_child,  :only => [:show, :edit, :update, :destroy]
 
   def index
     redirect_to onsite_children_path, :skip_contextual_magic => true
@@ -26,6 +26,12 @@ class ChildrenController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @child.destroy
+    flash[:notice] = t('children.destroy.notice', :name => @child.name)
+    redirect_to children_path, :skip_contextual_magic => true
   end
 
   %w(onsite boarding_offsite reunified dropped_out terminated).each do |status|

@@ -11,6 +11,7 @@
       = link_to @child.social_worker_name, @child.social_worker
     - else
       = t('children.show.social_worker.unassigned')
+  %li= link_to t('children.destroy.link'), @child, :method => :delete, :confirm => t('children.destroy.confirm'), :id => dom_id(@child, :delete)
 
 %h2= badged(t('tasks.index.title'), @child.tasks.count)
 - if @child.tasks.any?

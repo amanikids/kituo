@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class ChildTest < ActiveSupport::TestCase
-  should_have_many :events
+  should_have_many :events, :dependent => :destroy
 
   should_have_many :arrivals
   should_have_many :home_visits
@@ -10,7 +10,7 @@ class ChildTest < ActiveSupport::TestCase
   should_have_many :dropouts
   should_have_many :terminations
 
-  should_have_one :case_assignment
+  should_have_one :case_assignment, :dependent => :destroy
   should_have_one :social_worker
 
   should_have_attached_file :headshot

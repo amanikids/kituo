@@ -2,6 +2,10 @@ module Kituo
   module Cucumber
     module Helpers
 
+      def dom_id(*args)
+        ActionController::RecordIdentifier.dom_id(*args)
+      end
+
       def parse_date(date)
         case date
         when nil

@@ -40,7 +40,7 @@ class Child < ActiveRecord::Base
     location_as_of(date).is(Termination).by_name
   end
 
-  has_many :events
+  has_many :events, :dependent => :destroy
 
   has_many :arrivals
   has_many :home_visits
@@ -49,7 +49,7 @@ class Child < ActiveRecord::Base
   has_many :dropouts
   has_many :terminations
 
-  has_one :case_assignment
+  has_one :case_assignment, :dependent => :destroy
   has_one :social_worker, :through => :case_assignment
 
   has_attached_file :headshot,

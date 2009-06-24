@@ -80,6 +80,10 @@ en:
       submit: Save Child
     update:
       notice: "Case file updated for {{name}}."
+    destroy:
+      link: Delete
+      confirm: Are you sure?
+      notice: "Deleted case file for {{name}}."
 
     # children collection actions
     boarding_offsite:

@@ -1,13 +1,23 @@
-When(/^I create a caregiver named "(.*?)"$/) do |name|
-  When 'I go to the new caregiver page'
-  And "I fill in \"Name\" with \"#{name}\""
-  And 'I press "Save"'
-end
+%w(child caregiver).each do |person|
+  Given(/^#{person} "(.+)" does not exist$/) do |name|
+    assert_nil person.classify.constantize.find_by_name(name)
+  end
 
-When(/^I create a child named "(.*?)"$/) do |name|
-  When 'I go to the new child page'
-  And "I fill in \"Name\" with \"#{name}\""
-  And 'I press "Save"'
+  Given(/^#{person} "(.+)" exists$/) do |name|
+    person.classify.constantize.make(:name => name)
+  end
+
+  When(/^I create a #{person} named "(.*?)"$/) do |name|
+    When "I go to the new #{person} page"
+    And "I fill in \"Name\" with \"#{name}\""
+    And 'I press "Save"'
+  end
+
+  When(/^I delete a #{person} named "(.*?)"$/) do |name|
+    record = person.classify.constantize.find_by_name!(name)
+    visit(polymorphic_path(record))
+    click_link(dom_id(record, :delete))
+  end
 end
 
 When(/^I assign "(.+)" to "(.+)"$/) do |child, social_worker|

@@ -80,6 +80,10 @@ sw:
       submit: Ingiza taarifa
     update:
       notice: "Umebadilisha jina ya {{name}}."
+    destroy:
+      link: Futa
+      confirm: Unahakikisha?
+      notice: "Umeshafuta faili ya {{name}}."
 
     # children collection actions
     boarding_offsite:

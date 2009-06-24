@@ -47,3 +47,9 @@ Feature: Children
     And I press "Save"
     Then I should see "can't be blank"
     And I should see "Ramadhan Masawe"
+
+  Scenario: Deleting a Child
+    Given child "Ramadhan Masawe" exists
+    When I delete a child named "Ramadhan Masawe"
+    And I create a child named "Ramadhan Masawe"
+    Then I should not see "Potential Duplicates Found"
