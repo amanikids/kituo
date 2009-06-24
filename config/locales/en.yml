@@ -59,6 +59,7 @@ en:
       title: Children
       empty: No Children
     new:
+      tab: New
       link: New Child
       title: New Child
       submit: Save New Child

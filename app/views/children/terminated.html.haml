@@ -1,6 +1,2 @@
 %h1= t('children.terminated.title', :count => @children.count)
-
-%ul.actions
-  %li= link_to t('children.new.link'), new_child_path
-
 = render @children

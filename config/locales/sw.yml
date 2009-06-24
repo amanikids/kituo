@@ -59,6 +59,7 @@ sw:
       title: Watoto
       empty: Huna Watoto
     new:
+      tab: Mgeni
       link: Fungua Faili ya Mtoto Mgeni
       title: Mtoto Mgeni
       submit: Ingiza taarifa ya mtoto mgeni
@@ -93,7 +94,7 @@ sw:
       tab: Watoro
       title: "Watoto waliotoroka ({{count}})"
     onsite:
-      tab: Wanoakaa kituoni
+      tab: Kituoni
       title: "Watoto wanaokaa kituoni ({{count}})"
       pdf:
         link: Mahudhurio
