@@ -19,4 +19,8 @@ Feature: Terminations
     And I go to the terminated children page
     Then I should see "Ramadhan Masawe"
 
-
+  Scenario: Deleting a Termination
+    Given termination for "Ramadhan Masawe" exists
+    When I delete a termination for "Ramadhan Masawe"
+    When I go to the terminated children page
+    Then I should not see "Ramadhan Masawe"

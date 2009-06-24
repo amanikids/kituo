@@ -123,6 +123,10 @@ en:
         submit: Save
       create:
         notice: "Dropout recorded for {{name}}."
+      destroy:
+        link: Delete
+        confirm: Are you sure?
+        notice: "Deleted Dropout for {{name}}."
     home_visits:
       new:
         link: Home Visit
@@ -135,18 +139,30 @@ en:
         submit: Save
       create:
         notice: "Offsite Boarding recorded for {{name}}."
+      destroy:
+        link: Delete
+        confirm: Are you sure?
+        notice: "Deleted Offsite Boarding for {{name}}."
     reunifications:
       new:
         link: Reunification
         submit: Save
       create:
         notice: "Family Reunification recorded for {{name}}."
+      destroy:
+        link: Delete
+        confirm: Are you sure?
+        notice: "Deleted Family Reunification for {{name}}."
     terminations:
       new:
         link: Termination
         submit: Save
       create:
         notice: "Termination recorded for {{name}}."
+      destroy:
+        link: Delete
+        confirm: Are you sure?
+        notice: "Deleted Termination for {{name}}."
 
     # singular nested child resources
     headshot:

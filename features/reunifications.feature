@@ -18,3 +18,9 @@ Feature: Reunifications
     When I record a reunification for "Ramadhan Masawe"
     And I go to the reunified children page
     Then I should see "Ramadhan Masawe"
+
+  Scenario: Deleting a Reunification
+    Given reunification for "Ramadhan Masawe" exists
+    When I delete a reunification for "Ramadhan Masawe"
+    When I go to the reunified children page
+    Then I should not see "Ramadhan Masawe"

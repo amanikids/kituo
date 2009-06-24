@@ -122,6 +122,10 @@ sw:
         submit: Ingiza taarifa
       create:
         notice: "Tarehe alipotoroka kituoni imerikodiwa kama {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe alipotoroka kituoni ya {{name}}."
     home_visits:
       new:
         link: Alipotembelewa nyumbani
@@ -134,18 +138,30 @@ sw:
         submit: Ingiza taarifa
       create:
         notice: "Tarehe ya kwenda boarding imerikodiwa kwa {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe ya kwenda boarding ya {{name}}."
     reunifications:
       new:
         link: Alipounganishwa
         submit: Ingiza taarifa
       create:
         notice: "Tarehe ya kuunganishwa na familia imerikodiwa kwa {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe ya kuunganishwa na familia ya {{name}}."
     terminations:
       new:
         link: Alipokuwa terminated
         submit: Ingiza taarifa
       create:
         notice: "Tarehe ya termination ya {{name}} imerikodiwa."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe ya termination ya {{name}}."
 
     # singular nested child resources
     headshot:

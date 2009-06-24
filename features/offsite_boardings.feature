@@ -18,3 +18,9 @@ Feature: Offsite Boardings
     When I record an offsite boarding for "Ramadhan Masawe"
     And I go to the boarding offsite children page
     Then I should see "Ramadhan Masawe"
+
+  Scenario: Deleting an Offsite Boarding
+    Given offsite boarding for "Ramadhan Masawe" exists
+    When I delete an offsite boarding for "Ramadhan Masawe"
+    When I go to the boarding offsite children page
+    Then I should not see "Ramadhan Masawe"
