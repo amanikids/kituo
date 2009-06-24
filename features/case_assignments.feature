@@ -19,15 +19,15 @@ Feature: Case Assignments
   # Tasks
   # Top-level
   Scenario: Children without a Social Worker show up on the Unassigned Children page
-    When I go to the unassigned children tasks page
-    Then I should see "Ramadhan Masawe"
+    When I go to the tasks page
+    Then I should see an unassigned child task for "Ramadhan Masawe"
 
   Scenario: Assigning a Child to a Social Worker Takes Him off the Unassigned Children page
     When I assign "Ramadhan Masawe" to "Japhary Salum"
-    And I go to the unassigned children tasks page
-    Then I should not see "Ramadhan Masawe"
+    And I go to the tasks page
+    Then I should not see an unassigned child task for "Ramadhan Masawe"
 
   # Child
   Scenario: Children show their "I Need a Social Worker" tasks
     When I go to the child page for "Ramadhan Masawe"
-    Then I should see "Assign Ramadhan Masawe to a Social Worker"
+    Then I should see an unassigned child task for "Ramadhan Masawe"

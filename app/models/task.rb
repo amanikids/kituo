@@ -1,5 +1,9 @@
 class Task < Struct.new(:for, :by, :due_at, :description, :resolve_path)
   module ClassMethods
+    def all
+      (unassigned_children + unrecorded_arrivals + upcoming_home_visits).sort
+    end
+
     def unassigned_children
       Child.without_social_worker.map { |child| assign_social_worker(child) }.sort
     end

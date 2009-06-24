@@ -28,22 +28,22 @@ Feature: Arrivals
   # Tasks
   # Top-level
   Scenario: New Children Show Up on the Unrecorded Arrivals Page
-    When I go to the unrecorded arrivals tasks page
-    Then I should see "Ramadhan Masawe"
+    When I go to the tasks page
+    Then I should see an unrecorded arrival task for "Ramadhan Masawe"
 
   Scenario: Children with Arrivals should not Show Up on the Unrecorded Arrivals Page
     Given arrival for "Ramadhan Masawe" exists
-    When I go to the unrecorded arrivals tasks page
-    Then I should not see "Ramadhan Masawe"
+    When I go to the tasks page
+    Then I should not see an unrecorded arrival task for "Ramadhan Masawe"
 
   # Social Worker
   Scenario: Social Workers show Unrecorded Arrivals for their Children
     Given caregiver "Japhary Salum" exists
     When I assign "Ramadhan Masawe" to "Japhary Salum"
     And I go to the caregiver page for "Japhary Salum"
-    Then I should see "Record an Arrival for Ramadhan Masawe"
+    Then I should see an unrecorded arrival task for "Ramadhan Masawe"
 
   # Child
   Scenario: Children show their own Unrecorded Arrivals
     When I go to the child page for "Ramadhan Masawe"
-    Then I should see "Record an Arrival for Ramadhan Masawe"
+    Then I should see an unrecorded arrival task for "Ramadhan Masawe"

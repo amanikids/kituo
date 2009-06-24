@@ -17,14 +17,8 @@ module NavigationHelpers
     when /the homepage/
       root_path
 
-    when /the unrecorded arrivals tasks page/
-      unrecorded_arrivals_tasks_path
-
-    when /the unassigned children tasks page/
-      unassigned_children_tasks_path
-
-    when /the upcoming home visits tasks page/
-      upcoming_home_visits_tasks_path
+    when /the tasks page/
+      tasks_path
 
     when /the new child page/
       new_child_path

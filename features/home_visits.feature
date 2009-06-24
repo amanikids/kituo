@@ -17,35 +17,35 @@ Feature: Home Visits
     Then I should see "Ramadhan Masawe"
 
   Scenario: Children Without a Recorded Arrival Do Not Require a Home Visit
-    When I go to the upcoming home visits tasks page
-    Then I should not see "Ramadhan Masawe"
+    When I go to the tasks page
+    Then I should not see an upcoming home visit task for "Ramadhan Masawe"
 
   Scenario: Children With a Recorded Arrival Do Require a Home Visit
     Given arrival for "Ramadhan Masawe" exists
-    When I go to the upcoming home visits tasks page
-    Then I should see "Ramadhan Masawe"
+    When I go to the tasks page
+    Then I should see an upcoming home visit task for "Ramadhan Masawe"
 
   Scenario: Children With a Recorded Home Visit Do Not Require a Home Visit
     Given arrival for "Ramadhan Masawe" exists
     When I record a home visit for "Ramadhan Masawe"
-    And I go to the upcoming home visits tasks page
-    Then I should not see "Ramadhan Masawe"
+    And I go to the tasks page
+    Then I should not see an upcoming home visit task for "Ramadhan Masawe"
 
   Scenario: Social Workers Show Home Visit Tasks for Their Children
     Given caregiver "Japhary Salum" exists
     And arrival for "Ramadhan Masawe" exists
     When I assign "Ramadhan Masawe" to "Japhary Salum"
     And I go to the caregiver page for "Japhary Salum"
-    Then I should see "Make a Home Visit for Ramadhan Masawe"
+    Then I should see an upcoming home visit task for "Ramadhan Masawe"
 
   Scenario: Children Show Their Own Home Visit Tasks
     Given arrival for "Ramadhan Masawe" exists
     When I go to the child page for "Ramadhan Masawe"
-    Then I should see "Make a Home Visit for Ramadhan Masawe"
+    Then I should see an upcoming home visit task for "Ramadhan Masawe"
 
   Scenario: Deleting a Home Visit
     Given arrival for "Ramadhan Masawe" exists
     And home visit for "Ramadhan Masawe" exists
     When I delete a home visit for "Ramadhan Masawe"
-    And I go to the upcoming home visits tasks page
-    Then I should see "Ramadhan Masawe"
+    And I go to the tasks page
+    Then I should see an upcoming home visit task for "Ramadhan Masawe"

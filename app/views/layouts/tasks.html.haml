@@ -1,7 +1,0 @@
-- content_for :subnavigation do
-  %ul#subnavigation
-    %li= link_to_with_current_full_path badged(t('tasks.unassigned_children.tab'), Child.without_social_worker.count), unassigned_children_tasks_path
-    %li= link_to_with_current_full_path badged(t('tasks.unrecorded_arrivals.tab'), Child.unrecorded_arrivals.count), unrecorded_arrivals_tasks_path
-    %li= link_to_with_current_full_path badged(t('tasks.upcoming_home_visits.tab'), Child.upcoming_home_visits.count), upcoming_home_visits_tasks_path
-
-= render :file => 'layouts/application'
