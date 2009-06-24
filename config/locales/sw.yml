@@ -106,8 +106,8 @@ sw:
       tab: Terminated
       title: "Watoto ambao wamekuwa terminated ({{count}})"
     unrecorded_arrivals:
-      tab: Taarifa Haitoshi
-      title: "Taarifa Haitoshi ({{count}})"
+      tab: Wanaohitaji historia
+      title: "Wanaohitaji historia ({{count}})"
 
     # plural nested child resources
     arrivals:
@@ -205,11 +205,11 @@ sw:
       title: Shughuli
       empty: Huna Shughuli
     unrecorded_arrivals:
-      tab: Taarifa Haitoshi
-      title: Taarifa Haitoshi
+      tab: Wanaohitaji historia
+      title: Wanaohitaji historia
       description: "Tukio tarehe Alipoingia kituoni kama {{name}}"
     unassigned_children:
-      tab: Wanaohitaji Social Worker
+      tab: Wanaohitaji social sorker
       title: Watoto wanaohitaji Social Worker
       description: "Mpe {{name}} Social Worker"
     upcoming_home_visits:

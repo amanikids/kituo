@@ -14,7 +14,7 @@
 
 %h2= t('children.index.title')
 - if @caregiver.children.any?
-  - %w(unrecorded_arrivals onsite boarding_offsite reunified terminated dropped_out).each do |status|
+  - %w(onsite boarding_offsite reunified terminated dropped_out unrecorded_arrivals).each do |status|
     - count = @caregiver.children.send(status).count(:id)
     - unless count.zero?
       %h3= t("children.#{status}.title", :count => count)
