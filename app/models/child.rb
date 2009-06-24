@@ -59,6 +59,7 @@ class Child < ActiveRecord::Base
     :default_style => :default,
     :default_url => '/images/headshot-:style.jpg'
 
+  before_validation :normalize_name
   validates_presence_of :name
   validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
   attr_accessor :ignore_potential_duplicates
@@ -113,5 +114,9 @@ class Child < ActiveRecord::Base
 
   def no_potential_duplicates_found
     errors.add_to_base('Potential duplicates found') if potential_duplicates(:reload).any?
+  end
+
+  def normalize_name
+    self.name = self.name.to_s.squish.titlecase
   end
 end

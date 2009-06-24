@@ -17,6 +17,10 @@ class ChildTest < ActiveSupport::TestCase
 
   should_validate_presence_of :name
 
+  should 'normalize name' do
+    assert_equal "Emmanuel Lang'eda", Child.make(:name => "EMMANUEL lang'eda").name
+  end
+
   context 'given an existing Child' do
     setup do
       @existing_child = Child.make
