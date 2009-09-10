@@ -21,5 +21,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :statistics, :collection => { :length_of_stay => :get }
 
+  map.connect 'mockups/:action', :controller => 'mockups'
+  
   map.root :controller => 'children'
 end

@@ -1,0 +1,2 @@
+class MockupsController < ApplicationController
+end
