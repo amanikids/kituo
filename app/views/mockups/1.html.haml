@@ -1,0 +1,28 @@
+%h1 Welcome, Xavier!
+%h2 Scheduled Visits
+%h3 This Week
+.scheduled-visits
+  %ul
+    - Child.find(:all, :limit => 5).each do |child|
+      %li
+        %div= link_to(image_tag(child.headshot.url, :width => 75), :action => 2)
+        %span=h child.name
+        %br
+        %span= %w(Wednesday Thursday Friday).rand
+  %h3 Next Week
+  %ul
+    - Child.find(:all, :limit => 3).each do |child|
+      %li
+        %div= image_tag(child.headshot.url, :width => 75)
+        %span= child.name
+        %br
+        %span= %w(Wednesday Thursday Friday).rand
+%h2 Recommended Visits
+.recommended-visits
+  %ul
+    - Child.find(:all, :limit => 3).each do |child|
+      %li
+        %div= image_tag(child.headshot.url, :width => 75)
+        %span= child.name
+        %br
+        %span= "Hasn't had a visit in #{(2..6).to_a.rand} weeks"

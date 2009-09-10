@@ -1,0 +1,35 @@
+- @child = Child.first
+.header
+  = link_to("Back", :action => 1)
+.child-details
+  = image_tag(@child.headshot.url)
+  %h1=h @child.name
+  %span.meta
+    Arrived, from Arusha
+
+%h2 Visits
+%table
+  %tr
+    %th Date
+    %th Notes
+  %tr
+    %td 20 Aug 2009
+    %td Heatlhy
+  %tr
+    %td 27 Aug 2009
+    %td Still healthy
+  %tr.event
+    %td 28 Aug 2009
+    %td Reunified
+  %tr
+    %td 2 Sep 2009
+    %td Still in school
+
+- form_for(HomeVisit.new, :url => '/') do |f|
+  = f.label :happened_on
+  = f.text_field :happened_on
+  %br
+  = f.label :notes
+  = f.text_area :notes
+  %br
+  = f.submit "Record visit"
