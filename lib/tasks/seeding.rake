@@ -14,6 +14,7 @@ file 'db/seed/children.yml' => 'db/seed' do
 end
 
 namespace :db do
+  desc 'Seed the database.'
   task :seed => [:environment, 'db/seed/children.yml', 'db/seed/images'] do
     YAML.load_file('db/seed/children.yml').sort_by { |child| child[:name] }.each do |child|
       attributes = {}
