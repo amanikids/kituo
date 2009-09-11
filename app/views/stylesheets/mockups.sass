@@ -36,8 +36,8 @@ ul.caregivers
   font-size: 16px
   a
     color: inherit
-  
-  
+
+
 h1
   color= !dark_brown
   font-size: 3em
@@ -96,3 +96,47 @@ h1
     li
       a
         color= !dark_brown
+
+.child-header
+  color= !dark_brown
+  position: relative
+  img
+    border= "1px" "solid" !dark_brown
+  .edit
+    margin-top: 1em
+    a
+      color: inherit
+  .text
+    position: absolute
+    top: 0
+    left: 162px
+
+.child-visits
+  margin-top: 1.5em
+  h2
+    color= !very_very_light_brown
+    font-size: 2em
+    margin-bottom: 0.25em
+  ul
+    li
+      background-color= !very_light_brown
+      color= !dark_brown
+      padding: 0.25em
+      margin-bottom: 0.25em
+      .date
+        float: left
+        width: 6em
+      .notes
+        margin-left: 6em
+    li.event
+      background-color= !dark_brown
+      color= !light_brown
+      font-family= !sans_serif
+      font-size: 0.75em
+      margin-bottom: 0.34em
+      padding: 0.25em
+    li.scheduled
+      background-color= !light_brown
+      font-style: italic
+      a
+        color: inherit
