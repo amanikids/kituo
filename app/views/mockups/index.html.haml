@@ -1,9 +1,9 @@
-%h1 Hello!
+.hello
+  %h1 Hello!
+  %h2 Who are you?
 
-%h2 Who are you?
-
-%ul
-  - Caregiver.by_name.each do |caregiver|
-    %li
-      = link_to(image_tag(caregiver.headshot.url), :action => 1)
-      = link_to(caregiver.name)
+  %ul
+    - Caregiver.by_name.each do |caregiver|
+      %li.caregiver
+        = link_to(image_tag(caregiver.headshot.url), :action => 1)
+        = link_to(caregiver.name)
