@@ -1,25 +1,98 @@
+@import constants.sass
+
 body
-  background-color: #337
-  
-.hello
+  background-color= !medium_light_brown
+
+.page
   margin: 2em auto
-  width: 740px
+  width= !page_width
+
+.hello
+  h1
+    color= !dark_brown
+    font-size: 8em
+    margin-bottom: 0.16em
+    text-align: center
+
+  h2
+    color= !very_very_light_brown
+    font-size: 2em
+    margin-bottom: 0.5em
+    text-align: center
+
+ul.caregivers
+  text-align: center
+
+  li
+    display: inline-block
+    margin: 0 1em 1em 0
+    a
+      color= !dark_brown
+      display: block
+      padding-bottom: 0.5em
+      text-decoration: none
+
+.header_link
+  font-size: 16px
+  a
+    color: inherit
+  
   
 h1
-  color: #ccf
-  font-size: 6em
-  margin-bottom: 0.16em
-  
-h2
-  color: #fff
-  font-size: 2em
-  margin-bottom: 0.5em
-  
-li.caregiver
-  display: inline-block
-  margin: 0 1em 1em 0
-  a
-    color: #fff
-    display: block
-    padding-bottom: 0.5em
-    text-decoration: none
+  color= !dark_brown
+  font-size: 3em
+
+.visits
+  position: relative
+
+  .recommended
+    position: absolute
+    right: 0
+    top: 0
+
+  .scheduled, .recommended
+    width= !page_width / 2 - 6px
+
+    h2
+      color= !very_very_light_brown
+      font-size: 2em
+
+    h3
+      background-color= !dark_brown
+      color= !light_brown
+      font-family= !sans_serif
+      font-size: 0.75em
+      margin-bottom: 0.34em
+      padding: 0.25em
+
+    ul
+      li
+        background-color= !light_brown
+        color= !dark_brown
+        height: 38px
+        padding: 0.25em
+        margin-bottom: 0.25em
+        .image
+          float: left
+          margin-right: 0.25em
+        .details
+          float: left
+        .location
+          float: right
+          padding-top: 1.5em
+        .name
+          color= !black
+          font-size: 1.5em
+
+.tasks
+  margin-top: 1em
+  h2
+    color= !very_very_light_brown
+    font-size: 2em
+  ul
+    background-color= !very_light_brown
+    font-size: 1.5em
+    padding: 1em
+    li
+      a
+        color= !dark_brown

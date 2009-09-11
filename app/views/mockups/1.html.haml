@@ -1,28 +1,51 @@
-%h1 Welcome, Xavier!
-%h2 Scheduled Visits
-%h3 This Week
-.scheduled-visits
+%h1
+  Welcome, Xavier!
+  %span.header_link
+    (
+    = link_to('Switch users', :action => 'index')
+    )
+
+.visits
+  .scheduled
+    %h2 Scheduled Visits
+    %h3 This Week
+    %ul
+      - Child.find(:all, :limit => 5).each do |child|
+        %li
+          .image= link_to(image_tag(child.headshot.url, :size => '38x38'), :action => 2)
+          .details
+            .name=h child.name
+            .day= %w(Wednesday Thursday Friday).rand
+          .location
+            = %w(Arusha Marangu Sanya\ Juu).rand
+
+    %h3 Next Week
+    %ul
+      - Child.find(:all, :limit => 3, :offset => 20).each do |child|
+        %li
+          .image= link_to(image_tag(child.headshot.url, :size => '38x38'), :action => 2)
+          .details
+            .name=h child.name
+            .day= %w(Wednesday Thursday Friday).rand
+          .location
+            = %w(Arusha Marangu Sanya\ Juu).rand
+
+  .recommended
+    %h2 Recommended Visits
+    %h3 Not seen recently
+    %ul
+      - Child.find(:all, :limit => 3, :offset => 20).each do |child|
+        %li
+          .image= link_to(image_tag(child.headshot.url, :size => '38x38'), :action => 2)
+          .details
+            .name=h child.name
+            .day Hasn't had a visit in 6 weeks.
+          .location
+            = %w(Arusha Marangu Sanya\ Juu).rand
+
+.tasks
+  %h2 Tasks
   %ul
-    - Child.find(:all, :limit => 5).each do |child|
-      %li
-        %div= link_to(image_tag(child.headshot.url, :width => 75), :action => 2)
-        %span=h child.name
-        %br
-        %span= %w(Wednesday Thursday Friday).rand
-  %h3 Next Week
-  %ul
-    - Child.find(:all, :limit => 3).each do |child|
-      %li
-        %div= image_tag(child.headshot.url, :width => 75)
-        %span= child.name
-        %br
-        %span= %w(Wednesday Thursday Friday).rand
-%h2 Recommended Visits
-.recommended-visits
-  %ul
-    - Child.find(:all, :limit => 3).each do |child|
-      %li
-        %div= image_tag(child.headshot.url, :width => 75)
-        %span= child.name
-        %br
-        %span= "Hasn't had a visit in #{(2..6).to_a.rand} weeks"
+    %li= link_to('Print the roll call form for today', onsite_children_path(:format => :pdf))
+    %li= link_to('Enter a new child', new_child_path)
+    %li= link_to('View statistics', statistics_path)
