@@ -59,13 +59,18 @@
           .date 
             %span.editable 15 Sep 2009
             - form_for(HomeVisit.new, :url => '/') do |f|
-              = f.text_field :happened_on, :class => 'date-field', :readonly => true
+              = f.text_field :happened_on, :class => 'date-field existing', :readonly => true
           .notes
             Scheduled home visit
             (
             = link_to('Change', '', :class => 'change')
+            |
+            = link_to('Unschedule')
             )
         %li.scheduled
           .date 
+            %span.editable
+            - form_for(HomeVisit.new, :url => {:action => 2}, :html => {:method => :get}) do |f|
+              = f.text_field :happened_on, :class => 'date-field new', :readonly => true
           .notes
-            = link_to("Schedule home visit...")
+            = link_to("Schedule home visit...", '', :class => 'change')

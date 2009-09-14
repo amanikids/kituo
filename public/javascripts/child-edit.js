@@ -23,19 +23,33 @@ $(function() {
 
 
   $('.change').click(function() {
-    $('.child-visits .editable').hide();
-    $('.date-field').show();
-    $('.date-field').datepicker('show');
+    var p = $(this).parent().parent();
+    p.find('.editable').hide();
+    p.find('.date-field').show();
+    p.find('.date-field').datepicker('show');
     return false;
   });
 
-  picker = $('.date-field').datepicker({
+  $('.date-field.existing').datepicker({
     dateFormat: 'd M yy',
     firstDay: 1,
     onClose: function() {
-      $('.child-visits .editable').text($('.date-field').attr('value'));
-      $('.child-visits .editable').show();
-      $('.date-field').hide();
+      var p = $(this).parent().parent();
+      p.find('.editable').text($('.date-field').attr('value'));
+      p.find('.editable').show();
+      p.find('.date-field').hide();
+    }
+  });
+
+  $('.date-field.new').datepicker({
+    dateFormat: 'd M yy',
+    firstDay: 1,
+    onClose: function() {
+      var p = $(this).parent().parent();
+      p.find('.editable').show();
+      p.find('.date-field').hide();
+      if ($('.date-field').attr('value').length > 0)
+        p.find('form').submit();
     }
   });
 });
