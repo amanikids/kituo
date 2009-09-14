@@ -1,6 +1,7 @@
 As a user, I want to:
 - Identify myself to the system
 - view overall statistics
+- Select my language
 
 As a caregiver, I want to:
   On my home page
@@ -19,17 +20,27 @@ As a caregiver, I want to:
     - schedule a visit for a child in my recommended list
     - reschedule a visit
     - unschedule a visit
+    - complete a visit, recording notes and scheduling next visit
+        - create a new scheduled visit if no future scheduled visit
+        - edit next future scheduled visit if it exists
     - find a child that is not listed on my home page
 
-  - be able to print the roll call form for the day
+  - print the roll call form for the day
+  - edit my profile (name, headshot)
+
+  Adding a new child to the system
+  - optionally specify the arrival date
+  - to be alerted with potential duplicates
 
 As Japhari, I want to:
   - add a new caregiver to the system
   - edit name and headshot of an existing caregiver
+  - see all children with no social worker
+  - assign a child to a social worker
+
+  Adding a new child to the system
+  - optionally specify the arrival date
+  - to be alerted with potential duplicates
 
 As Joe, I want to:
   - see children that do not have a headshot, so I can upload a photo for them
-
-?
-  - add a new child to the system
-
