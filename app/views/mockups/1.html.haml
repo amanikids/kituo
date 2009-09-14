@@ -9,47 +9,35 @@
     = link_to('Switch users', :action => 'index')
     )
 
-#day-selector
-  %a{:href => '', :class => 'wed'} Wednesday
-  %a{:href => '', :class => 'thu'} Thursday
-  %a{:href => '', :class => 'fri'} Friday
 .visits
   .scheduled
     %h2 Scheduled Visits
     %h3 This Week
+    %h4 Wednesday
     %ul
-      - Child.find(:all, :limit => 5).each do |child|
-        %li[child]
-          .image= link_to(image_tag(child.headshot.url, :size => '38x38'), :action => 2)
-          .details
-            .name=h child.name
-            .day= %w(Wednesday Thursday Friday).rand
-          .location
-            = %w(Arusha Marangu Sanya\ Juu).rand
+    %h4 Thursday
+    %ul
+      = render :partial => 'child', :collection => Child.find(:all, :limit => 3)
+    %h4 Friday
+    %ul
+      = render :partial => 'child', :collection => Child.find(:all, :limit => 2, :offset => 4)
 
     %h3 Next Week
+    %h4 Wednesday
     %ul
-      - Child.find(:all, :limit => 3, :offset => 20).each do |child|
-        %li[child]
-          .image= link_to(image_tag(child.headshot.url, :size => '38x38'), :action => 2)
-          .details
-            .name=h child.name
-            .day= %w(Wednesday Thursday Friday).rand
-          .location
-            = %w(Arusha Marangu Sanya\ Juu).rand
+      = render :partial => 'child', :collection => Child.find(:all, :limit => 2, :offset => 7)
+    %h4 Thursday
+    %ul
+      = render :partial => 'child', :collection => Child.find(:all, :limit => 1, :offset => 9)
+    %h4 Friday
+    %ul
+      = render :partial => 'child', :collection => Child.find(:all, :limit => 1, :offset => 10)
 
   .recommended
     %h2 Recommended Visits
     %h3 Not seen recently
     %ul
-      - Child.find(:all, :limit => 1, :offset => 20).each do |child|
-        %li[child]
-          .image= link_to(image_tag(child.headshot.url, :size => '38x38'), :action => 2)
-          .details
-            .name=h child.name
-            .day Hasn't had a visit in 6 weeks.
-          .location
-            = %w(Arusha Marangu Sanya\ Juu).rand
+      = render :partial => 'child', :collection => Child.find(:all, :limit => 4, :offset => 30)
 
 .tasks
   %h2 Tasks

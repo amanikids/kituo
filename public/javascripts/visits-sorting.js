@@ -7,20 +7,21 @@ $(function() {
     connectWith: '.visits .scheduled ul',
     containment: '.scheduled',
     axis: 'y',
+    revert: true,
+    cancel: 'a',
+    opacity: 0.8,
+    start: function() {
+      sorting = true;
+    },
     stop: function(event, ui) {
-      var dialog = $('#day-selector');
-      dialog.css({
-        'left': event.clientX - dialog.width() / 2,
-        'top':  event.clientY - dialog.height() / 2
-      }).data('visit-id', extractId(ui.item[0])).show();
+      // extract ID, AJAX post to the server to reschedule
     }
-  });
+  }).find('li').css({cursor: 'move'});
 
-  $('#day-selector a').click(function() {
-    var id = $('#day-selector').data('visit-id');
-    console.log(this.className, id);
-    $('#child_' + id + ' .day').text($(this).text());
-    $('#day-selector').hide();
-    return false;
-  });
+  $('.recommended ul').sortable({
+    connectWith: '.visits .scheduled ul',
+    opacity: 0.8,
+    cancel: 'a',
+    revert: true
+  }).find('li').css({cursor: 'move'});
 });
