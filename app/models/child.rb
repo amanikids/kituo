@@ -13,7 +13,7 @@ class Child < ActiveRecord::Base
   end
 
   def self.without_social_worker
-    scoped(:conditions => '(SELECT COUNT(social_worker_id) FROM case_assignments WHERE case_assignments.child_id = children.id) = 0', :order => :created_at)
+    scoped(:conditions => { :social_worker_id => nil }, :order => :created_at)
   end
 
   def self.upcoming_home_visits(date = Date.today)
@@ -49,8 +49,7 @@ class Child < ActiveRecord::Base
   has_many :dropouts
   has_many :terminations
 
-  has_one :case_assignment, :dependent => :destroy
-  has_one :social_worker, :through => :case_assignment
+  belongs_to :social_worker, :class_name => 'Caregiver'
 
   has_attached_file :headshot,
     :url => '/system/:class/:attachment/:id/:style/:basename.:extension',
@@ -104,21 +103,7 @@ class Child < ActiveRecord::Base
   end
   memoize :potential_duplicates
 
-  delegate :id,   :to => :social_worker, :prefix => true, :allow_nil => true
   delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
-  def social_worker_id=(social_worker_id)
-    if social_worker_id
-      if case_assignment
-        case_assignment.update_attributes(:social_worker_id => social_worker_id)
-      else
-        build_case_assignment(:social_worker_id => social_worker_id)
-      end
-    else
-      if case_assignment
-        case_assignment.destroy
-      end
-    end
-  end
 
   def tasks
     Task.for_child(self)
