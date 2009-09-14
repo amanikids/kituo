@@ -4,6 +4,7 @@
 %html{html_attrs}
   %head
     = stylesheet_link_tag 'reset', 'mockups', :cache => true
+    = yield(:css)
 
   %body
     .page= yield
