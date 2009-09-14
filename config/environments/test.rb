@@ -32,4 +32,4 @@ config.gem 'chronic'
 config.gem 'faker'
 config.gem 'notahat-machinist', :lib => 'machinist', :source => 'http://gems.github.com/'
 config.gem 'redgreen', :lib => false
-config.gem 'thoughtbot-shoulda', :lib => 'shoulda/rails', :source => 'http://gems.github.com/'
+config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.com/'
