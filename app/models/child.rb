@@ -63,6 +63,10 @@ class Child < ActiveRecord::Base
   validates_presence_of :name
   validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
   attr_accessor :ignore_potential_duplicates
+  attr_accessor :location
+  def location
+    @location ||= %w(Arusha Moshi).rand
+  end
   attr_accessible :name, :ignore_potential_duplicates, :headshot, :social_worker_id
 
   # FIXME oh no we di'int

@@ -1,42 +1,64 @@
+- content_for(:js) do
+  = javascript_include_tag('jquery-1.3.2')
+  = javascript_include_tag('child-edit')
+
 - @child = Child.first
 
 .child-header
-  .headshot= image_tag(@child.headshot.url)
-  .edit= link_to('Edit')
-  .text
-    %h1
-      =h @child.name
-      %span.header_link
-        (
-        = link_to('Back to my page', :action => '1')
-        )
+  - form_for(@child, :html => { :multipart => true }) do |f|
+    .headshot= image_tag(@child.headshot.url)
+    .edit
+      .editable= link_to('Edit')
+      .buttons
+        = f.submit("Save")
+        = link_to("Cancel", '', :class => 'cancel')
+    .text
+      %h1
+        %span.editable
+          =h @child.name
+        = f.text_field :name
+        %span.header_link
+          (
+          = link_to('Back to my page', :action => '1')
+          )
 
-    .meta
-      Arrived, from Arusha
+      .meta
+        Arrived, from
+        %span.editable
+          =h @child.location
+        = f.text_field :location
+        %br
+        %span.editable
+          =h @child.social_worker_name || "No social worker"
+        = f.select :social_worker_id, Caregiver.all.collect {|x| [x.name, x.id] }, :include_blank => 'No social worker'
+        %br
+        %br
+        = f.label :headshot
+        = f.file_field :headshot
 
-    .child-visits
-      %h2 Case History
-      %ul
-        %li.event
-          Arrived at Amani on 13 Jul 2009
-        %li
-          .date 20 Aug 2009
-          .notes Heatlhy
-        %li
-          .date 27 Aug 2009
-          .notes Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        %li.event
-          Reunified on 28 Aug 2009
-        %li
-          .date 2 Sep 2009
-          .notes Still in school
-        %li.scheduled
-          .date 15 Sep 2009
-          .notes
-            Scheduled home visit
-            (
-            = link_to('Change')
-            )
+      .child-visits
+        %h2 Case History
+        %ul
+          %li.event
+            Arrived at Amani on 13 Jul 2009
+          %li
+            .date 20 Aug 2009
+            .notes Heatlhy
+          %li
+            .date 27 Aug 2009
+            .notes Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          %li.event
+            Reunified on 28 Aug 2009
+          %li
+            .date 2 Sep 2009
+            .notes Still in school
+          %li.scheduled
+            .date 15 Sep 2009
+            .notes
+              Scheduled home visit
+              (
+              = link_to('Change')
+              )
 
   / - form_for(HomeVisit.new, :url => '/') do |f|
   /   = f.label :happened_on
