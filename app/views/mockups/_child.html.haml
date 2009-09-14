@@ -1,7 +1,14 @@
+- show_completed ||= false
 %li[child]
   .image= link_to(image_tag(child.headshot.url, :size => '38x38'), :action => 2)
   .details
-    .name= link_to(h(child.name), :action => 2)
+    .name
+      = link_to(h(child.name), :action => 2)
+      - if show_completed
+        %span.completed
+          ( 
+          = link_to("Completed")
+          )
     .comment= "Last visited #{(1..4).to_a.rand} weeks ago"
   .location
     = %w(Arusha Marangu Sanya\ Juu).rand

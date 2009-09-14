@@ -24,4 +24,17 @@ $(function() {
     cancel: 'a',
     revert: true
   }).find('li').css({cursor: 'move'});
+
+  $('.completed a').click(function() {
+    $('#completed-dialog').dialog('open');
+    return false
+  });
+  $('#completed-dialog').dialog({
+    width: 400,
+    height: 260,
+    maxHeight: 260,
+    minHeight: 260,
+    autoOpen: false,
+    title: 'Completed Visit'
+  });
 });
