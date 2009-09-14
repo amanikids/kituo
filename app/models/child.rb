@@ -100,8 +100,13 @@ class Child < ActiveRecord::Base
   end
   memoize :potential_duplicates
 
-  delegate :id,   :to => :social_worker, :prefix => true, :allow_nil => true
   delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
+  
+  # FIXME forget about case assignments; just have Child.belongs_to :social_worker
+  def social_worker_id
+    social_worker.try(:id)
+  end
+  
   def social_worker_id=(social_worker_id)
     if social_worker_id
       if case_assignment
