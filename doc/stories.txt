@@ -1,0 +1,35 @@
+As a user, I want to:
+- Identify myself to the system
+- view overall statistics
+
+As a caregiver, I want to:
+  On my home page
+    - See scheduled visits for the next two weeks
+    - See scheduled visits in the past that I have not marked as complete
+    - See a list of 'recommended' visits, children that it is likely I want to schedule a visit for
+
+  for any child
+    - schedule a visit
+    - reschedule a visit
+    - unschedule a visit
+    - edit their name, location and headshot
+    - see a list of home visits, completed and scheduled
+
+  for a child on my home page, without leaving the page
+    - schedule a visit for a child in my recommended list
+    - reschedule a visit
+    - unschedule a visit
+    - find a child that is not listed on my home page
+
+  - be able to print the roll call form for the day
+
+As Japhari, I want to:
+  - add a new caregiver to the system
+  - edit name and headshot of an existing caregiver
+
+As Joe, I want to:
+  - see children that do not have a headshot, so I can upload a photo for them
+
+?
+  - add a new child to the system
+
