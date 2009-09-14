@@ -31,9 +31,9 @@ $(function() {
   });
   $('#completed-dialog').dialog({
     width: 400,
-    height: 260,
-    maxHeight: 260,
-    minHeight: 260,
+    height: 280,
+    maxHeight: 280,
+    minHeight: 280,
     autoOpen: false,
     title: 'Completed Visit'
   });
