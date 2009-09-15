@@ -23,12 +23,12 @@
     %h2 Matembezi
     %h3 Wiki hii
     %h4 Jumatano
-    %ul
+    %ul#this-wednesday
     %h4 Alhamisi
-    %ul
+    %ul#this-thursday
       = render :partial => 'child', :collection => Child.find(:all, :limit => 3), :locals => {:show_completed => true}
     %h4 Ijumaa
-    %ul
+    %ul#this-friday
       = render :partial => 'child', :collection => Child.find(:all, :limit => 2, :offset => 4)
 
     %h3 Wiki ijayo

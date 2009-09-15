@@ -11,6 +11,10 @@ Webrat.configure do |config|
   config.mode = :selenium
 end
 
+Before do
+  [Child].each(&:delete_all)
+end
+
 class Webrat::SeleniumSession
   def setup #:nodoc:
     # FIXME Selenium doesn't work (why not?) when webrat starts it, you

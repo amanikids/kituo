@@ -5,8 +5,8 @@ Feature:
 
   Scenario: Social Worker
     Given the following users exist:
-      | Type      | Name        |
-      | Caregiver | Xavier Shay |
+      | Type          | Name        |
+      | Social Worker | Xavier Shay |
     Given I am on the english home page
     And I follow "Xavier Shay"
     Then I should see "Welcome, Xavier!"
