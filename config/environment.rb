@@ -17,6 +17,7 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem 'english', :lib => 'english/soundex'
   config.gem 'haml'
+  config.gem 'rack'
   config.gem 'prawn'
   config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com/'
 
