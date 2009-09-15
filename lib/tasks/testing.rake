@@ -27,8 +27,16 @@ begin
     task :all
 
     YAML.load(File.open("cucumber.yml")).keys.each do |profile|
-      Cucumber::Rake::Task.new(profile) do |t| 
+      Cucumber::Rake::Task.new(profile, "Run #{profile} features") do |t| 
         t.profile = profile
+        t.cucumber_opts = "--tags ~@pending"
+      end
+
+      namespace profile do
+        Cucumber::Rake::Task.new(:pending, "Show pending #{profile} features") do |t| 
+          t.profile = profile
+          t.cucumber_opts = "--tags @pending --dry-run"
+        end
       end
 
       task profile => 'db:test:prepare'
