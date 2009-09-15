@@ -10,10 +10,10 @@
 .child-header
   .headshot= image_tag(@child.headshot.url)
   .edit
-    .editable= link_to('Edit')
+    .editable= link_to('Hariri')
     .buttons
-      = submit_tag("Save", :class => 'save')
-      = link_to("Cancel", '', :class => 'cancel')
+      = submit_tag("Hifadhi", :class => 'save')
+      = link_to("Tangua", '', :class => 'cancel')
   .text
     - form_for(@child, :html => { :multipart => true , :id => 'child-form'}) do |f|
       %h1
@@ -22,52 +22,52 @@
         = f.text_field :name
         %span.header_link
           (
-          = link_to('Back to my page', :action => '1')
+          = link_to('Rudi nyumbani kwangu', :action => '1')
           )
 
       .meta
-        Arrived, from
+        Anakaa kituoni, kutoka
         %span.editable
           =h @child.location
         = f.text_field :location
         %br
         %span.editable
-          =h @child.social_worker_name || "No social worker"
-        = f.select :social_worker_id, Caregiver.all.collect {|x| [x.name, x.id] }, :include_blank => 'No social worker'
+          =h @child.social_worker_name || "Hana social worker"
+        = f.select :social_worker_id, Caregiver.all.collect {|x| [x.name, x.id] }, :include_blank => 'Hana social worker'
         %br
         %br
         = f.label :headshot
         = f.file_field :headshot
 
     .child-visits
-      %h2 Case History
+      %h2 Historia
       %ul
         %li.event
-          Arrived at Amani on 13 Jul 2009
+          Alifika Amani 13 Jul 2009
         %li
           .date 20 Aug 2009
-          .notes Heatlhy
+          .notes Labda shangazi ataweza kumtunza. Anakaa Kibisho.
         %li
           .date 27 Aug 2009
           .notes Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         %li.event
-          Reunified on 28 Aug 2009
+          Aliunganishwa na familia 28 Aug 2009
         %li
           .date 2 Sep 2009
-          .notes Still in school
+          .notes Anaendelea vizuri
         %li.scheduled
           .date 
             %span.editable 15 Sep 2009
             - form_for(HomeVisit.new, :url => '/') do |f|
               = f.text_field :happened_on, :class => 'date-field existing', :readonly => true
           .notes
-            Scheduled home visit
+            Matembezi yaliyopangwa
             (
-            = link_to('Completed', '', :class => 'completed')
+            = link_to('Tayari', '', :class => 'completed')
             |
-            = link_to('Change', '', :class => 'change')
+            = link_to('Badilisha', '', :class => 'change')
             |
-            = link_to('Unschedule')
+            = link_to('Tangua')
             )
         %li.scheduled
           .date 
@@ -75,4 +75,4 @@
             - form_for(HomeVisit.new, :url => {:action => 2}, :html => {:method => :get}) do |f|
               = f.text_field :happened_on, :class => 'date-field new', :readonly => true
           .notes
-            = link_to("Schedule home visit...", '', :class => 'change')
+            = link_to("Panga matembezi mapya...", '', :class => 'change')

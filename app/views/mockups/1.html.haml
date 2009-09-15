@@ -10,47 +10,47 @@
     %br
     = f.text_area :notes
     %br
-    = f.submit "Completed"
+    = f.submit "Hariri"
 %h1
-  Welcome, Xavier!
+  Karibu, Xavier!
   %span.header_link
     (
-    = link_to('Switch users', :action => 'index')
+    = link_to('Mtu mwingine', :action => 'index')
     )
 
 .visits
   .scheduled
-    %h2 Scheduled Visits
-    %h3 This Week
-    %h4 Wednesday
+    %h2 Matembezi
+    %h3 Wiki hii
+    %h4 Jumatano
     %ul
-    %h4 Thursday
+    %h4 Alhamisi
     %ul
       = render :partial => 'child', :collection => Child.find(:all, :limit => 3), :locals => {:show_completed => true}
-    %h4 Friday
+    %h4 Ijumaa
     %ul
       = render :partial => 'child', :collection => Child.find(:all, :limit => 2, :offset => 4)
 
-    %h3 Next Week
-    %h4 Wednesday
+    %h3 Wiki ijayo
+    %h4 Jumatano
     %ul
       = render :partial => 'child', :collection => Child.find(:all, :limit => 2, :offset => 7)
-    %h4 Thursday
+    %h4 Alhamisi
     %ul
       = render :partial => 'child', :collection => Child.find(:all, :limit => 1, :offset => 9)
-    %h4 Friday
+    %h4 Ijumaa
     %ul
       = render :partial => 'child', :collection => Child.find(:all, :limit => 1, :offset => 10)
 
   .recommended
-    %h2 Recommended Visits
-    %h3 Not seen recently
+    %h2 Matembezi tunayopendeleza
+    %h3 Hatujawatembelea hivi karibuni
     %ul
       = render :partial => 'child', :collection => Child.find(:all, :limit => 4, :offset => 30)
 
 .tasks
-  %h2 Tasks
+  %h2 Shughuli
   %ul
-    %li= link_to('Print the roll call form for today', onsite_children_path(:format => :pdf))
-    %li= link_to('Enter a new child', new_child_path)
-    %li= link_to('View statistics', statistics_path)
+    %li= link_to('Chapisha mahudhurio ya leo', onsite_children_path(:format => :pdf))
+    %li= link_to('Mwingiza mtoto mgeni', new_child_path)
+    %li= link_to('Angalia ripoti', statistics_path)
