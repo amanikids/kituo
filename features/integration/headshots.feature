@@ -7,7 +7,7 @@ Feature: Headshots
     Given caregiver "Japhary Salum" exists
     And I am on the caregiver page for "Japhary Salum"
     When I follow "Edit Headshot"
-    And I attach the file at "features/support/sample_headshot.jpg" to "Upload a New Image"
+    And I attach the file "sample_headshot.jpg" to "Upload a New Image"
     And I press "Save"
     Then I should see "Updated Headshot for Japhary Salum."
 
@@ -15,7 +15,7 @@ Feature: Headshots
     Given child "Ramadhan Masawe" exists
     And I am on the child page for "Ramadhan Masawe"
     When I follow "Edit Headshot"
-    And I attach the file at "features/support/sample_headshot.jpg" to "Upload a New Image"
+    And I attach the file "sample_headshot.jpg" to "Upload a New Image"
     And I press "Save"
     Then I should see "Updated Headshot for Ramadhan Masawe."
 

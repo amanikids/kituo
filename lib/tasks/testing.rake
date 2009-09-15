@@ -22,10 +22,22 @@ end
 
 begin
   require 'cucumber/rake/task'
-  Cucumber::Rake::Task.new(:features) { |t| t.cucumber_opts = '--format pretty --tags ~pending' }
-  task :features => 'db:test:prepare'
+  namespace :features do
+    desc "Run all cucumber features"
+    task :all
+
+    YAML.load(File.open("cucumber.yml")).keys.each do |profile|
+      Cucumber::Rake::Task.new(profile) do |t| 
+        t.profile = profile
+      end
+
+      task profile => 'db:test:prepare'
+      task :all => profile
+    end
+  end
+
   remove_task :default
-  task :default => ['test:units', 'features', 'test:locales']
+  task :default => ['test:units', 'features:all', 'test:locales']
 rescue LoadError
   puts "If you'd like to run the features, please install cucumber."
 end
