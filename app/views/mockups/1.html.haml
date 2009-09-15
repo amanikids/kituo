@@ -48,6 +48,22 @@
     %ul
       = render :partial => 'child', :collection => Child.find(:all, :limit => 4, :offset => 30)
 
+    %br
+    %h2 Other Children
+    - if params[:search_variant]
+      %h3
+        %input
+        = submit_tag("Search")
+
+    - else
+      %div
+        %input
+        = submit_tag("Search")
+      %br
+      %h3 Matching "George"
+    %ul
+      = render :partial => 'child', :collection => Child.find(:all, :limit => 3, :offset => 35)
+
 .tasks
   %h2 Shughuli
   %ul
