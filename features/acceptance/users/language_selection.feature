@@ -1,4 +1,4 @@
-Feature: 
+Feature:
   As a user
   I want to select for the app to be displayed in my native language
   So that I can best understand the application

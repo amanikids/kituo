@@ -1,4 +1,4 @@
-Feature: 
+Feature:
   As a user
   I want to identify myself to the system
   So that I can be shown information that is relevant to me

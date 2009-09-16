@@ -21,7 +21,7 @@ module DashboardHelper
   # Since you can't reschedule visits into the past, we don't need to include
   # empty drop targets like we do for upcoming visits
   def overdue_by_week_and_day(visits)
-    overdue = visits.select {|visit| 
+    overdue = visits.select {|visit|
       visit.scheduled_for < Date.today.beginning_of_week }
 
     unlabeled = overdue.group_by(&:scheduled_for).group_by {|day, visits|

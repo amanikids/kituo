@@ -3,7 +3,7 @@ en:
 
   sessions:
     new:
-      heading: Hello! 
+      heading: Hello!
       subheading: Who are you?
 
   dashboard:

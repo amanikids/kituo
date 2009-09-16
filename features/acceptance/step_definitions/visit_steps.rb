@@ -16,7 +16,7 @@ When /^I drag "([^\"]*)" to "([^\"]*)"$/ do |child_name, date|
   destination = "//ul[@data-date='#{date}']"
 
   [source, destination].each do |selector|
-    selenium.wait_for_element selector, :timeout_in_seconds => 5  
+    selenium.wait_for_element selector, :timeout_in_seconds => 5
   end
   selenium.drag_and_drop_to_object(source, destination)
 end

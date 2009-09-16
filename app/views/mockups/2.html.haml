@@ -56,7 +56,7 @@
           .date 2 Sep 2009
           .notes Anaendelea vizuri
         %li.scheduled
-          .date 
+          .date
             %span.editable 15 Sep 2009
             - form_for(HomeVisit.new, :url => '/') do |f|
               = f.text_field :happened_on, :class => 'date-field existing', :readonly => true
@@ -70,7 +70,7 @@
             = link_to('Tangua')
             )
         %li.scheduled
-          .date 
+          .date
             %span.editable
             - form_for(HomeVisit.new, :url => {:action => 2}, :html => {:method => :get}) do |f|
               = f.text_field :happened_on, :class => 'date-field new', :readonly => true

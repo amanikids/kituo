@@ -6,7 +6,7 @@ $(function() {
 
     $.ajax({
       type: 'PUT',
-      url:  '/scheduled_visits/' + visit_id, 
+      url:  '/scheduled_visits/' + visit_id,
       data: {
         'scheduled_visit[scheduled_for]': scheduled_for
       }
