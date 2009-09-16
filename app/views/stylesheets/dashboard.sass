@@ -1,0 +1,67 @@
+@import constants.sass
+
+body
+  margin: 3em auto
+  width= !page_width
+
+h1
+  font-size: 2.5em
+
+h2
+  font-size: 1.5em
+  margin-bottom: 0.25em
+
+h3
+  color: white
+  background-color: black
+  margin-bottom: 0.25em
+
+h4
+  background-color: gray
+  color: white
+
+h3, h4
+  font-family= !sans_serif
+  font-size: 0.75em
+  padding: 0.25em
+
+.upcoming
+  ul
+    padding-top:    0.25em
+    padding-bottom: 0.25em
+
+!scheduled_visit_headshot_size = 40px
+!scheduled_visit_padding       =  6px
+li.scheduled_visit
+  background-color: #ffc
+  padding=       !scheduled_visit_padding
+  margin-bottom= !scheduled_visit_padding / 2
+  min-height=    !scheduled_visit_headshot_size
+  position: relative
+
+  &:last-child
+    margin-bottom: 0
+
+  .headshot
+    position: absolute
+    top=  !scheduled_visit_padding
+    left= !scheduled_visit_padding
+
+    img
+      width=  !scheduled_visit_headshot_size
+      height= !scheduled_visit_headshot_size
+
+  .heading, .meta
+    margin-left= !scheduled_visit_headshot_size + !scheduled_visit_padding
+
+  .heading
+    .name
+      font-size: 1.5em
+      a
+        color: inherit
+
+  .meta
+    position: relative
+    .location
+      position: absolute
+      right: 0

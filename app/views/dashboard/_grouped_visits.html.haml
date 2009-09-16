@@ -1,0 +1,15 @@
+- grouped_visits.each do |week, days|
+  %h3= t(*distance_of_time_in_weeks(week))
+  - days.each do |day, visits|
+    %h4= l(day, :format => :day_name)
+    %ul{ 'data-date' => day.to_s(:db) }
+      - visits.each do |visit|
+        %li[visit]{ 'data-id' => visit.id }
+          .headshot= link_to image_tag(visit.child.headshot.url, :size => '40x40'), visit.child
+          .heading
+            %span.name= link_to h(visit.child.name), visit.child
+            %span.actions
+          .meta
+            %span.comment This is hardcoded in the partial.
+            %span.location=h visit.child.location
+
