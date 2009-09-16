@@ -21,7 +21,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :statistics, :collection => { :length_of_stay => :get }
 
+  # FIXME remove mockups
   map.connect 'mockups/:action', :controller => 'mockups'
 
-  map.root :controller => 'children'
+  map.resource :session
+  map.root :controller => 'dashboard', :action => 'show'
 end

@@ -6,3 +6,6 @@ Given /^the following users exist:$/ do |table|
     )
   end
 end
+
+Given /^I am not logged in$/ do
+end

@@ -16,4 +16,8 @@ class Caregiver < ActiveRecord::Base
   def tasks
     Task.for_caregiver(self)
   end
+
+  def friendly_name
+    name.split(' ')[0]
+  end
 end

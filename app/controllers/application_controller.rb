@@ -15,16 +15,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def redirect_to(*args)
-    return super if args.extract_options![:skip_contextual_magic]
-
-    if location = session.delete(:location)
-      super(location)
-    else
-      super
-    end
-  end
-
   def set_locale
     I18n.locale = params[:locale] if params[:locale]
   end

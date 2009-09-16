@@ -6,10 +6,9 @@ Feature:
   Background:
     Given I am on the home page
 
-  @pending
-  Scenario: Swahili Default, since this is the preferred language for most users
+  Scenario: Default language is Swahili, since this is the preferred language for most users
     Then I should see "Karibu!"
 
-  Scenario: English, for Joe and the devs
+  Scenario: English language, for Joe and the devs
     Given I follow "English"
     Then I should see "Hello!"

@@ -3,10 +3,12 @@ Feature:
   I want to identify myself to the system
   So that I can be shown information that is relevant to me
 
-  Scenario: Social Worker
+  Scenario: Social Worker identification
     Given the following users exist:
       | Type          | Name        |
       | Social Worker | Xavier Shay |
-    Given I am on the english home page
+    Given I am not logged in
+    Given I am on the english dashboard
+    Then I should see "Hello"
     And I follow "Xavier Shay"
     Then I should see "Welcome, Xavier!"

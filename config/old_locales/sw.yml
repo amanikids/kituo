@@ -1,0 +1,260 @@
+sw:
+  locale_name: Kiswahili
+
+  title: Kituo cha Amani
+  staging: "Tahadhari! Database hii ni ya kujifunzia tu. Database yenyewe iko: {{link}}."
+
+  datetime:
+    distance_in_weeks:
+      zero: wiki hii
+      one: wiki 1
+      other: 'wiki {{count}}'
+
+  due:
+    past:
+      one: '{{phrase}} iliyopita'
+      other: '{{phrase}} zilizopita'
+    present: '{{phrase}}'
+    future: '{{phrase}} baadaye'
+
+  form:
+    saving: Subiri kidogo
+
+  # ===========================================================================
+  # = ActionPack Translations                                                 =
+  # ===========================================================================
+  caregivers:
+    index:
+      tab: Walezi
+      title: Walezi
+    new:
+      link: Mlezi Mgeni
+      title: Mlezi Mgeni
+      submit: Ingiza taarifa
+    create:
+      notice: "Umefungua faili ya {{name}}."
+    show:
+      case_load:
+        one: "Case Load: Mtoto 1"
+        other: "Case Load: Watoto {{count}}"
+    edit:
+      link: Badilisha jina
+      title: Badilisha jina
+      submit: Ingiza taarifa
+    update:
+      notice: "Umebadilisha jina ya {{name}}."
+
+    # singular nested caregiver resources
+    headshot:
+      edit:
+        link: Badilisha picha
+        title: Badilisha picha
+        submit: Ingiza picha mpya
+      update:
+        notice: "Picha mpya ya {{name}} umerikodiwa."
+
+  children:
+    index:
+      tab: Watoto
+      title: Watoto
+      empty: Huna Watoto
+    new:
+      tab: Mgeni
+      link: Fungua Faili ya Mtoto Mgeni
+      title: Mtoto Mgeni
+      submit: Ingiza taarifa ya mtoto mgeni
+    create:
+      notice: "Umefungua faili ya {{name}}."
+      potential_duplicates:
+        title: Inawezekana huyu mtoto tayari anayo faili.
+        subtitle: "Je, ulimaanisha mtoto kati ya hawa?"
+        submit_leader: "Ukiwa na uhakika huyu mtoto hayupo kati ya hawa hapa juu,"
+        submit: "Fungua faili ya {{name}}"
+    show:
+      record: 'Tukio:'
+      social_worker:
+        unassigned: Hana
+      timeline: Historia
+    edit:
+      link: Badilisha jina
+      title: Badilisha jina
+      submit: Ingiza taarifa
+    update:
+      notice: "Umebadilisha jina ya {{name}}."
+    destroy:
+      link: Futa
+      confirm: Unahakikisha?
+      notice: "Umeshafuta faili ya {{name}}."
+
+    # children collection actions
+    boarding_offsite:
+      tab: Wanokaa boarding
+      title: "Watoto wanaokaa boarding ({{count}})"
+    dropped_out:
+      tab: Watoro
+      title: "Watoto waliotoroka ({{count}})"
+    onsite:
+      tab: Kituoni
+      title: "Watoto wanaokaa kituoni ({{count}})"
+      pdf:
+        link: Mahudhurio
+        title: Watoto wanaokaa kituoni
+        subtitle: "Wiki ya {{begin_date}} hadi {{end_date}}"
+    reunified:
+      tab: Walioshikamanishwa
+      title: "Watoto ambao wameshikamanishwa nyumbani ({{count}})"
+    terminated:
+      tab: Terminated
+      title: "Watoto ambao wamekuwa terminated ({{count}})"
+    unrecorded_arrivals:
+      tab: Wanaohitaji historia
+      title: "Wanaohitaji historia ({{count}})"
+
+    # plural nested child resources
+    arrivals:
+      new:
+        link: Alipoingia kituoni
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe alipoingia kituoni imerikodiwa kama {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe alipoingia kituoni ya {{name}}."
+    dropouts:
+      new:
+        link: Alipotoroka
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe alipotoroka kituoni imerikodiwa kama {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe alipotoroka kituoni ya {{name}}."
+    home_visits:
+      new:
+        link: Alipotembelewa nyumbani
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe ya home visit imerikodiwa kama {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe ya home visit ya {{name}}."
+    offsite_boardings:
+      new:
+        link: Alipoenda boarding
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe ya kwenda boarding imerikodiwa kwa {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe ya kwenda boarding ya {{name}}."
+    reunifications:
+      new:
+        link: Alipounganishwa
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe ya kuunganishwa na familia imerikodiwa kwa {{name}}."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe ya kuunganishwa na familia ya {{name}}."
+    terminations:
+      new:
+        link: Alipokuwa terminated
+        submit: Ingiza taarifa
+      create:
+        notice: "Tarehe ya termination ya {{name}} imerikodiwa."
+      destroy:
+        link: Futa
+        confirm: Unahakikisha?
+        notice: "Umeshafuta tarehe ya termination ya {{name}}."
+
+    # singular nested child resources
+    headshot:
+      edit:
+        link: Badilisha picha
+        title: Badilisha picha
+        submit: Ingiza picha mpya
+      update:
+        notice: "Picha mpya ya {{name}} umerikodiwa."
+    social_worker:
+      edit:
+        link: Badilisha social worker
+        title: Badilisha social worker
+        unassigned: Hana
+        submit: Ingiza taarifa
+      update:
+        notice: "Social worker ya {{child_name}} ni {{social_worker_name}}."
+
+  statistics:
+    index:
+      tab: Ripoti
+      title: Ripoti
+    length_of_stay:
+      title: Muda Wanaokaa Kituoni (Miezi)
+    bar_graph:
+      mean: "Mean: {{mean}}"
+      median: "Median: {{median}}"
+      mode: "Mode: {{mode}}"
+
+  tasks:
+    index:
+      tab: Shughuli
+      title: Shughuli
+      empty: Hakuna shughuli
+    unrecorded_arrivals:
+      tab: Wanaohitaji historia
+      title: Wanaohitaji historia
+      description: "Tukio tarehe Alipoingia kituoni kama {{name}}"
+    unassigned_children:
+      tab: Wanaohitaji social sorker
+      title: Watoto wanaohitaji Social Worker
+      description: "Mpe {{name}} Social Worker"
+    upcoming_home_visits:
+      tab: Wanaotakiwa kufanyiwa kazi
+      title: Watoto wanaohitaji Home Visit
+      description: "Mtembelee nyumbani {{name}}"
+
+
+  # ===========================================================================
+  # = ActiveRecord Translations                                               =
+  # ===========================================================================
+  activerecord:
+    attributes:
+      arrival:
+        happened_on: Tarehe
+      caregiver:
+        headshot: Upload Picha Mpya
+        name: Jina
+      case_assignment:
+        child_id: Mtoto
+        social_worker_id: Social worker
+      child:
+        headshot: Upload Picha Mpya
+        ignore_potential_duplicates: "THIS SHOULDN'T SHOW UP ON THE SCREEN"
+        name: Jina
+        social_worker_id: Social worker
+      dropout:
+        happened_on: Tarehe
+      home_visit:
+        happened_on: Tarehe
+      offsite_boarding:
+        happened_on: Tarehe
+      reunification:
+        happened_on: Tarehe
+      termination:
+        happened_on: Tarehe
+
+    models:
+      arrival: Alipoingia kituoni
+      caregiver: Mlezi
+      case_assignment: Case assignment # this shouldn't show up, so English is okay
+      child: Mtoto
+      dropout: Alipotoroka
+      home_visit: Home visit
+      offsite_boarding: Alipoenda boarding
+      reunification: Alipounganishwa na familia
+      termination: Alipokuwa terminated
