@@ -10,11 +10,12 @@ Feature:
 
   Scenario: Rescheduling a visit
     And the following scheduled visits exist:
-      | Child       | Date           |
-      | Juma Masawe | This Wednesday |
-    And I am on the english home page
-    And I follow "Xavier Shay"
-    When I drag "Juma Masawe" to "This Thursday"
+      | Social Worker | Child       | Date           |
+      | Xavier Shay   | Juma Masawe | This Wednesday |
+    And I am on the english dashboard
+    And I click "Xavier Shay"
+    And I drag "Juma Masawe" to "This Thursday"
+    And I wait for AJAX requests to finish
     Then the visit for "Juma Masawe" should be scheduled for "This Thursday"
 
   Scenario: Scheduling a visit for a child not in my recommended list
