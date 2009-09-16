@@ -1,5 +1,5 @@
 Sham.name { Faker::Name.name }
-Sham.happened_on { Date.today }
+Sham.happened_on(:unique => false) { (0..30).to_a.rand.days.ago.to_date }
 
 Arrival.blueprint { happened_on }
 Dropout.blueprint { happened_on }
@@ -17,5 +17,5 @@ end
 
 ScheduledVisit.blueprint do
   child
-  scheduled_for
+  scheduled_for { (1..4).to_a.rand.weeks.from_now }
 end

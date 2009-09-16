@@ -22,6 +22,8 @@ Feature:
 
   Scenario: Scheduling a visit from my recommended list
 
+  Scenario: Unscheduling a visit
+
   Scenario: Scheduling a visit for a child not in my recommended list
     Given the following children exist:
       | Name        |
