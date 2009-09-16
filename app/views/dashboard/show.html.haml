@@ -1,1 +1,18 @@
 %h1= t('.welcome', :name => current_user.friendly_name)
+
+%h2= t('.scheduled_visits')
+- overdue_by_week_and_day(@scheduled_visits).each do |week, days|
+  %h3=t *distance_of_time_in_weeks(week)
+  - days.each do |day, visits|
+    %h4= l(day, :format => :day_name)
+    %ul
+      - visits.each do |visit|
+        %li= visit.scheduled_for
+
+- upcoming_by_week_and_day(@scheduled_visits).each do |week, days|
+  %h3=t *distance_of_time_in_weeks(week)
+  - days.each do |day, visits|
+    %h4= l(day, :format => :day_name)
+    %ul
+      - visits.each do |visit|
+        %li= visit.scheduled_for

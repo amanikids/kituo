@@ -9,3 +9,8 @@ HomeVisit.blueprint { happened_on }
 OffsiteBoarding.blueprint { happened_on }
 Reunification.blueprint { happened_on }
 Termination.blueprint { happened_on }
+
+ScheduledVisit.blueprint do
+  child
+  scheduled_for
+end

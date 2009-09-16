@@ -8,7 +8,6 @@ Feature:
       | Type          | Name        |
       | Social Worker | Xavier Shay |
 
-  @pending
   Scenario: Rescheduling a visit
     And the following scheduled visits exist:
       | Child       | Date           |

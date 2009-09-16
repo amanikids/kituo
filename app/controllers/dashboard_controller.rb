@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
   layout nil
 
   def show
+    @scheduled_visits = current_user.scheduled_visits.before(2.weeks.from_now)
   end
 
   private

@@ -2,6 +2,7 @@ class Caregiver < ActiveRecord::Base
   named_scope :by_name, :order => :name
 
   has_many :children, :foreign_key => :social_worker_id
+  has_many :scheduled_visits, :through => :children
 
   has_attached_file :headshot,
     :url => '/system/:class/:attachment/:id/:style/:basename.:extension',

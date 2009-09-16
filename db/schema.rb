@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090914111806) do
+ActiveRecord::Schema.define(:version => 20090916062928) do
 
   create_table "caregivers", :force => true do |t|
     t.string   "name"
@@ -44,5 +44,14 @@ ActiveRecord::Schema.define(:version => 20090914111806) do
   add_index "events", ["created_at"], :name => "index_events_on_created_at"
   add_index "events", ["happened_on"], :name => "index_events_on_happened_on"
   add_index "events", ["type"], :name => "index_events_on_type"
+
+  create_table "scheduled_visits", :force => true do |t|
+    t.integer  "child_id",      :null => false
+    t.date     "scheduled_for", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "scheduled_visits", ["child_id", "scheduled_for"], :name => "index_scheduled_visits_on_child_id_and_scheduled_for"
 
 end

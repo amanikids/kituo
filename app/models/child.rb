@@ -41,13 +41,14 @@ class Child < ActiveRecord::Base
   end
 
   has_many :events, :dependent => :destroy
-
   has_many :arrivals
   has_many :home_visits
   has_many :offsite_boardings
   has_many :reunifications
   has_many :dropouts
   has_many :terminations
+
+  has_many :scheduled_visits, :dependent => :destroy
 
   belongs_to :social_worker, :class_name => 'Caregiver'
 

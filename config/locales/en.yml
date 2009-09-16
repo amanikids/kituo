@@ -8,4 +8,21 @@ en:
 
   dashboard:
     show:
-      welcome: Welcome, {{name}}!
+      welcome: "Welcome, {{name}}!"
+      scheduled_visits: Scheduled Visits
+
+  date:
+    formats:
+      day_name: "%A"
+
+  datetime:
+    distance_of_time_in_words:
+      x_weeks_ago:
+        zero: this week
+        one:  last week
+        other: "{{count}} weeks ago"
+
+      x_weeks_from_now:
+        zero: this week
+        one:  next week
+        other: "{{count}} weeks from now"

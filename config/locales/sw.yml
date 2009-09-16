@@ -8,4 +8,21 @@ sw:
 
   dashboard:
     show:
-      welcome: Karibu, {{name}}!
+      welcome: "Karibu, {{name}}!"
+      scheduled_visits: Matembezi uliyopangwa
+
+  date:
+    formats:
+      day_name: "%A"
+
+  datetime:
+    distance_of_time_in_words:
+      x_weeks_ago:
+        zero: wiki hii
+        one:  wiki iliyopita
+        other: "wiki {{count}} zilizopita"
+
+      x_weeks_from_now:
+        zero: wiki hii
+        one:  wiki ijayo
+        other: "wiki {{count}} zijazo"
