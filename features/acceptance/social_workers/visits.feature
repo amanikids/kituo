@@ -18,6 +18,10 @@ Feature:
     And I wait for AJAX requests to finish
     Then the visit for "Juma Masawe" should be scheduled for "This Thursday"
 
+  Scenario: Rescheduling a visit that was missed
+
+  Scenario: Scheduling a visit from my recommended list
+
   Scenario: Scheduling a visit for a child not in my recommended list
     Given the following children exist:
       | Name        |
