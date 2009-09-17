@@ -4,6 +4,7 @@ Feature:
   So that I can best understand the application
 
   Background:
+    Given I am not signed in
     Given I am on the home page
 
   Scenario: Default language is Swahili, since this is the preferred language for most users

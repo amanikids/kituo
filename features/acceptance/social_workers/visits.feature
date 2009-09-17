@@ -4,6 +4,7 @@ Feature:
   So that my time is optimally spent
 
   Background:
+    Given I am not signed in
     Given the following users exist:
       | Type          | Name        |
       | Social Worker | Xavier Shay |
@@ -30,7 +31,7 @@ Feature:
       | Name        |
       | Juma Masawe |
     And I am on the english home page
-    And I follow "Xavier Shay"
+    And I click "Xavier Shay"
     And I fill in "search" with "Juma"
     And I press "Search"
     Then I should see "Juma Masawe"

@@ -7,8 +7,8 @@ Feature:
     Given the following users exist:
       | Type          | Name        |
       | Social Worker | Xavier Shay |
-    Given I am not logged in
+    Given I am not signed in
     Given I am on the english dashboard
     Then I should see "Hello"
-    And I follow "Xavier Shay"
+    And I click "Xavier Shay"
     Then I should see "Welcome, Xavier!"

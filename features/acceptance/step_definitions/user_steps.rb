@@ -7,5 +7,7 @@ Given /^the following users exist:$/ do |table|
   end
 end
 
-Given /^I am not logged in$/ do
+Given /^I am not signed in$/ do
+  visit path_to("the english dashboard")
+  click_button("sign out")
 end
