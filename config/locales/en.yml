@@ -11,7 +11,9 @@ en:
       welcome: "Welcome, {{name}}!"
       switch_user: Not you?
       scheduled_visits: Scheduled Visits
-    grouped_visits:
+      recommended_visits: Recommended Visits
+      neglected: Not visited recently
+    visit:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited
 

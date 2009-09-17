@@ -37,6 +37,8 @@ namespace :db do
       end
 
       ScheduledVisit.last.child.home_visits.make
+
+      user.children.make(:state => :on_site) # No visits, recommended
     end
 
     desc 'Copy the production database down locally.'
