@@ -11,7 +11,7 @@ class StateMigrator
     Child.find_each do |child|
       last_event = child.events.find(:first,
         :conditions => ['type != ?', 'HomeVisit'],
-        :order      => 'happened_on DESC')
+        :order      => 'happened_on DESC, created_at DESC')
 
       if last_event
         new_state = STATES.fetch(last_event.class)

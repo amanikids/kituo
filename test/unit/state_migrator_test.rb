@@ -50,4 +50,13 @@ class StateMigratorTest < ActiveSupport::TestCase
     should_have_state 'on_site'
   end
 
+  context 'a child with two events on the same day' do
+    setup do
+      @child.arrivals.make(:happened_on => 1.week.ago, :created_at => 3.seconds.ago)
+      @child.dropouts.make(:happened_on => 1.week.ago, :created_at => 2.seconds.ago)
+    end
+
+    should_have_state 'dropped_out'
+  end
+
 end
