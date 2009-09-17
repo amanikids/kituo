@@ -17,16 +17,10 @@ end
 namespace :kituo do
   desc "Setup scheduled and recommend visits for development. Destroys existing data."
   task :dev_data => :environment do
-    raise "not in production" if Rails.env.production?
+    raise 'only in development' unless Rails.env.development?
 
-    require 'sham'
     require 'faker'
-    begin
-      require 'machinist/active_record' # 1.0.0
-    rescue LoadError
-      require 'machinist' # 0.3.1
-    end
-
+    require 'machinist/active_record'
     require 'test/blueprints'
 
     [Caregiver, ScheduledVisit, Child].each(&:delete_all)
@@ -35,8 +29,7 @@ namespace :kituo do
     headshots = Dir.new(headshot_path).entries.select {|x| x =~ /\.jpg$/i }
     headshots.collect! {|x| File.open("#{headshot_path}/#{x}") }
 
-    user = Caregiver.make(
-      :headshot                    => headshots.delete(headshots.rand))
+    user = Caregiver.make(:headshot => headshots.delete(headshots.rand))
 
     [
       -4.days, # Overdue visit

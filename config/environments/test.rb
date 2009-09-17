@@ -31,5 +31,5 @@ config.action_mailer.delivery_method = :test
 config.gem 'chronic'
 config.gem 'faker'
 config.gem 'jeremymcanally-matchy', :lib => 'matchy', :source => 'http://gems.github.com/'
-config.gem 'notahat-machinist', :lib => 'machinist', :source => 'http://gems.github.com/'
+config.gem 'notahat-machinist', :lib => 'machinist/active_record', :source => 'http://gems.github.com/'
 config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.com/'
