@@ -1,30 +1,5 @@
 @import constants.sass
 
-body
-  margin: 3em auto
-  width= !page_width
-
-h1
-  font-size: 2.5em
-
-h2
-  font-size: 1.5em
-  margin-bottom: 0.25em
-
-h3
-  color: white
-  background-color: black
-  margin-bottom: 0.25em
-
-h4
-  background-color: gray
-  color: white
-
-h3, h4
-  font-family= !sans_serif
-  font-size: 0.75em
-  padding: 0.25em
-
 !loading_width = 81px
 !loading_padding = 5px
 !loading_spinner_size = 16px
@@ -44,6 +19,39 @@ h3, h4
   color: white
   padding= !loading_padding
   padding-right= !loading_padding + !loading_spinner_size
+
+body
+  margin: 3em auto
+  width= !page_width
+
+h1
+  font-size: 2.5em
+  .actions
+    font-size: 0.4em
+    &:before
+      content: "("
+    &:after
+      content: ")"
+    a
+      color: inherit
+
+h2
+  font-size: 1.5em
+  margin-bottom: 0.25em
+
+h3
+  color: white
+  background-color: black
+  margin-bottom: 0.25em
+
+h4
+  background-color: gray
+  color: white
+
+h3, h4
+  font-family= !sans_serif
+  font-size: 0.75em
+  padding: 0.25em
 
 .upcoming
   ul
