@@ -13,3 +13,44 @@ end
 namespace :db do
   task :seed => ['db/seed/children.yml', 'db/seed/images']
 end
+
+namespace :kituo do
+  desc "Setup scheduled and recommend visits for development. Destroys existing data."
+  task :dev_data => :environment do
+    raise "not in production" if Rails.env.production?
+
+    require 'sham'
+    require 'faker'
+    begin
+      require 'machinist/active_record' # 1.0.0
+    rescue LoadError
+      require 'machinist' # 0.3.1
+    end
+
+    require 'test/blueprints'
+
+    [Caregiver, ScheduledVisit, Child].each(&:delete_all)
+
+    headshot_path = "db/seed/images"
+    headshots = Dir.new(headshot_path).entries.select {|x| x =~ /\.jpg$/i }
+    headshots.collect! {|x| File.open("#{headshot_path}/#{x}") }
+
+    user = Caregiver.make(
+      :headshot                    => headshots.delete(headshots.rand))
+
+    [
+      2.days,
+      2.days,
+      3.days,
+      1.week + 1.day
+    ].each do |day|
+      child = user.children.make(
+        :headshot                    => headshots.delete(headshots.rand),
+        :ignore_potential_duplicates => true
+      )
+      ScheduledVisit.make(
+        :child         => child,
+        :scheduled_for => Date.today.beginning_of_week + day)
+    end
+  end
+end
