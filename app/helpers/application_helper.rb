@@ -4,6 +4,7 @@ module ApplicationHelper
 
   def js_dependencies
     {
+      :change_locale => %w(jquery-1.3.2),
       :scheduled_visits => %w(
         jquery-1.3.2
         jquery-ui-1.7.2.everything.min
