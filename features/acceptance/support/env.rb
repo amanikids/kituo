@@ -13,24 +13,6 @@ Webrat.configure do |config|
 end
 
 Before do
-  [Child].each(&:delete_all)
-end
-
-class Webrat::SeleniumSession
-  def setup #:nodoc:
-    # FIXME Selenium doesn't work (why not?) when webrat starts it, you
-    # have to start it externally via the "selenium" command (installed
-    # by the Selenium gem)
-
-#    Webrat::Selenium::SeleniumRCServer.boot
-    Webrat::Selenium::SeleniumRCServer.new.wait
-    Webrat::Selenium::ApplicationServerFactory.app_server_instance.boot
-
-    create_browser
-    $browser.start
-
-    extend_selenium
-    define_location_strategies
-    $browser.window_maximize
-  end
+  # FIXME how shall we clean the database before each run?
+  [Caregiver, Child, Event, ScheduledVisit].each(&:delete_all)
 end
