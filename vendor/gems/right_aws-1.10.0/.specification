@@ -92,7 +92,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: rightscale
-rubygems_version: 1.3.2
+rubygems_version: 1.3.5
 signing_key: 
 specification_version: 2
 summary: Interface classes for the Amazon EC2/EBS, SQS, S3, SDB, and ACF Web Services
