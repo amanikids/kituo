@@ -35,6 +35,8 @@ namespace :db do
           :child         => child,
           :scheduled_for => Date.today.beginning_of_week + day)
       end
+
+      ScheduledVisit.last.child.home_visits.make
     end
 
     desc 'Copy the production database down locally.'

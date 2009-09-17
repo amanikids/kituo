@@ -76,6 +76,10 @@ class Child < ActiveRecord::Base
     NameMatcher.new(Child.all.map(&:name)).match(name).map { |n| Child.find_all_by_name(n) }.flatten
   end
 
+  def last_visited_on
+    home_visits.last.try(:happened_on)
+  end
+
   # Maybe this should use some sort of counter object? (YAGNI, until we need it more than once.)
   def length_of_stay(measured_on = Date.today)
     return nil if arrivals.happened_by(measured_on).empty?

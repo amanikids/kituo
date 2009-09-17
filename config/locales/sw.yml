@@ -11,6 +11,9 @@ sw:
       welcome: "Karibu, {{name}}!"
       switch_user: Mtu mwingine?
       scheduled_visits: Matembezi uliyopangwa
+    grouped_visits:
+      last_visited: "Tulimtembelea tarehe {{date}}"
+      never_visited: Bado hatujamtembelea
 
   date:
     formats:

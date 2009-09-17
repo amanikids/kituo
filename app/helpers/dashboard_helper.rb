@@ -1,6 +1,10 @@
 module DashboardHelper
-  def weeks_ago(day)
-    ((Date.today.beginning_of_week - day.beginning_of_week) / 7).to_i
+  def comment_for(visit)
+    if visit.child.last_visited_on
+      ['.last_visited', {:date => visit.child.last_visited_on}]
+    else
+      ['.never_visited']
+    end
   end
 
   def distance_of_time_in_weeks(day)

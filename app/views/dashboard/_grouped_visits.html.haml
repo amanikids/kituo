@@ -10,6 +10,6 @@
             %span.name= link_to h(visit.child.name), visit.child
             %span.actions
           .meta
-            %span.comment This is hardcoded in the partial.
+            %span.comment= t(*comment_for(visit))
             %span.location=h visit.child.location
 
