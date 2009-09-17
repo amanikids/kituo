@@ -36,17 +36,18 @@ class CaregiverTest < ActiveSupport::TestCase
       @social_worker.recommended_visits.map(&:child).should == [arrived]
     end
 
-    should_eventually 'include a child that has arrived and has not had a visit in more than 1 month' do
-      arrived = @social_worker.children.make
-      arrived.arrivals.make
-      arrived.home_visits.make(:happened_on => (1.month + 1.day).ago)
+    should 'include a child that has arrived and has not had a visit in more than 1 month' do
+      last_visited_over_a_month_ago = @social_worker.children.make
+      last_visited_over_a_month_ago.arrivals.make
+      last_visited_over_a_month_ago.home_visits.make(:happened_on => (1.month + 1.day).ago)
 
       chaff = @social_worker.children.make
       chaff.arrivals.make
-      chaff.home_visits.make(:happened_on => 1.month)
+      chaff.home_visits.make(:happened_on => 1.month.ago)
 
-      @social_worker.recommended_visits.map(&:child).should == [arrived]
+      @social_worker.recommended_visits.map(&:child).should == [last_visited_over_a_month_ago]
     end
+
     should 'include a child that is offsite boarding and it is the start of the school term'
     should 'include a child that is reunified and it is more than 3 months since their last visit'
   end

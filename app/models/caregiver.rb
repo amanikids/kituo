@@ -29,7 +29,7 @@ class Caregiver < ActiveRecord::Base
       if should_have_initial_home_visit?(child)
         new(child, 'something')
       elsif should_have_follow_up_home_visit?(child)
-    #    new(child, 'something')
+        new(child, 'something')
       end
     end
 
@@ -38,7 +38,8 @@ class Caregiver < ActiveRecord::Base
     end
 
     def self.should_have_follow_up_home_visit?(child)
-      !child.arrivals.empty? && child.home_visits.last && child.home_visits.last.happened_on < 1.month.ago.to_date
+      return false unless last_home_visit = child.home_visits.last
+      !child.arrivals.empty? && (last_home_visit.happened_on < 1.month.ago.to_date)
     end
   end
 
