@@ -1,3 +1,4 @@
+config/cap_gun_password.txt
 config/database.yml
 db/*.sqlite*
 log

@@ -1,7 +1,9 @@
-load 'deploy' if respond_to?(:namespace) # cap2 differentiator
-Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
+require 'vendor/plugins/action_mailer_optional_tls/lib/smtp_tls'
+require 'vendor/plugins/action_mailer_optional_tls/lib/action_mailer_tls'
+require 'vendor/plugins/cap_gun/lib/cap_gun'
+
+load 'deploy'
 load 'config/deploy'
-require File.join('lib', 'deploy_notifier')
 
 after 'deploy:setup' do
   database_config = {
@@ -34,15 +36,11 @@ after 'deploy:update_code' do
   end
 end
 
-after 'deploy:update_code' do
-  notifier = DeployNotifier.new('Joe Ventura', 'Japhary Salum')
-  changes  = `git log --pretty=format:'* %s' #{current_revision}..`
-  notifier.spam("\nJust deployed to\n#{application_url}\n\n#{changes}")
-end
+after 'deploy:restart', 'cap_gun:email'
 
 task :production do
   set :rails_env, 'production'
-  set :application_url, 'http://kituo.amani'
+  set :domain, 'http://kituo.amani'
 end
 
 namespace :deploy do
