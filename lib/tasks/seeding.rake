@@ -39,6 +39,8 @@ namespace :kituo do
       :headshot                    => headshots.delete(headshots.rand))
 
     [
+      -4.days, # Overdue visit
+      0.days,  # Non-standard visit
       2.days,
       2.days,
       3.days,

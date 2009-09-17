@@ -32,10 +32,13 @@ module DashboardHelper
   # Group visits by week and day, but also include empty arrays for days
   # that we care about so that there is a drop target of rescheduling visits
   def upcoming_by_week_and_day(visits)
-    ActiveSupport::OrderedHash.new.tap do |skeleton|
+    visits = visits.select {|visit|
+      visit.scheduled_for >= Date.today.beginning_of_week }
+
+    data = {}.tap do |skeleton|
       weeks = (0..1).map {|x| Date.today.beginning_of_week + x.weeks }
       weeks.each do |start_of_week|
-        skeleton[start_of_week] = ActiveSupport::OrderedHash.new
+        skeleton[start_of_week] = {}
 
         days = (1..4).map {|x| start_of_week + x.days }
         days.each do |day|
@@ -47,8 +50,15 @@ module DashboardHelper
         day  = visit.scheduled_for
         week = day.beginning_of_week
 
+        skeleton[week] ||= {}
+        skeleton[week][day] ||= []
         skeleton[week][day] << visit
       end
+    end
+
+    data = data.to_a.sort_by {|week, day| week }
+    data.collect do |week, days|
+      [week, days.to_a.sort_by {|day, visits| day }]
     end
   end
 end
