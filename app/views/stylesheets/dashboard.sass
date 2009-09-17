@@ -25,6 +25,26 @@ h3, h4
   font-size: 0.75em
   padding: 0.25em
 
+!loading_width = 81px
+!loading_padding = 5px
+!loading_spinner_size = 16px
+
+#ajax-loading
+  display: none
+  position: absolute
+  right: 0
+  top: 0
+  background-color: black
+  background-image: url('/images/ajax-spinner.gif')
+  background-repeat: no-repeat
+  background-attachment:fixed;
+  background-position-y: center
+  background-position-x= !loading_width - !loading_spinner_size + !loading_padding
+  width= !loading_width - !loading_spinner_size
+  color: white
+  padding= !loading_padding
+  padding-right= !loading_padding + !loading_spinner_size
+
 .upcoming
   ul
     padding-top:    0.25em
