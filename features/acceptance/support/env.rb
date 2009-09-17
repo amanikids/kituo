@@ -6,6 +6,7 @@ require 'cucumber/formatter/unicode' # Comment out this line if you don't want C
 Cucumber::Rails.bypass_rescue # Comment out this line if you want Rails own error handling
 
 require 'webrat'
+require 'webrat/integrations/selenium'
 
 Webrat.configure do |config|
   config.mode = :selenium
@@ -23,7 +24,7 @@ class Webrat::SeleniumSession
 
 #    Webrat::Selenium::SeleniumRCServer.boot
     Webrat::Selenium::SeleniumRCServer.new.wait
-    Webrat::Selenium::ApplicationServer.boot
+    Webrat::Selenium::ApplicationServerFactory.app_server_instance.boot
 
     create_browser
     $browser.start

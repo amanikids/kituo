@@ -29,13 +29,13 @@ begin
     YAML.load(File.open("cucumber.yml")).keys.each do |profile|
       Cucumber::Rake::Task.new(profile, "Run #{profile} features") do |t|
         t.profile = profile
-        t.cucumber_opts = "--tags ~@pending"
+        t.cucumber_opts = "--tags ~@wip"
       end
 
       namespace profile do
-        Cucumber::Rake::Task.new(:pending, "Show pending #{profile} features") do |t|
+        Cucumber::Rake::Task.new(:wip, "Show WIP #{profile} features") do |t|
           t.profile = profile
-          t.cucumber_opts = "--tags @pending --dry-run"
+          t.cucumber_opts = "--tags @wip --dry-run"
         end
       end
 

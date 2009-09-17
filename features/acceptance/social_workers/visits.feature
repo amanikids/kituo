@@ -24,6 +24,7 @@ Feature:
 
   Scenario: Unscheduling a visit
 
+  @wip
   Scenario: Scheduling a visit for a child not in my recommended list
     Given the following children exist:
       | Name        |

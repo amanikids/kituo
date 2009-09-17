@@ -7,11 +7,11 @@ When /^I click "([^\"]*)"$/ do |link|
 end
 
 Then /^I should see "([^\"]*)"$/ do |text|
-  response.should contain(text)
+  assert_contain(text)
 end
 
 Then /^I should not see "([^\"]*)"$/ do |text|
-  response.should_not contain(text)
+  assert_not_contain(text)
 end
 
 When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|

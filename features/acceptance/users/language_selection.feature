@@ -10,5 +10,5 @@ Feature:
     Then I should see "Karibu!"
 
   Scenario: English language, for Joe and the devs
-    Given I follow "English"
+    Given I click "English"
     Then I should see "Hello!"
