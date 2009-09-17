@@ -9,6 +9,7 @@ sw:
   dashboard:
     show:
       welcome: "Karibu, {{name}}!"
+      switch_user: Mtu mwingine
       scheduled_visits: Matembezi uliyopangwa
 
   date:

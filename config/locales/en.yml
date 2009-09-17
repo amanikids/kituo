@@ -9,6 +9,7 @@ en:
   dashboard:
     show:
       welcome: "Welcome, {{name}}!"
+      switch_user: not you?
       scheduled_visits: Scheduled Visits
 
   date:
