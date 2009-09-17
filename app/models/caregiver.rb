@@ -30,16 +30,21 @@ class Caregiver < ActiveRecord::Base
         new(child, 'something')
       elsif should_have_follow_up_home_visit?(child)
         new(child, 'something')
+      elsif should_have_follow_up_home_visit_after_reunification?(child)
+        new(child, 'something')
       end
     end
 
     def self.should_have_initial_home_visit?(child)
-      !child.arrivals.empty? && child.home_visits.empty?
+      child.on_site? && child.home_visits.empty?
     end
 
     def self.should_have_follow_up_home_visit?(child)
-      return false unless last_home_visit = child.home_visits.last
-      !child.arrivals.empty? && (last_home_visit.happened_on < 1.month.ago.to_date)
+      child.on_site? && child.home_visits.last.happened_on < 1.month.ago.to_date
+    end
+
+    def self.should_have_follow_up_home_visit_after_reunification?(child)
+      child.reunified? && child.home_visits.last.happened_on < 3.months.ago.to_date
     end
   end
 

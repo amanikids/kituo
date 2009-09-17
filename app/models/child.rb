@@ -4,6 +4,8 @@ class Child < ActiveRecord::Base
 
   aasm_column :state
   aasm_initial_state :unknown
+  aasm_state :on_site
+  aasm_state :reunified
 
   named_scope :by_name, :order => :name
   named_scope :location_as_of, lambda { |date|           { :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, Event.location_changing_event_names], :joins => :events }}
