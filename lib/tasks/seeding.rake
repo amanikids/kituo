@@ -38,7 +38,12 @@ namespace :db do
 
       ScheduledVisit.last.child.home_visits.make
 
-      user.children.make(:state => :on_site) # No visits, recommended
+      5.times do
+        user.children.make(
+          :state                       => :on_site, # No visits, recommended
+          :headshot                    => headshots.delete(headshots.rand),
+          :ignore_potential_duplicates => true)
+      end
     end
 
     desc 'Copy the production database down locally.'
