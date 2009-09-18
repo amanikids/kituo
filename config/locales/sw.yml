@@ -1,6 +1,23 @@
 sw:
   locale_name: Kiswahili
 
+  state:
+    unknown: Hatujui yuko wapi
+    on_site: Anakaa kituoni
+    boarding_offsite: Amekwenda boarding
+    reunified: Ameunganishwa
+    terminated: Amekuwa terminated
+    dropped_out: Ametoroka
+
+    sentence:
+      on_site: "Alifika Amani tarehe {{date}}"
+      boarding_offsite: "Alienda boarding tarehe {{date}}"
+      reunified: "Aliunganishwa na familia tarehe {{date}}"
+      terminated: "Alikuwa terminated tarehe {{date}}"
+      dropped_out: "Alitoroka tarehe {{date}}"
+
+  working: Subiri
+
   sessions:
     new:
       heading: Karibu!
@@ -17,9 +34,18 @@ sw:
       last_visited: "Tulimtembelea tarehe {{date}}"
       never_visited: Bado hatujamtembelea
 
+  children:
+    show:
+      dashboard: Rudi nyumbani kwangu
+      location: "kutoka {{location}}"
+      timeline: Timeline
+      home_visit: Tulimtembelea nyumbani
+      scheduled_visits: Matembezi uliyopangwa
+
   date:
     formats:
       day_name: "%A"
+      human: "%e ya %b %Y"
 
   datetime:
     distance_of_time_in_words:

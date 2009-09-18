@@ -11,6 +11,10 @@ class Event < ActiveRecord::Base
 
   attr_accessible :happened_on
 
+  def to_state
+    raise("Must be implemented by subclasses (#{self.class})")
+  end
+
   def self.location_changing_event_names
     %w(Arrival Dropout OffsiteBoarding Reunification Termination)
   end

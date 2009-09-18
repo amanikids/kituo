@@ -34,6 +34,11 @@ namespace :db do
         ScheduledVisit.make(
           :child         => child,
           :scheduled_for => Date.today.beginning_of_week + day)
+        child.arrivals.make(:happened_on => 4.weeks.ago)
+        child.home_visits.make(:happened_on => 3.week.ago)
+        child.home_visits.make(:happened_on => 2.week.ago)
+        child.reunifications.make(:happened_on => 2.weeks.ago)
+        child.home_visits.make(:happened_on => 1.week.ago)
       end
 
       ScheduledVisit.last.child.home_visits.make

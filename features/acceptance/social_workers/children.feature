@@ -4,13 +4,14 @@ Feature:
   So that we have accurate data in the system
 
   Background:
+    Given I am not signed in
     Given the following users exist:
       | Type          | Name        |
       | Social Worker | Xavier Shay |
     And the following scheduled visits exist:
-      | Child       | Location | Date           |
-      | Juma Masawe | Moshi    | This Wednesday |
-    And I am on the english home page
+      | Social Worker | Child       | Location | Date           |
+      | Xavier Shay   | Juma Masawe | Moshi    | This Wednesday |
+    And I am on the english dashboard
     And I click "Xavier Shay"
 
   @wip

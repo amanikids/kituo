@@ -1,6 +1,23 @@
 en:
   locale_name: English
 
+  state:
+    unknown: Unknown status
+    on_site: At Amani
+    boarding_offsite: Boarding offsite
+    reunified: Reunified
+    terminated: Terminated
+    dropped_out: Dropped out
+
+    sentence:
+      on_site: "Arrived at Amani on {{date}}"
+      boarding_offsite: "Went to boarding school on {{date}}"
+      reunified: "Reunified on {{date}}"
+      terminated: "Terminated on {{date}}"
+      dropped_out: "Dropped out on {{date}}"
+
+  working: Working
+
   sessions:
     new:
       heading: Hello!
@@ -17,9 +34,18 @@ en:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited
 
+  children:
+    show:
+      dashboard: Back to my page
+      location: "from {{location}}"
+      timeline: Timeline
+      home_visit: Visited
+      scheduled_visits: Scheduled Visits
+
   date:
     formats:
       day_name: "%A"
+      human: "%e %b %Y"
 
   datetime:
     distance_of_time_in_words:

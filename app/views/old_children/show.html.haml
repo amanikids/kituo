@@ -1,0 +1,38 @@
+%h1= @child.name
+
+= image_tag @child.headshot.url, :class => 'headshot'
+
+%ul
+  %li= link_to t('children.edit.link'), edit_child_path(@child)
+  %li= link_to t('children.headshot.edit.link'), edit_child_headshot_path(@child)
+  %li
+    = link_to t('children.social_worker.edit.link'), edit_child_social_worker_path(@child)
+    - if @child.social_worker
+      = link_to @child.social_worker_name, @child.social_worker
+    - else
+      = t('children.show.social_worker.unassigned')
+  %li= link_to t('children.destroy.link'), @child, :method => :delete, :confirm => t('children.destroy.confirm'), :id => dom_id(@child, :delete)
+
+%h2= badged(t('tasks.index.title'), @child.tasks.count)
+- if @child.tasks.any?
+  %table.task_list= render @child.tasks
+- else
+  .empty= t('tasks.index.empty')
+
+%h2= t('children.show.timeline')
+
+%ul.actions
+  %li= t('children.show.record')
+  %li= link_to t('children.arrivals.new.link'), new_child_arrival_path(@child)
+  %li= link_to t('children.home_visits.new.link'), new_child_home_visit_path(@child)
+  %li= link_to t('children.offsite_boardings.new.link'), new_child_offsite_boarding_path(@child)
+  %li= link_to t('children.reunifications.new.link'), new_child_reunification_path(@child)
+  %li= link_to t('children.dropouts.new.link'), new_child_dropout_path(@child)
+  %li= link_to t('children.terminations.new.link'), new_child_termination_path(@child)
+
+%table.timeline
+  - @child.events.each do |event|
+    %tr{:id => dom_id(event)}
+      %td= event.class.human_name
+      %td= l event.happened_on, :format => :long
+      %td= link_to t("children.#{event.class.name.tableize}.destroy.link"), [@child, event], :method => :delete, :confirm => t("children.#{event.class.name.tableize}.destroy.confirm")

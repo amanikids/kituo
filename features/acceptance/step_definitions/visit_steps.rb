@@ -5,6 +5,7 @@ Given /^the following scheduled visits exist:$/ do |table|
       :scheduled_for  => Chronic.parse(hash['Date']),
       :child => Child.make(
         :name          => hash['Child'],
+        :location      => hash['Location'] || "Moshi",
         :social_worker => social_worker))
   end
 end
