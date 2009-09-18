@@ -43,11 +43,11 @@ class SwahiliLocaleTest < ActiveSupport::TestCase
       assert_has_all_of deep_keys(locale(:en)), deep_keys(locale(:sw))
     end
 
-    should 'translate every model name' do
+    should_eventually 'translate every model name' do
       assert_has_all_of model_classes.map { |klass| "activerecord.models.#{klass.name.underscore}" }, deep_keys(locale(:sw))
     end
 
-    should 'translate every accessible attribute name' do
+    should_eventually 'translate every accessible attribute name' do
       assert_has_all_of model_classes.map { |klass| accessible_attributes(klass).map { |attribute| "activerecord.attributes.#{klass.name.underscore}.#{attribute}" } }.flatten, deep_keys(locale(:sw))
     end
   end
