@@ -27,7 +27,7 @@ $().ajaxSend(function() {
     $._ajaxErrorHandlerAdded = true;
   }
 })
-.ajaxSuccess(function() {
+$().ajaxSuccess(function() {
   $.activeAjaxRequestCount--;
   toggleLoadIndicator();
 });

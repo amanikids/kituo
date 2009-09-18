@@ -12,16 +12,28 @@ Feature:
   Scenario: Rescheduling a visit
     And the following scheduled visits exist:
       | Social Worker | Child       | Date           |
-      | Xavier Shay   | Juma Masawe | This Wednesday |
+      | Xavier Shay   | Juma Masawe | Wednesday this week |
     And I am on the english dashboard
     And I click "Xavier Shay"
-    And I drag "Juma Masawe" to "This Thursday"
+    And I drag "Juma Masawe" to "Thursday this week"
     And I wait for AJAX requests to finish
-    Then the visit for "Juma Masawe" should be scheduled for "This Thursday"
+    Then the visit for "Juma Masawe" should be scheduled for "Thursday this week"
 
   Scenario: Rescheduling a visit that was missed
 
   Scenario: Scheduling a visit from my recommended list
+    And the following recommended visits exist:
+      | Social Worker | Child       |
+      | Xavier Shay   | Juma Masawe |
+    And I am on the english dashboard
+    And I click "Xavier Shay"
+    And I drag "Juma Masawe" to "Thursday this week"
+    And I wait for AJAX requests to finish
+    Then a visit for "Juma Masawe" should be scheduled for "Thursday this week"
+    And I drag "Juma Masawe" to "Wednesday this week"
+    And I wait for AJAX requests to finish
+    Then a visit for "Juma Masawe" should be scheduled for "Wednesday this week"
+    Then a visit for "Juma Masawe" should not be scheduled for "Thursday this week"
 
   Scenario: Unscheduling a visit
 
@@ -35,5 +47,5 @@ Feature:
     And I fill in "search" with "Juma"
     And I press "Search"
     Then I should see "Juma Masawe"
-    When I drag "Juma Masawe" to "This Thursday"
-    Then the visit for "Juma Masawe" should be scheduled for "This Thursday"
+    When I drag "Juma Masawe" to "Thursday this week"
+    Then a visit for "Juma Masawe" should be scheduled for "Thursday this week"

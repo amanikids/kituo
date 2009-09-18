@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def current_user
+    @current_user ||= Caregiver.find_by_id(session[:user_id])
+  end
+  helper_method :current_user
+
   def redirect_to_next_locale
     return unless params.has_key?(:next_locale)
 

@@ -9,6 +9,16 @@ Given /^the following scheduled visits exist:$/ do |table|
   end
 end
 
+Given /^the following recommended visits exist:$/ do |table|
+  table.hashes.each do |hash|
+    social_worker = Caregiver.find_by_name(hash['Social Worker'])
+    Child.make(
+      :name          => hash['Child'],
+      :social_worker => social_worker,
+      :state         => 'on_site')
+  end
+end
+
 When /^I drag "([^\"]*)" to "([^\"]*)"$/ do |child_name, date|
   source = "//a[contains(text(),'#{child_name}')]/../../../descendant::span[@class='comment']"
 
@@ -27,6 +37,10 @@ When /^I wait for AJAX requests to finish$/ do
   end
 end
 
-Then /^the visit for "([^\"]*)" should be scheduled for "([^\"]*)"$/ do |child_name, day|
-  Child.find_by_name(child_name).scheduled_visits.first.scheduled_for.should == Chronic.parse(day).to_date
+Then /^a visit for "([^\"]*)" should be scheduled for "([^\"]*)"$/ do |child_name, day|
+  assert_not_nil Child.find_by_name(child_name).scheduled_visits.find_by_scheduled_for(Chronic.parse(day).to_date)
+end
+
+Then /^a visit for "([^\"]*)" should not be scheduled for "([^\"]*)"$/ do |child_name, day|
+  assert_nil Child.find_by_name(child_name).scheduled_visits.find_by_scheduled_for(Chronic.parse(day).to_date)
 end

@@ -59,6 +59,11 @@ h3, h4
   float: left
   width= !page_width / 2 - !column_spacing
 
+.upcoming, .recommended
+  ul:last-child
+    // Large drop target needed for last ul
+    min-height: 2em
+
 .scheduled
   margin-right= !column_spacing
 
