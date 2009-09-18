@@ -2,6 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  class BadRequest < RuntimeError; end;
+
   before_filter :redirect_to_next_locale
   before_filter :set_locale
   before_filter :store_location, :except => [ :new, :create, :edit, :update, :destroy ]
@@ -9,6 +11,10 @@ class ApplicationController < ActionController::Base
   helper :all
   prawnto :prawn => { :page_size => 'A4', :top_margin => 72 }
   protect_from_forgery
+
+  rescue_from BadRequest do
+    head(:bad_request)
+  end
 
   # We may want to turn off footnotes in development mode from time to time to
   # see how the layout looks:
@@ -29,6 +35,16 @@ class ApplicationController < ActionController::Base
     next_locale   = available[(current_index + 1) % available.size]
 
     redirect_to(url_for(:locale => next_locale))
+  end
+
+  def require_sign_in
+    unless current_user
+      if request.xhr?
+        head(:forbidden)
+      else
+        redirect_to new_session_path
+      end
+    end
   end
 
   def set_locale
