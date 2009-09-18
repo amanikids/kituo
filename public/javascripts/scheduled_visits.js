@@ -63,6 +63,13 @@ $(function() {
     }
   });
 
+  $('.overdue ul').sortable({
+    axis: 'y',
+    connectWith: '.upcoming ul',
+    cancel: 'a',
+    opacity: 0.8
+  });
+
   $('.recommended ul').sortable({
     connectWith: '.upcoming ul',
     cancel: 'a',
