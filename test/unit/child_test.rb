@@ -25,13 +25,11 @@ class ChildTest < ActiveSupport::TestCase
       @existing_child = Child.make
     end
 
-    should 'have no potential duplicate children' do
-      assert_equal [], @existing_child.potential_duplicates
-    end
-
     context 'a second child with the same name' do
       setup do
-        @child = Child.make_unsaved(:name => @existing_child.name)
+        @child = Child.make_unsaved(
+          :ignore_potential_duplicates => false,
+          :name => @existing_child.name)
       end
 
       should 'not be valid' do
