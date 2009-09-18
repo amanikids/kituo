@@ -51,28 +51,24 @@ $(function() {
   });
 
   // Allow visits to be dragged between lists
-  $('.upcoming ul').sortable({
+  var commonSortableOptions = {
     connectWith: '.upcoming ul',
+    cancel:      'a, .pending',
+    opacity:     0.8
+  };
+
+  $('.upcoming ul').sortable($.extend({
+    axis:        'y',
     containment: '.upcoming',
-    axis:   'y',
-    cancel: 'a, .pending',
-    opacity: 0.8,
     receive: function(event, ui) {
       ui.item.addClass('pending');
       ui.item.trigger('scheduledFor', $(this).attr('data-date'));
     }
-  });
+  }, commonSortableOptions));
 
-  $('.overdue ul').sortable({
-    axis: 'y',
-    connectWith: '.upcoming ul',
-    cancel: 'a',
-    opacity: 0.8
-  });
+  $('.overdue ul').sortable($.extend({
+      axis: 'y',
+  }, commonSortableOptions));
 
-  $('.recommended ul').sortable({
-    connectWith: '.upcoming ul',
-    cancel: 'a',
-    opacity: 0.8
-  });
+  $('.recommended ul').sortable(commonSortableOptions);
 });
