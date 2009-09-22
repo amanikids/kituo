@@ -9,7 +9,7 @@ def remove_task(task_name)
 end
 
 remove_task :test
-task :test => ['test:units', 'test:locales']
+task :test => ['test:units', 'test:functionals', 'test:locales']
 
 namespace :test do
   Rake::TestTask.new(:locales => 'db:test:prepare') do |t|
@@ -45,7 +45,7 @@ begin
   end
 
   remove_task :default
-  task :default => ['test:units', 'features:acceptance', 'test:locales']
+  task :default => ['test:units', 'test:functionals', 'features:acceptance', 'test:locales']
 rescue LoadError
   puts "If you'd like to run the features, please install cucumber."
 end
