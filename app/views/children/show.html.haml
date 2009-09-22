@@ -11,7 +11,7 @@
       %span.show= h(@child.name)
       %span.edit= form.text_field :name
 
-      %span.actions= link_to(t('.dashboard'), root_path)
+      %span.actions= link_to(t('.dashboard'), root_path, :accesskey => '1')
 
   .details
     .locations
