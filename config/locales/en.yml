@@ -3,6 +3,11 @@ en:
 
   form:
     saving: Please wait
+    edit: Edit
+    cancel: Cancel
+    save: Save
+    complete: Complete
+    unschedule: Unschedule
 
   state:
     unknown: Unknown status
@@ -40,14 +45,12 @@ en:
   children:
     show:
       dashboard: Back to my page
-      edit: Edit
-      cancel: Cancel
-      save: Save
       from: from
       no_social_worker: No social worker
       timeline: Timeline
       home_visit: Visited
       scheduled_visits: Scheduled Visits
+      new_scheduled_visit: Schedule a new visit
 
   date:
     formats:

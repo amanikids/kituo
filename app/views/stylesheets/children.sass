@@ -18,10 +18,14 @@
   padding= !loading_padding
   padding-right= !loading_padding + !loading_spinner_size
 
+!headshot_size = 150px
+
 body
   margin: 3em auto
-  position: relative
   width= !page_width
+
+a
+  color: inherit
 
 h1
   font-size: 2.5em
@@ -31,8 +35,6 @@ h1
       content: "("
     &:after
       content: ")"
-    a
-      color: inherit
 
 h2
   font-size: 1.5em
@@ -49,21 +51,7 @@ h2
 .details
   margin-bottom: 1em
 
-!headshot_size = 150px
-
-.timeline
-  margin-bottom: 1em
-  width= !page_width - !headshot_size - 12px
-  td
-    padding: 0.25em
-  td.date
-    width: 7em
-
-.event
-  background-color: black
-  color: white
-
-form
+form#edit-child
   min-height: 9em
   position: relative
   .edit
@@ -85,3 +73,23 @@ form
       display: block
       margin-bottom: 0.5em
 
+.timeline, .scheduled_visits
+  margin-bottom: 1em
+  width= !page_width - !headshot_size - 12px
+  td
+    padding: 0.25em
+  td.date
+    width: 7em
+
+.event
+  background-color: black
+  color: white
+
+.scheduled_visits
+  td
+    vertical-align: top
+
+    .date-field
+      display: none
+      height: 0.9em
+      width: 90%

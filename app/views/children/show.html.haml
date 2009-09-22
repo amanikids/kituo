@@ -1,4 +1,9 @@
+- content_for(:css) do
+  = stylesheet_link_tag('jquery-ui-1.7.2.custom')
+  = stylesheet_link_tag('datepicker')
+
 - js 'inline_edit'
+- js 'child_scheduled_visits'
 
 - form_for(@child, :html => { :multipart => true, :id => 'edit-child' }) do |form|
   %h1
@@ -32,10 +37,10 @@
 
   #inline-edit-links
     %span.show
-      = link_to(t('.edit'), {}, :id => 'edit-link')
+      = link_to(t('form.edit'), {}, :id => 'edit-link')
     %span.edit
-      = link_to(t('.cancel'), {}, :id => 'cancel-link')
-      = form.submit t('.save'), :id => 'save-link'
+      = link_to(t('form.cancel'), {}, :id => 'cancel-link')
+      = form.submit t('form.save'), :id => 'save-link'
 
 %h2= t('.timeline')
 %table.timeline
@@ -52,13 +57,23 @@
 %h2= t('.scheduled_visits')
 %table.scheduled_visits
   - @child.scheduled_visits.each do |visit|
-    %tr
-      %td.date= l(visit.scheduled_for, :format => :human)
+    %tr.scheduled_visit
+      %td.date
+        - form_for(visit) do |f|
+          %span.show
+            = l(visit.scheduled_for, :format => :human)
+          = f.text_field :scheduled_for, :class => 'date-field edit', :readonly => true
+
       %td.actions
-        = link_to("Complete")
-        = link_to("Edit")
-        = link_to("Unschedule")
-  %tr
+        = link_to(t('form.complete'), complete_scheduled_visit_path(visit), :method => :put)
+        &middot;
+        = link_to(t('form.edit'), {}, :class => 'edit-scheduled-visit')
+        &middot;
+        = link_to(t('form.unschedule'), scheduled_visit_path(visit), :method => :delete)
+  %tr.scheduled_visit
     %td.date
+      - form_for(ScheduledVisit.new) do |f|
+        = hidden_field_tag :child_id, @child.id
+        = f.text_field :scheduled_for, :class => 'date-field new', :readonly => true
     %td.actions
-      = link_to("Schedule new visit")
+      = link_to(t('.new_scheduled_visit'), {}, :id => 'new-scheduled-visit')

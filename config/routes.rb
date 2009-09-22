@@ -25,6 +25,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'mockups/:action', :controller => 'mockups'
 
   map.resource :session
-  map.resources :scheduled_visits
+  map.resources :scheduled_visits, :member => {:complete => :put}
   map.root :controller => 'dashboard', :action => 'show'
 end

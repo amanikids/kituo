@@ -1,15 +1,14 @@
 $(function() {
-  $('#edit-link').click(function() {
-    $('.show').hide();
-    $('.edit').show();
-    return false;
-  })
-
-  $('#cancel-link').click(function() {
-    $('.edit').hide();
-    $('.show').show();
-    return false;
-  })
+  var inlineEditLink = function(element, toShow, toHide) {
+    $(element).click(function() {
+      var form = $(this).parents('form');
+      form.find(toHide).hide();
+      form.find(toShow).show();
+      return false;
+    });
+  }
+  inlineEditLink('#cancel-link', '.show', '.edit');
+  inlineEditLink('#edit-link',   '.edit', '.show');
 
   // TODO: This is overridden by lib/form_builder.rb, so doesn't work. 
   // Make it work

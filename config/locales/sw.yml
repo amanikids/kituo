@@ -3,6 +3,11 @@ sw:
 
   form:
     saving: Subiri kidogo
+    edit: Hariri
+    cancel: Tangua
+    save: Hifadhi
+    complete: Tayari
+    unschedule: Tangua
 
   state:
     unknown: Hatujui yuko wapi
@@ -40,14 +45,12 @@ sw:
   children:
     show:
       dashboard: Rudi nyumbani kwangu
-      edit: Hariri
-      cancel: Tangua
-      save: Hifadhi
       from: kutoka
       no_social_worker: Hana social worker
       timeline: Timeline
       home_visit: Tulimtembelea nyumbani
-      scheduled_visits: Matembezi uliyopangwa
+      scheduled_visits: Matembezi uliyopanga
+      new_scheduled_visit: Panga tembezi lingine
 
   date:
     formats:

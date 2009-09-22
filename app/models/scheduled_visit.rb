@@ -5,4 +5,11 @@ class ScheduledVisit < ActiveRecord::Base
     :conditions => ['scheduled_for <= ?', date],
     :order      => 'scheduled_for ASC'
   }}
+
+  def complete!
+    transaction do
+      child.home_visits.create!(:happened_on => scheduled_for)
+      destroy
+    end
+  end
 end
