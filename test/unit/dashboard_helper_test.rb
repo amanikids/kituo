@@ -1,6 +1,7 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class DashboardHelperTest < ActiveSupport::TestCase
+  include ActionView::Helpers::TranslationHelper
   include DashboardHelper
 
   context '#comment_for' do
@@ -18,7 +19,7 @@ class DashboardHelperTest < ActiveSupport::TestCase
         visit.child.home_visits.make(:happened_on => date)
         visit.child.home_visits.make(:happened_on => Date.today - 5.days)
 
-        comment_for(visit).should == ['.last_visited', {:date => date}]
+        comment_for(visit).should == ['.last_visited', {:date => l(date, :format => :human)}]
       end
     end
   end

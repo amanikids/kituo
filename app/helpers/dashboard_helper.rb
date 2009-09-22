@@ -1,7 +1,7 @@
 module DashboardHelper
   def comment_for(visit)
     if visit.child.last_visited_on
-      ['.last_visited', {:date => visit.child.last_visited_on}]
+      ['.last_visited', {:date => l(visit.child.last_visited_on, :format => :human)}]
     else
       ['.never_visited']
     end
