@@ -67,9 +67,8 @@ Feature:
     And I am on the english dashboard
     And I click "Xavier Shay"
     And I click "Completed"
-    And I wait
-    Then I should not see "Juma Masawe"
-    And a visit for "Juma Masawe" should not be scheduled for "Wednesday this week"
+    And I wait for page load
+    Then a visit for "Juma Masawe" should not be scheduled for "Wednesday this week"
     And a home visit for "Juma Masawe" should have happened on "Wednesday this week"
 
 
