@@ -1,6 +1,6 @@
 $(function() {
   var scheduledVisitForm = function(element) {
-    return $(element).parents('.scheduled_visit').find('form')
+    return $(element).parents('.scheduled_visit').find('form');
   }
 
   $('#new-scheduled-visit, .edit-scheduled-visit').click(function() {

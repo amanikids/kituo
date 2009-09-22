@@ -45,3 +45,14 @@ end
 Then /^a visit for "([^\"]*)" should not be scheduled for "([^\"]*)"$/ do |child_name, day|
   assert_nil Child.find_by_name(child_name).scheduled_visits.find_by_scheduled_for(Chronic.parse(day).to_date)
 end
+
+Then /^I should see a scheduled visit for "([^\"]*)"$/ do |day|
+  expected = I18n.localize(Chronic.parse(day).to_date, :format => :human)
+
+  Then %{I should see "#{expected}"}
+end
+
+When /^I click day "([^\"]*)" in the calendar$/ do |link|
+  sleep 0.5
+  click_link(link)
+end

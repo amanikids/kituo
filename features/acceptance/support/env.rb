@@ -15,4 +15,6 @@ end
 Before do
   # FIXME how shall we clean the database before each run?
   [Caregiver, Child, Event, ScheduledVisit].each(&:delete_all)
+
+  I18n.locale = 'en'
 end

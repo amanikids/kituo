@@ -62,7 +62,7 @@
         - form_for(visit) do |f|
           %span.show
             = l(visit.scheduled_for, :format => :human)
-          = f.text_field :scheduled_for, :class => 'date-field edit', :readonly => true
+          = f.text_field :scheduled_for, :class => 'date-field edit', :readonly => true, :id => "scheduled_for_#{visit.id}"
 
       %td.actions
         = link_to(t('form.complete'), complete_scheduled_visit_path(visit), :method => :put)
@@ -74,6 +74,6 @@
     %td.date
       - form_for(ScheduledVisit.new) do |f|
         = hidden_field_tag :child_id, @child.id
-        = f.text_field :scheduled_for, :class => 'date-field new', :readonly => true
+        = f.text_field :scheduled_for, :class => 'date-field new', :id => 'new_scheduled_visit_for'
     %td.actions
       = link_to(t('.new_scheduled_visit'), {}, :id => 'new-scheduled-visit')

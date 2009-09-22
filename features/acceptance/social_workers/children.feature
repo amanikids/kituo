@@ -29,3 +29,9 @@ Feature:
     And I should not see "Juma Masawe"
     And I should not see "Moshi"
     And I should not see "No Social Worker"
+
+  Scenario: Scheduling a visit from the child page
+    Given I click "Juma Masawe"
+    Given I click "Schedule a new visit"
+    And I click day "1" in the calendar
+    Then I should see a scheduled visit for "the first day of this month"
