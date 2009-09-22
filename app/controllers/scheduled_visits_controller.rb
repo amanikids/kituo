@@ -30,7 +30,7 @@ class ScheduledVisitsController < ApplicationController
   def complete
     @visit = ScheduledVisit.find(params[:id])
     @visit.complete!
-    redirect_to child_path(@visit.child)
+    redirect_to :back
   end
 
   protected

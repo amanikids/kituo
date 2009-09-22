@@ -59,3 +59,17 @@ Feature:
     Then I should see "Juma Masawe"
     When I drag "Juma Masawe" to "Thursday this week"
     Then a visit for "Juma Masawe" should be scheduled for "Thursday this week"
+
+  Scenario: Completing a visit
+    And the following scheduled visits exist:
+      | Social Worker | Child       | Date                |
+      | Xavier Shay   | Juma Masawe | Wednesday this week |
+    And I am on the english dashboard
+    And I click "Xavier Shay"
+    And I click "Completed"
+    And I wait
+    Then I should not see "Juma Masawe"
+    And a visit for "Juma Masawe" should not be scheduled for "Wednesday this week"
+    And a home visit for "Juma Masawe" should have happened on "Wednesday this week"
+
+

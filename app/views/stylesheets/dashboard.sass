@@ -22,6 +22,9 @@ body
   margin: 3em auto
   width= !page_width
 
+a
+  color: inherit
+
 h1
   font-size: 2.5em
   .actions
@@ -30,8 +33,6 @@ h1
       content: "("
     &:after
       content: ")"
-    a
-      color: inherit
 
 h2
   font-size: 1.5em
@@ -93,15 +94,19 @@ li.scheduled_visit, li.recommended_visit
 
   .heading, .meta
     margin-left= !visit_headshot_size + !visit_padding
+    position: relative
 
   .heading
     .name
+      display: inline-block
       font-size: 1.5em
-      a
-        color: inherit
+      margin-right: 3.5em
+    .actions
+      position: absolute
+      top: 0.4em
+      right: 0
 
   .meta
-    position: relative
     .location
       position: absolute
       right: 0

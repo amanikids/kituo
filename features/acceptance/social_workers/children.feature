@@ -26,9 +26,6 @@ Feature:
     Then I should see "Jumanne"
     And I should see "Xavier Shay"
     And I should see "Arusha"
-    And I should not see "Juma Masawe"
-    And I should not see "Moshi"
-    And I should not see "No Social Worker"
 
   Scenario: Scheduling a visit from the child page
     Given I click "Schedule a new visit"

@@ -54,6 +54,10 @@ Then /^I should not see a scheduled visit for "([^\"]*)"$/ do |day|
   assert_not_contain_within_selector('.scheduled_visits', human_date(day))
 end
 
+Then /^a home visit for "([^\"]*)" should have happened on "([^\"]*)"$/ do |child_name, day|
+  assert_not_nil Child.find_by_name(child_name).home_visits.find_by_happened_on(Chronic.parse(day).to_date)
+end
+
 Then /^I should see a home visit for "([^\"]*)"$/ do |day|
   assert_contain_within_selector('.timeline', human_date(day))
 end
