@@ -31,4 +31,10 @@
     %tr
       %td.date= l(visit.scheduled_for, :format => :human)
       %td.actions
-
+        = link_to("Complete")
+        = link_to("Edit")
+        = link_to("Unschedule")
+  %tr
+    %td.date
+    %td.actions
+      = link_to("Schedule new visit")
