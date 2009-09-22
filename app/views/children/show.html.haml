@@ -52,7 +52,7 @@
     - else
       %tr.event
         %td{:colspan => 2}
-          = t(event.to_state, :date => event.happened_on, :scope => 'state.sentence')
+          = t(event.to_state, :date => l(event.happened_on, :format => :human), :scope => 'state.sentence')
 
 %h2= t('.scheduled_visits')
 %table.scheduled_visits

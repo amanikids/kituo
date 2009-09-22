@@ -3,7 +3,7 @@
   .heading
     %span.name= link_to h(visit.child.name), visit.child
     %span.actions
-      = link_to("Completed", complete_scheduled_visit_path(visit), :method => :put) if visit.is_a?(ScheduledVisit)
+      = link_to(t('.completed'), complete_scheduled_visit_path(visit), :method => :put) if visit.is_a?(ScheduledVisit)
   .meta
     %span.comment= t(*comment_for(visit))
     %span.location=h visit.child.location

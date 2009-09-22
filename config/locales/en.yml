@@ -42,6 +42,7 @@ en:
     visit:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited
+      completed: Completed
 
   children:
     show:

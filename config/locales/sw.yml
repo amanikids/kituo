@@ -35,13 +35,14 @@ sw:
     show:
       welcome: "Karibu, {{name}}!"
       switch_user: Mtu mwingine?
-      scheduled_visits: Matembezi uliyopangwa
+      scheduled_visits: Matembezi uliyopanga
       recommended_visits: Matembezi tunayopendeleza
       neglected: Hatujawatembelea hivi karibuni
       search: Tafuta
     visit:
-      last_visited: "Tulimtembelea tarehe {{date}}"
+      last_visited: "Tulimtembelea {{date}}"
       never_visited: Bado hatujamtembelea
+      completed: Tayari
 
   children:
     show:
