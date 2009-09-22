@@ -18,3 +18,7 @@ Before do
 
   I18n.locale = 'en'
 end
+
+def human_date(day)
+  I18n.localize(Chronic.parse(day).to_date, :format => :human).strip
+end

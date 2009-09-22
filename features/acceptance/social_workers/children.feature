@@ -13,9 +13,9 @@ Feature:
       | Xavier Shay   | Juma Masawe | Moshi    | This Wednesday |
     And I am on the english dashboard
     And I click "Xavier Shay"
+    Given I click "Juma Masawe"
 
   Scenario: Editing a child
-    Given I click "Juma Masawe"
     And I wait for page load
     And I click "Edit"
     And I fill in "child_name" with "Jumanne"
@@ -31,7 +31,11 @@ Feature:
     And I should not see "No Social Worker"
 
   Scenario: Scheduling a visit from the child page
-    Given I click "Juma Masawe"
     Given I click "Schedule a new visit"
     And I click day "1" in the calendar
     Then I should see a scheduled visit for "the first day of this month"
+
+  Scenario: Completing a visit from the child page
+    Given I click "Complete" 
+    Then I should see a home visit for "This Wednesday"
+    Then I should not see a scheduled visit for "This Wednesday"

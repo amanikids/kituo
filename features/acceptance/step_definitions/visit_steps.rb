@@ -47,9 +47,15 @@ Then /^a visit for "([^\"]*)" should not be scheduled for "([^\"]*)"$/ do |child
 end
 
 Then /^I should see a scheduled visit for "([^\"]*)"$/ do |day|
-  expected = I18n.localize(Chronic.parse(day).to_date, :format => :human)
+  assert_contain_within_selector('.scheduled_visits', human_date(day))
+end
 
-  Then %{I should see "#{expected}"}
+Then /^I should not see a scheduled visit for "([^\"]*)"$/ do |day|
+  assert_not_contain_within_selector('.scheduled_visits', human_date(day))
+end
+
+Then /^I should see a home visit for "([^\"]*)"$/ do |day|
+  assert_contain_within_selector('.timeline', human_date(day))
 end
 
 When /^I click day "([^\"]*)" in the calendar$/ do |link|
