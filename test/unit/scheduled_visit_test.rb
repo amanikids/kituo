@@ -18,9 +18,9 @@ class ScheduledVisitTest < ActiveSupport::TestCase
       @visit = ScheduledVisit.make
       @child = @visit.child
     end
-    
+
     context '#complete!' do
-      setup do  
+      setup do
         @visit.complete!
       end
 

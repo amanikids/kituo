@@ -10,7 +10,7 @@ $(function() {
   inlineEditLink('#cancel-link', '.show', '.edit');
   inlineEditLink('#edit-link',   '.edit', '.show');
 
-  // TODO: This is overridden by lib/form_builder.rb, so doesn't work. 
+  // TODO: This is overridden by lib/form_builder.rb, so doesn't work.
   // Make it work
   /*
   $('#edit-child').submit(function() {
