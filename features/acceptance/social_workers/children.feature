@@ -4,15 +4,13 @@ Feature:
   So that we have accurate data in the system
 
   Background:
-    Given I am not signed in
     Given the following users exist:
       | Type          | Name        |
       | Social Worker | Xavier Shay |
     And the following scheduled visits exist:
       | Social Worker | Child       | Location | Date                 |
       | Xavier Shay   | Juma Masawe | Moshi    | First day this month |
-    And I am on the english dashboard
-    And I click "Xavier Shay"
+    And I am signed in as "Xavier Shay"
     Given I click "Juma Masawe"
 
   Scenario: Editing a child

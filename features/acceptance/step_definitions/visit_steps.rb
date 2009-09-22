@@ -20,6 +20,17 @@ Given /^the following recommended visits exist:$/ do |table|
   end
 end
 
+Given /^the following non-recommended children exist:$/ do |table|
+  table.hashes.each do |hash|
+    social_worker = Caregiver.find_by_name(hash['Social Worker'])
+    child = Child.make(
+      :name          => hash['Child'],
+      :social_worker => social_worker,
+      :state         => 'on_site')
+    child.home_visits.make
+  end
+end
+
 When /^I drag "([^\"]*)" to "([^\"]*)"$/ do |child_name, date|
   source = "//a[contains(text(),'#{child_name}')]/../../../descendant::span[@class='comment']"
 
@@ -30,9 +41,7 @@ When /^I drag "([^\"]*)" to "([^\"]*)"$/ do |child_name, date|
     selenium.wait_for_element selector, :timeout_in_seconds => 5
   end
   selenium.drag_and_drop_to_object(source, destination)
-end
 
-When /^I wait for AJAX requests to finish$/ do
   wait_for do
     run_javascript("return jQuery.activeAjaxRequestCount;") == "0"
   end

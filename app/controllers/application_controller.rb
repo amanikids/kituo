@@ -4,8 +4,8 @@
 class ApplicationController < ActionController::Base
   class BadRequest < RuntimeError; end;
 
-  before_filter :redirect_to_next_locale
   before_filter :set_locale
+  before_filter :redirect_to_next_locale
   before_filter :store_location, :except => [ :new, :create, :edit, :update, :destroy ]
 
   helper :all
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     return unless params.has_key?(:next_locale)
 
     available     = I18n.available_locales
-    current_index = available.index(params[:locale].to_sym)
+    current_index = available.index(I18n.locale.to_sym)
     next_locale   = available[(current_index + 1) % available.size]
 
     redirect_to(url_for(:locale => next_locale))

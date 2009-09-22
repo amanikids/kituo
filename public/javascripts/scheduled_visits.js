@@ -71,4 +71,5 @@ $(function() {
   }, commonSortableOptions));
 
   $('.recommended ul').sortable(commonSortableOptions);
+  $('.search ul').sortable(commonSortableOptions);
 });

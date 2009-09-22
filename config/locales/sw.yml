@@ -38,6 +38,7 @@ sw:
       scheduled_visits: Matembezi uliyopangwa
       recommended_visits: Matembezi tunayopendeleza
       neglected: Hatujawatembelea hivi karibuni
+      search: Tafuta
     visit:
       last_visited: "Tulimtembelea tarehe {{date}}"
       never_visited: Bado hatujamtembelea

@@ -38,6 +38,7 @@ en:
       scheduled_visits: Scheduled Visits
       recommended_visits: Recommended Visits
       neglected: Not visited recently
+      search: Search
     visit:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited

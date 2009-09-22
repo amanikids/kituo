@@ -54,17 +54,21 @@ h3, h4
 
 !column_spacing = 18px
 
-.scheduled, .recommended
+.scheduled, .other
   float: left
   width= !page_width / 2 - !column_spacing
 
-.upcoming, .recommended
+.upcoming, .other
   ul:last-child
     // Large drop target needed for last ul
     min-height: 2em
 
 .scheduled
   margin-right= !column_spacing
+
+.recommended
+  ul
+    margin-bottom: 1em
 
 .visits
   ul

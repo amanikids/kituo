@@ -16,6 +16,12 @@ class ChildTest < ActiveSupport::TestCase
 
   should_validate_presence_of :name
 
+  context '.search' do
+    should 'return an empty list when given nil' do
+      Child.search(nil).should == []
+    end
+  end
+
   should 'normalize name' do
     assert_equal "Emmanuel Lang'eda", Child.make(:name => "EMMANUEL lang'eda").name
   end

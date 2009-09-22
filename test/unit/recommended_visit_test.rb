@@ -30,6 +30,15 @@ class RecommendedVisitTest < ActiveSupport::TestCase
 
     should 'include a child that is offsite boarding and it is the start of the school term'
 
+    should 'include a child that is reunified and has never been visited' do
+      expected = @social_worker.children.make(:state => :reunified)
+
+      chaff = @social_worker.children.make(:state => :reunified)
+      chaff.home_visits.make(:happened_on => 3.months.ago)
+
+      @social_worker.recommended_visits.map(&:child).should == [expected]
+    end
+
     should 'include a child that is reunified and it is more than 3 months since their last visit' do
       expected = @social_worker.children.make(:state => :reunified)
       expected.home_visits.make(:happened_on => (3.months + 1.day).ago)

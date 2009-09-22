@@ -20,7 +20,7 @@ class RecommendedVisit < Struct.new(:child)
   end
 
   def self.should_have_follow_up_home_visit_after_reunification?(child)
-    child.reunified? && child.last_visited_on < 3.months.ago.to_date
+    child.reunified? && (child.last_visited_on.nil? || child.last_visited_on < 3.months.ago.to_date)
   end
 
   def id

@@ -73,6 +73,7 @@ class Child < ActiveRecord::Base
 
   # FIXME oh no we di'int
   def self.search(name)
+    return [] if name.blank?
     NameMatcher.new(Child.all.map(&:name)).match(name).map { |n| Child.find_all_by_name(n) }.flatten
   end
 
