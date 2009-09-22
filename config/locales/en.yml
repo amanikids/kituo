@@ -1,6 +1,9 @@
 en:
   locale_name: English
 
+  form:
+    saving: Please wait
+
   state:
     unknown: Unknown status
     on_site: At Amani
@@ -37,7 +40,11 @@ en:
   children:
     show:
       dashboard: Back to my page
-      location: "from {{location}}"
+      edit: Edit
+      cancel: Cancel
+      save: Save
+      from: from
+      no_social_worker: No social worker
       timeline: Timeline
       home_visit: Visited
       scheduled_visits: Scheduled Visits

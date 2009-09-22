@@ -38,7 +38,7 @@ h2
   font-size: 1.5em
   margin-bottom: 0.25em
 
-.headshot
+.headshot.show
   position: absolute
   top: 0
   right: 0
@@ -58,7 +58,30 @@ h2
     padding: 0.25em
   td.date
     width: 7em
-  
+
 .event
   background-color: black
   color: white
+
+form
+  min-height: 9em
+  position: relative
+  .edit
+    display: none
+  h1
+    input
+      font: inherit
+      width: 10em
+  .social_worker
+    margin-bottom: 0.5em
+
+  #inline-edit-links
+    margin-right: 1em
+    position: absolute
+    right= !page_width
+    text-align: right
+    top: 1.25em
+    #cancel-link
+      display: block
+      margin-bottom: 0.5em
+

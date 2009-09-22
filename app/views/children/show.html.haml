@@ -1,17 +1,41 @@
-%h1
-  %span.name= h(@child.name)
-  %span.actions= link_to(t('.dashboard'), root_path)
+- js 'inline_edit'
 
-.details
-  .locations
-    %span.state= t(@child.state, :scope => 'state')
-    - unless @child.location.blank?
-      %span.location= t('.location', :location => h(@child.location))
-  .social_worker
-    = h(@child.social_worker_name || t('.no_social_worker'))
+- form_for(@child, :html => { :multipart => true, :id => 'edit-child' }) do |form|
+  %h1
+    %span.name
+      %span.show= h(@child.name)
+      %span.edit= form.text_field :name
 
-.headshot
-  = image_tag(@child.headshot.url)
+      %span.actions= link_to(t('.dashboard'), root_path)
+
+  .details
+    .locations
+      %span.state= t(@child.state, :scope => 'state') + ','
+      %span.location
+        %span.show
+          - unless @child.location.blank?
+            = t('.from')
+            = h(@child.location)
+        %span.edit
+          = t('.from')
+          = form.text_field :location
+    .social_worker
+      %span.show
+        = h(@child.social_worker_name || t('.no_social_worker'))
+      %span.edit= form.collection_select :social_worker_id, Caregiver.all, :id, :name, :include_blank => t('.no_social_worker')
+    .headshot.edit
+      = form.label :headshot
+      = form.file_field :headshot
+
+  .headshot.show
+    = image_tag(@child.headshot.url)
+
+  #inline-edit-links
+    %span.show
+      = link_to(t('.edit'), {}, :id => 'edit-link')
+    %span.edit
+      = link_to(t('.cancel'), {}, :id => 'cancel-link')
+      = form.submit t('.save'), :id => 'save-link'
 
 %h2= t('.timeline')
 %table.timeline

@@ -14,7 +14,6 @@ Feature:
     And I am on the english dashboard
     And I click "Xavier Shay"
 
-  @wip
   Scenario: Editing a child
     Given I click "Juma Masawe"
     And I wait for page load

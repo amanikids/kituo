@@ -1,6 +1,9 @@
 sw:
   locale_name: Kiswahili
 
+  form:
+    saving: Subiri kidogo
+
   state:
     unknown: Hatujui yuko wapi
     on_site: Anakaa kituoni
@@ -37,7 +40,11 @@ sw:
   children:
     show:
       dashboard: Rudi nyumbani kwangu
-      location: "kutoka {{location}}"
+      edit: Hariri
+      cancel: Tangua
+      save: Hifadhi
+      from: kutoka
+      no_social_worker: Hana social worker
       timeline: Timeline
       home_visit: Tulimtembelea nyumbani
       scheduled_visits: Matembezi uliyopangwa

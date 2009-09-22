@@ -4,6 +4,7 @@ module ApplicationHelper
 
   def js_dependencies
     {
+      :inline_edit   => %w(jquery-1.3.2),
       :change_locale => %w(jquery-1.3.2),
       :scheduled_visits => %w(
         jquery-1.3.2
