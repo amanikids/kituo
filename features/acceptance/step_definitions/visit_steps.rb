@@ -62,3 +62,9 @@ When /^I click day "([^\"]*)" in the calendar$/ do |link|
   sleep 0.5
   click_link(link)
 end
+
+When /^I click "([^\"]*)" for the visit scheduled for "([^\"]*)"$/ do |link, day|
+  # FIXME this only works if there's just one scheduled visit
+  raise("Unimplemented for more than one scheduled visit") if ScheduledVisit.count > 1
+  click_link_within('.scheduled_visits', link)
+end

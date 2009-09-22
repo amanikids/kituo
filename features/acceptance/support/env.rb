@@ -22,3 +22,17 @@ end
 def human_date(day)
   I18n.localize(Chronic.parse(day).to_date, :format => :human).strip
 end
+
+module Chronic
+  class << self
+    def parse_with_month_support(input, options = {})
+      if input == 'the second day of this month'
+        Chronic.parse("the first day of this month", options) + 1.day
+      else
+        parse_without_month_support(input, options)
+      end
+    end
+
+    alias_method_chain :parse, :month_support
+  end
+end
