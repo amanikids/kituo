@@ -1,6 +1,6 @@
-require File.join(File.dirname(__FILE__), '..', '..', 'test_helper')
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
-class Helpers::DashboardHelperTest < ActiveSupport::TestCase
+class DashboardHelperTest < ActiveSupport::TestCase
   include DashboardHelper
 
   context '#comment_for' do
