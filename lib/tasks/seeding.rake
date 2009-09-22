@@ -53,7 +53,17 @@ namespace :db do
 
     desc 'Copy the production database down locally.'
     task :production => [:environment, :development_only, 'db:drop', 'db:create'] do
-      system "ssh deploy@mchungaji 'mysqldump -u root kituo_production' | mysql -u root amani_kituo_development"
+      def mysql_options
+        cmd = " -u #{db_credentials[:username]} "
+        cmd += " -p'#{db_credentials[:password]}'" unless db_credentials[:password].nil?
+        cmd += " #{db_credentials[:database]}"
+      end
+
+      def db_credentials
+        ActiveRecord::Base.connection.instance_eval { @config } # Dodgy!
+      end
+
+      system "ssh deploy@mchungaji 'mysqldump -u root kituo_production' | mysql #{mysql_options}"
       FileUtils.rm_rf(Rails.root.join('public', 'system'))
       system "scp -r deploy@mchungaji:/var/www/apps/kituo_production/shared/system #{Rails.root.join('public')}"
     end
