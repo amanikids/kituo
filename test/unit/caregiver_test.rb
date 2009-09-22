@@ -12,4 +12,16 @@ class CaregiverTest < ActiveSupport::TestCase
       assert_equal 'Don', user.friendly_name
     end
   end
+
+  context '#recommended_visits' do
+    should 'honor the limit parameter' do
+      social_worker = Caregiver.make
+      2.times do
+        social_worker.children.make(:state => 'on_site')
+      end
+
+      social_worker.recommended_visits.size.should == 2
+      social_worker.recommended_visits(:limit => 1).size.should == 1
+    end
+  end
 end

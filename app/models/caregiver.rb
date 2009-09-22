@@ -22,7 +22,8 @@ class Caregiver < ActiveRecord::Base
     name.split(' ')[0]
   end
 
-  def recommended_visits
-    children.map { |child| RecommendedVisit.for(child) }.compact
+  def recommended_visits(options = {})
+    all_visits = children.map { |child| RecommendedVisit.for(child) }.compact
+    options.has_key?(:limit) ? all_visits.shuffle.take(options[:limit]) : all_visits
   end
 end

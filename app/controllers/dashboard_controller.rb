@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 
   def show
     @scheduled_visits   = current_user.scheduled_visits.before(2.weeks.from_now).sort_by {|x| x.child.name }
-    @recommended_visits = current_user.recommended_visits.sort_by {|x| x.child.name }
+    @recommended_visits = current_user.recommended_visits(:limit => 4).sort_by {|x| x.child.name }
 
     # TODO should we show other SWs' kids in the search results?
     # Scheduling a visit for one of them would automatically switch the kid to my caseload.
