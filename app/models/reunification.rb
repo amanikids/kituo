@@ -1,5 +1,5 @@
 class Reunification < Event
-  def to_state
+  def self.to_state
     'reunified'
   end
 end

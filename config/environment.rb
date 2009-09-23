@@ -20,7 +20,6 @@ Rails::Initializer.run do |config|
   config.gem 'rack'
   config.gem 'prawn'
   config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com/'
-  config.gem 'rubyist-aasm',         :lib => 'aasm',      :source => 'http://gems.github.com/'
 
   # We have some rake tasks that use these.
   config.gem 'highline', :lib => false

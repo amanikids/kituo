@@ -1,7 +1,7 @@
 class AddStateToChild < ActiveRecord::Migration
   def self.up
     change_table :children do |t|
-      t.string :state, :null => false
+      t.string :state, :null => false, :default => 'unknown'
     end
 
     Child.reset_column_information

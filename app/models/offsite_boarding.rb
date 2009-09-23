@@ -1,5 +1,5 @@
 class OffsiteBoarding < Event
-  def to_state
+  def self.to_state
     'boarding_offsite'
   end
 end

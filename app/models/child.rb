@@ -1,12 +1,5 @@
 class Child < ActiveRecord::Base
   extend ActiveSupport::Memoizable
-  include AASM
-
-  aasm_column :state
-  aasm_initial_state :unknown
-  aasm_state :unknown
-  aasm_state :on_site
-  aasm_state :reunified
 
   after_update :create_events
   def create_events
@@ -50,6 +43,12 @@ class Child < ActiveRecord::Base
     NameMatcher.new(Child.all.map(&:name)).match(name).map { |n| Child.find_all_by_name(n) }.flatten
   end
 
+  Event.all_states(:include_unknown => true).each do |state|
+    define_method(state + '?') do
+      self.state == state
+    end
+  end
+
   def last_visited_on
     home_visits.last.try(:happened_on)
   end
@@ -80,11 +79,7 @@ class Child < ActiveRecord::Base
   end
 
   def next_states
-    states = Event.state_changing_events.map {|x|
-      x.new.to_state
-    }
-    states.unshift('unknown') if unknown?
-    states
+    Event.all_states(:include_unknown => unknown?)
   end
 
   def potential_duplicates

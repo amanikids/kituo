@@ -1,5 +1,5 @@
 class Dropout < Event
-  def to_state
+  def self.to_state
     'dropped_out'
   end
 end

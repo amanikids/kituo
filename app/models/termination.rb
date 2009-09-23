@@ -1,5 +1,5 @@
 class Termination < Event
-  def to_state
+  def self.to_state
     'terminated'
   end
 end

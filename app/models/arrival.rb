@@ -1,5 +1,5 @@
 class Arrival < Event
-  def to_state
+  def self.to_state
     'on_site'
   end
 end

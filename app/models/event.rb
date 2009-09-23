@@ -15,17 +15,21 @@ class Event < ActiveRecord::Base
   after_destroy :recalculate_child_state!
 
   def self.for_state(state)
-    state_changing_events.detect {|x|
-      x.new.to_state == state
-    }
+    state_changing_events.detect {|x| x.to_state == state }
   end
 
   def self.state_changing_events
     [Arrival, OffsiteBoarding, Reunification, Dropout, Termination]
   end
 
+  def self.all_states(options = {})
+    states = state_changing_events.map(&:to_state)
+    states.unshift('unknown') if options[:include_unknown]
+    states
+  end
+
   def to_state
-    raise("Must be implemented by subclasses (#{self.class})")
+    self.class.to_state
   end
 
   private

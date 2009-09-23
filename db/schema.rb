@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20090917110630) do
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
     t.integer  "social_worker_id"
-    t.string   "location",              :default => "", :null => false
-    t.string   "state",                                 :null => false
+    t.string   "location",              :default => "",        :null => false
+    t.string   "state",                 :default => "unknown", :null => false
   end
 
   create_table "events", :force => true do |t|

@@ -146,4 +146,13 @@ class ChildTest < ActiveSupport::TestCase
       end
     end
   end
+
+  context '#on_site?' do
+    should 'be true iff state is on_site' do
+      child = Child.make(:state => 'unknown')
+      child.on_site?.should == false
+      child.state = 'on_site'
+      child.on_site?.should == true
+    end
+  end
 end
