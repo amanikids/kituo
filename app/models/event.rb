@@ -11,7 +11,8 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :happened_on
   validate :did_not_happen_in_the_future, :if => :happened_on
-  after_update :recalculate_child_state!, :if => :happened_on_changed?
+  after_update  :recalculate_child_state!, :if => :happened_on_changed?
+  after_destroy :recalculate_child_state!
 
   def to_state
     raise("Must be implemented by subclasses (#{self.class})")

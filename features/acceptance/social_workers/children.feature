@@ -44,6 +44,15 @@ Feature:
     Then I should see an arrival event for "the first day of this month"
     Then I should see that the child's state is "Reunified"
 
+  Scenario: Destroying an event for a child
+    And the following events exist:
+      | Child       | Event         | Date                  |
+      | Juma Masawe | Reunification | Second day this month |
+    Given I click "Juma Masawe"
+    Given I click "Delete" for the event that happened on "the second day of this month"
+    Then I should not see a reunification event for "the second day of this month"
+    Then I should see that the child's state is "Unknown status"
+
   Scenario: Scheduling a visit from the child page
     Given I click "Juma Masawe"
     Given I click "Schedule a new visit"

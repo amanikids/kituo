@@ -50,6 +50,16 @@ class ChildTest < ActiveSupport::TestCase
       chaff.reload.state.should == 'terminated'
     end
 
+    should 'give an unknown status when no events are present' do
+      chaff = Child.make(:state => 'terminated')
+      child = Child.make(:state => 'on_site')
+
+      arrival = child.arrivals.make(:happened_on => 4.days.ago)
+      arrival.destroy
+
+      child.reload.state.should == 'unknown'
+      chaff.reload.state.should == 'terminated'
+    end
   end
 
   context 'given an existing Child' do

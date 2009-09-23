@@ -8,6 +8,7 @@ en:
     save: Save
     complete: Complete
     unschedule: Unschedule
+    destroy: Delete
 
   state:
     unknown: Unknown status

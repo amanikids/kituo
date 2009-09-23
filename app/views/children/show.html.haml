@@ -60,6 +60,8 @@
             = f.text_field :happened_on, :class => 'date-field edit', :readonly => true, :id => "event_happened_on_#{event.id}"
         %td.actions
           = link_to(t('form.edit'), {}, :class => 'edit-event')
+          &middot;
+          = link_to(t('form.destroy'), event.becomes(Event), :method => :delete)
 
 %h2= t('.scheduled_visits')
 %table.scheduled_visits

@@ -133,7 +133,7 @@ class Child < ActiveRecord::Base
   delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
 
   def recalculate_state!
-    new_state = events.location_changing.last.to_state
+    new_state = events.location_changing.last.try(:to_state) || 'unknown'
     Child.update_all(['state = ?', new_state], :id => id)
   end
 

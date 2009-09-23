@@ -5,6 +5,7 @@ Given /^the following events exist:$/ do |table|
       :child       => child,
       :happened_on => Chronic.parse(hash['Date'])
     )
+    child.recalculate_state!
   end
 end
 
@@ -20,6 +21,10 @@ end
 
 Then /^I should see a reunification event for "([^\"]*)"$/ do |day|
   assert_contain_within_selector('.timeline', "Reunified on #{human_date(day)}")
+end
+
+Then /^I should not see a reunification event for "([^\"]*)"$/ do |day|
+  assert_not_contain_within_selector('.timeline', "Reunified on #{human_date(day)}")
 end
 
 Then /^I should see that the child's state is "([^\"]*)"$/ do |state|
