@@ -5,7 +5,7 @@ Feature:
 
   Scenario: Social Worker identification
     Given the following users exist:
-      | Type          | Name        |
+      | Role          | Name        |
       | Social Worker | Xavier Shay |
     Given I am not signed in
     Given I am on the english dashboard

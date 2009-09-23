@@ -1,8 +1,6 @@
 - js :scheduled_visits
 
-%h1
-  %span.name= t('.welcome', :name => current_user.friendly_name)
-  %span.actions= link_to(t('.switch_user'), session_path, :method => :delete)
+= render 'header'
 
 .scheduled
   %h2= t('.scheduled_visits')

@@ -5,7 +5,7 @@ Feature:
 
   Background:
     Given the following users exist:
-      | Type          | Name        |
+      | Role          | Name        |
       | Social Worker | Xavier Shay |
     And the following scheduled visits exist:
       | Social Worker | Child       | Location | Date                 |

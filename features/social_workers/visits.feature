@@ -5,7 +5,7 @@ Feature:
 
   Background:
     Given the following users exist:
-      | Type          | Name        |
+      | Role          | Name        |
       | Social Worker | Xavier Shay |
 
   Scenario: Rescheduling a visit

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090917110630) do
+ActiveRecord::Schema.define(:version => 20090923113720) do
 
   create_table "caregivers", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20090917110630) do
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
+    t.string   "role",                  :default => "social_worker", :null => false
   end
 
   create_table "children", :force => true do |t|

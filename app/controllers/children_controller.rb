@@ -6,6 +6,6 @@ class ChildrenController < ApplicationController
   def update
     @child = Child.find(params[:id])
     @child.update_attributes(params[:child])
-    redirect_to @child
+    redirect_to :back
   end
 end

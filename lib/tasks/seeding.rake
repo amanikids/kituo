@@ -17,7 +17,8 @@ namespace :db do
       headshots = Dir.new(headshot_path).entries.select {|x| x =~ /\.jpg$/i }
       headshots.collect! {|x| File.open("#{headshot_path}/#{x}") }
 
-      user = Caregiver.make(:headshot => headshots.delete(headshots.rand))
+      user = Caregiver.make(:headshot => headshots.delete(headshots.rand), :role => 'social_worker')
+      joe  = Caregiver.make(:headshot => headshots.delete(headshots.rand), :role => 'development_officer', :name => 'Joe Ventura')
 
       [
         -4.days, # Overdue visit
@@ -45,7 +46,7 @@ namespace :db do
 
       5.times do
         user.children.make(
-          :state                       => :on_site, # No visits, recommended
+          :state                       => 'on_site', # No visits, recommended
           :headshot                    => headshots.delete(headshots.rand),
           :ignore_potential_duplicates => true)
       end

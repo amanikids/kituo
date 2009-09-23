@@ -33,9 +33,10 @@ sw:
       subheading: Wewe ni nani?
 
   dashboard:
-    show:
+    header:
       welcome: "Karibu, {{name}}!"
       switch_user: Mtu mwingine?
+    social_worker:
       scheduled_visits: Matembezi uliyopanga
       recommended_visits: Matembezi tunayopendeleza
       neglected: Hatujawatembelea hivi karibuni
@@ -44,6 +45,9 @@ sw:
       last_visited: "Tulimtembelea {{date}}"
       never_visited: Bado hatujamtembelea
       completed: Tayari
+    development_officer:
+      headshots_required: Watoto hawa wanahitaji picha
+
 
   children:
     show:

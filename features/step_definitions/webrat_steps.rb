@@ -18,6 +18,10 @@ When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
+When /^I attach the file "([^\"]*)" to "([^\"]*)"$/ do |path, field|
+  fill_in(field, :with => Rails.root.join('features', 'support', path))
+end
+
 When /^I press "([^\"]*)"$/ do |button|
   click_button(button)
 end

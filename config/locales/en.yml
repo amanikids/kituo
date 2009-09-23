@@ -33,9 +33,10 @@ en:
       subheading: Who are you?
 
   dashboard:
-    show:
+    header:
       welcome: "Welcome, {{name}}!"
       switch_user: Not you?
+    social_worker:
       scheduled_visits: Scheduled Visits
       recommended_visits: Recommended Visits
       neglected: Not visited recently
@@ -44,6 +45,8 @@ en:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited
       completed: Completed
+    development_officer:
+      headshots_required: These Kids need a Photo
 
   children:
     show:

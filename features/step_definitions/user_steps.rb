@@ -1,8 +1,8 @@
 Given /^the following users exist:$/ do |table|
   table.hashes.each do |user_hash|
-    # TODO: Support other types
     Caregiver.make(
-      :name => user_hash['Name']
+      :name => user_hash['Name'],
+      :role => user_hash['Role'].downcase.tr(' ', '_')
     )
   end
 end
