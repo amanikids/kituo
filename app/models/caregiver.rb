@@ -1,3 +1,7 @@
+# This could be anyone who helps look after the kids, including the social
+# workers, Japhary (manages social workers), and Joe (development officer).
+# They may have different roles, for instance Joe doesn't make scheduled
+# visits or directly look after kids.
 class Caregiver < ActiveRecord::Base
   named_scope :by_name, :order => :name
   named_scope :social_workers, :conditions => { :role => 'social_worker' }

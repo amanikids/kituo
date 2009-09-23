@@ -1,3 +1,6 @@
+# An event is recorded against a child for major things like a child arriving
+# at amani, or moving back with their family. See subclasses for the different
+# types of events.
 class Event < ActiveRecord::Base
   belongs_to :child
 

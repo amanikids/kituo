@@ -1,3 +1,6 @@
+# A social worker regularly makes an offsite visit for each child. Scheduling
+# these visits is a core functionality of this app. A scheduled visit becomes
+# a home visit event after it has been completed.
 class ScheduledVisit < ActiveRecord::Base
   belongs_to :child
 
