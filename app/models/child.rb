@@ -33,7 +33,8 @@ class Child < ActiveRecord::Base
     :default_url => '/images/headshot-:style.jpg'
 
   before_validation :normalize_name
-  validates_presence_of :name
+  validates_presence_of :name, :state
+  validates_inclusion_of :state, :in => Event.all_states(:include_unknown => true)
   validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
   attr_accessor :ignore_potential_duplicates
 

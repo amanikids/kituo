@@ -14,7 +14,9 @@ class ChildTest < ActiveSupport::TestCase
 
   should_have_attached_file :headshot
 
-  should_validate_presence_of :name
+  should_validate_presence_of :name, :state
+  should_allow_values_for :state, *Event.all_states(:include_unknown => true)
+  should_not_allow_values_for :state, 'bogus'
 
   context '.search' do
     should 'return an empty list when given nil' do
