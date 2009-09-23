@@ -13,9 +13,9 @@ class ScheduledVisitTest < ActiveSupport::TestCase
     end
   end
 
-  context 'with a scheduled visit' do
+  context 'a scheduled visit today' do
     setup do
-      @visit = ScheduledVisit.make
+      @visit = ScheduledVisit.make(:scheduled_for => Date.today)
       @child = @visit.child
     end
 
@@ -36,6 +36,41 @@ class ScheduledVisitTest < ActiveSupport::TestCase
         lambda {
           @visit.reload
         }.should raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context '#completable?' do
+      should 'be true' do
+        @visit.completable?.should == true
+      end
+    end
+  end
+
+  context 'a scheduled visit in the future' do
+    setup do
+      @visit = ScheduledVisit.make(:scheduled_for => 1.day.from_now)
+      @child = @visit.child
+    end
+
+    context '#complete!' do
+      setup do
+        @visit.complete!
+      end
+
+      should_not_change('the child home_visits count') do
+        @child.home_visits.count
+      end
+
+      should 'not destroy the visit' do
+        lambda {
+          @visit.reload
+        }.should_not raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context '#completable?' do
+      should 'be false' do
+        @visit.completable?.should == false
       end
     end
   end

@@ -26,4 +26,8 @@ class RecommendedVisit < Struct.new(:child)
   def id
     child.id
   end
+
+  def completable?
+    false
+  end
 end

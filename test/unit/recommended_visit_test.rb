@@ -1,6 +1,14 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class RecommendedVisitTest < ActiveSupport::TestCase
+  context 'A recommended visit in general' do
+    context '#completable?' do
+      should 'be false' do
+        RecommendedVisit.new(Child.make).completable?.should == false
+      end
+    end
+  end
+
   # FIXME don't test RecommendedVisit through Caregiver
   context '#recommended_visits for children with no scheduled visits' do
     setup do

@@ -72,8 +72,9 @@
           = f.text_field :scheduled_for, :class => 'date-field edit', :readonly => true, :id => "scheduled_for_#{visit.id}"
 
       %td.actions
-        = link_to(t('form.complete'), complete_scheduled_visit_path(visit), :method => :put)
-        &middot;
+        - if visit.completable?
+          = link_to(t('form.complete'), complete_scheduled_visit_path(visit), :method => :put)
+          &middot;
         = link_to(t('form.edit'), {}, :class => 'edit-scheduled-visit')
         &middot;
         = link_to(t('form.unschedule'), scheduled_visit_path(visit), :method => :delete)

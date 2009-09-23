@@ -7,9 +7,15 @@ class ScheduledVisit < ActiveRecord::Base
   }}
 
   def complete!
+    return unless completable?
+
     transaction do
       child.home_visits.create!(:happened_on => scheduled_for)
       destroy
     end
+  end
+
+  def completable?
+    !scheduled_for.future?
   end
 end
