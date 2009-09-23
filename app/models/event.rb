@@ -7,24 +7,12 @@ class Event < ActiveRecord::Base
 
   named_scope :happened_by, lambda { |date| { :conditions => ['happened_on <= ?', date] }}
   # it's important to keep the lambda, since the subclasses won't have loaded yet
-  named_scope :location_changing, lambda { { :conditions => { :type => location_changing_event_names }}}
+  named_scope :state_changing, lambda { { :conditions => { :type => state_changing_events.map(&:name) }}}
 
   validates_presence_of :happened_on
   validate :did_not_happen_in_the_future, :if => :happened_on
   after_update  :recalculate_child_state!, :if => :happened_on_changed?
   after_destroy :recalculate_child_state!
-
-  def to_state
-    raise("Must be implemented by subclasses (#{self.class})")
-  end
-
-  def self.location_changing_event_names
-    %w(Arrival Dropout OffsiteBoarding Reunification Termination)
-  end
-
-  def self.location_changing_events
-    location_changing_event_names.map(&:constantize)
-  end
 
   def self.for_state(state)
     state_changing_events.detect {|x|
@@ -34,6 +22,10 @@ class Event < ActiveRecord::Base
 
   def self.state_changing_events
     [Arrival, OffsiteBoarding, Reunification, Dropout, Termination]
+  end
+
+  def to_state
+    raise("Must be implemented by subclasses (#{self.class})")
   end
 
   private
