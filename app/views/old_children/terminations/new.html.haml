@@ -1,9 +1,0 @@
-= render :partial => 'children/header', :locals => { :child => @child }
-%h2= Termination.human_name
-
-- form_for [@child, @termination] do |form|
-  .field
-    = form.label :happened_on
-    = form.date_select :happened_on
-  .submit
-    = form.submit t('children.terminations.new.submit')

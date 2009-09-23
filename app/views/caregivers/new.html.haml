@@ -1,9 +1,0 @@
-%h1= t('caregivers.new.title')
-
-- form_for @caregiver do |form|
-  .field
-    = form.label :name
-    = form.text_field :name, :autocomplete => 'off'
-    = form.error_message_on :name
-  .submit
-    = form.submit t('caregivers.new.submit')
