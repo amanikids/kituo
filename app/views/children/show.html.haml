@@ -29,7 +29,7 @@
     .social_worker
       %span.show
         = h(@child.social_worker_name || t('.no_social_worker'))
-      %span.edit= form.collection_select :social_worker_id, Caregiver.all, :id, :name, :include_blank => t('.no_social_worker')
+      %span.edit= form.collection_select :social_worker_id, Caregiver.social_workers.by_name, :id, :name, :include_blank => t('.no_social_worker')
     .headshot.edit
       = form.label :headshot
       = form.file_field :headshot

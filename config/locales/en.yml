@@ -26,6 +26,7 @@ en:
       dropped_out: "Dropped out on {{date}}"
 
   statistics:
+    length_of_stay: Length of Stay at Amani
     mean: "Mean: {{mean}}"
     median: "Median: {{median}}"
     mode: "Mode: {{mode}}"
@@ -50,9 +51,11 @@ en:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited
       completed: Completed
+    social_work_coordinator:
+      social_workers_required: These Kids need a Social Worker
+      from: from
     development_officer:
       headshots_required: These Kids need a Photo
-      length_of_stay: Length of Stay at Amani
 
   children:
     show:

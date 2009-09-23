@@ -4,9 +4,9 @@ module ApplicationHelper
 
   def js_dependencies
     {
-      :inline_edit     => %w(jquery-1.3.2),
-      :change_locale   => %w(jquery-1.3.2),
-      :upload_headshot => %w(jquery-1.3.2),
+      :inline_edit   => %w(jquery-1.3.2),
+      :change_locale => %w(jquery-1.3.2),
+      :child_tasks   => %w(jquery-1.3.2),
       :child_scheduled_visits => %w(
         jquery-1.3.2
         jquery-ui-1.7.2.everything.min

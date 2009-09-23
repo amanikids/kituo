@@ -11,12 +11,14 @@ class DashboardController < ApplicationController
       # Scheduling a visit for one of them would automatically switch the kid to my caseload.
       # More to think through...
       @search_results     = current_user.children.search(params[:search]).map { |child| RecommendedVisit.new(child) }
-      render 'social_worker'
+    when 'social_work_coordinator'
+      @children_requiring_social_workers = Child.by_name.find_all_by_social_worker_id(nil)
     when 'development_officer'
       @children_requiring_headshots = Child.by_name.find_all_by_headshot_file_name(nil)
-      render 'development_officer'
     else
       raise "Unknown caregiver role: #{current_user.inspect}"
     end
+
+    render current_user.role
   end
 end

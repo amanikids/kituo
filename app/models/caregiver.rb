@@ -1,5 +1,6 @@
 class Caregiver < ActiveRecord::Base
   named_scope :by_name, :order => :name
+  named_scope :social_workers, :conditions => { :role => 'social_worker' }
 
   has_many :children, :foreign_key => :social_worker_id
   has_many :scheduled_visits, :through => :children

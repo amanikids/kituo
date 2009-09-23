@@ -17,8 +17,9 @@ namespace :db do
       headshots = Dir.new(headshot_path).entries.select {|x| x =~ /\.jpg$/i }
       headshots.collect! {|x| File.open("#{headshot_path}/#{x}") }
 
-      user = Caregiver.make(:headshot => headshots.delete(headshots.rand), :role => 'social_worker')
-      joe  = Caregiver.make(:headshot => headshots.delete(headshots.rand), :role => 'development_officer', :name => 'Joe Ventura')
+      godfrey = Caregiver.make(:headshot => headshots.delete(headshots.rand), :role => 'social_worker')
+      joe     = Caregiver.make(:headshot => headshots.delete(headshots.rand), :role => 'development_officer', :name => 'Joe Ventura')
+      japhary = Caregiver.make(:headshot => headshots.delete(headshots.rand), :role => 'social_work_coordinator', :name => 'Japhary Salum')
 
       [
         -4.days, # Overdue visit
@@ -28,8 +29,9 @@ namespace :db do
         3.days,
         1.week + 1.day
       ].each do |day|
-        child = user.children.make(
+        child = Child.make(
           :headshot                    => (rand < 0.8) ? headshots.delete(headshots.rand) : nil,
+          :social_worker               => (rand < 0.6) ? godfrey : nil,
           :ignore_potential_duplicates => true
         )
         ScheduledVisit.make(
@@ -45,7 +47,7 @@ namespace :db do
       ScheduledVisit.last.child.home_visits.make
 
       5.times do
-        user.children.make(
+        godfrey.children.make(
           :state                       => 'on_site', # No visits, recommended
           :headshot                    => headshots.delete(headshots.rand),
           :ignore_potential_duplicates => true)

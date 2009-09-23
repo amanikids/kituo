@@ -26,6 +26,7 @@ sw:
       dropped_out: "Alitoroka tarehe {{date}}"
 
   statistics:
+    length_of_stay: Watoto wanakaa kituoni kwa muda gani?
     mean: "Mean: {{mean}}"
     median: "Median: {{median}}"
     mode: "Mode: {{mode}}"
@@ -50,9 +51,11 @@ sw:
       last_visited: "Tulimtembelea {{date}}"
       never_visited: Bado hatujamtembelea
       completed: Tayari
+    social_work_coordinator:
+      social_workers_required: Watoto hawa wanahitaji social worker
+      from: kutoka
     development_officer:
       headshots_required: Watoto hawa wanahitaji picha
-      length_of_stay: Watoto wanakaa kituoni kwa muda gani?
 
   children:
     show:

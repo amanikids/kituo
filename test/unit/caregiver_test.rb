@@ -6,6 +6,15 @@ class CaregiverTest < ActiveSupport::TestCase
   should_have_attached_file :headshot
   should_validate_presence_of :name
 
+  context '.social_workers' do
+    should 'only include caregivers with the role "social_worker"' do
+      expected = Caregiver.make(:role => 'social_worker')
+      chaff    = Caregiver.make(:role => 'social_work_coordinator')
+
+      Caregiver.social_workers.should == [expected]
+    end
+  end
+
   context '#friendly_name' do
     should 'return the first name' do
       user = Caregiver.make_unsaved(:name => 'Don T. Alias')
