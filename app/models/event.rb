@@ -9,8 +9,6 @@ class Event < ActiveRecord::Base
   # it's important to keep the lambda, since the subclasses won't have loaded yet
   named_scope :location_changing, lambda { { :conditions => { :type => location_changing_event_names }}}
 
-  attr_accessible :happened_on
-
   def to_state
     raise("Must be implemented by subclasses (#{self.class})")
   end
@@ -21,5 +19,15 @@ class Event < ActiveRecord::Base
 
   def self.location_changing_events
     location_changing_event_names.map(&:constantize)
+  end
+
+  def self.for_state(state)
+    state_changing_events.detect {|x| 
+      x.new.to_state == state 
+    }
+  end
+  
+  def self.state_changing_events
+    [Arrival, OffsiteBoarding, Reunification, Dropout, Termination]
   end
 end

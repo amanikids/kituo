@@ -1,5 +1,6 @@
 class StateMigrator
   def migrate!
+    Child.update_all(['state = ?', 'unknown'])
     Child.find_each do |child|
       last_event = child.events.find(:first,
         :conditions => ['type != ?', 'HomeVisit'],

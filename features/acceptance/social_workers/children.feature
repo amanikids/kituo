@@ -14,7 +14,6 @@ Feature:
     Given I click "Juma Masawe"
 
   Scenario: Editing a child
-    And I wait for page load
     And I click "Edit"
     And I fill in "child_name" with "Jumanne"
     And I select "Xavier Shay" from "child_social_worker_id"
@@ -24,6 +23,13 @@ Feature:
     Then I should see "Jumanne"
     And I should see "Xavier Shay"
     And I should see "Arusha"
+
+  Scenario: Changing the state of a child
+    And I click "Edit"
+    And I select "Reunified" from "child_state"
+    And I press "Save"
+    Then I should see "Reunified"
+    Then I should see a reunification event for "today"
 
   Scenario: Scheduling a visit from the child page
     Given I click "Schedule a new visit"

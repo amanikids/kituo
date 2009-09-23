@@ -71,6 +71,10 @@ Then /^I should see a home visit for "([^\"]*)"$/ do |day|
   assert_contain_within_selector('.timeline', human_date(day))
 end
 
+Then /^I should see a reunification event for "([^\"]*)"$/ do |day|
+  assert_contain_within_selector('.timeline', "Reunified on #{human_date(day)}")
+end
+
 When /^I click day "([^\"]*)" in the calendar$/ do |link|
   sleep 0.5
   click_link(link)

@@ -15,7 +15,9 @@
 
   .details
     .locations
-      %span.state= t(@child.state, :scope => 'state') + ','
+      %span.state
+        %span.show= t(@child.state, :scope => 'state') + ','
+        %span.edit= form.select :state, @child.next_states.map {|state| [t(state, :scope => 'state'), state] }
       %span.location
         %span.show
           - unless @child.location.blank?

@@ -4,8 +4,19 @@ class Child < ActiveRecord::Base
 
   aasm_column :state
   aasm_initial_state :unknown
+  aasm_state :unknown
   aasm_state :on_site
   aasm_state :reunified
+
+  after_update :create_events
+  def create_events
+    if state_changed?
+      Event.for_state(state).create!(
+        :child       => self,
+        :happened_on => Date.today
+      )
+    end
+  end
 
   named_scope :by_name, :order => :name
   named_scope :location_as_of, lambda { |date|           { :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, Event.location_changing_event_names], :joins => :events }}
@@ -69,7 +80,7 @@ class Child < ActiveRecord::Base
   validates_presence_of :name
   validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
   attr_accessor :ignore_potential_duplicates
-  attr_accessible :name, :ignore_potential_duplicates, :headshot, :location, :social_worker_id
+  attr_accessible :name, :ignore_potential_duplicates, :headshot, :location, :social_worker_id, :state
 
   # FIXME oh no we di'int
   def self.search(name)
@@ -115,6 +126,14 @@ class Child < ActiveRecord::Base
 
   def tasks
     Task.for_child(self)
+  end
+
+  def next_states
+    states = Event.state_changing_events.map {|x|
+      x.new.to_state
+    }
+    states.unshift('unknown') if unknown?
+    states
   end
 
   private

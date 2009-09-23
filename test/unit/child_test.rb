@@ -22,6 +22,16 @@ class ChildTest < ActiveSupport::TestCase
     end
   end
 
+  context '#next_states' do
+    should 'include unknown when state is unknown' do
+      Child.make(:state => 'unknown').next_states.should include('unknown')
+    end
+
+    should 'not include unknown when state is not unknown' do
+      Child.make(:state => 'on_site').next_states.should_not include('unknown')
+    end
+  end
+
   should 'normalize name' do
     assert_equal "Emmanuel Lang'eda", Child.make(:name => "EMMANUEL lang'eda").name
   end
