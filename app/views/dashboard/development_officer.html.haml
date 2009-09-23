@@ -4,7 +4,7 @@
 
 - unless @children_requiring_headshots.empty?
   %h2= t('.headshots_required')
-  %ul
+  %ul.headshots-required
     - @children_requiring_headshots.each do |child|
       %li.headshot-required
         .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
@@ -15,3 +15,6 @@
           %span.upload
             - form_for(child, :html => { :multipart => true }) do |f|
               = f.file_field :headshot, :id => "child_headshot_#{child.id}"
+
+%h2= t('.length_of_stay')
+= tag(:object, :type => Mime::SVG, :data => length_of_stay_statistics_path(:format => :svg), :width => 600, :height => 200)

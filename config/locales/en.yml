@@ -25,6 +25,11 @@ en:
       terminated: "Terminated on {{date}}"
       dropped_out: "Dropped out on {{date}}"
 
+  statistics:
+    mean: "Mean: {{mean}}"
+    median: "Median: {{median}}"
+    mode: "Mode: {{mode}}"
+
   working: Working
 
   sessions:
@@ -47,6 +52,7 @@ en:
       completed: Completed
     development_officer:
       headshots_required: These Kids need a Photo
+      length_of_stay: Length of Stay at Amani
 
   children:
     show:

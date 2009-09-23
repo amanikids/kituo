@@ -25,6 +25,11 @@ sw:
       terminated: "Alikuwa terminated tarehe {{date}}"
       dropped_out: "Alitoroka tarehe {{date}}"
 
+  statistics:
+    mean: "Mean: {{mean}}"
+    median: "Median: {{median}}"
+    mode: "Mode: {{mode}}"
+
   working: Subiri
 
   sessions:
@@ -47,7 +52,7 @@ sw:
       completed: Tayari
     development_officer:
       headshots_required: Watoto hawa wanahitaji picha
-
+      length_of_stay: Watoto wanakaa kituoni kwa muda gani?
 
   children:
     show:

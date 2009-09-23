@@ -8,6 +8,6 @@ bar_graph.bars.each do |bar|
   end
 end
 
-xml.text(t('statistics.bar_graph.mean',   :mean => bar_graph.mean), :x => bar_graph.legend_x, :y => bar_graph.legend_y_row(0))
-xml.text(t('statistics.bar_graph.median', :median => bar_graph.median), :x => bar_graph.legend_x, :y => bar_graph.legend_y_row(1))
-xml.text(t('statistics.bar_graph.mode',   :mode => bar_graph.mode.to_sentence), :x => bar_graph.legend_x, :y => bar_graph.legend_y_row(2))
+xml.text(t('statistics.mean',   :mean => bar_graph.mean), :x => bar_graph.legend_x, :y => bar_graph.legend_y_row(0))
+xml.text(t('statistics.median', :median => bar_graph.median), :x => bar_graph.legend_x, :y => bar_graph.legend_y_row(1))
+xml.text(t('statistics.mode',   :mode => bar_graph.mode.to_sentence), :x => bar_graph.legend_x, :y => bar_graph.legend_y_row(2))

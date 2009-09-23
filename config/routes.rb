@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.filter :locale
 
-  map.resources :statistics, :collection => { :length_of_stay => :get }
+  map.length_of_stay_statistics '/statistics/length_of_stay.svg', :controller => 'statistics', :action => 'length_of_stay', :format => :svg, :conditions => { :method => :get }
 
   map.resource :session
   map.resources :children, :events

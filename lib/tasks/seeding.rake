@@ -29,7 +29,7 @@ namespace :db do
         1.week + 1.day
       ].each do |day|
         child = user.children.make(
-          :headshot                    => headshots.delete(headshots.rand),
+          :headshot                    => (rand < 0.8) ? headshots.delete(headshots.rand) : nil,
           :ignore_potential_duplicates => true
         )
         ScheduledVisit.make(
