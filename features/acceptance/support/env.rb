@@ -13,10 +13,11 @@ Webrat.configure do |config|
 end
 
 Before do
-  # FIXME how shall we clean the database before each run?
-  [Caregiver, Child, Event, ScheduledVisit].each(&:delete_all)
-
   I18n.locale = 'en'
+end
+
+After do
+  [Caregiver, Child, Event, ScheduledVisit].each(&:delete_all)
 end
 
 def human_date(day)
