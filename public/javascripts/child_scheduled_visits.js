@@ -1,9 +1,9 @@
 $(function() {
   var scheduledVisitForm = function(element) {
-    return $(element).parents('.scheduled_visit').find('form');
+    return $(element).parents('tr').find('form');
   }
 
-  $('#new-scheduled-visit, .edit-scheduled-visit').click(function() {
+  $('#new-scheduled-visit, .edit-scheduled-visit, .edit-event').click(function() {
     with(scheduledVisitForm(this)) {
       find('.show').hide();
       find('.date-field').show();

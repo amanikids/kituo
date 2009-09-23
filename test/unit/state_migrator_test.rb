@@ -26,21 +26,6 @@ class StateMigratorTest < ActiveSupport::TestCase
     should_have_state 'on_site'
   end
 
-  context 'a child with an unknown event' do
-    should 'raise' do
-      class AnUnknownEvent < Event
-      end
-
-      event = AnUnknownEvent.new
-      event.child = @child
-      event.save!
-
-      lambda {
-        StateMigrator.new.migrate!
-      }.should raise_error
-    end
-  end
-
   context 'a child with an arrival followed by a home visit' do
     setup do
       @child.arrivals.make(:happened_on => 1.week.ago)

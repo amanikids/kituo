@@ -51,10 +51,15 @@
       %tr
         %td.date= l(event.happened_on, :format => :human)
         %td.notes= event.notes.blank? ? t('.home_visit') : h(event.notes)
+        %td.actions
     - else
       %tr.event
         %td{:colspan => 2}
-          = t(event.to_state, :date => l(event.happened_on, :format => :human), :scope => 'state.sentence')
+          - form_for(event.becomes(Event)) do |f|
+            = t(event.to_state, :date => content_tag(:span, l(event.happened_on, :format => :human), :class => 'show'), :scope => 'state.sentence')
+            = f.text_field :happened_on, :class => 'date-field edit', :readonly => true, :id => "event_happened_on_#{event.id}"
+        %td.actions
+          = link_to(t('form.edit'), {}, :class => 'edit-event')
 
 %h2= t('.scheduled_visits')
 %table.scheduled_visits

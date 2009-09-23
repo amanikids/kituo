@@ -29,3 +29,8 @@ end
 Then /^I wait for page load$/ do
   selenium.wait_for_page_to_load
 end
+
+Then /^I wait$/ do
+  sleep 10000
+end
+

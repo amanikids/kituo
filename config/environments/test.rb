@@ -33,3 +33,7 @@ config.gem 'faker'
 config.gem 'jeremymcanally-matchy', :lib => 'matchy', :source => 'http://gems.github.com/'
 config.gem 'notahat-machinist', :lib => 'machinist/active_record', :source => 'http://gems.github.com/'
 config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.com/'
+
+config.after_initialize do
+  require 'chronic_extensions'
+end

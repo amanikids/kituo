@@ -117,6 +117,14 @@ class Child < ActiveRecord::Base
     length_of_stay
   end
 
+  def next_states
+    states = Event.state_changing_events.map {|x|
+      x.new.to_state
+    }
+    states.unshift('unknown') if unknown?
+    states
+  end
+
   def potential_duplicates
     Child.search(name)
   end
@@ -124,16 +132,13 @@ class Child < ActiveRecord::Base
 
   delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
 
-  def tasks
-    Task.for_child(self)
+  def recalculate_state!
+    new_state = events.location_changing.last.to_state
+    Child.update_all(['state = ?', new_state], :id => id)
   end
 
-  def next_states
-    states = Event.state_changing_events.map {|x|
-      x.new.to_state
-    }
-    states.unshift('unknown') if unknown?
-    states
+  def tasks
+    Task.for_child(self)
   end
 
   private

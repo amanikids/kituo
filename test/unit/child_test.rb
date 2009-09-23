@@ -36,6 +36,22 @@ class ChildTest < ActiveSupport::TestCase
     assert_equal "Emmanuel Lang'eda", Child.make(:name => "EMMANUEL lang'eda").name
   end
 
+  context "recalculating state after an event's date is updated" do
+    should "calculate state from the last event that isn't a home visit" do
+      chaff = Child.make(:state => 'terminated')
+      child = Child.make(:state => 'on_site')
+
+      child.reunifications.make(:happened_on => 4.days.ago)
+      child.home_visits.make(:happened_on => 3.days.ago)
+      child.arrivals.make(:happened_on => 2.days.ago)
+
+      child.arrivals.last.update_attributes(:happened_on => 5.days.ago)
+      child.reload.state.should == 'reunified'
+      chaff.reload.state.should == 'terminated'
+    end
+
+  end
+
   context 'given an existing Child' do
     setup do
       @existing_child = Child.make
