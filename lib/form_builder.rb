@@ -1,8 +1,4 @@
 class FormBuilder < ActionView::Helpers::FormBuilder
-  def date_select(method, options = {}, html_options = {})
-    super(method, options.merge(:start_year => 2000, :end_year => Date.today.year), html_options)
-  end
-
   def label(method, text = nil, options = {})
     super(method, text || @object.class.human_attribute_name(method.to_s), options)
   end
