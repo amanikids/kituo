@@ -1,6 +1,9 @@
 sw:
   locale_name: Kiswahili
 
+  # ===========
+  # = General =
+  # ===========
   form:
     saving: Subiri kidogo
     edit: Hariri
@@ -9,6 +12,11 @@ sw:
     complete: Tayari
     unschedule: Tangua
     destroy: Futa
+
+  role:
+    social_worker: Social Worker
+    social_work_coordinator: Social Work Coordinator
+    development_officer: Development Officer
 
   state:
     unknown: Hatujui yuko wapi
@@ -33,10 +41,15 @@ sw:
 
   working: Subiri
 
+  # =================
+  # = Partial-based =
+  # =================
   sessions:
     new:
       heading: Karibu!
       subheading: Wewe ni nani?
+      not_here: Hayupo?
+      tell_us_who_you_are: Jitambulishe.
 
   dashboard:
     header:
@@ -76,6 +89,14 @@ sw:
       scheduled_visits: Matembezi uliyopanga
       new_scheduled_visit: Panga tembezi lingine
 
+  caregivers:
+    new:
+      title: Jitambulishe
+      back: Baadaye
+
+  # ==========
+  # = Models =
+  # ==========
   activerecord:
     errors:
       models:
@@ -84,6 +105,9 @@ sw:
             happened_on:
               not_in_the_future: haiwezi kuwa siku ijayo
 
+  # =============
+  # = Framework =
+  # =============
   date:
     formats:
       day_name: "%A"

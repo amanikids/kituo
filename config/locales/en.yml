@@ -1,6 +1,9 @@
 en:
   locale_name: English
 
+  # ===========
+  # = General =
+  # ===========
   form:
     saving: Please wait
     edit: Edit
@@ -9,6 +12,11 @@ en:
     complete: Complete
     unschedule: Unschedule
     destroy: Delete
+
+  role:
+    social_worker: Social Worker
+    social_work_coordinator: Social Work Coordinator
+    development_officer: Development Officer
 
   state:
     unknown: Unknown status
@@ -33,10 +41,15 @@ en:
 
   working: Working
 
+  # =================
+  # = Partial-based =
+  # =================
   sessions:
     new:
       heading: Hello!
       subheading: Who are you?
+      not_here: Not here?
+      tell_us_who_you_are: Introduce yourself.
 
   dashboard:
     header:
@@ -75,6 +88,14 @@ en:
       scheduled_visits: Scheduled Visits
       new_scheduled_visit: Schedule a new visit
 
+  caregivers:
+    new:
+      title: Introduce yourself
+      back: Not now
+
+  # ==========
+  # = Models =
+  # ==========
   activerecord:
     errors:
       models:
@@ -83,6 +104,9 @@ en:
             happened_on:
               not_in_the_future: cannot be in the future
 
+  # =============
+  # = Framework =
+  # =============
   date:
     formats:
       day_name: "%A"

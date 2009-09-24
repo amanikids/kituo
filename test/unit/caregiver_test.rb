@@ -15,6 +15,19 @@ class CaregiverTest < ActiveSupport::TestCase
     end
   end
 
+  context 'saving' do
+    should 'validate uniqueness of name' do
+      existing = Caregiver.make(:name => 'Bob Loblaw')
+      caregiver = Caregiver.make_unsaved(:name => ' BOB LOBLAW ')
+      caregiver.valid?.should == false
+      caregiver.errors.on(:name).should == 'has already been taken'
+    end
+
+    should 'normalize name' do
+      Caregiver.make(:name => '  lowercase  UPPERCASE  ').name.should == 'Lowercase Uppercase'
+    end
+  end
+
   context '#friendly_name' do
     should 'return the first name' do
       user = Caregiver.make_unsaved(:name => 'Don T. Alias')

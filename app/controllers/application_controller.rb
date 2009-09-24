@@ -36,6 +36,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def sign_in!(user)
+    session[:user_id] = user.id
+  end
+
   def set_locale
     I18n.locale = params[:locale] if params[:locale]
   end

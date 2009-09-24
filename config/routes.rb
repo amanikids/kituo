@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
   map.resources :children, :collection => {:on_site => :get}
+  map.resources :caregivers
   map.resources :events
   map.resources :scheduled_visits, :member => {:complete => :put}
   map.root :controller => 'dashboard', :action => 'show'

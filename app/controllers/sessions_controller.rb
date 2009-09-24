@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    session[:user_id] = params[:user_id]
+    sign_in!(Caregiver.find(params[:user_id]))
     redirect_to root_path
   end
 

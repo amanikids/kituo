@@ -1,0 +1,39 @@
+@import constants.sass
+
+body
+  margin: 3em auto
+  width= !page_width
+
+h1
+  font-size: 2.5em
+  .actions
+    font-size: 0.4em
+    &:before
+      content: "("
+    &:after
+      content: ")"
+
+h2
+  font-size: 1.5em
+  margin-bottom: 0.25em
+
+a
+  color: inherit
+
+!loading_width = 81px
+!loading_padding = 5px
+!loading_spinner_size = 16px
+
+#ajax-loading
+  display: none
+  position: absolute
+  right: 0
+  top: 0
+  background-color: black
+  background-image: url('/images/ajax-spinner.gif')
+  background-repeat: no-repeat
+  background-position= !loading_width - !loading_spinner_size + !loading_padding center
+  width= !loading_width - !loading_spinner_size
+  color: white
+  padding= !loading_padding
+  padding-right= !loading_padding + !loading_spinner_size

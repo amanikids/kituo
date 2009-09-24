@@ -16,11 +16,12 @@ class Caregiver < ActiveRecord::Base
     :default_style => :default,
     :default_url => "/images/headshot-:style.jpg"
 
+  before_validation :normalize_name
   validates_presence_of :name
-  attr_accessible :name, :headshot
+  validates_uniqueness_of :name
 
-  def tasks
-    Task.for_caregiver(self)
+  def self.all_roles
+    %w(social_worker social_work_coordinator development_officer)
   end
 
   def friendly_name
@@ -30,5 +31,11 @@ class Caregiver < ActiveRecord::Base
   def recommended_visits(options = {})
     all_visits = children.map { |child| RecommendedVisit.for(child) }.compact
     options.has_key?(:limit) ? all_visits.shuffle.take(options[:limit]) : all_visits
+  end
+
+  private
+
+  def normalize_name
+    self.name = name.to_s.squish.titlecase
   end
 end
