@@ -60,11 +60,12 @@ sw:
       recommended_visits: Matembezi tunayopendeleza
       neglected: Hatujawatembelea hivi karibuni
       search: Tafuta
-      tasks: Shughuli
-      print_roll_call_sheet: Chapisha mahudhurio ya wiki hii
       new_child: Fungua faili ya mtoto mgeni
       new_children: Faili zilizofunguliwa hivi karibuni
-
+    tasks:
+      title: Shughuli
+      print_roll_call_sheet: Chapisha mahudhurio ya wiki hii
+      edit_your_profile: Hariri taarifa yako
     visit:
       last_visited: "Tulimtembelea {{date}}"
       never_visited: Bado hatujamtembelea
@@ -81,7 +82,7 @@ sw:
       subtitle: "Wiki ya {{begin_date}} hadi {{end_date}}"
 
     show:
-      dashboard: Rudi nyumbani kwangu
+      dashboard: Rudi nyumbani kwako
       from: kutoka
       no_social_worker: Hana social worker
       timeline: Timeline
@@ -93,6 +94,9 @@ sw:
     new:
       title: Jitambulishe
       back: Baadaye
+    edit:
+      title: Hariri taarifa yako
+      back: Rudi nyumbani kwako
 
   # ==========
   # = Models =

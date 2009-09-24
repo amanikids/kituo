@@ -2,14 +2,4 @@
   = t('.title')
   %span.actions= link_to(t('.back'), new_session_path)
 
-- form_for(@caregiver) do |form|
-  = form.error_messages
-  %ul
-    %li
-      = form.label :name
-      = form.text_field :name, :autocomplete => 'off'
-    %li
-      = form.label :role
-      = form.select :role, Caregiver.all_roles.map {|role| [t(role, :scope => 'role'), role]}
-    %li
-      = form.submit(t("form.save"))
+= render 'form'

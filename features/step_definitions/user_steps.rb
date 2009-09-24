@@ -13,3 +13,7 @@ Given /^I am not signed in$/ do
     click_link("Not you?")
   end
 end
+
+Then /^there should be a headshot "([^\"]*)" for caregiver "([^\"]*)"$/ do |filename, name|
+  Caregiver.find_by_name(name).headshot_file_name.should == filename
+end

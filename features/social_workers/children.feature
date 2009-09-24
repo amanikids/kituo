@@ -14,6 +14,7 @@ Feature:
 
   Scenario: Editing a child
     Given I click "Juma Masawe"
+    And I wait for page load
     And I click "Edit"
     And I fill in "child_name" with "Jumanne"
     And I select "Xavier Shay" from "child_social_worker_id"
@@ -26,6 +27,7 @@ Feature:
 
   Scenario: Changing the state of a child
     Given I click "Juma Masawe"
+    And I wait for page load
     And I click "Edit"
     And I select "Reunified" from "child_state"
     And I press "Save"

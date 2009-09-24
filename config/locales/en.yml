@@ -60,10 +60,12 @@ en:
       recommended_visits: Recommended Visits
       neglected: Not visited recently
       search: Search
-      tasks: Tasks
-      print_roll_call_sheet: "Print this week's roll call sheet"
       new_child: Open a new case file
       new_children: Recently opened case files
+    tasks:
+      title: Tasks
+      print_roll_call_sheet: "Print this week's roll call sheet"
+      edit_your_profile: Edit your profile
     visit:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited
@@ -80,7 +82,7 @@ en:
       subtitle: "Week of {{begin_date}} through {{end_date}}"
 
     show:
-      dashboard: Back to my page
+      dashboard: Back to your dashboard
       from: from
       no_social_worker: No social worker
       timeline: Timeline
@@ -92,6 +94,9 @@ en:
     new:
       title: Introduce yourself
       back: Not now
+    edit:
+      title: Edit your profile
+      back: Back to your dashboard
 
   # ==========
   # = Models =

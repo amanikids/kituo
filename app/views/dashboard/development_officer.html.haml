@@ -3,17 +3,21 @@
 = render 'header'
 
 - unless @children_requiring_headshots.empty?
-  %h2= t('.headshots_required')
-  %ul.child-tasks
-    - @children_requiring_headshots.each do |child|
-      %li
-        .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
-        .heading
-          %span.name= link_to h(child.name), child
-        .meta
-          %span.comment= t(child.state, :scope => 'state')
-          - form_for(child, :html => { :multipart => true }) do |f|
-            = f.file_field :headshot, :id => "child_headshot_#{child.id}"
+  .section
+    %h2= t('.headshots_required')
+    %ul.child-tasks
+      - @children_requiring_headshots.each do |child|
+        %li
+          .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
+          .heading
+            %span.name= link_to h(child.name), child
+          .meta
+            %span.comment= t(child.state, :scope => 'state')
+            - form_for(child, :html => { :multipart => true }) do |f|
+              = f.file_field :headshot, :id => "child_headshot_#{child.id}"
 
-%h2= t('statistics.length_of_stay')
-= tag(:object, :type => Mime::SVG, :data => length_of_stay_statistics_path(:format => :svg), :width => 600, :height => 200)
+.section
+  %h2= t('statistics.length_of_stay')
+  = tag(:object, :type => Mime::SVG, :data => length_of_stay_statistics_path(:format => :svg), :width => 600, :height => 200)
+
+= render 'tasks'

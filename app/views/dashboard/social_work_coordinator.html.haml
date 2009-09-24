@@ -3,23 +3,27 @@
 = render 'header'
 
 - unless @children_requiring_social_workers.empty?
-  %h2= t('.social_workers_required')
-  %ul.child-tasks
-    - @children_requiring_social_workers.each do |child|
-      %li
-        .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
-        .heading
-          %span.name= link_to h(child.name), child
-        .meta
-          %span.comment
-            = t(child.state, :scope => 'state') + ','
-            - unless child.location.blank?
-              = t('.from')
-              = h(child.location)
+  .section
+    %h2= t('.social_workers_required')
+    %ul.child-tasks
+      - @children_requiring_social_workers.each do |child|
+        %li
+          .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
+          .heading
+            %span.name= link_to h(child.name), child
+          .meta
+            %span.comment
+              = t(child.state, :scope => 'state') + ','
+              - unless child.location.blank?
+                = t('.from')
+                = h(child.location)
 
-          - form_for(child, :html => { :multipart => true }) do |f|
-            = f.label :social_worker_id, nil, :for => "child_social_worker_id_#{child.id}"
-            = f.collection_select :social_worker_id, Caregiver.social_workers.by_name, :id, :name, { :include_blank => true }, :id => "child_social_worker_id_#{child.id}"
+            - form_for(child, :html => { :multipart => true }) do |f|
+              = f.label :social_worker_id, nil, :for => "child_social_worker_id_#{child.id}"
+              = f.collection_select :social_worker_id, Caregiver.social_workers.by_name, :id, :name, { :include_blank => true }, :id => "child_social_worker_id_#{child.id}"
 
-%h2= t('statistics.length_of_stay')
-= tag(:object, :type => Mime::SVG, :data => length_of_stay_statistics_path(:format => :svg), :width => 600, :height => 200)
+.section
+  %h2= t('statistics.length_of_stay')
+  = tag(:object, :type => Mime::SVG, :data => length_of_stay_statistics_path(:format => :svg), :width => 600, :height => 200)
+
+= render 'tasks'

@@ -14,6 +14,7 @@ end
 
 Before do
   I18n.locale = 'en'
+  [Caregiver, Child, Event, ScheduledVisit].each(&:delete_all)
 end
 
 After do

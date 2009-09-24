@@ -1,6 +1,6 @@
 class CaregiversController < ApplicationController
   def new
-    @caregiver = Caregiver.new
+    @caregiver = Caregiver.new(params[:caregiver])
   end
 
   def create
@@ -9,7 +9,20 @@ class CaregiversController < ApplicationController
       sign_in!(@caregiver)
       redirect_to root_path
     else
-      render :action => 'new'
+      render 'new'
+    end
+  end
+
+  def edit
+    @caregiver = Caregiver.find(params[:id])
+  end
+
+  def update
+    @caregiver = Caregiver.find(params[:id])
+    if @caregiver.update_attributes(params[:caregiver])
+      redirect_to root_path
+    else
+      render 'new'
     end
   end
 end

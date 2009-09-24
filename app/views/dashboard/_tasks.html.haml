@@ -1,0 +1,6 @@
+.section.tasks
+  %h2= t('.title')
+  %ul
+    - unless current_user.role == 'development_officer'
+      %li= link_to(t('.print_roll_call_sheet'), on_site_children_path(:format => :pdf))
+    %li= link_to(t('.edit_your_profile'), edit_caregiver_path(current_user))

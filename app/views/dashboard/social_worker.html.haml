@@ -24,10 +24,7 @@
     .visits.search
       %ul= render :partial => 'visit', :collection => @search_results
 
-.section.tasks
-  %h2= t('.tasks')
-  %ul
-    %li= link_to(t('.print_roll_call_sheet'), on_site_children_path(:format => :pdf))
+= render 'tasks'
 
 .section.new-child
   %h2= t('.new_child')
