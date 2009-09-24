@@ -27,6 +27,17 @@ class ChildTest < ActiveSupport::TestCase
     end
   end
 
+  context '.recent' do
+    should 'return recently added children' do
+      expected = [
+        Child.make(:created_at => 3.days.ago),
+        Child.make(:created_at => 2.days.ago)
+      ].reverse
+
+      Child.recent.should == expected
+    end
+  end
+
   context '.search' do
     should 'return an empty list when given nil' do
       Child.search(nil).should == []
@@ -50,7 +61,7 @@ class ChildTest < ActiveSupport::TestCase
   context "recalculating state after an event's date is updated" do
     should "calculate state from the last event that isn't a home visit" do
       chaff = Child.make(:state => 'terminated')
-      child = Child.make(:state => 'on_site')
+      child = Child.make(:state => 'unknown')
 
       child.reunifications.make(:happened_on => 4.days.ago)
       child.home_visits.make(:happened_on => 3.days.ago)
@@ -65,8 +76,7 @@ class ChildTest < ActiveSupport::TestCase
       chaff = Child.make(:state => 'terminated')
       child = Child.make(:state => 'on_site')
 
-      arrival = child.arrivals.make(:happened_on => 4.days.ago)
-      arrival.destroy
+      child.arrivals.destroy_all
 
       child.reload.state.should == 'unknown'
       chaff.reload.state.should == 'terminated'

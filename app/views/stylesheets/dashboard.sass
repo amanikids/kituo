@@ -54,9 +54,11 @@ h3, h4
 
 !column_spacing = 18px
 
+.section
+  margin-bottom: 1em
+
 .scheduled, .other
   float: left
-  margin-bottom: 1em
   width= !page_width / 2 - !column_spacing
 
 .upcoming, .other
@@ -66,10 +68,6 @@ h3, h4
 
 .scheduled
   margin-right= !column_spacing
-
-.recommended
-  ul
-    margin-bottom: 1em
 
 .tasks
   clear: both
@@ -127,5 +125,12 @@ li.scheduled_visit, li.recommended_visit, .child-tasks li
       right: 0
       bottom: 0
 
-.child-tasks
-  margin-bottom: 1em
+.new-child
+  form
+    li
+      margin-bottom: 0.25em
+    label
+      display: inline-block
+      width: 60px
+    input[type=submit]
+      margin-left: 64px

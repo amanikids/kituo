@@ -2,26 +2,49 @@
 
 = render 'header'
 
-.scheduled
+.section.scheduled
   %h2= t('.scheduled_visits')
   .visits.overdue=  render 'grouped_visits', :object => overdue_by_week_and_day(@scheduled_visits)
   .visits.upcoming= render 'grouped_visits', :object => upcoming_by_week_and_day(@scheduled_visits)
 
 .other
-  %h2= t('.recommended_visits')
-  %h3= t('.neglected')
-  .visits.recommended
-    %ul= render :partial => 'visit', :collection => @recommended_visits
+  .section
+    %h2= t('.recommended_visits')
+    %h3= t('.neglected')
+    .visits.recommended
+      %ul= render :partial => 'visit', :collection => @recommended_visits
 
-  %h2= t('.search')
-  %h3
-    - form_tag({}, :method => :get) do
-      = text_field_tag 'search', params[:search], :autocomplete => 'off'
-      = submit_tag(t('.search'), :name => nil)
-  .visits.search
-    %ul= render :partial => 'visit', :collection => @search_results
 
-.tasks
+  .section
+    %h2= t('.search')
+    %h3
+      - form_tag({}, :method => :get) do
+        = text_field_tag 'search', params[:search], :autocomplete => 'off'
+        = submit_tag(t('.search'), :name => nil)
+    .visits.search
+      %ul= render :partial => 'visit', :collection => @search_results
+
+.section.tasks
   %h2= t('.tasks')
   %ul
     %li= link_to(t('.print_roll_call_sheet'), on_site_children_path(:format => :pdf))
+
+.section.new-child
+  %h2= t('.new_child')
+  - form_for(Child.new) do |form|
+    %ul
+      %li
+        = form.label :name
+        = form.text_field :name, :autocomplete => 'off'
+      %li
+        = form.label :location
+        = form.text_field :location, :autocomplete => 'off'
+      %li
+        = form.hidden_field :state, :value => 'on_site'
+        = form.submit(t('form.save'))
+
+.section.new-children
+  %h2= t('.new_children')
+  %ul
+    - @new_children.each do |child|
+      %li= link_to(h(child.name), child)

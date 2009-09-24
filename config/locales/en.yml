@@ -49,6 +49,8 @@ en:
       search: Search
       tasks: Tasks
       print_roll_call_sheet: "Print this week's roll call sheet"
+      new_child: Open a new case file
+      new_children: Recently opened case files
     visit:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited

@@ -49,6 +49,9 @@ sw:
       search: Tafuta
       tasks: Shughuli
       print_roll_call_sheet: Chapisha mahudhurio ya wiki hii
+      new_child: Fungua faili ya mtoto mgeni
+      new_children: Faili zilizofunguliwa hivi karibuni
+
     visit:
       last_visited: "Tulimtembelea {{date}}"
       never_visited: Bado hatujamtembelea

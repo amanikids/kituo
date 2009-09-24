@@ -3,6 +3,12 @@ class ChildrenController < ApplicationController
     @children = Child.all
   end
 
+  def create
+    @child = Child.new(params[:child])
+    @child.save!
+    redirect_to :back
+  end
+
   def show
     @child = Child.find(params[:id])
   end

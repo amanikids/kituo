@@ -9,3 +9,7 @@ Given /^the following children with no social worker exist:$/ do |table|
     child = Child.make(:name => hash['Child'], :social_worker => nil)
   end
 end
+
+Then /^I should see "([^\"]*)" in the new children list$/ do |name|
+  assert_contain_within_selector(".new-children", name)
+end

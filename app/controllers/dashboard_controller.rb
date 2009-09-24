@@ -6,11 +6,8 @@ class DashboardController < ApplicationController
     when 'social_worker'
       @scheduled_visits   = current_user.scheduled_visits.before(2.weeks.from_now).sort_by {|x| x.child.name }
       @recommended_visits = current_user.recommended_visits(:limit => 4).sort_by {|x| x.child.name }
-
-      # TODO should we show other SWs' kids in the search results?
-      # Scheduling a visit for one of them would automatically switch the kid to my caseload.
-      # More to think through...
       @search_results     = current_user.children.search(params[:search]).map { |child| RecommendedVisit.new(child) }
+      @new_children       = Child.recent.all(:limit => 5)
     when 'social_work_coordinator'
       @children_requiring_social_workers = Child.by_name.find_all_by_social_worker_id(nil)
     when 'development_officer'

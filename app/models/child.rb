@@ -1,7 +1,7 @@
 class Child < ActiveRecord::Base
   extend ActiveSupport::Memoizable
 
-  after_update :create_events
+  after_save :create_events
   def create_events
     if state_changed?
       Event.for_state(state).create!(
@@ -13,6 +13,7 @@ class Child < ActiveRecord::Base
 
   named_scope :by_name, :order => :name
   named_scope :on_site, :conditions => { :state => 'on_site' }
+  named_scope :recent,  :order => 'created_at DESC'
 
   has_many :events, :dependent => :destroy
   has_many :arrivals
