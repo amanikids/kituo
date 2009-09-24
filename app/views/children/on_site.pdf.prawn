@@ -1,7 +1,7 @@
 pdf.font 'Times-Roman'
 
-pdf.text t('children.onsite.pdf.title'), :size => 24
-pdf.text t('children.onsite.pdf.subtitle', :begin_date => Date.today.at_beginning_of_week, :end_date => Date.today.at_end_of_week), :size => 15
+pdf.text t('.title'), :size => 24
+pdf.text t('.subtitle', :begin_date => Date.today.at_beginning_of_week, :end_date => Date.today.at_end_of_week), :size => 15
 pdf.move_down 12
 
 child_rows = @children.map { |child| [child.name, '', '', '', '', '', '', ''] }

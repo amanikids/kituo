@@ -1,4 +1,8 @@
 class ChildrenController < ApplicationController
+  def on_site
+    @children = Child.all
+  end
+
   def show
     @child = Child.find(params[:id])
   end

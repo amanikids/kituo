@@ -47,6 +47,8 @@ sw:
       recommended_visits: Matembezi tunayopendeleza
       neglected: Hatujawatembelea hivi karibuni
       search: Tafuta
+      tasks: Shughuli
+      print_roll_call_sheet: Chapisha mahudhurio ya wiki hii
     visit:
       last_visited: "Tulimtembelea {{date}}"
       never_visited: Bado hatujamtembelea
@@ -58,6 +60,10 @@ sw:
       headshots_required: Watoto hawa wanahitaji picha
 
   children:
+    on_site:
+      title: Watoto wanaokaa kituoni
+      subtitle: "Wiki ya {{begin_date}} hadi {{end_date}}"
+
     show:
       dashboard: Rudi nyumbani kwangu
       from: kutoka

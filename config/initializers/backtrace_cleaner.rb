@@ -16,3 +16,6 @@ module Rails
       end
   end
 end
+
+# Just in case we need this from time to time:
+# Rails.backtrace_cleaner.remove_silencers!

@@ -36,4 +36,5 @@ config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.c
 
 config.after_initialize do
   require 'chronic_extensions'
+  require 'whiny_translations'
 end

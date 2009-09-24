@@ -47,6 +47,8 @@ en:
       recommended_visits: Recommended Visits
       neglected: Not visited recently
       search: Search
+      tasks: Tasks
+      print_roll_call_sheet: "Print this week's roll call sheet"
     visit:
       last_visited: "Last visited {{date}}"
       never_visited: Never visited
@@ -58,6 +60,10 @@ en:
       headshots_required: These Kids need a Photo
 
   children:
+    on_site:
+      title: Children at Amani
+      subtitle: "Week of {{begin_date}} through {{end_date}}"
+
     show:
       dashboard: Back to my page
       from: from

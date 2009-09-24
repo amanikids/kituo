@@ -12,6 +12,7 @@ class Child < ActiveRecord::Base
   end
 
   named_scope :by_name, :order => :name
+  named_scope :on_site, :conditions => { :state => 'on_site' }
 
   has_many :events, :dependent => :destroy
   has_many :arrivals

@@ -18,6 +18,15 @@ class ChildTest < ActiveSupport::TestCase
   should_allow_values_for :state, *Event.all_states(:include_unknown => true)
   should_not_allow_values_for :state, 'bogus'
 
+  context '.on_site' do
+    should 'return children whose state is on_site' do
+      expected = Child.make(:state => 'on_site')
+      chaff    = Child.make(:state => 'boarding_offsite')
+
+      Child.on_site.should == [expected]
+    end
+  end
+
   context '.search' do
     should 'return an empty list when given nil' do
       Child.search(nil).should == []
