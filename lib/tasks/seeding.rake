@@ -5,7 +5,7 @@ end
 namespace :db do
   namespace :seed do
     desc "Fake data for development. Destroys existing data."
-    task :random => [:environment, :development_only] do
+    task :development => [:environment, :development_only] do
       require 'faker'
       require 'machinist/active_record'
       require 'test/blueprints'
