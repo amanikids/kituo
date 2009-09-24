@@ -1,3 +1,7 @@
+# Used for searching for kids that sound like what you typed. This is necessary
+# because of the wide variety of equivalent spellings in Swahili. As a downside
+# we have to load all Child objects into memory in order to search. Does
+# Not Scale but s'ok because it works for our expected dataset.
 class NameMatcher
   def initialize(names)
     @names = names

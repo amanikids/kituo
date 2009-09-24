@@ -4,8 +4,7 @@ end
 
 namespace :db do
   namespace :seed do
-
-    desc "Setup scheduled and recommend visits for development. Destroys existing data."
+    desc "Fake data for development. Destroys existing data."
     task :random => [:environment, :development_only] do
       require 'faker'
       require 'machinist/active_record'

@@ -1,3 +1,9 @@
+# Adds the following to Chronic, where X is first|second|third:
+#   the X day the month
+#   X day this month
+# 
+# These are used in our selenium tests. There is an issue on github to support
+# these dates: http://LINK
 module Chronic
   class << self
     def parse_with_month_support(input, options = {})
