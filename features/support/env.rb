@@ -6,18 +6,36 @@ require 'cucumber/formatter/unicode' # Comment out this line if you don't want C
 
 ActionController::Base.allow_rescue = false
 
-require 'webrat/integrations/selenium'
+require 'webrat/selenium'
 
 Webrat.configure do |config|
   config.mode = :selenium
 end
 
-Before do
-  I18n.locale = 'en'
-  [Caregiver, Child, Event, ScheduledVisit].each(&:delete_all)
+# Running features via Selenium involves a number of processes: the initial
+# cucumber process (in which Before and After hooks are called), the Selenium
+# server, the database, Firefox (with the Selenium plugin), and a mongrel
+# running our application.
+#
+# Note that our Before and After hooks happen in a separate process from the
+# mongrel application server, and so any changes they make to the database
+# will be isolated from the application server until any transactions they
+# occur in are committed. Which we don't want, as we rely on them to clean up
+# the database for us. So we force cucumber to disable database transactions.
+#
+# Another way around this might be to put a special "clean up the database"
+# hook in the app that we can trigger during testing. Maybe another would be
+# to reconsider what we do in our Background steps?
+class Cucumber::Rails::World
+  def self.use_transactional_fixtures
+    false
+  end
 end
 
-After do
+Before { fake_transactional_fixtures }
+After  { fake_transactional_fixtures }
+
+def fake_transactional_fixtures
   [Caregiver, Child, Event, ScheduledVisit].each(&:delete_all)
 end
 
