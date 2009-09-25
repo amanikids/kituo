@@ -16,6 +16,15 @@ Child.blueprint do
   potential_duplicate false
 end
 
+Child.instance_eval do
+  def self.make_potential_duplicate(attributes = {})
+    Child.make(attributes).tap do |child|
+      child.potential_duplicate = true
+      child.save!
+    end
+  end
+end
+
 ScheduledVisit.blueprint do
   child
   scheduled_for { (1..4).to_a.rand.weeks.from_now }

@@ -27,7 +27,7 @@ Feature: Dashboard
     When I click "Juma Masawe"
     Then I should see an arrival event for "today"
 
-  Scenario: Creating a duplicate case file
+  Scenario: Creating an intentional duplicate case file
     Given the following users exist:
       | Role          | Name            |
       | Social Worker | Godfrey Pamphil |
@@ -35,7 +35,30 @@ Feature: Dashboard
       | Child       |
       | Juma Masawe |
     When I am signed in as "Godfrey Pamphil"
-    And I fill in "name" with "Juma Masawe"
+    And I fill in "name" with "Jume Masawi"
     And I fill in "location" with "Arusha"
     And I press "Save"
-    Then I should see "Juma Masawe" in the new children list flagged as a potential duplicate
+    Then I should see "Jume Masawi" in the new children list flagged as a potential duplicate
+    When I click "Jume Masawi"
+    Then I should see "This may be a duplicate case file"
+    When I press "No, this isn't a duplicate"
+    Then I should not see "This may be a duplicate case file"
+
+  Scenario: Creating an accidental duplicate case file
+    Given the following users exist:
+      | Role          | Name            |
+      | Social Worker | Godfrey Pamphil |
+    And the following children exist:
+      | Child       |
+      | Juma Masawe |
+    When I am signed in as "Godfrey Pamphil"
+    And I fill in "name" with "Jume Masawi"
+    And I fill in "location" with "Arusha"
+    And I press "Save"
+    Then I should see "Jume Masawi" in the new children list flagged as a potential duplicate
+    When I click "Jume Masawi"
+    Then I should see "This may be a duplicate case file"
+    When I press "Merge with this case file"
+    And I wait for page load
+    Then I should see "Juma Masawe"
+    And child "Jume Masawi" should not exist

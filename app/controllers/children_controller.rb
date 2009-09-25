@@ -1,4 +1,6 @@
 class ChildrenController < ApplicationController
+  before_filter :find_child, :only => %w(show update resolve_duplicate)
+
   def on_site
     @children = Child.all
   end
@@ -10,12 +12,24 @@ class ChildrenController < ApplicationController
   end
 
   def show
-    @child = Child.find(params[:id])
   end
 
   def update
-    @child = Child.find(params[:id])
     @child.update_attributes(params[:child])
     redirect_to :back
+  end
+
+  def resolve_duplicate
+    duplicate = params[:duplicate_child_id].blank? ?
+      nil :
+      Child.find(params[:duplicate_child_id])
+
+    redirect_to @child.resolve_duplicate!(duplicate)
+  end
+
+  private
+
+  def find_child
+    @child = Child.find(params[:id])
   end
 end

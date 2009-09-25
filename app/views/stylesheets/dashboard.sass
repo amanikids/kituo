@@ -43,49 +43,8 @@ h3, h4
     padding-top:    0.25em
     padding-bottom: 0.25em
 
-!visit_headshot_size = 40px
-!visit_padding       =  6px
-li.scheduled_visit, li.recommended_visit, .child-tasks li
-  background-color: #ffc
-  padding=       !visit_padding
-  margin-bottom= !visit_padding / 2
-  min-height=    !visit_headshot_size
-  position: relative
-
-  &:last-child
-    margin-bottom: 0
-
-  .headshot
-    position: absolute
-    top=  !visit_padding
-    left= !visit_padding
-
-    img
-      width=  !visit_headshot_size
-      height= !visit_headshot_size
-
-  .heading, .meta
-    margin-left= !visit_headshot_size + !visit_padding
-    position: relative
-
-  .heading
-    .name
-      display: inline-block
-      font-size: 1.5em
-      margin-right: 3.5em
-    .actions
-      position: absolute
-      top: 0.4em
-      right: 0
-
-  .meta
-    .location
-      position: absolute
-      right: 0
-    form
-      position: absolute
-      right: 0
-      bottom: 0
+.child-summary.potential-duplicate
+  background-color: #f99
 
 .new-child
   form

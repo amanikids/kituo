@@ -1,4 +1,4 @@
-%li[visit]{ 'data-id' => visit.id }
+%li[visit]{ 'class' => 'child-summary', 'data-id' => visit.id }
   .headshot= link_to image_tag(visit.child.headshot.url, :size => '40x40'), visit.child
   .heading
     %span.name= link_to h(visit.child.name), visit.child

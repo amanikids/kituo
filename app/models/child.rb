@@ -14,6 +14,7 @@ class Child < ActiveRecord::Base
   has_many :scheduled_visits, :dependent => :destroy
 
   belongs_to :social_worker, :class_name => 'Caregiver'
+  delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
 
   has_attached_file :headshot,
     :url => '/system/:class/:attachment/:id/:style/:basename.:extension',
@@ -25,13 +26,14 @@ class Child < ActiveRecord::Base
   before_validation :normalize_name
   validates_presence_of :name, :state
   validates_inclusion_of :state, :in => Event.all_states(:include_unknown => true)
-  before_save :look_for_potential_duplicates
+  before_create :look_for_potential_duplicates
   after_save :create_events
 
-  # FIXME oh no we di'int
+  # FIXME search could use some refactoring attention
   def self.search(name)
     return [] if name.blank?
-    NameMatcher.new(Child.all.map(&:name)).match(name).map { |n| Child.find_all_by_name(n) }.flatten
+    matching_names = NameMatcher.new(Child.all.map(&:name)).match(name)
+    Child.all.select { |child| matching_names.include?(child.name) }
   end
 
   Event.all_states(:include_unknown => true).each do |state|
@@ -73,11 +75,23 @@ class Child < ActiveRecord::Base
     Event.all_states(:include_unknown => unknown?)
   end
 
-  delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
+  def potential_duplicate_children
+    Child.search(self.name) - [self]
+  end
 
   def recalculate_state!
     new_state = events.state_changing.last.try(:to_state) || 'unknown'
     Child.update_all(['state = ?', new_state], :id => id)
+  end
+
+  def resolve_duplicate!(duplicate)
+    if duplicate
+      destroy
+      duplicate
+    else
+      update_attributes!(:potential_duplicate => false)
+      self
+    end
   end
 
   private

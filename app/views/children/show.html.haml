@@ -21,10 +21,10 @@
       %span.location
         %span.show
           - unless @child.location.blank?
-            = t('.from')
+            = t('from')
             = h(@child.location)
         %span.edit
-          = t('.from')
+          = t('from')
           = form.text_field :location
     .social_worker
       %span.show
@@ -43,6 +43,25 @@
     %span.edit
       = link_to(t('form.cancel'), {}, :id => 'cancel-link')
       = form.submit t('form.save'), :id => 'save-link'
+
+- if @child.potential_duplicate?
+  #potential-duplicate-resolution
+    %h2= t('.potential_duplicate_resolution.title')
+    %ul.potential-duplicates
+      - @child.potential_duplicate_children.each do |duplicate|
+        %li.child-summary
+          .headshot= link_to image_tag(duplicate.headshot.url, :size => '40x40'), duplicate
+          .heading
+            %span.name= link_to h(duplicate.name), duplicate
+          .meta
+            %span.comment
+              = t(duplicate.state, :scope => 'state') + ','
+              - unless duplicate.location.blank?
+                = t('from')
+                = h(duplicate.location)
+            = button_to(t(".potential_duplicate_resolution.duplicate"), resolve_duplicate_child_path(@child, :duplicate_child_id => duplicate.id), :method => :put)
+
+    = button_to(t(".potential_duplicate_resolution.not_a_duplicate"), resolve_duplicate_child_path(@child, :duplicate_child_id => nil), :method => :put)
 
 %h2= t('.timeline')
 %table.timeline

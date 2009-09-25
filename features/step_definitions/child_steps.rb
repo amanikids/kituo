@@ -23,3 +23,7 @@ end
 Then /^I should see "([^\"]*)" in the new children list flagged as a potential duplicate$/ do |name|
   assert_contain_within_selector('.new-children .potential-duplicate', name)
 end
+
+Then /^child "([^\"]*)" should not exist$/ do |name|
+  Child.find_by_name(name).should == nil
+end

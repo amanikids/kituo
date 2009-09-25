@@ -7,7 +7,7 @@
     %h2= t('.social_workers_required')
     %ul.child-tasks
       - @children_requiring_social_workers.each do |child|
-        %li
+        %li.child-summary
           .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
           .heading
             %span.name= link_to h(child.name), child
@@ -15,7 +15,7 @@
             %span.comment
               = t(child.state, :scope => 'state') + ','
               - unless child.location.blank?
-                = t('.from')
+                = t('from')
                 = h(child.location)
 
             - form_for(child, :html => { :multipart => true }) do |f|

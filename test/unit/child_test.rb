@@ -58,6 +58,15 @@ class ChildTest < ActiveSupport::TestCase
     should 'return an empty list when given nil' do
       Child.search(nil).should == []
     end
+
+    should 'only return one match per child' do
+      name = 'Juma Masawe'
+      expected = [
+        Child.make(:name => name),
+        Child.make(:name => name)
+      ]
+      Child.search(name).should == expected
+    end
   end
 
   context '#next_states' do
@@ -72,6 +81,16 @@ class ChildTest < ActiveSupport::TestCase
 
   should 'normalize name' do
     assert_equal "Emmanuel Lang'eda", Child.make(:name => "EMMANUEL lang'eda").name
+  end
+
+  context '#potential_duplicate_children' do
+    should 'return other children with similar names' do
+      child    = Child.make(:name => 'Juma Masawe')
+      expected = Child.make(:name => 'Jume Masawi')
+      chaff    = Child.make(:name => 'Rama Saidi')
+
+      child.potential_duplicate_children.should == [expected]
+    end
   end
 
   context "recalculating state after an event's date is updated" do
@@ -153,6 +172,51 @@ class ChildTest < ActiveSupport::TestCase
       child.on_site?.should == false
       child.state = 'on_site'
       child.on_site?.should == true
+    end
+  end
+
+  context '#resolve_duplicate!' do
+    context 'with no child' do
+      setup do
+        @child = Child.make_potential_duplicate
+      end
+
+      should 'update potential_duplicate flag to false' do
+        @child.resolve_duplicate!(nil)
+        @child.potential_duplicate.should == false
+      end
+
+      should 'not destroy the child' do
+        @child.resolve_duplicate!(nil)
+
+        lambda {
+          @child.reload
+        }.should_not raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      should 'return the child' do
+        @child.resolve_duplicate!(nil).should == @child
+      end
+    end
+
+    context 'with a duplicate child' do
+      setup do
+        @child = Child.make_potential_duplicate
+        @duplicate = Child.make
+      end
+
+      should 'destroy the child' do
+        @child.resolve_duplicate!(@duplicate)
+        lambda {
+          @child.reload
+        }.should raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      should 'return the duplicate' do
+        @child.resolve_duplicate!(@duplicate).should == @duplicate
+      end
+
+      should_eventually 'copy scheduled visits from the child to the duplicate'
     end
   end
 end

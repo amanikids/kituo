@@ -44,4 +44,15 @@
   %h2= t('.new_children')
   %ul
     - @new_children.each do |child|
-      %li{ :class => (child.potential_duplicate? ? 'potential-duplicate' : '') }= link_to(h(child.name), child)
+      %li.child-summary{ :class => (child.potential_duplicate? ? 'potential-duplicate' : '') }
+        .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
+        .heading
+          %span.name= link_to h(child.name), child
+        .meta
+          %span.comment
+            = t(child.state, :scope => 'state') + ','
+            - unless child.location.blank?
+              = t('from')
+              = h(child.location)
+          - if child.potential_duplicate?
+            %span.warning= t('.potential_duplicate_warning')

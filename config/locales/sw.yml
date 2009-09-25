@@ -39,6 +39,7 @@ sw:
     median: "Median: {{median}}"
     mode: "Mode: {{mode}}"
 
+  from: kutoka
   working: Subiri
 
   # =================
@@ -62,6 +63,7 @@ sw:
       search: Tafuta
       new_child: Fungua faili ya mtoto mgeni
       new_children: Faili zilizofunguliwa hivi karibuni
+      potential_duplicate_warning: Inawezeka kuna faili lingine kwa mtoto huu!
     tasks:
       title: Shughuli
       print_roll_call_sheet: Chapisha mahudhurio ya wiki hii
@@ -72,7 +74,6 @@ sw:
       completed: Tayari
     social_work_coordinator:
       social_workers_required: Watoto hawa wanahitaji social worker
-      from: kutoka
     development_officer:
       headshots_required: Watoto hawa wanahitaji picha
 
@@ -83,12 +84,15 @@ sw:
 
     show:
       dashboard: Rudi nyumbani kwako
-      from: kutoka
       no_social_worker: Hana social worker
       timeline: Timeline
       home_visit: Tulimtembelea nyumbani
       scheduled_visits: Matembezi uliyopanga
       new_scheduled_visit: Panga tembezi lingine
+      potential_duplicate_resolution:
+        title: Inawezeka kuna faili lingine kwa mtoto huu!
+        duplicate: Unganisha na faili hili
+        not_a_duplicate: "Hapana, faili hili ni tofauti"
 
   caregivers:
     new:
