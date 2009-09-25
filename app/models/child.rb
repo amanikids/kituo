@@ -86,8 +86,24 @@ class Child < ActiveRecord::Base
 
   def resolve_duplicate!(duplicate)
     if duplicate
-      destroy
-      duplicate
+      transaction do
+        duplicate.headshot      = self.headshot  unless duplicate.headshot.file?
+        duplicate.location      = self.location      if duplicate.location.blank?
+        duplicate.social_worker = self.social_worker if duplicate.social_worker.blank?
+        duplicate.save!
+
+        events.each do |event|
+          duplicate.events << event
+        end
+
+        scheduled_visits.each do |visit|
+          duplicate.scheduled_visits << visit
+        end
+
+        duplicate.recalculate_state!
+        reload.destroy
+        duplicate
+      end
     else
       update_attributes!(:potential_duplicate => false)
       self

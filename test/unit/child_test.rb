@@ -178,7 +178,7 @@ class ChildTest < ActiveSupport::TestCase
   context '#resolve_duplicate!' do
     context 'with no child' do
       setup do
-        @child = Child.make_potential_duplicate
+        @child = Child.make
       end
 
       should 'update potential_duplicate flag to false' do
@@ -200,23 +200,91 @@ class ChildTest < ActiveSupport::TestCase
     end
 
     context 'with a duplicate child' do
-      setup do
-        @child = Child.make_potential_duplicate
-        @duplicate = Child.make
-      end
-
       should 'destroy the child' do
-        @child.resolve_duplicate!(@duplicate)
+        child = Child.make
+        duplicate = Child.make
+        child.resolve_duplicate!(duplicate)
         lambda {
-          @child.reload
+          child.reload
         }.should raise_error(ActiveRecord::RecordNotFound)
       end
 
       should 'return the duplicate' do
-        @child.resolve_duplicate!(@duplicate).should == @duplicate
+        child = Child.make
+        duplicate = Child.make
+        child.resolve_duplicate!(duplicate).should == duplicate
       end
 
-      should_eventually 'copy scheduled visits from the child to the duplicate'
+      should 'repossess scheduled visits from the child to the duplicate' do
+        child = Child.make
+        duplicate = Child.make
+        visit = child.scheduled_visits.make
+        child.resolve_duplicate!(duplicate)
+
+        duplicate.scheduled_visits.should include(visit)
+      end
+
+      should 'repossess events from the child to the duplicate' do
+        child = Child.make
+        duplicate = Child.make
+        dropout = child.dropouts.make
+        child.resolve_duplicate!(duplicate)
+
+        duplicate.events.should include(dropout)
+      end
+
+      should "use the child's headshot if the duplicate doesn't have one" do
+        child     = Child.make(:headshot => Rails.root.join('test', 'sample_headshot.jpg').open)
+        duplicate = Child.make(:headshot => nil)
+        child.resolve_duplicate!(duplicate)
+        duplicate.reload.headshot.file?.should == true
+      end
+
+      should "not use the child's headshot if the duplicate already has one" do
+        child     = Child.make(:headshot => Rails.root.join('test', 'sample_headshot.jpg').open)
+        duplicate = Child.make(:headshot => Rails.root.join('test', 'sample_headshot_two.jpg').open)
+        child.resolve_duplicate!(duplicate)
+        duplicate.reload.headshot.original_filename.should == 'sample_headshot_two.jpg'
+      end
+
+      should "use the child's location if the duplicate doesn't have one" do
+        child     = Child.make(:location => 'Moshi')
+        duplicate = Child.make(:location => '')
+        child.resolve_duplicate!(duplicate)
+        duplicate.reload.location.should == 'Moshi'
+      end
+
+      should "not use the child's location if the duplicate already has one" do
+        child     = Child.make(:location => 'Moshi')
+        duplicate = Child.make(:location => 'Arusha')
+        child.resolve_duplicate!(duplicate)
+        duplicate.reload.location.should == 'Arusha'
+      end
+
+      should "use the child's social worker if the duplicate doesn't have one" do
+        child     = Child.make(:social_worker => Caregiver.make)
+        duplicate = Child.make(:social_worker => nil)
+        child.resolve_duplicate!(duplicate)
+        duplicate.reload.social_worker.should == child.social_worker
+      end
+
+      should "not use the child's social worker if the duplicate already has one" do
+        child     = Child.make(:social_worker => Caregiver.make)
+        duplicate = Child.make(:social_worker => Caregiver.make)
+        child.resolve_duplicate!(duplicate)
+        duplicate.reload.social_worker.should_not == child.social_worker
+      end
+
+      should 'recalculate state with the new events' do
+        child     = Child.make
+        duplicate = Child.make
+
+        child.arrivals.make(:happened_on => 2.days.ago)
+        duplicate.offsite_boardings.make(:happened_on => 3.days.ago)
+
+        child.resolve_duplicate!(duplicate)
+        duplicate.reload.state.should == 'on_site'
+      end
     end
   end
 end

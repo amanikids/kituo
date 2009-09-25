@@ -42,6 +42,7 @@ Feature: Dashboard
     When I click "Jume Masawi"
     Then I should see "This may be a duplicate case file"
     When I press "No, this isn't a duplicate"
+    And I wait for page load
     Then I should not see "This may be a duplicate case file"
 
   Scenario: Creating an accidental duplicate case file
@@ -51,14 +52,13 @@ Feature: Dashboard
     And the following children exist:
       | Child       |
       | Juma Masawe |
-    When I am signed in as "Godfrey Pamphil"
-    And I fill in "name" with "Jume Masawi"
-    And I fill in "location" with "Arusha"
-    And I press "Save"
-    Then I should see "Jume Masawi" in the new children list flagged as a potential duplicate
+    And the following scheduled visits exist:
+      | Social Worker   | Child       | Date  |
+      | Godfrey Pamphil | Jume Masawi | Today |
+    And I am signed in as "Godfrey Pamphil"
     When I click "Jume Masawi"
-    Then I should see "This may be a duplicate case file"
-    When I press "Merge with this case file"
+    And I press "Merge with this case file"
     And I wait for page load
     Then I should see "Juma Masawe"
+    And I should see a scheduled visit for "today"
     And child "Jume Masawi" should not exist
