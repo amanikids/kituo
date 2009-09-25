@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090923113720) do
+ActiveRecord::Schema.define(:version => 20090925064711) do
 
   create_table "caregivers", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20090923113720) do
     t.integer  "social_worker_id"
     t.string   "location",              :default => "",        :null => false
     t.string   "state",                 :default => "unknown", :null => false
+    t.boolean  "potential_duplicate",                          :null => false
   end
 
   create_table "events", :force => true do |t|

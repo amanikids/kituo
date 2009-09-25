@@ -12,8 +12,8 @@ Caregiver.blueprint { name }
 
 Child.blueprint do
   name
-  ignore_potential_duplicates true
   location { %w(Moshi Arusha Marangu Mwanza Same).rand }
+  potential_duplicate false
 end
 
 ScheduledVisit.blueprint do

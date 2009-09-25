@@ -1,16 +1,4 @@
 class Child < ActiveRecord::Base
-  extend ActiveSupport::Memoizable
-
-  after_save :create_events
-  def create_events
-    if state_changed?
-      Event.for_state(state).create!(
-        :child       => self,
-        :happened_on => Date.today
-      )
-    end
-  end
-
   named_scope :by_name, :order => :name
   named_scope :on_site, :conditions => { :state => 'on_site' }
   named_scope :recent,  :order => 'created_at DESC'
@@ -37,8 +25,8 @@ class Child < ActiveRecord::Base
   before_validation :normalize_name
   validates_presence_of :name, :state
   validates_inclusion_of :state, :in => Event.all_states(:include_unknown => true)
-  validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
-  attr_accessor :ignore_potential_duplicates
+  before_save :look_for_potential_duplicates
+  after_save :create_events
 
   # FIXME oh no we di'int
   def self.search(name)
@@ -85,11 +73,6 @@ class Child < ActiveRecord::Base
     Event.all_states(:include_unknown => unknown?)
   end
 
-  def potential_duplicates
-    Child.search(name)
-  end
-  memoize :potential_duplicates
-
   delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
 
   def recalculate_state!
@@ -99,8 +82,18 @@ class Child < ActiveRecord::Base
 
   private
 
-  def no_potential_duplicates_found
-    errors.add_to_base('Potential duplicates found') if potential_duplicates(:reload).any?
+  def create_events
+    if state_changed?
+      Event.for_state(state).create!(
+        :child       => self,
+        :happened_on => Date.today
+      )
+    end
+  end
+
+  def look_for_potential_duplicates
+    self.potential_duplicate = Child.search(self.name).any?
+    true
   end
 
   def normalize_name

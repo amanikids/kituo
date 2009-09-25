@@ -30,8 +30,7 @@ namespace :db do
       ].each do |day|
         child = Child.make(
           :headshot                    => (rand < 0.8) ? headshots.delete(headshots.rand) : nil,
-          :social_worker               => (rand < 0.6) ? godfrey : nil,
-          :ignore_potential_duplicates => true
+          :social_worker               => (rand < 0.6) ? godfrey : nil
         )
         ScheduledVisit.make(
           :child         => child,
@@ -48,8 +47,8 @@ namespace :db do
       5.times do
         godfrey.children.make(
           :state                       => 'on_site', # No visits, recommended
-          :headshot                    => headshots.delete(headshots.rand),
-          :ignore_potential_duplicates => true)
+          :headshot                    => headshots.delete(headshots.rand)
+        )
       end
     end
 

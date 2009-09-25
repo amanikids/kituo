@@ -26,3 +26,16 @@ Feature: Dashboard
 
     When I click "Juma Masawe"
     Then I should see an arrival event for "today"
+
+  Scenario: Creating a duplicate case file
+    Given the following users exist:
+      | Role          | Name            |
+      | Social Worker | Godfrey Pamphil |
+    And the following children exist:
+      | Child       |
+      | Juma Masawe |
+    When I am signed in as "Godfrey Pamphil"
+    And I fill in "name" with "Juma Masawe"
+    And I fill in "location" with "Arusha"
+    And I press "Save"
+    Then I should see "Juma Masawe" in the new children list flagged as a potential duplicate

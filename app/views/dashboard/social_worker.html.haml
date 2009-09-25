@@ -44,4 +44,4 @@
   %h2= t('.new_children')
   %ul
     - @new_children.each do |child|
-      %li= link_to(h(child.name), child)
+      %li{ :class => (child.potential_duplicate? ? 'potential-duplicate' : '') }= link_to(h(child.name), child)

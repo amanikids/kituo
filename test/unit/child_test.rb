@@ -18,6 +18,22 @@ class ChildTest < ActiveSupport::TestCase
   should_allow_values_for :state, *Event.all_states(:include_unknown => true)
   should_not_allow_values_for :state, 'bogus'
 
+  context '.create' do
+    should 'set potential duplicate to false' do
+      Child.make(:potential_duplicate => nil).potential_duplicate.should == false
+    end
+
+    should 'set potential duplicate to true if there is an existing child with the same name' do
+      Child.make(:name => 'Juma Masawe')
+      Child.make(:name => 'Juma Masawe').potential_duplicate.should == true
+    end
+
+    should 'set potential duplicate to true if there is an existing child with a similar name' do
+      Child.make(:name => 'Juma Masawe')
+      Child.make(:name => 'Jume Masawi').potential_duplicate.should == true
+    end
+  end
+
   context '.on_site' do
     should 'return children whose state is on_site' do
       expected = Child.make(:state => 'on_site')
@@ -83,44 +99,7 @@ class ChildTest < ActiveSupport::TestCase
     end
   end
 
-  context 'given an existing Child' do
-    setup do
-      @existing_child = Child.make
-    end
-
-    context 'a second child with the same name' do
-      setup do
-        @child = Child.make_unsaved(
-          :ignore_potential_duplicates => false,
-          :name => @existing_child.name)
-      end
-
-      should 'not be valid' do
-        assert !@child.valid?
-      end
-
-      should 'have potential duplicate children' do
-        assert_equal [@existing_child], @child.potential_duplicates
-      end
-
-      should 'have :potential_duplicates_found error on base' do
-        @child.valid?
-        assert @child.errors.on(:base).include?('Potential duplicates found')
-      end
-
-      context 'overriding duplicate check' do
-        setup do
-          @child.ignore_potential_duplicates = 'Some string from the button name'
-        end
-
-        should 'be valid' do
-          assert @child.valid?
-        end
-      end
-    end
-  end
-
-  context 'length of stay' do
+  context '#length_of_stay' do
     setup { @child = Child.make }
 
     should 'be nil for a child with no Arrivals' do
