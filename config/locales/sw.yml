@@ -57,17 +57,17 @@ sw:
       welcome: "Karibu, {{name}}!"
       switch_user: Mtu mwingine?
     social_worker:
-      scheduled_visits: Matembezi uliyopanga
-      recommended_visits: Matembezi tunayopendeleza
+      scheduled_visits: Matembezi niliyopanga
+      recommended_visits: Matembezi tunayopendekeza
       neglected: Hatujawatembelea hivi karibuni
       search: Tafuta
-      new_child: Fungua faili ya mtoto mgeni
+      new_child: Fungua faili la mtoto mgeni
       new_children: Faili zilizofunguliwa hivi karibuni
       potential_duplicate_warning: Inawezeka kuna faili lingine kwa mtoto huu!
     tasks:
       title: Shughuli
       print_roll_call_sheet: Chapisha mahudhurio ya wiki hii
-      edit_your_profile: Hariri taarifa yako
+      edit_your_profile: Hariri taarifa yangu
     visit:
       last_visited: "Tulimtembelea {{date}}"
       never_visited: Bado hatujamtembelea
@@ -83,14 +83,14 @@ sw:
       subtitle: "Wiki ya {{begin_date}} hadi {{end_date}}"
 
     show:
-      dashboard: Rudi nyumbani kwako
+      dashboard: Rudi kwenye ukurasa wangu
       no_social_worker: Hana social worker
       timeline: Timeline
       home_visit: Tulimtembelea nyumbani
-      scheduled_visits: Matembezi uliyopanga
+      scheduled_visits: Matembezi niliyopanga
       new_scheduled_visit: Panga tembezi lingine
       potential_duplicate_resolution:
-        title: Inawezeka kuna faili lingine kwa mtoto huu!
+        title: Inawezeka kuna faili lingine kwa mtoto huyu!
         duplicate: Unganisha na faili hili
         not_a_duplicate: "Hapana, faili hili ni tofauti"
 
@@ -99,8 +99,8 @@ sw:
       title: Jitambulishe
       back: Baadaye
     edit:
-      title: Hariri taarifa yako
-      back: Rudi nyumbani kwako
+      title: Hariri taarifa yangu
+      back: Rudi kwenye ukurasa wangu
 
   # ==========
   # = Models =
