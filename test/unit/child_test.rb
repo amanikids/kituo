@@ -92,6 +92,19 @@ class ChildTest < ActiveSupport::TestCase
 
       child.potential_duplicate_children.should == [expected]
     end
+
+    # should_maybe - need to ask customer
+    should_eventually 'only return children with a state of unknown or on_site' do
+      child    = Child.make(:name => 'Juma Masawe')
+      expected = [
+        Child.make(:name => 'Juma Masawe', :state => 'on_site'),
+        Child.make(:name => 'Juma Masawe', :state => 'unknown')
+      ]
+
+      chaff = Child.make(:name => 'Juma Masawe', :state => 'reunified')
+
+      child.potential_duplicate_children.should == expected
+    end
   end
 
   context "recalculating state after an event's date is updated" do
