@@ -30,11 +30,21 @@ class Child < ActiveRecord::Base
   before_create :look_for_potential_duplicates
   after_save :create_events
 
-  # FIXME search could use some refactoring attention
+  # MAYBE as a performance optimization we could (1) just load all *names*
+  # from the database for the NameMatcher, and then (2)
+  # find_all_by_name(matching_names). The current implementation takes favors
+  # nicer-looking code over performance, instantiating all of the Child
+  # objects.
   def self.search(name, options = {})
     return [] if name.blank?
-    matching_names = NameMatcher.new(Child.all.map(&:name)).match(name, options)
-    Child.all.select { |child| matching_names.include?(child.name) }.sort_by {|x| matching_names.index(x.name) }
+
+    matching_names = NameMatcher.new(all.map(&:name)).match(name, options)
+
+    all.select {|child|
+      matching_names.include?(child.name)
+    }.sort_by {|child|
+      matching_names.index(child.name)
+    }
   end
 
   Event.all_states(:include_unknown => true).each do |state|
