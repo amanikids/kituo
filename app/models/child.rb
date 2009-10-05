@@ -30,10 +30,10 @@ class Child < ActiveRecord::Base
   after_save :create_events
 
   # FIXME search could use some refactoring attention
-  def self.search(name)
+  def self.search(name, options = {})
     return [] if name.blank?
-    matching_names = NameMatcher.new(Child.all.map(&:name)).match(name)
-    Child.all.select { |child| matching_names.include?(child.name) }
+    matching_names = NameMatcher.new(Child.all.map(&:name)).match(name, options)
+    Child.all.select { |child| matching_names.include?(child.name) }.sort_by {|x| matching_names.index(x.name) }
   end
 
   Event.all_states(:include_unknown => true).each do |state|
@@ -76,7 +76,7 @@ class Child < ActiveRecord::Base
   end
 
   def potential_duplicate_children
-    Child.search(self.name) - [self]
+    Child.search(self.name, :mode => NameMatcher::DUPLICATE_DETECTION) - [self]
   end
 
   def recalculate_state!

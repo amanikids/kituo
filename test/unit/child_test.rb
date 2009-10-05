@@ -88,6 +88,7 @@ class ChildTest < ActiveSupport::TestCase
       child    = Child.make(:name => 'Juma Masawe')
       expected = Child.make(:name => 'Jume Masawi')
       chaff    = Child.make(:name => 'Rama Saidi')
+      chaff    = Child.make(:name => 'Jimed Saidi')
 
       child.potential_duplicate_children.should == [expected]
     end

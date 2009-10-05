@@ -39,6 +39,40 @@ class NameMatcherTest < ActiveSupport::TestCase
       assert_contains @matcher.match('Balaka'), 'Baraka Jones'
     end
   end
+
+  context 'ranking' do
+    should 'rank a (case-insensitive) exact match at the top' do
+      names   = ['Ramadhani Seleman', 'Ramadhan Selemani']
+      matcher = NameMatcher.new(names)
+      matcher.match('ramadhan selemani').should == names.reverse
+    end
+
+    should 'rank an exact match ignoring the last vowel above a soundex match' do
+      names = ['Birak', 'Barak']
+      matcher = NameMatcher.new(names)
+      matcher.match("Baraka").should == names.reverse
+    end
+
+    should 'rank 2 words in the right order above 2 in the opposite order'
+
+    should 'rank a 2-word match above a 1-word match' do
+      names   = ['Ramadhan Saidi', 'Ramadhan Selemani']
+      matcher = NameMatcher.new(names)
+      matcher.match('Rama Selema').should == names.reverse
+    end
+
+    should 'rank a full soundex match above a partial one' do
+      names   = ['Rama Saidi', 'Ramadhan Selemani']
+      matcher = NameMatcher.new(names)
+      matcher.match('Ramadhan').should == names.reverse
+    end
+
+    should 'exclude low-ranking matches for duplicate detection' do
+      names   = ['Rama Saidi', 'Ramadhan Selemani']
+      matcher = NameMatcher.new(names)
+      matcher.match('Ramadhan', :mode => NameMatcher::DUPLICATE_DETECTION).should == [names.last]
+    end
+  end
 end
 
 __END__
