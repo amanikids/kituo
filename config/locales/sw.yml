@@ -107,11 +107,20 @@ sw:
   # ==========
   activerecord:
     errors:
+      template:
+        mwa:
+          header:
+            one:    "Tumeshindwa kuhifadhi {{model}} huyu kwa sababu ya jambo limoja."
+            other:  "Tumeshindwa kuhifadhi {{model}} huyu kwa sababu ya mambo {{count}}."
+
       models:
         event:
           attributes:
             happened_on:
               not_in_the_future: haiwezi kuwa siku ijayo
+
+    models:
+      caregiver: Mlezi
 
   # =============
   # = Framework =
