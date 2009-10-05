@@ -106,6 +106,16 @@ sw:
   # = Models =
   # ==========
   activerecord:
+    attributes:
+      caregiver:
+        name: Jina
+        role: Jukumu
+        headshot: Picha
+      child:
+        name: Jina
+        location: Kutoka
+        headshot: Picha
+
     errors:
       template:
         mwa:
