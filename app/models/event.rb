@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :happened_on
   validate :did_not_happen_in_the_future, :if => :happened_on
-  after_update  :recalculate_child_state!, :if => :happened_on_changed?
+  after_save    :recalculate_child_state!, :if => :happened_on_changed?
   after_destroy :recalculate_child_state!
 
   def self.for_state(state)

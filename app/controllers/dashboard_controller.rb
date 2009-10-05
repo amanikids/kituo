@@ -10,8 +10,10 @@ class DashboardController < ApplicationController
       @new_children       = Child.recent.all(:limit => 5)
     when 'social_work_coordinator'
       @children_requiring_social_workers = Child.by_name.find_all_by_social_worker_id(nil)
+      @statistics = Statistics.new
     when 'development_officer'
       @children_requiring_headshots = Child.by_name.find_all_by_headshot_file_name(nil)
+      @statistics = Statistics.new
     else
       raise "Unknown caregiver role: #{current_user.inspect}"
     end

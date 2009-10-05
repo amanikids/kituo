@@ -2,7 +2,7 @@ class ChildrenController < ApplicationController
   before_filter :find_child, :only => %w(show update resolve_duplicate)
 
   def on_site
-    @children = Child.all
+    @children = Child.in_state(:on_site)
   end
 
   def create

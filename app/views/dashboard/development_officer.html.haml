@@ -1,6 +1,7 @@
 - js 'child_tasks'
 
 = render 'header'
+= render 'stats'
 
 - unless @children_requiring_headshots.empty?
   .section
@@ -15,9 +16,5 @@
             %span.comment= t(child.state, :scope => 'state')
             - form_for(child, :html => { :multipart => true }) do |f|
               = f.file_field :headshot, :id => "child_headshot_#{child.id}"
-
-.section
-  %h2= t('statistics.length_of_stay')
-  = tag(:object, :type => Mime::SVG, :data => length_of_stay_statistics_path(:format => :svg), :width => 600, :height => 200)
 
 = render 'tasks'

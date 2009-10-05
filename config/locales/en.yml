@@ -34,6 +34,7 @@ en:
       dropped_out: "Dropped out on {{date}}"
 
   statistics:
+    title: Statistics
     length_of_stay: Length of Stay at Amani
     mean: "Mean: {{mean}}"
     median: "Median: {{median}}"

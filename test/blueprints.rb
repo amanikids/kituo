@@ -1,12 +1,12 @@
 Sham.name { Faker::Name.name }
 Sham.happened_on(:unique => false) { (0..30).to_a.rand.days.ago.to_date }
 
-Arrival.blueprint { happened_on }
-Dropout.blueprint { happened_on }
-HomeVisit.blueprint { happened_on }
-OffsiteBoarding.blueprint { happened_on }
-Reunification.blueprint { happened_on }
-Termination.blueprint { happened_on }
+[Arrival, Dropout, HomeVisit, OffsiteBoarding, Reunification, Termination].each do |event|
+  event.blueprint do
+    child
+    happened_on
+  end
+end
 
 Caregiver.blueprint { name }
 

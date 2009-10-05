@@ -1,6 +1,7 @@
 - js 'child_tasks'
 
 = render 'header'
+= render 'stats'
 
 - unless @children_requiring_social_workers.empty?
   .section
@@ -21,9 +22,5 @@
             - form_for(child, :html => { :multipart => true }) do |f|
               = f.label :social_worker_id, nil, :for => "child_social_worker_id_#{child.id}"
               = f.collection_select :social_worker_id, Caregiver.social_workers.by_name, :id, :name, { :include_blank => true }, :id => "child_social_worker_id_#{child.id}"
-
-.section
-  %h2= t('statistics.length_of_stay')
-  = tag(:object, :type => Mime::SVG, :data => length_of_stay_statistics_path(:format => :svg), :width => 600, :height => 200)
 
 = render 'tasks'

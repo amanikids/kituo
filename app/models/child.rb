@@ -1,6 +1,6 @@
 class Child < ActiveRecord::Base
   named_scope :by_name, :order => :name
-  named_scope :on_site, :conditions => { :state => 'on_site' }
+  named_scope :in_state, lambda {|state| {:conditions => {:state => state.to_s}}}
   named_scope :recent,  :order => 'created_at DESC'
 
   has_many :events, :dependent => :destroy

@@ -34,15 +34,6 @@ class ChildTest < ActiveSupport::TestCase
     end
   end
 
-  context '.on_site' do
-    should 'return children whose state is on_site' do
-      expected = Child.make(:state => 'on_site')
-      chaff    = Child.make(:state => 'boarding_offsite')
-
-      Child.on_site.should == [expected]
-    end
-  end
-
   context '.recent' do
     should 'return recently added children' do
       expected = [
