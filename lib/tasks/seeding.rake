@@ -67,6 +67,7 @@ namespace :db do
       system "ssh deploy@mchungaji 'mysqldump -u root kituo_production' | mysql #{mysql_options}"
       FileUtils.rm_rf(Rails.root.join('public', 'system'))
       system "scp -r deploy@mchungaji:/var/www/apps/kituo_production/shared/system #{Rails.root.join('public')}"
+      Rake::Task['db:migrate'].invoke
     end
   end
 end
