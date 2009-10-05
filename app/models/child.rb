@@ -17,11 +17,12 @@ class Child < ActiveRecord::Base
   delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
 
   has_attached_file :headshot,
-    :url => '/system/:class/:attachment/:id/:style/:basename.:extension',
-    :path => ':rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension',
-    :styles => { :default => '150x150#' },
+    :url           => '/system/:class/:attachment/:id/:style/:basename.:extension',
+    :path          => ':rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension',
     :default_style => :default,
-    :default_url => '/images/headshot-:style.jpg'
+    :default_url   => '/images/headshot-:style.jpg',
+    :styles        => {
+      :default => '150x150#' }
 
   before_validation :normalize_name
   validates_presence_of :name, :state
