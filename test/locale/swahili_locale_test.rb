@@ -16,19 +16,6 @@ class SwahiliLocaleTest < ActiveSupport::TestCase
     end
   end
 
-  def model_classes
-    ActiveRecord::Base.send(:subclasses) - [Event, ActiveRecord::SessionStore::Session]
-  end
-
-  def accessible_attributes(klass)
-    if klass.accessible_attributes
-      klass.accessible_attributes
-    else
-      instance = klass.new
-      instance.send(:remove_attributes_protected_from_mass_assignment, instance.attributes).keys
-    end
-  end
-
   def assert_has_all_of(expected, actual)
     missing = expected - actual
     assert missing.empty?, "These keys are missing:\n#{missing.sort.to_yaml}"
