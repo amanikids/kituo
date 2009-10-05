@@ -3,15 +3,17 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 class StateMigratorTest < ActiveSupport::TestCase
   def self.should_have_state(state)
     should "have state '#{state}'" do
-      StateMigrator.new.migrate!
+      migrate
       @child.reload.state.should == state
     end
   end
 
   def setup
     @child = Child.make
-    Child.update_all(['state = ?', ''], ['id = ?', @child.id])
-    @child.reload
+  end
+
+  def migrate
+    StateMigrator.new.migrate!
   end
 
   context 'a child with no events' do
@@ -24,6 +26,11 @@ class StateMigratorTest < ActiveSupport::TestCase
     end
 
     should_have_state 'on_site'
+
+    should 'not have any new arrival events' do
+      migrate
+      @child.arrivals.count.should == 1
+    end
   end
 
   context 'a child with an arrival followed by a home visit' do
