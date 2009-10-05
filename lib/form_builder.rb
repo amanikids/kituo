@@ -1,4 +1,13 @@
 class FormBuilder < ActionView::Helpers::FormBuilder
+  # Localize the header_message, making allowance for the fact that Swahili
+  # has different noun classes.
+  def error_messages
+    super(:header_message => @template.t(:header,
+      :count => object.errors.count,
+      :model => object.class.human_name,
+      :scope => scope_for_noun(object, [:activerecord, :errors, :template])))
+  end
+
   # Pass the default label text through translations to get the correct
   # English or Swahili label
   def label(method, text = nil, options = {})
@@ -10,5 +19,17 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   # to be ditched.
   def submit(value = 'Save changes', options = {})
     super(value, options.merge(:disable_with => I18n.t('form.saving')))
+  end
+
+  private
+
+  def scope_for_noun(model, parent_scope)
+    return parent_scope unless I18n.locale.to_sym == :sw
+
+    noun_scope = {
+      Caregiver => :mwa
+    }.fetch(model.class)
+
+    parent_scope + [noun_scope]
   end
 end

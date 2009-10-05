@@ -1,5 +1,5 @@
 - form_for(@caregiver, :html => { :multipart => true }) do |form|
-  = form.error_messages(:header_message => t(:header, :count => @caregiver.errors.count, :model => @caregiver.class.human_name, :scope => scope_for_noun(@caregiver, [:activerecord, :errors, :template])))
+  = form.error_messages
   %ul
     %li
       = form.label :name
