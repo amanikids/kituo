@@ -53,11 +53,11 @@ Feature:
   Scenario: Completing a visit
     And the following scheduled visits exist:
       | Social Worker | Child       | Date                |
-      | Xavier Shay   | Juma Masawe | Wednesday this week |
+      | Xavier Shay   | Juma Masawe | Wednesday last week |
     And I am signed in as "Xavier Shay"
     And I click "Completed"
     And I wait for page load
-    Then a visit for "Juma Masawe" should not be scheduled for "Wednesday this week"
-    And a home visit for "Juma Masawe" should have happened on "Wednesday this week"
+    Then a visit for "Juma Masawe" should not be scheduled for "Wednesday last week"
+    And a home visit for "Juma Masawe" should have happened on "Wednesday last week"
 
 
