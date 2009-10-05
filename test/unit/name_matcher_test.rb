@@ -53,8 +53,6 @@ class NameMatcherTest < ActiveSupport::TestCase
       matcher.match("Baraka").should == names.reverse
     end
 
-    should 'rank 2 words in the right order above 2 in the opposite order'
-
     should 'rank a 2-word match above a 1-word match' do
       names   = ['Ramadhan Saidi', 'Ramadhan Selemani']
       matcher = NameMatcher.new(names)

@@ -6,27 +6,39 @@ class NameMatcher
   SEARCH              = {:threshold => 0}
   DUPLICATE_DETECTION = {:threshold => 1}
 
+  def initialize(names)
+    @names = names
+  end
+
+  def match(search_string, options = {})
+    options[:mode] ||= SEARCH
+
+    results         = lambda {|name|   Result.new(search_string, name) }
+    below_threshold = lambda {|result| result.score <= options[:mode][:threshold] }
+
+    @names.collect(&results).reject(&below_threshold).sort.map(&:name)
+  end
+
+  private
+
   class Result < Struct.new(:search_string, :name)
     include Comparable
 
-    def score
-      score = 0
+    SCORES = [
+      [:alpha_match?,                       4],
+      [:disregarding_trailng_vowels_match?, 3],
+      [:full_soundex_match?,                2],
+      [:partial_soundex_match?,             1]
+    ]
 
-      words(name).each do |name_word|
-        words(search_string).each do |search_word|
-          if alpha_match?(name_word, search_word)
-            score += 4
-          elsif disregarding_trailng_vowels_match?(name_word, search_word)
-            score += 3
-          elsif full_soundex_match?(name_word, search_word)
-            score += 2
-          elsif partial_soundex_match?(name_word, search_word)
-            score += 1
-          end
+    def score
+      words(name).sum do |name_word|
+        words(search_string).sum do |search_word|
+          SCORES.detect {|condition, _|
+            send(condition, name_word, search_word)
+          }.try(:last).to_i
         end
       end
-
-      score
     end
 
     def <=>(other)
@@ -35,14 +47,7 @@ class NameMatcher
 
     private
 
-    def words(string)
-      string.downcase.split(/\s+/).map { |word| word.gsub(/[^a-z]/, '') }
-    end
-
-    def soundex_code(word)
-      word.tr('r', 'l').soundex
-    end
-
+    # Conditions
     def alpha_match?(a, b)
       a == b
     end
@@ -61,19 +66,14 @@ class NameMatcher
 
       a.starts_with?(b) || b.starts_with?(a)
     end
-  end
 
-  def initialize(names)
-    @names = names
-  end
+    # Conditions helpers
+    def words(string)
+      string.downcase.split(/\s+/).map { |word| word.gsub(/[^a-z]/, '') }
+    end
 
-  def match(name, options = {})
-    options[:mode] ||= SEARCH
-
-    @names.map do |n|
-      Result.new(name, n)
-    end.reject do |r|
-      r.score <= options[:mode][:threshold]
-    end.sort.map { |r| r.name }
+    def soundex_code(word)
+      word.tr('r', 'l').soundex
+    end
   end
 end
