@@ -34,8 +34,6 @@ en:
       dropped_out: "Dropped out on {{date}}"
 
   statistics:
-    title: Statistics
-    length_of_stay: Length of Stay at Amani
     mean: "Mean: {{mean}}"
     median: "Median: {{median}}"
     mode: "Mode: {{mode}}"
@@ -65,6 +63,17 @@ en:
       new_child: Open a new case file
       new_children: Recently opened case files
       potential_duplicate_warning: This may be a duplicate case file!
+    statistics:
+      on_site: Children at Amani
+      boarding_offsite: Boarding offsite
+      terminated: Terminated
+      dropped_out: Dropped out
+      reunified:
+        this_year: Reunified this Year
+        past_30_days: Past 30 Days
+        past_180_days: Past 180 Days
+        all_time: All Time
+      length_of_stay: Length of Stay at Amani
     tasks:
       title: Tasks
       print_roll_call_sheet: "Print this week's roll call sheet"

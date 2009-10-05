@@ -34,7 +34,6 @@ sw:
       dropped_out: "Alitoroka tarehe {{date}}"
 
   statistics:
-    length_of_stay: Watoto wanakaa kituoni kwa muda gani?
     mean: "Mean: {{mean}}"
     median: "Median: {{median}}"
     mode: "Mode: {{mode}}"
@@ -64,6 +63,17 @@ sw:
       new_child: Fungua faili la mtoto mgeni
       new_children: Faili zilizofunguliwa hivi karibuni
       potential_duplicate_warning: Inawezeka kuna faili lingine kwa mtoto huu!
+    statistics:
+      on_site: Watoto wanaokaa Kituoni
+      boarding_offsite: Wanaokaa Boarding
+      terminated: Wamekuwa Terminated
+      dropped_out: Wametoroka
+      reunified:
+        this_year: Wameunganishwa Mwaka Huu
+        past_30_days: Mwezi Huu
+        past_180_days: Miezi Sita Karibuni
+        all_time: Kwa Wakati Wote
+      length_of_stay: Watoto wanakaa kituoni kwa muda gani?
     tasks:
       title: Shughuli
       print_roll_call_sheet: Chapisha mahudhurio ya wiki hii

@@ -2,33 +2,33 @@
   %table
     %tbody
       %tr
-        %th Children At Amani
+        %th= t('.on_site')
         %td.big= @statistics.child_count(:on_site)
       %tr
-        %th Boarding School
+        %th= t('.boarding_offsite')
         %td= @statistics.child_count(:boarding_offsite)
       %tr
-        %th Dropped Out
+        %th= t('.dropped_out')
         %td= @statistics.child_count(:dropped_out)
       %tr
-        %th Terminated
+        %th= t('.terminated')
         %td= @statistics.child_count(:terminated)
 
   %table
     %tbody
       %tr
-        %th Reunified This Year
+        %th= t('.reunified.this_year')
         %td.big= @statistics.reunification_count_since(Date.today.at_beginning_of_financial_year)
       %tr
-        %th Past 30 Days
+        %th= t('.reunified.past_30_days')
         %td= @statistics.reunification_count_since(30.days.ago)
       %tr
-        %th Past 180 Days
+        %th= t('.reunified.past_180_days')
         %td= @statistics.reunification_count_since(180.days.ago)
       %tr
-        %th All Time
+        %th= t('.reunified.all_time')
         %td= @statistics.child_count(:reunified)
 
 .section.length_of_stay
-  %h2= t('statistics.length_of_stay')
+  %h2= t('.length_of_stay')
   = tag(:object, :type => Mime::SVG, :data => length_of_stay_statistics_path(:format => :svg), :width => 600, :height => 200)
