@@ -121,8 +121,8 @@ class BarGraph
   end
 
   def partition_size
-    return 0 if maximum_value.nil?
-    (maximum_value - minimum_value).quo(@number_of_bars).ceil
+    return 1 if maximum_value.nil?
+    [(maximum_value - minimum_value).quo(@number_of_bars).ceil, 1].max
   end
   memoize :partition_size
 

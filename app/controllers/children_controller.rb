@@ -1,52 +1,35 @@
 class ChildrenController < ApplicationController
-  before_filter :build_child, :only => [:new, :create]
-  before_filter :load_child,  :only => [:show, :edit, :update, :destroy]
+  before_filter :find_child, :only => %w(show update resolve_duplicate)
 
-  def index
-    redirect_to onsite_children_path, :skip_contextual_magic => true
+  def on_site
+    @children = Child.in_state(:on_site)
   end
 
   def create
-    if @child.save
-      flash[:notice] = t('children.create.notice', :name => @template.link_to(@child.name, @child))
-      redirect_to @child, :skip_contextual_magic => true
-    else
-      if @child.potential_duplicates.any?
-        render :potential_duplicates_found
-      else
-        render :new
-      end
-    end
+    @child = Child.new(params[:child])
+    @child.save!
+    redirect_to :back
+  end
+
+  def show
   end
 
   def update
-    if @child.update_attributes(params[:child])
-      flash[:notice] = t('children.update.notice', :name => @template.link_to(@child.name, @child))
-      redirect_to @child
-    else
-      render :edit
-    end
+    @child.update_attributes(params[:child])
+    redirect_to :back
   end
 
-  def destroy
-    @child.destroy
-    flash[:notice] = t('children.destroy.notice', :name => @child.name)
-    redirect_to children_path, :skip_contextual_magic => true
+  def resolve_duplicate
+    duplicate = params[:duplicate_child_id].blank? ?
+      nil :
+      Child.find(params[:duplicate_child_id])
+
+    redirect_to @child.resolve_duplicate!(duplicate)
   end
 
-  %w(onsite boarding_offsite reunified dropped_out terminated).each do |status|
-    define_method(status) do
-      @children = Child.send(status)
-    end
-  end
+  private
 
-  protected
-
-  def build_child
-    @child = Child.new(params[:child])
-  end
-
-  def load_child
+  def find_child
     @child = Child.find(params[:id])
   end
 end

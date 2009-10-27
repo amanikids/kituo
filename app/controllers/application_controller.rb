@@ -2,6 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  class BadRequest < RuntimeError; end;
+
   before_filter :set_locale
   before_filter :store_location, :except => [ :new, :create, :edit, :update, :destroy ]
 
@@ -9,20 +11,33 @@ class ApplicationController < ActionController::Base
   prawnto :prawn => { :page_size => 'A4', :top_margin => 72 }
   protect_from_forgery
 
+  rescue_from BadRequest do
+    head(:bad_request)
+  end
+
   # We may want to turn off footnotes in development mode from time to time to
   # see how the layout looks:
   # skip_after_filter Footnotes::Filter
 
   private
 
-  def redirect_to(*args)
-    return super if args.extract_options![:skip_contextual_magic]
+  def current_user
+    @current_user ||= Caregiver.find_by_id(session[:user_id])
+  end
+  helper_method :current_user
 
-    if location = session.delete(:location)
-      super(location)
-    else
-      super
+  def require_sign_in
+    unless current_user
+      if request.xhr?
+        head(:forbidden)
+      else
+        redirect_to new_session_path
+      end
     end
+  end
+
+  def sign_in!(user)
+    session[:user_id] = user.id
   end
 
   def set_locale

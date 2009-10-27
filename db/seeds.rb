@@ -1,7 +1,11 @@
 require 'csv'
 require 'highline'
+require 'net/ssh'
 require 'open-uri'
 
+# =============================================================================
+# = Helper Methods                                                            =
+# =============================================================================
 def find_child(name)
   if child = Child.find_by_name(name)
     return child
@@ -58,6 +62,19 @@ def store_answer(question, answer)
   @answers[question] = answer
   File.open('db/seed/answers.yml', 'w') { |file| file.write(@answers.to_yaml) }
 end
+
+# =============================================================================
+# = Actual Behavior                                                           =
+# =============================================================================
+unless File.file?('db/seed/children.yml')
+  Net::SSH.start('amanikids', 'deploy') do |ssh|
+    File.open('db/seed/children.yml', 'w') do |file|
+      file.write ssh.exec!('cd website/current; RAILS_ENV=production rake --silent db:children')
+    end
+  end
+end
+
+FileUtils.mkdir_p('db/seed/images')
 
 YAML.load_file('db/seed/children.yml').sort_by { |child| child[:name] }.each do |child|
   attributes = {}

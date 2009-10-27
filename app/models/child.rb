@@ -1,47 +1,9 @@
 class Child < ActiveRecord::Base
-  extend ActiveSupport::Memoizable
-
   named_scope :by_name, :order => :name
-  named_scope :location_as_of, lambda { |date|           { :conditions => ['events.id = (SELECT id FROM events WHERE child_id = children.id AND happened_on <= ? AND type in (?) ORDER BY happened_on DESC, created_at DESC LIMIT 1)', date, Event.location_changing_event_names], :joins => :events }}
-  named_scope :is,             lambda { |*event_classes| { :conditions => ['events.type IN (?)', event_classes.map(&:name)], :joins => :events }}
-  # TODO audit: do we ever say "with"?
-  named_scope :with,           lambda { |*event_classes| { :conditions => ['(SELECT COUNT(*) FROM events WHERE events.child_id = children.id AND events.type IN (?)) > 0', event_classes.map(&:name)] } }
-  named_scope :without,        lambda { |*event_classes| { :conditions => ['(SELECT COUNT(*) FROM events WHERE events.child_id = children.id AND events.type IN (?)) = 0', event_classes.map(&:name)] } }
-
-  def self.unrecorded_arrivals
-    without(*Event.location_changing_events)
-  end
-
-  def self.without_social_worker
-    scoped(:conditions => { :social_worker_id => nil }, :order => :created_at)
-  end
-
-  def self.upcoming_home_visits(date = Date.today)
-    location_as_of(date).is(Arrival).without(HomeVisit).scoped(:include => :arrivals)
-  end
-
-  def self.onsite(date = Date.today)
-    location_as_of(date).is(Arrival).by_name
-  end
-
-  def self.boarding_offsite(date = Date.today)
-    location_as_of(date).is(OffsiteBoarding).by_name
-  end
-
-  def self.reunified(date = Date.today)
-    location_as_of(date).is(Reunification).by_name
-  end
-
-  def self.dropped_out(date = Date.today)
-    location_as_of(date).is(Dropout).by_name
-  end
-
-  def self.terminated(date = Date.today)
-    location_as_of(date).is(Termination).by_name
-  end
+  named_scope :in_state, lambda {|state| {:conditions => {:state => state.to_s}}}
+  named_scope :recent,  :order => 'created_at DESC'
 
   has_many :events, :dependent => :destroy
-
   has_many :arrivals
   has_many :home_visits
   has_many :offsite_boardings
@@ -49,28 +11,50 @@ class Child < ActiveRecord::Base
   has_many :dropouts
   has_many :terminations
 
+  has_many :scheduled_visits, :dependent => :destroy
+
   belongs_to :social_worker, :class_name => 'Caregiver'
+  delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
 
   has_attached_file :headshot,
-    :url => '/system/:class/:attachment/:id/:style/:basename.:extension',
-    :path => ':rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension',
-    :styles => { :default => '150x150#' },
+    :url           => '/system/:class/:attachment/:id/:style/:basename.:extension',
+    :path          => ':rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension',
     :default_style => :default,
-    :default_url => '/images/headshot-:style.jpg'
+    :default_url   => '/images/headshot-:style.jpg',
+    :styles        => {
+      :default => '150x150#' }
 
   before_validation :normalize_name
-  validates_presence_of :name
-  validate_on_create :no_potential_duplicates_found, :unless => :ignore_potential_duplicates
-  attr_accessor :ignore_potential_duplicates
-  attr_accessor :location
-  def location
-    @location ||= %w(Arusha Moshi).rand
-  end
-  attr_accessible :name, :ignore_potential_duplicates, :headshot, :social_worker_id
+  validates_presence_of :name, :state
+  validates_inclusion_of :state, :in => Event.all_states(:include_unknown => true)
+  before_create :look_for_potential_duplicates
+  after_save :create_events
 
-  # FIXME oh no we di'int
-  def self.search(name)
-    NameMatcher.new(Child.all.map(&:name)).match(name).map { |n| Child.find_all_by_name(n) }.flatten
+  # MAYBE as a performance optimization we could (1) just load all *names*
+  # from the database for the NameMatcher, and then (2)
+  # find_all_by_name(matching_names). The current implementation takes favors
+  # nicer-looking code over performance, instantiating all of the Child
+  # objects.
+  def self.search(name, options = {})
+    return [] if name.blank?
+
+    matching_names = NameMatcher.new(all.map(&:name)).match(name, options)
+
+    all.select {|child|
+      matching_names.include?(child.name)
+    }.sort_by {|child|
+      matching_names.index(child.name)
+    }
+  end
+
+  Event.all_states(:include_unknown => true).each do |state|
+    define_method(state + '?') do
+      self.state == state
+    end
+  end
+
+  def last_visited_on
+    home_visits.last.try(:happened_on)
   end
 
   # Maybe this should use some sort of counter object? (YAGNI, until we need it more than once.)
@@ -80,7 +64,7 @@ class Child < ActiveRecord::Base
     length_of_stay = 0
     current_stay_started_at = nil
 
-    events.location_changing.happened_by(measured_on).each do |event|
+    events.state_changing.happened_by(measured_on).each do |event|
       if current_stay_started_at
         length_of_stay += (event.happened_on - current_stay_started_at)
         current_stay_started_at = nil
@@ -98,21 +82,59 @@ class Child < ActiveRecord::Base
     length_of_stay
   end
 
-  def potential_duplicates
-    Child.search(name)
+  def next_states
+    Event.all_states(:include_unknown => unknown?)
   end
-  memoize :potential_duplicates
 
-  delegate :name, :to => :social_worker, :prefix => true, :allow_nil => true
+  def potential_duplicate_children
+    Child.search(self.name, :mode => NameMatcher::DUPLICATE_DETECTION) - [self]
+  end
 
-  def tasks
-    Task.for_child(self)
+  def recalculate_state!
+    new_state = events.state_changing.last.try(:to_state) || 'unknown'
+    Child.update_all(['state = ?', new_state], :id => id)
+  end
+
+  def resolve_duplicate!(duplicate)
+    if duplicate
+      transaction do
+        duplicate.headshot      = self.headshot  unless duplicate.headshot.file?
+        duplicate.location      = self.location      if duplicate.location.blank?
+        duplicate.social_worker = self.social_worker if duplicate.social_worker.blank?
+        duplicate.save!
+
+        events.each do |event|
+          duplicate.events << event
+        end
+
+        scheduled_visits.each do |visit|
+          duplicate.scheduled_visits << visit
+        end
+
+        duplicate.recalculate_state!
+        reload.destroy
+        duplicate
+      end
+    else
+      update_attributes!(:potential_duplicate => false)
+      self
+    end
   end
 
   private
 
-  def no_potential_duplicates_found
-    errors.add_to_base('Potential duplicates found') if potential_duplicates(:reload).any?
+  def create_events
+    if state_changed?
+      Event.for_state(state).create!(
+        :child       => self,
+        :happened_on => Date.today
+      )
+    end
+  end
+
+  def look_for_potential_duplicates
+    self.potential_duplicate = Child.search(self.name).any?
+    true
   end
 
   def normalize_name

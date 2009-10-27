@@ -1,5 +1,7 @@
+config/cap_gun_password.txt
 config/database.yml
 db/*.sqlite*
+db/*.sql
 log
 public/stylesheets/*.css
 public/system/caregivers/headshots

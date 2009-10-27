@@ -9,7 +9,7 @@ def remove_task(task_name)
 end
 
 remove_task :test
-task :test => ['test:units', 'test:locales']
+task :test => ['test:units', 'test:functionals', 'test:locales']
 
 namespace :test do
   Rake::TestTask.new(:locales => 'db:test:prepare') do |t|
@@ -22,30 +22,19 @@ end
 
 begin
   require 'cucumber/rake/task'
+
+  Cucumber::Rake::Task.new(:features) do |t|
+    t.cucumber_opts = "--tags ~@wip"
+  end
+
   namespace :features do
-    desc "Run all cucumber features"
-    task :all
-
-    YAML.load(File.open("cucumber.yml")).keys.each do |profile|
-      Cucumber::Rake::Task.new(profile, "Run #{profile} features") do |t| 
-        t.profile = profile
-        t.cucumber_opts = "--tags ~@pending"
-      end
-
-      namespace profile do
-        Cucumber::Rake::Task.new(:pending, "Show pending #{profile} features") do |t| 
-          t.profile = profile
-          t.cucumber_opts = "--tags @pending --dry-run"
-        end
-      end
-
-      task profile => 'db:test:prepare'
-      task :all => profile
+    Cucumber::Rake::Task.new(:wip, "Show WIP features") do |t|
+      t.cucumber_opts = "--tags @wip --dry-run"
     end
   end
 
   remove_task :default
-  task :default => ['test:units', 'features:all', 'test:locales']
+  task :default => ['test:units', 'test:functionals', 'features', 'test:locales']
 rescue LoadError
   puts "If you'd like to run the features, please install cucumber."
 end

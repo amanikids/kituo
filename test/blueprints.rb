@@ -1,11 +1,22 @@
 Sham.name { Faker::Name.name }
-Sham.happened_on { Date.today }
+Sham.happened_on(:unique => false) { (0..30).to_a.rand.days.ago.to_date }
 
-Arrival.blueprint { happened_on }
+[Arrival, Dropout, HomeVisit, OffsiteBoarding, Reunification, Termination].each do |event|
+  event.blueprint do
+    child
+    happened_on
+  end
+end
+
 Caregiver.blueprint { name }
-Child.blueprint { name }
-Dropout.blueprint { happened_on }
-HomeVisit.blueprint { happened_on }
-OffsiteBoarding.blueprint { happened_on }
-Reunification.blueprint { happened_on }
-Termination.blueprint { happened_on }
+
+Child.blueprint do
+  name
+  location { %w(Moshi Arusha Marangu Mwanza Same).rand }
+  potential_duplicate false
+end
+
+ScheduledVisit.blueprint do
+  child
+  scheduled_for { (1..4).to_a.rand.weeks.from_now }
+end

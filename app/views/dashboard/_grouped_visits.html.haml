@@ -1,0 +1,6 @@
+- grouped_visits.each do |week, days|
+  %h3= t(*distance_of_time_in_weeks(week)).titleize
+  - days.each do |day, visits|
+    %h4= l(day, :format => :day_name)
+    %ul{ 'data-date' => day.to_s(:db) }
+      = render :partial => 'visit', :collection => visits

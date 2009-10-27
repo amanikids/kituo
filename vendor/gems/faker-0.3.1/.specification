@@ -79,7 +79,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: faker
-rubygems_version: 1.3.2
+rubygems_version: 1.3.5
 signing_key: 
 specification_version: 2
 summary: A port of Perl's Data::Faker - Generates fake names, phone numbers, etc.

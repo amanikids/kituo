@@ -1,0 +1,80 @@
+@import common.sass
+
+h3
+  color: white
+  background-color: black
+  margin-bottom: 0.25em
+
+h4
+  background-color: gray
+  color: white
+
+h3, h4
+  font-family= !sans_serif
+  font-size: 0.75em
+  padding: 0.25em
+
+!column_spacing = 18px
+
+.section
+  margin-bottom: 1em
+
+.scheduled, .other
+  float: left
+  width= !page_width / 2 - !column_spacing
+
+.upcoming, .other
+  ul:last-child
+    // Large drop target needed for last ul
+    min-height: 2em
+
+.scheduled
+  margin-right= !column_spacing
+
+.tasks
+  clear: both
+  li
+    font-size: 1.25em
+    list-style: disc
+    margin-left: 1.5em
+
+.visits
+  ul
+    padding-top:    0.25em
+    padding-bottom: 0.25em
+
+.child-summary.potential-duplicate
+  background-color: #f99
+
+.new-child
+  form
+    li
+      margin-bottom: 0.25em
+    label
+      display: inline-block
+      width: 60px
+    input[type=submit]
+      margin-left: 64px
+
+.length_of_stay
+  clear: left
+
+.statistics
+  padding: 2em 0em
+
+  table:first-child
+    float: left
+    margin-right: 3em
+
+  table
+    font-size: 1em
+    tbody
+      th, td
+        vertical-align: middle
+      th
+        padding-right: 1em
+        text-align: right
+      td
+        text-align: center
+      .big
+        font-size: 5em

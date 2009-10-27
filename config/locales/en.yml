@@ -1,245 +1,144 @@
 en:
   locale_name: English
 
-  title: Amani Children's Home
-  staging: "Warning! This is the practice server. The real server is {{link}}."
-
-  datetime:
-    distance_in_weeks:
-      zero: this week
-      one: 1 week
-      other: '{{count}} weeks'
-
-  due:
-    past:
-      one: '{{phrase}} overdue'
-      other: '{{phrase}} overdue'
-    present: 'due {{phrase}}'
-    future: 'in {{phrase}}'
-
+  # ===========
+  # = General =
+  # ===========
   form:
     saving: Please wait
+    edit: Edit
+    cancel: Cancel
+    save: Save
+    complete: Complete
+    unschedule: Unschedule
+    destroy: Delete
 
-  # ===========================================================================
-  # = ActionPack Translations                                                 =
-  # ===========================================================================
-  caregivers:
-    index:
-      tab: Caregivers
-      title: Caregivers
-    new:
-      link: New Caregiver
-      title: New Caregiver
-      submit: Save
-    create:
-      notice: "Created caregiver {{name}}."
-    show:
-      case_load:
-        one: "Case Load: 1 Child"
-        other: "Case Load: {{count}} Children"
-    edit:
-      link: Edit Name
-      title: Edit Name
-      submit: Save
-    update:
-      notice: "Updated caregiver {{name}}."
+  role:
+    social_worker: Social Worker
+    social_work_coordinator: Social Work Coordinator
+    development_officer: Development Officer
 
-    # singular nested caregiver resources
-    headshot:
-      edit:
-        link: Edit Headshot
-        title: Edit Headshot
-        submit: Save
-      update:
-        notice: "Updated Headshot for {{name}}."
+  state:
+    unknown: Unknown status
+    on_site: At Amani
+    boarding_offsite: Boarding offsite
+    reunified: Reunified
+    terminated: Terminated
+    dropped_out: Dropped out
 
-  children:
-    index:
-      tab: Children
-      title: Children
-      empty: No Children
-    new:
-      tab: New
-      link: New Child
-      title: New Child
-      submit: Save New Child
-    create:
-      notice: "New case file started for {{name}}."
-      potential_duplicates:
-        title: Potential Duplicates Found
-        subtitle: Did you mean one of these children?
-        submit_leader: "Or, if you're sure,"
-        submit: "Create a New Case File for {{name}}"
-    show:
-      record: 'Record:'
-      social_worker:
-        unassigned: Unassigned
-      timeline: Timeline
-    edit:
-      link: Edit Name
-      title: Edit Name
-      submit: Save Child
-    update:
-      notice: "Case file updated for {{name}}."
-    destroy:
-      link: Delete
-      confirm: Are you sure?
-      notice: "Deleted case file for {{name}}."
-
-    # children collection actions
-    boarding_offsite:
-      tab: Boarding Offsite
-      title: "Children Boarding Offsite ({{count}})"
-    dropped_out:
-      tab: Dropped Out
-      title: "Children Dropped Out ({{count}})"
-    onsite:
-      tab: Onsite
-      title: "Children Onsite ({{count}})"
-      pdf:
-        link: Roll Call Sheet
-        title: Children at Amani
-        subtitle: "Week of {{begin_date}} through {{end_date}}"
-    reunified:
-      tab: Reunified
-      title: "Children Reunified ({{count}})"
-    terminated:
-      tab: Terminated
-      title: "Children Terminated ({{count}})"
-    unrecorded_arrivals:
-      tab: Unrecorded Arrivals
-      title: "Unrecorded Arrivals ({{count}})"
-
-
-    # plural nested child resources
-    arrivals:
-      new:
-        link: Arrival
-        submit: Save
-      create:
-        notice: "Arrival at Amani recorded for {{name}}."
-      destroy:
-        link: Delete
-        confirm: Are you sure?
-        notice: "Deleted Arrival for {{name}}."
-    dropouts:
-      new:
-        link: Dropout
-        submit: Save
-      create:
-        notice: "Dropout recorded for {{name}}."
-      destroy:
-        link: Delete
-        confirm: Are you sure?
-        notice: "Deleted Dropout for {{name}}."
-    home_visits:
-      new:
-        link: Home Visit
-        submit: Save
-      create:
-        notice: "Home Visit recorded for {{name}}."
-      destroy:
-        link: Delete
-        confirm: Are you sure?
-        notice: "Deleted Home Visit for {{name}}."
-    offsite_boardings:
-      new:
-        link: Offsite Boarding
-        submit: Save
-      create:
-        notice: "Offsite Boarding recorded for {{name}}."
-      destroy:
-        link: Delete
-        confirm: Are you sure?
-        notice: "Deleted Offsite Boarding for {{name}}."
-    reunifications:
-      new:
-        link: Reunification
-        submit: Save
-      create:
-        notice: "Family Reunification recorded for {{name}}."
-      destroy:
-        link: Delete
-        confirm: Are you sure?
-        notice: "Deleted Family Reunification for {{name}}."
-    terminations:
-      new:
-        link: Termination
-        submit: Save
-      create:
-        notice: "Termination recorded for {{name}}."
-      destroy:
-        link: Delete
-        confirm: Are you sure?
-        notice: "Deleted Termination for {{name}}."
-
-    # singular nested child resources
-    headshot:
-      edit:
-        link: Edit Headshot
-        title: Edit Headshot
-        submit: Save
-      update:
-        notice: "Updated Headshot for {{name}}."
-    social_worker:
-      edit:
-        link: Edit Social Worker
-        title: Edit Social Worker
-        unassigned: Unassigned
-        submit: Save
-      update:
-        notice: "{{child_name}}'s social worker is now {{social_worker_name}}."
+    sentence:
+      on_site: "Arrived at Amani on {{date}}"
+      boarding_offsite: "Went to boarding school on {{date}}"
+      reunified: "Reunified on {{date}}"
+      terminated: "Terminated on {{date}}"
+      dropped_out: "Dropped out on {{date}}"
 
   statistics:
-    index:
-      tab: Statistics
-      title: Statistics
-    length_of_stay:
-      title: Length of Stay at Amani (in Months)
-    bar_graph:
-      mean: "Mean: {{mean}}"
-      median: "Median: {{median}}"
-      mode: "Mode: {{mode}}"
+    mean: "Mean: {{mean}}"
+    median: "Median: {{median}}"
+    mode: "Mode: {{mode}}"
 
-  tasks:
-    index:
-      tab: Tasks
+  from: from
+  working: Working
+
+  # =================
+  # = Partial-based =
+  # =================
+  sessions:
+    new:
+      heading: Hello!
+      subheading: Who are you?
+      not_here: Not here?
+      tell_us_who_you_are: Introduce yourself.
+
+  dashboard:
+    header:
+      welcome: "Welcome, {{name}}!"
+      switch_user: Not you?
+    social_worker:
+      scheduled_visits: Scheduled Visits
+      recommended_visits: Recommended Visits
+      neglected: Not visited recently
+      search: Search
+      new_child: Open a new case file
+      new_children: Recently opened case files
+      potential_duplicate_warning: This may be a duplicate case file!
+    statistics:
+      on_site: Children at Amani
+      boarding_offsite: Boarding offsite
+      terminated: Terminated
+      dropped_out: Dropped out
+      reunified:
+        this_year: Reunified this Year
+        past_30_days: Past 30 Days
+        past_180_days: Past 180 Days
+        all_time: All Time
+      length_of_stay: Length of Stay at Amani
+    tasks:
       title: Tasks
-      empty: No Tasks
-    unrecorded_arrivals:
-      tab: Unrecorded Arrivals
-      title: Unrecorded Arrivals
-      description: "Record an Arrival for {{name}}"
-    unassigned_children:
-      tab: Unassigned Children
-      title: Unassigned Children
-      description: "Assign {{name}} to a Social Worker"
-    upcoming_home_visits:
-      tab: Upcoming Home Visits
-      title: Upcoming Home Visits
-      description: "Make a Home Visit for {{name}}"
+      print_roll_call_sheet: "Print this week's roll call sheet"
+      edit_your_profile: Edit your profile
+    visit:
+      last_visited: "Last visited {{date}}"
+      never_visited: Never visited
+      completed: Completed
+    social_work_coordinator:
+      social_workers_required: These Kids need a Social Worker
+    development_officer:
+      headshots_required: These Kids need a Photo
 
+  children:
+    on_site:
+      title: Children at Amani
+      subtitle: "Week of {{begin_date}} through {{end_date}}"
 
-  # ===========================================================================
-  # = ActiveRecord Translations                                               =
-  # ===========================================================================
+    show:
+      dashboard: Back to your dashboard
+      no_social_worker: No social worker
+      timeline: Timeline
+      home_visit: Visited
+      scheduled_visits: Scheduled Visits
+      new_scheduled_visit: Schedule a new visit
+      potential_duplicate_resolution:
+        title: This may be a duplicate case file!
+        duplicate: "Merge with this case file"
+        not_a_duplicate: "No, this isn't a duplicate"
+
+  caregivers:
+    new:
+      title: Introduce yourself
+      back: Not now
+    edit:
+      title: Edit your profile
+      back: Back to your dashboard
+
+  # ==========
+  # = Models =
+  # ==========
   activerecord:
-    models:
-      home_visit: Home Visit
-      offsite_boarding: Offsite Boarding
+    errors:
+      models:
+        event:
+          attributes:
+            happened_on:
+              not_in_the_future: cannot be in the future
 
-    attributes:
-      arrival:
-        happened_on: Arrived at
-      caregiver:
-        headshot: Upload a New Image
-      child:
-        headshot: Upload a New Image
-      dropout:
-        happened_on: Dropped out on
-      offsite_boarding:
-        happened_on: Boarded on
-      reunification:
-        happened_on: Reunified on
-      termination:
-        happened_on: Terminated on
+  # =============
+  # = Framework =
+  # =============
+  date:
+    formats:
+      day_name: "%A"
+      human: "%e %b %Y"
+
+  datetime:
+    distance_of_time_in_words:
+      x_weeks_ago:
+        zero: this week
+        one:  last week
+        other: "{{count}} weeks ago"
+
+      x_weeks_from_now:
+        zero: this week
+        one:  next week
+        other: "{{count}} weeks from now"

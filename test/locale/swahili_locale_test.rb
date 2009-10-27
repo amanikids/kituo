@@ -16,19 +16,6 @@ class SwahiliLocaleTest < ActiveSupport::TestCase
     end
   end
 
-  def model_classes
-    ActiveRecord::Base.send(:subclasses) - [Event, ActiveRecord::SessionStore::Session]
-  end
-
-  def accessible_attributes(klass)
-    if klass.accessible_attributes
-      klass.accessible_attributes
-    else
-      instance = klass.new
-      instance.send(:remove_attributes_protected_from_mass_assignment, instance.attributes).keys
-    end
-  end
-
   def assert_has_all_of(expected, actual)
     missing = expected - actual
     assert missing.empty?, "These keys are missing:\n#{missing.sort.to_yaml}"
@@ -43,12 +30,20 @@ class SwahiliLocaleTest < ActiveSupport::TestCase
       assert_has_all_of deep_keys(locale(:en)), deep_keys(locale(:sw))
     end
 
-    should 'translate every model name' do
-      assert_has_all_of model_classes.map { |klass| "activerecord.models.#{klass.name.underscore}" }, deep_keys(locale(:sw))
-    end
+    should 'translate these attributes (the ones we think we use in forms)' do
+      expected = %w(
+        caregiver.name
+        caregiver.role
+        caregiver.headshot
 
-    should 'translate every accessible attribute name' do
-      assert_has_all_of model_classes.map { |klass| accessible_attributes(klass).map { |attribute| "activerecord.attributes.#{klass.name.underscore}.#{attribute}" } }.flatten, deep_keys(locale(:sw))
+        child.name
+        child.location
+        child.headshot
+      ).map { |attribute|
+        "activerecord.attributes.#{attribute}"
+      }
+
+      assert_has_all_of expected, deep_keys(locale(:sw))
     end
   end
 end

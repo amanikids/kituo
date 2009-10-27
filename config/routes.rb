@@ -1,27 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
   map.filter :locale
 
-  map.resources :tasks
+  map.length_of_stay_statistics '/statistics/length_of_stay.svg', :controller => 'statistics', :action => 'length_of_stay', :format => :svg, :conditions => { :method => :get }
 
-  map.resources :children, :collection => { :onsite => :get, :boarding_offsite => :get, :dropped_out => :get, :reunified => :get, :terminated => :get } do |child|
-    child.resources :arrivals, :controller => 'children/arrivals'
-    child.resources :home_visits, :controller => 'children/home_visits'
-    child.resources :offsite_boardings, :controller => 'children/offsite_boardings'
-    child.resources :reunifications, :controller => 'children/reunifications'
-    child.resources :dropouts, :controller => 'children/dropouts'
-    child.resources :terminations, :controller => 'children/terminations'
-
-    child.resource :headshot, :controller => 'children/headshots'
-    child.resource :social_worker, :controller => 'children/social_workers'
-  end
-
-  map.resources :caregivers do |caregiver|
-    caregiver.resource :headshot, :controller => 'caregivers/headshots'
-  end
-
-  map.resources :statistics, :collection => { :length_of_stay => :get }
-
-  map.connect 'mockups/:action', :controller => 'mockups'
-
-  map.root :controller => 'children'
+  map.resource :session
+  map.resources :children,
+    :collection => {:on_site => :get},
+    :member     => {:resolve_duplicate => :put}
+  map.resources :caregivers
+  map.resources :events
+  map.resources :scheduled_visits, :member => {:complete => :put}
+  map.root :controller => 'dashboard', :action => 'show'
 end

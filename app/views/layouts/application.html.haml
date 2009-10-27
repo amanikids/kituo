@@ -3,37 +3,15 @@
 
 %html{html_attrs}
   %head
-    %title= t(:title)
-    = stylesheet_link_tag 'reset', 'screen', :cache => true
+    = stylesheet_link_tag 'reset', controller_name
+    = yield(:css)
+    - js 'change_locale'
+    = javascript_tags
+    - other_locales.each do |code, name|
+      %link{ :rel => 'alternate', :hreflang => code, :title => name, :href => url_for(:locale => code), :class => 'locale' }
 
   %body
-    - if Rails.env.staging?
-      #staging
-        .centered= t(:staging, :link => link_to('kituo.amani', 'http://kituo.amani'))
+    = yield
 
-    - if flash.any?
-      #flash
-        - flash.each do |key, message|
-          %div{:class => key}
-            .centered
-              =message
-
-    #header
-      .centered
-        .grouped
-          #title= link_to t(:title), root_path
-
-          %ul#locales
-            - other_locales.each do |locale, locale_name|
-              %li= link_to image_tag("#{locale}.png") + ' ' + locale_name, params.merge(:locale => locale), :method => (request.get? ? nil : request.method)
-
-        %ul#navigation
-          %li= link_to_with_current_partial_path t('tasks.index.tab'), 'tasks', tasks_path
-          %li= link_to_with_current_partial_path t('children.index.tab'), 'children', children_path
-          %li= link_to_with_current_partial_path t('caregivers.index.tab'), 'caregivers', caregivers_path
-          %li= link_to_with_current_partial_path t('statistics.index.tab'), 'statistics', statistics_path
-
-    #main
-      .centered
-        = yield :subnavigation
-        = yield
+    #ajax-loading
+      Working

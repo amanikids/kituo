@@ -1,38 +1,108 @@
-%h1= @child.name
+- content_for(:css) do
+  = stylesheet_link_tag('jquery-ui-1.7.2.custom')
+  = stylesheet_link_tag('datepicker')
 
-= image_tag @child.headshot.url, :class => 'headshot'
+- js 'inline_edit'
+- js 'child_scheduled_visits'
 
-%ul
-  %li= link_to t('children.edit.link'), edit_child_path(@child)
-  %li= link_to t('children.headshot.edit.link'), edit_child_headshot_path(@child)
-  %li
-    = link_to t('children.social_worker.edit.link'), edit_child_social_worker_path(@child)
-    - if @child.social_worker
-      = link_to @child.social_worker_name, @child.social_worker
-    - else
-      = t('children.show.social_worker.unassigned')
-  %li= link_to t('children.destroy.link'), @child, :method => :delete, :confirm => t('children.destroy.confirm'), :id => dom_id(@child, :delete)
+- form_for(@child, :html => { :multipart => true, :id => 'edit-child' }) do |form|
+  %h1
+    %span.name
+      %span.show= h(@child.name)
+      %span.edit= form.text_field :name
 
-%h2= badged(t('tasks.index.title'), @child.tasks.count)
-- if @child.tasks.any?
-  %table.task_list= render @child.tasks
-- else
-  .empty= t('tasks.index.empty')
+      %span.actions= link_to(t('.dashboard'), root_path, :accesskey => '1')
 
-%h2= t('children.show.timeline')
+  .details
+    .locations
+      %span.state
+        %span.show= t(@child.state, :scope => 'state') + ','
+        %span.edit= form.select :state, @child.next_states.map {|state| [t(state, :scope => 'state'), state] }
+      %span.location
+        %span.show
+          - unless @child.location.blank?
+            = t('from')
+            = h(@child.location)
+        %span.edit
+          = t('from')
+          = form.text_field :location
+    .social_worker
+      %span.show
+        = h(@child.social_worker_name || t('.no_social_worker'))
+      %span.edit= form.collection_select :social_worker_id, Caregiver.social_workers.by_name, :id, :name, :include_blank => t('.no_social_worker')
+    .headshot.edit
+      = form.label :headshot
+      = form.file_field :headshot
 
-%ul.actions
-  %li= t('children.show.record')
-  %li= link_to t('children.arrivals.new.link'), new_child_arrival_path(@child)
-  %li= link_to t('children.home_visits.new.link'), new_child_home_visit_path(@child)
-  %li= link_to t('children.offsite_boardings.new.link'), new_child_offsite_boarding_path(@child)
-  %li= link_to t('children.reunifications.new.link'), new_child_reunification_path(@child)
-  %li= link_to t('children.dropouts.new.link'), new_child_dropout_path(@child)
-  %li= link_to t('children.terminations.new.link'), new_child_termination_path(@child)
+  .headshot.show
+    = image_tag(@child.headshot.url)
 
+  #inline-edit-links
+    %span.show
+      = link_to(t('form.edit'), {}, :id => 'edit-link')
+    %span.edit
+      = link_to(t('form.cancel'), {}, :id => 'cancel-link')
+      = form.submit t('form.save'), :id => 'save-link'
+
+- if @child.potential_duplicate?
+  #potential-duplicate-resolution
+    %h2= t('.potential_duplicate_resolution.title')
+    %ul.potential-duplicates
+      - @child.potential_duplicate_children.each do |duplicate|
+        %li.child-summary
+          .headshot= link_to image_tag(duplicate.headshot.url, :size => '40x40'), duplicate
+          .heading
+            %span.name= link_to h(duplicate.name), duplicate
+          .meta
+            %span.comment
+              = t(duplicate.state, :scope => 'state') + ','
+              - unless duplicate.location.blank?
+                = t('from')
+                = h(duplicate.location)
+            = button_to(t(".potential_duplicate_resolution.duplicate"), resolve_duplicate_child_path(@child, :duplicate_child_id => duplicate.id), :method => :put)
+
+    = button_to(t(".potential_duplicate_resolution.not_a_duplicate"), resolve_duplicate_child_path(@child, :duplicate_child_id => nil), :method => :put)
+
+%h2= t('.timeline')
 %table.timeline
   - @child.events.each do |event|
-    %tr{:id => dom_id(event)}
-      %td= event.class.human_name
-      %td= l event.happened_on, :format => :long
-      %td= link_to t("children.#{event.class.name.tableize}.destroy.link"), [@child, event], :method => :delete, :confirm => t("children.#{event.class.name.tableize}.destroy.confirm")
+    - if event.is_a?(HomeVisit)
+      %tr
+        %td.date= l(event.happened_on, :format => :human)
+        %td.notes= event.notes.blank? ? t('.home_visit') : h(event.notes)
+        %td.actions
+    - else
+      %tr.event
+        %td{:colspan => 2}
+          - form_for(event.becomes(Event)) do |f|
+            = t(event.to_state, :date => content_tag(:span, l(event.happened_on, :format => :human), :class => 'show'), :scope => 'state.sentence')
+            = f.text_field :happened_on, :class => 'date-field edit', :readonly => true, :id => "event_happened_on_#{event.id}"
+        %td.actions
+          = link_to(t('form.edit'), {}, :class => 'edit-event')
+          &middot;
+          = link_to(t('form.destroy'), event.becomes(Event), :method => :delete)
+
+%h2= t('.scheduled_visits')
+%table.scheduled_visits
+  - @child.scheduled_visits.each do |visit|
+    %tr.scheduled_visit
+      %td.date
+        - form_for(visit) do |f|
+          %span.show
+            = l(visit.scheduled_for, :format => :human)
+          = f.text_field :scheduled_for, :class => 'date-field edit', :readonly => true, :id => "scheduled_for_#{visit.id}"
+
+      %td.actions
+        - if visit.completable?
+          = link_to(t('form.complete'), complete_scheduled_visit_path(visit), :method => :put)
+          &middot;
+        = link_to(t('form.edit'), {}, :class => 'edit-scheduled-visit')
+        &middot;
+        = link_to(t('form.unschedule'), scheduled_visit_path(visit), :method => :delete)
+  %tr.scheduled_visit
+    %td.date
+      - form_for(ScheduledVisit.new) do |f|
+        = hidden_field_tag :child_id, @child.id
+        = f.text_field :scheduled_for, :class => 'date-field new', :id => 'new_scheduled_visit_for'
+    %td.actions
+      = link_to(t('.new_scheduled_visit'), {}, :id => 'new-scheduled-visit')

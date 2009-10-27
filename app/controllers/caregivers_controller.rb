@@ -1,36 +1,28 @@
 class CaregiversController < ApplicationController
-  before_filter :build_caregiver, :only => [:new, :create]
-  before_filter :load_caregiver,  :only => [:show, :edit, :update]
-
-  def index
-    @caregivers = Caregiver.by_name
-  end
-
-  def create
-    if @caregiver.save
-      flash[:notice] = t('caregivers.create.notice', :name => @template.link_to(@caregiver.name, @caregiver))
-      redirect_to caregiver_path(@caregiver)
-    else
-      render :new
-    end
-  end
-
-  def update
-    if @caregiver.update_attributes(params[:caregiver])
-      flash[:notice] = t('caregivers.update.notice', :name => @template.link_to(@caregiver.name, @caregiver))
-      redirect_to @caregiver
-    else
-      render :edit
-    end
-  end
-
-  private
-
-  def build_caregiver
+  def new
     @caregiver = Caregiver.new(params[:caregiver])
   end
 
-  def load_caregiver
+  def create
+    @caregiver = Caregiver.new(params[:caregiver])
+    if @caregiver.save
+      sign_in!(@caregiver)
+      redirect_to root_path
+    else
+      render 'new'
+    end
+  end
+
+  def edit
     @caregiver = Caregiver.find(params[:id])
+  end
+
+  def update
+    @caregiver = Caregiver.find(params[:id])
+    if @caregiver.update_attributes(params[:caregiver])
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 end

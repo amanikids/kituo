@@ -1,0 +1,14 @@
+- form_for(@caregiver, :html => { :multipart => true }) do |form|
+  = form.error_messages
+  %ul
+    %li
+      = form.label :name
+      = form.text_field :name, :autocomplete => 'off'
+    %li
+      = form.label :role
+      = form.select :role, Caregiver.all_roles.map {|role| [t(role, :scope => 'role'), role]}
+    %li
+      = form.label :headshot
+      = form.file_field :headshot
+    %li
+      = form.submit(t("form.save"))

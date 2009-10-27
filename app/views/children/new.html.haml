@@ -1,9 +1,0 @@
-%h1= t('children.new.title')
-
-- form_for @child do |form|
-  .field
-    = form.label :name
-    = form.text_field :name, :autocomplete => 'off'
-    = form.error_message_on :name
-  .submit
-    = form.submit t('children.new.submit')

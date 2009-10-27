@@ -1,0 +1,87 @@
+@import constants.sass
+
+body
+  margin: 3em auto
+  width= !page_width
+
+h1
+  font-size: 2.5em
+  .actions
+    font-size: 0.4em
+    &:before
+      content: "("
+    &:after
+      content: ")"
+
+h2
+  font-size: 1.5em
+  margin-bottom: 0.25em
+
+a
+  color: inherit
+
+
+
+!visit_headshot_size = 40px
+!visit_padding       =  6px
+li.child-summary
+  background-color: #ffc
+  padding=       !visit_padding
+  margin-bottom= !visit_padding / 2
+  min-height=    !visit_headshot_size
+  position: relative
+
+  &:last-child
+    margin-bottom: 0
+
+  .headshot
+    position: absolute
+    top=  !visit_padding
+    left= !visit_padding
+
+    img
+      width=  !visit_headshot_size
+      height= !visit_headshot_size
+
+  .heading, .meta
+    margin-left= !visit_headshot_size + !visit_padding
+    position: relative
+
+  .heading
+    .name
+      display: inline-block
+      font-size: 1.5em
+      margin-right: 3.5em
+    .actions
+      position: absolute
+      top: 0.4em
+      right: 0
+
+  .meta
+    .location, .warning, form
+      position: absolute
+      right: 0
+    .warning
+      font-weight: bold
+    form
+      bottom: 0
+
+
+
+!loading_width = 81px
+!loading_padding = 5px
+!loading_spinner_size = 16px
+
+#ajax-loading
+  display: none
+  position: absolute
+  right: 0
+  top: 0
+  background-color: black
+  background-image: url('/images/ajax-spinner.gif')
+  background-repeat: no-repeat
+  background-position= !loading_width - !loading_spinner_size + !loading_padding center
+  width= !loading_width - !loading_spinner_size
+  color: white
+  padding= !loading_padding
+  padding-right= !loading_padding + !loading_spinner_size

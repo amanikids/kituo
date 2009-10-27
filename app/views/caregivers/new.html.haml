@@ -1,9 +1,5 @@
-%h1= t('caregivers.new.title')
+%h1
+  = t('.title')
+  %span.actions= link_to(t('.back'), new_session_path)
 
-- form_for @caregiver do |form|
-  .field
-    = form.label :name
-    = form.text_field :name, :autocomplete => 'off'
-    = form.error_message_on :name
-  .submit
-    = form.submit t('caregivers.new.submit')
+= render 'form'
