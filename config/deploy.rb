@@ -35,14 +35,14 @@ set :cap_gun_action_mailer_config, {
   :port => 587,
   :domain => 'amanikids.org',
   :authentication => :plain,
-  :user_name => 'deploy@amanikids.org',
+  :user_name => 'no-reply@amanikids.org',
   :password => File.read(File.join(File.dirname(__FILE__), 'cap_gun_password.txt')).strip
 }
 
 # define the options for the actual emails that go out -- :recipients is the only required option
 set :cap_gun_email_envelope, {
   :recipients => %w[joe@amanikids.org japhary@amanikids.org matthew.todd@gmail.com],
-  :from       => 'Deployment Notifier <deploy@amanikids.org>'
+  :from       => 'Deployment Notifier <no-reply@amanikids.org>'
 }
 
 # =============================================================================
