@@ -72,6 +72,14 @@ namespace :deploy do
   end
 end
 
+desc 'Run an arbitrary rake task. (-s task=foo)'
+task :rake do
+  rake      = fetch(:rake, 'rake')
+  rails_env = fetch(:rails_env)
+  rake_task = fetch(:task)
+  run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} #{rake_task}"
+end
+
 # =============================================================================
 # = Callbacks                                                                 =
 # =============================================================================
