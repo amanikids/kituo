@@ -79,7 +79,6 @@ FileUtils.mkdir_p('db/seed/images')
 YAML.load_file('db/seed/children.yml').sort_by { |child| child[:name] }.each do |child|
   attributes = {}
   attributes[:name] = child[:name].strip
-  attributes[:ignore_potential_duplicates] = true
 
   if child[:url]
     local_filename = "db/seed/images/#{File.basename(child[:url], '?*')}"
