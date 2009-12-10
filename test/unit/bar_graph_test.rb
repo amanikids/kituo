@@ -20,4 +20,14 @@ class BarGraphTest < ActiveSupport::TestCase
       @bar_graph.send(:partition_size).should == 1
     end
   end
+
+  context 'with a massive data value larger than the number of pixels allocated' do
+    setup do
+      @bar_graph = BarGraph.new([0] * 5000)
+    end
+
+    should 'not have a maximum bar height of 0' do
+      @bar_graph.bars.map(&:height).max.should_not == 0
+    end
+  end
 end

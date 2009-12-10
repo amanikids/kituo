@@ -33,7 +33,7 @@ class BarGraph
   def bars
     partitions.enum_for(:map).with_index do |value, index|
       x          = index * width_of_one_bar
-      height     = value * height_of_one_unit
+      height     = (value * height_of_one_unit).floor
       y          = @label_height + height_for_bars - height
       show_label = index.succ % @label_interval == 0
 
@@ -81,7 +81,7 @@ class BarGraph
 
   def height_of_one_unit
     return 0 if partitions.max.zero?
-    height_for_bars / partitions.max
+    height_for_bars.to_f / partitions.max
   end
   memoize :height_of_one_unit
 
