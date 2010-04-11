@@ -18,7 +18,7 @@ http://amanikids.org/
 
 == Known issues
 
-* One failing selenium test, most likely a test issue rather than actual broken code (XS on snow leopard.)
+* One failing selenium test, most likely a test issue rather than actual broken code (Xavier, snow leopard, 11th Apr '10)
 
 == Roles
 
