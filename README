@@ -1,0 +1,53 @@
+= Kituo
+
+This is an internal application used by social workers at the Amani Children's Home in Moshi, TZ. It's primary function is to schedule and keep track of home visits.
+
+http://amanikids.org/
+
+== Quick start
+
+  cp config/database.example.yml config/database.yml # Edit to taste
+  git submodule init
+  git submodule update
+  rake db:create:all
+  rake db:migrate # NOTE: Currently doesn't work with SQLite, MySQL does work
+
+  rake            # Runs all specs and selenium features
+  ./script/server # Starts a development server at http://localhost:3000/
+  rake db:seed    # Some test data for development
+
+== Known issues
+
+* One failing selenium test, most likely a test issue rather than actual broken code (XS on snow leopard.)
+
+== Roles
+
+=== Social worker
+
+There are about 5 social workers at Amani. They want to:
+
+* Schedule home visits, either to try and arrange a reunification of a child with their extended family, or to check up on such an arragement. This normally happens every month or so - see the RecommendedVisit model for typical guidelines.
+* Print a roll call sheet for all kids on site
+
+=== Social work coordinator
+
+Manages the social workers. Traditionally just one. They want to:
+
+* Get an overview of how long kids are staying at Amani
+* Assign kids to social workers
+
+=== Development officer
+
+Tradiontionally just one. They want to:
+
+* Get an overview of how long kids are staying at Amani
+* Upload headshots of the kids
+
+== Design
+
+* As this is an internal app, Firefox is the only browser that needs to be supported
+* Authentication is not required - social workers often masquerade as others when they are on leave - and there is no private data. The indentification page is for convenience and better usability (we can provide a home page that is directly useful to the person).
+* Average computer competence of users is low, so the UI is designed to be big and friendly. Drag and drop is used liberally as it was the easiest for social workers to use.
+* Selenium tests cover all the functionality, including the JS drag-drop stuff which is kind of neat.
+* The app is localized to Swahili and English
+* African names typically aren't as strict as English ones. Spelling is quite variable. To try and alleviate the problem of multiple case files for the same person, an algorithm is used to suggest potential duplicates. Also, having a photo of the kids visible is quite important in this regard.
