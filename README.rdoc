@@ -12,9 +12,15 @@ http://amanikids.org/
   rake db:create:all
   rake db:migrate # NOTE: Currently doesn't work with SQLite, MySQL does work
 
-  rake            # Runs all specs and selenium features
-  ./script/server # Starts a development server at http://localhost:3000/
-  rake db:seed    # Some test data for development
+  rake                     # Runs all specs and selenium features
+  rake db:seed:development # Some test data for development
+  ./script/server          # Starts a development server at http://localhost:3000/
+
+== Dependencies
+
+For photos to work properly, you'll need to have imagemagick installed
+
+  brew install imagemagick # Or use ports or something
 
 == Known issues
 
