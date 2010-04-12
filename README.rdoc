@@ -2,7 +2,7 @@
 
 This is an internal application used by social workers at the Amani Children's Home in Moshi, TZ. It's primary function is to schedule and keep track of home visits.
 
-http://amanikids.org/
+http://amanikids.org
 
 == Quick start
 
