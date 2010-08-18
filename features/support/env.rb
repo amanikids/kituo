@@ -7,9 +7,17 @@ require 'cucumber/formatter/unicode' # Comment out this line if you don't want C
 ActionController::Base.allow_rescue = false
 
 require 'webrat/selenium'
+require 'selenium_rc' # includes a newer-than-Webrat's Selenium RC jar file.
 
 Webrat.configure do |config|
   config.mode = :selenium
+end
+
+class Webrat::Selenium::SeleniumRCServer
+  # Use a newer Selenium RC server than Webrat bundles.
+  def jar_path
+    SeleniumRC::Server.new('IRRELEVANT HOSTNAME').jar_path
+  end
 end
 
 # Running features via Selenium involves a number of processes: the initial

@@ -17,7 +17,12 @@ Feature: Caregivers
       | Social Worker | Godfrey Pamphil |
     And I am signed in as "Godfrey Pamphil"
     When I click "Edit your profile"
-    And I fill in "Name" with "Japhary Salum"
+
+    # Oh, no! This test used to say "Name", but it seems like our current
+    # version of Selenium (or Webrat?) can't find fields named "Name" -- I'm
+    # guessing because of some kind of collision with the HTML "name" attribute
+    # on form fields. FIXME
+    And I fill in "caregiver_name" with "Japhary Salum"
     And I select "Social Work Coordinator" from "Role"
     And I attach the file "sample_headshot.jpg" to "Headshot"
     And I press "Save"
