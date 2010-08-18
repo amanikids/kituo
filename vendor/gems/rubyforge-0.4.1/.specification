@@ -1,0 +1,80 @@
+--- !ruby/object:Gem::Specification 
+name: rubyforge
+version: !ruby/object:Gem::Version 
+  hash: 13
+  prerelease: false
+  segments: 
+  - 0
+  - 4
+  - 1
+  version: 0.4.1
+platform: ruby
+authors: 
+- Ara T Howard
+- Ryan Davis
+- Eric Hodel
+autorequire: 
+bindir: bin
+cert_chain: 
+date: 2007-03-08 00:00:00 +03:00
+default_executable: rubyforge
+dependencies: []
+
+description: "A simplistic script which automates a limited set of rubyforge operations   * Run 'rubyforge help' for complete usage. * Setup: For first time users AND upgrades to 0.4.0: * rubyforge setup * edit ~/.rubyforge/user-config.yml * rubyforge config * Don't forget to login!  logging in will store a cookie in your .rubyforge directory which expires after a time.  always run the login command before any operation that requires authentication, such as uploading a package."
+email: ryand-ruby@zenspider.com
+executables: 
+- rubyforge
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- .cvsignore
+- History.txt
+- Manifest.txt
+- README.txt
+- Rakefile
+- bin/rubyforge
+- lib/http-access2.rb
+- lib/http-access2/cookie.rb
+- lib/http-access2/http.rb
+- lib/rubyforge.rb
+- test/test_rubyforge.rb
+has_rdoc: true
+homepage: http://rubyforge.org/projects/codeforpeople
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">"
+    - !ruby/object:Gem::Version 
+      hash: 31
+      segments: 
+      - 0
+      - 0
+      - 0
+      version: 0.0.0
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: codeforpeople
+rubygems_version: 1.3.7
+signing_key: 
+specification_version: 1
+summary: A simplistic script which automates a limited set of rubyforge operations
+test_files: 
+- test/test_rubyforge.rb
