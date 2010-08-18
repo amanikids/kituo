@@ -4,7 +4,7 @@ module ActionView
     module TranslationHelper
       def translate(key, options = {})
         options[:raise] = true
-        I18n.translate(scope_key_by_partial(key), options)
+        I18n.translate(scope_keys_by_partial(key), options)
       end
       alias :t :translate
     end

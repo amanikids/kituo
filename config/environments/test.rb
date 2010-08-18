@@ -27,13 +27,7 @@ config.action_mailer.delivery_method = :test
 # like if you have constraints or database-specific column types
 # config.active_record.schema_format = :sql
 
-# Gems.
-config.gem 'chronic'
-config.gem 'faker'
-config.gem 'jeremymcanally-matchy', :lib => 'matchy', :source => 'http://gems.github.com/'
-config.gem 'notahat-machinist', :lib => 'machinist/active_record', :source => 'http://gems.github.com/'
-config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.com/'
-
+# Require these extensions here so they'll affect both Cucumber and regular tests.
 config.after_initialize do
   require 'chronic_extensions'
   require 'whiny_translations'
