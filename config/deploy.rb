@@ -102,7 +102,7 @@ after 'deploy:update_code' do
   run "ln -sf #{shared_path}/database.yml #{latest_release}/config/database.yml"
   run "ln -sf #{shared_path}/bundle #{latest_release}/vendor/bundle"
 
-  run "cd #{latest_release} && bundle install --deployment"
+  run "cd #{latest_release} && bundle install --deployment --without development --without test"
 
   if rails_env == 'staging'
     # Replace our data with production data.
