@@ -41,7 +41,7 @@ set :cap_gun_action_mailer_config, {
 
 # define the options for the actual emails that go out -- :recipients is the only required option
 set :cap_gun_email_envelope, {
-  :recipients => %w[joe@amanikids.org japhary@amanikids.org matthew.todd@gmail.com],
+  :recipients => %w[fidea@amanikids.org matthew.todd@gmail.com],
   :from       => 'Deployment Notifier <no-reply@amanikids.org>'
 }
 
