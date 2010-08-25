@@ -15,7 +15,7 @@ class DashboardController < ApplicationController
       @children_requiring_headshots = Child.by_name.find_all_by_headshot_file_name(nil)
       @statistics = Statistics.new
     when 'database_administrator'
-
+      @new_children = Child.recent.all(:limit => 5)
     else
       raise "Unknown caregiver role: #{current_user.inspect}"
     end

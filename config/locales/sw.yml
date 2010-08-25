@@ -87,6 +87,10 @@ sw:
       social_workers_required: Watoto hawa wanahitaji social worker
     development_officer:
       headshots_required: Watoto hawa wanahitaji picha
+    database_administrator:
+      new_child: Fungua faili la mtoto mgeni
+      new_children: Faili zilizofunguliwa hivi karibuni
+      potential_duplicate_warning: Inawezeka kuna faili lingine kwa mtoto huu!
 
   children:
     on_site:
