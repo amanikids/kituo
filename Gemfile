@@ -6,7 +6,8 @@ gem 'english',      '0.3.1', :require => 'english/soundex'
 gem 'haml',         '2.0.9'
 gem 'mysql',        '2.8.1'
 gem 'prawn',        '0.4.1'
-gem 'prawn-layout', '0.1.0'
+gem 'prawn-layout', '0.1.0', :require => 'prawn/layout'
+gem 'prawnto',      '0.0.1'
 gem 'paperclip',    '2.2.8'
 
 group :development do
