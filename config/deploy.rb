@@ -45,6 +45,10 @@ set :cap_gun_email_envelope, {
   :from       => 'Deployment Notifier <no-reply@amanikids.org>'
 }
 
+# Be sure we use the bundled version of rake; this way, it doesn't matter what
+# other versions are installed on the server.
+set :rake, 'bundle exec rake'
+
 # =============================================================================
 # = Tasks                                                                     =
 # =============================================================================
@@ -74,7 +78,7 @@ end
 
 desc 'Run an arbitrary rake task. (-s task=foo)'
 task :rake do
-  rake      = fetch(:rake, 'rake')
+  rake      = fetch(:rake)
   rails_env = fetch(:rails_env)
   rake_task = fetch(:task)
   run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} #{rake_task}"
