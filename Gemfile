@@ -1,6 +1,6 @@
 source 'http://rubygems.org/'
 
-gem 'rails',        '2.3.8'
+gem 'rails',        '2.3.8', :require => false
 
 gem 'english',      '0.3.1', :require => 'english/soundex'
 gem 'haml',         '2.0.9'
@@ -19,7 +19,6 @@ group :test do
   gem 'cucumber',        '0.4.4'
   gem 'faker',           '0.3.1'
   gem 'machinist',       '1.0.3',  :require => 'machinist/active_record'
-  gem 'mongrel',         '1.1.5',  :require => false
   gem 'selenium-client', '1.2.18', :require => false
   gem 'selenium-rc',     '2.2.4',  :require => false
   gem 'shoulda',         '2.10.2', :require => false

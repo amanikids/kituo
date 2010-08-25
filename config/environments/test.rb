@@ -30,5 +30,4 @@ config.action_mailer.delivery_method = :test
 # Require these extensions here so they'll affect both Cucumber and regular tests.
 config.after_initialize do
   require 'chronic_extensions'
-  require 'whiny_translations'
 end

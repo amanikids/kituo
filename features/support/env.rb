@@ -11,12 +11,36 @@ require 'selenium_rc' # includes a newer-than-Webrat's Selenium RC jar file.
 
 Webrat.configure do |config|
   config.mode = :selenium
+  config.application_environment = Rails.env
 end
 
 class Webrat::Selenium::SeleniumRCServer
   # Use a newer Selenium RC server than Webrat bundles.
   def jar_path
     SeleniumRC::Server.new('IRRELEVANT HOSTNAME').jar_path
+  end
+end
+
+# Monkey-patch so Webrat will use script/server instead of mongrel_rails.
+require 'webrat/selenium/application_servers/rails'
+
+module Webrat
+  module Selenium
+    module ApplicationServers
+      class Rails < Webrat::Selenium::ApplicationServers::Base
+        def pid_file
+          prepare_pid_file("#{RAILS_ROOT}/tmp/pids", 'server.pid')
+        end
+
+        def start_command
+          "script/server --daemon --port=#{Webrat.configuration.application_port} --environment=#{Webrat.configuration.application_environment} > log/selenium.log"
+        end
+
+        def stop_command
+          "kill -9 #{File.read(pid_file).strip}"
+        end
+      end
+    end
   end
 end
 
