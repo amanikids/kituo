@@ -22,6 +22,10 @@ class Webrat::Selenium::SeleniumRCServer
 end
 
 # Monkey-patch so Webrat will use script/server instead of mongrel_rails.
+# Some problem with mongrel_rails, at least at version 1.1.5, somehow results
+# in the selenium browser not following redirects: so we see page after page of
+# "You are being redirected." Perhaps mongrel 1.2.0 will fix this? Perhaps it
+# has something to do with hoe gem_plugin interacts with bundler?
 require 'webrat/selenium/application_servers/rails'
 
 module Webrat
