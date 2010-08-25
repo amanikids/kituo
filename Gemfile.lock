@@ -58,9 +58,13 @@ GEM
     paperclip (2.2.8)
       right_aws
     polyglot (0.2.9)
-    prawn (0.4.1)
-      prawn-layout
-    prawn-layout (0.1.0)
+    prawn (0.8.4)
+      prawn-core (>= 0.8.4, < 0.9)
+      prawn-layout (>= 0.8.4, < 0.9)
+      prawn-security (>= 0.8.4, < 0.9)
+    prawn-core (0.8.4)
+    prawn-layout (0.8.4)
+    prawn-security (0.8.4)
     prawnto (0.0.1)
       prawn
       rails (>= 2.1)
@@ -109,8 +113,7 @@ DEPENDENCIES
   matchy!
   mysql (= 2.8.1)
   paperclip (= 2.2.8)
-  prawn (= 0.4.1)
-  prawn-layout (= 0.1.0)
+  prawn (= 0.8.4)
   prawnto (= 0.0.1)
   rails (= 2.3.8)
   redgreen (= 1.2.2)
