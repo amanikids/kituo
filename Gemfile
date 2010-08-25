@@ -10,8 +10,8 @@ gem 'prawn-layout', '0.1.0'
 gem 'paperclip',    '2.2.8'
 
 group :development do
-  gem 'highline', '1.5.2',  :require => false
-  gem 'net-ssh',  '2.0.11', :require => false
+  gem 'capistrano', '2.5.19', :require => false
+  gem 'highline',   '1.5.2',  :require => false
 end
 
 group :test do
