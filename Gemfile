@@ -19,6 +19,7 @@ group :test do
   gem 'cucumber',        '0.4.4'
   gem 'faker',           '0.3.1'
   gem 'machinist',       '1.0.3',  :require => 'machinist/active_record'
+  gem 'redgreen',        '1.2.2',  :require => false
   gem 'selenium-client', '1.2.18', :require => false
   gem 'selenium-rc',     '2.2.4',  :require => false
   gem 'shoulda',         '2.10.2', :require => false
