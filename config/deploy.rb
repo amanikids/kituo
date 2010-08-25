@@ -1,6 +1,6 @@
 require 'vendor/plugins/action_mailer_optional_tls/lib/smtp_tls'
 require 'vendor/plugins/action_mailer_optional_tls/lib/action_mailer_tls'
-require 'vendor/plugins/cap_gun/lib/cap_gun'
+require 'cap_gun'
 
 # =============================================================================
 # = Settings                                                                  =

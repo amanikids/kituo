@@ -11,6 +11,7 @@ gem 'paperclip',    '2.2.8'
 
 group :development do
   gem 'capistrano', '2.5.19', :require => false
+  gem 'cap_gun',    '0.2.4',  :require => false
   gem 'highline',   '1.5.2',  :require => false
 end
 
