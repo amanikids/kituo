@@ -17,6 +17,7 @@ sw:
     social_worker: Social Worker
     social_work_coordinator: Social Work Coordinator
     development_officer: Development Officer
+    database_administrator: Database Administrator
 
   state:
     unknown: Hatujui yuko wapi

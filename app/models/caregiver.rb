@@ -21,7 +21,12 @@ class Caregiver < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def self.all_roles
-    %w(social_worker social_work_coordinator development_officer)
+    %w(
+      social_worker
+      social_work_coordinator
+      development_officer
+      database_administrator
+    )
   end
 
   def friendly_name

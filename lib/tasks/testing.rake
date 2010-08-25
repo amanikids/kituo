@@ -29,7 +29,7 @@ begin
 
   namespace :features do
     Cucumber::Rake::Task.new(:wip, "Show WIP features") do |t|
-      t.cucumber_opts = "--tags @wip --dry-run"
+      t.cucumber_opts = "--tags @wip --wip"
     end
   end
 
