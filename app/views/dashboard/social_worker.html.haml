@@ -25,34 +25,3 @@
       %ul= render :partial => 'visit', :collection => @search_results
 
 = render 'tasks'
-
-.section.new-child
-  %h2= t('.new_child')
-  - form_for(Child.new) do |form|
-    %ul
-      %li
-        = form.label :name
-        = form.text_field :name, :autocomplete => 'off'
-      %li
-        = form.label :location
-        = form.text_field :location, :autocomplete => 'off'
-      %li
-        = form.hidden_field :state, :value => 'on_site'
-        = form.submit(t('form.save'))
-
-.section.new-children
-  %h2= t('.new_children')
-  %ul
-    - @new_children.each do |child|
-      %li.child-summary{ :class => (child.potential_duplicate? ? 'potential-duplicate' : '') }
-        .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
-        .heading
-          %span.name= link_to h(child.name), child
-        .meta
-          %span.comment
-            = t(child.state, :scope => 'state') + ','
-            - unless child.location.blank?
-              = t('from')
-              = h(child.location)
-          - if child.potential_duplicate?
-            %span.warning= t('.potential_duplicate_warning')
