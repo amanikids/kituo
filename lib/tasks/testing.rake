@@ -24,7 +24,7 @@ begin
   require 'cucumber/rake/task'
 
   Cucumber::Rake::Task.new(:features) do |t|
-    t.cucumber_opts = "--tags ~@wip"
+    t.cucumber_opts = "--tags ~@wip,~@webrat_problem"
   end
 
   namespace :features do
