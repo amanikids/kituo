@@ -95,10 +95,14 @@ after 'deploy:setup' do
     }
   }
   put database_config.to_yaml, "#{shared_path}/database.yml"
+  run "mkdir -p #{shared_path}/bundle" # TODO should use shared_children instead.
 end
 
 after 'deploy:update_code' do
   run "ln -sf #{shared_path}/database.yml #{latest_release}/config/database.yml"
+  run "ln -sf #{shared_path}/bundle #{latest_release}/vendor/bundle"
+
+  run "cd #{latest_release} && bundle install --deployment"
 
   if rails_env == 'staging'
     # Replace our data with production data.
