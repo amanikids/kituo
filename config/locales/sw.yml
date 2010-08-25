@@ -92,6 +92,10 @@ sw:
       new_children: Faili zilizofunguliwa hivi karibuni
       potential_duplicate_warning: Inawezeka kuna faili lingine kwa mtoto huu!
       search: Tafuta
+      children_found:
+        zero: Hakuna mtoto mwenye jina hili.
+        one: Kuna mtoto mmoja.
+        other: "Kuna watoto {{count}}."
 
   children:
     on_site:

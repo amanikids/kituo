@@ -1,5 +1,27 @@
 = render 'header'
 
+.section.search
+  %h2= t('.search')
+  - form_tag({}, :method => :get) do
+    = text_field_tag 'search', params[:search], :autocomplete => 'off'
+    = submit_tag(t('.search'), :name => nil)
+  - if params[:search].present?
+    %h3= t('.children_found', :count => @search_results.size)
+    %ul
+      - @search_results.each do |child|
+        %li.child-summary{ :class => (child.potential_duplicate? ? 'potential-duplicate' : '') }
+          .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
+          .heading
+            %span.name= link_to h(child.name), child
+          .meta
+            %span.comment
+              = t(child.state, :scope => 'state') + ','
+              - unless child.location.blank?
+                = t('from')
+                = h(child.location)
+            - if child.potential_duplicate?
+              %span.warning= t('.potential_duplicate_warning')
+
 .section.new-child
   %h2= t('.new_child')
   - form_for(Child.new) do |form|
@@ -13,26 +35,6 @@
       %li
         = form.hidden_field :state, :value => 'on_site'
         = form.submit(t('form.save'))
-
-.section.search
-  %h2= t('.search')
-  - form_tag({}, :method => :get) do
-    = text_field_tag 'search', params[:search], :autocomplete => 'off'
-    = submit_tag(t('.search'), :name => nil)
-  %ul
-    - @search_results.each do |child|
-      %li.child-summary{ :class => (child.potential_duplicate? ? 'potential-duplicate' : '') }
-        .headshot= link_to image_tag(child.headshot.url, :size => '40x40'), child
-        .heading
-          %span.name= link_to h(child.name), child
-        .meta
-          %span.comment
-            = t(child.state, :scope => 'state') + ','
-            - unless child.location.blank?
-              = t('from')
-              = h(child.location)
-          - if child.potential_duplicate?
-            %span.warning= t('.potential_duplicate_warning')
 
 .section.new-children
   %h2= t('.new_children')

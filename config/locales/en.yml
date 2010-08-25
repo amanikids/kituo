@@ -92,6 +92,10 @@ en:
       new_children: Recently opened case files
       potential_duplicate_warning: This may be a duplicate case file!
       search: Search
+      children_found:
+        zero: No children found.
+        one: One child found.
+        other: "{{count}} children found."
 
   children:
     on_site:
