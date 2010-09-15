@@ -1,5 +1,3 @@
-require 'vendor/plugins/action_mailer_optional_tls/lib/smtp_tls'
-require 'vendor/plugins/action_mailer_optional_tls/lib/action_mailer_tls'
 require 'cap_gun'
 
 # =============================================================================
@@ -30,13 +28,13 @@ server 'mchungaji.amani', :web, :app, :db, :primary => true
 
 # setup action mailer with a hash of options
 set :cap_gun_action_mailer_config, {
-  :tls => true,
   :address => 'smtp.gmail.com',
   :port => 587,
   :domain => 'amanikids.org',
-  :authentication => :plain,
   :user_name => 'no-reply@amanikids.org',
-  :password => File.read(File.join(File.dirname(__FILE__), 'cap_gun_password.txt')).strip
+  :password => File.read(File.join(File.dirname(__FILE__), 'cap_gun_password.txt')).strip,
+  :authentication => :plain,
+  :enable_starttls_auto => true
 }
 
 # define the options for the actual emails that go out -- :recipients is the only required option
