@@ -15,17 +15,17 @@ When /^I follow "([^\"]*)" for the event that happened on "([^\"]*)"$/ do |link,
 end
 
 Then /^I should see an arrival event for "([^\"]*)"$/ do |day|
-  assert_contain_within_selector('.timeline', "Arrived at Amani on #{human_date(day)}")
+  Then %{I should see "Arrived at Amani on #{human_date(day)}" within ".timeline"}
 end
 
 Then /^I should see a reunification event for "([^\"]*)"$/ do |day|
-  assert_contain_within_selector('.timeline', "Reunified on #{human_date(day)}")
+  Then %{I should see "Reunified on #{human_date(day)}" within ".timeline"}
 end
 
 Then /^I should not see a reunification event for "([^\"]*)"$/ do |day|
-  assert_not_contain_within_selector('.timeline', "Reunified on #{human_date(day)}")
+  Then %{I should not see "Reunified on #{human_date(day)}" within ".timeline"}
 end
 
 Then /^I should see that the child's state is "([^\"]*)"$/ do |state|
-  assert_contain_within_selector('.details .state .show', state)
+  Then %{I should see "#{state}" within ".details .state .show"}
 end

@@ -56,11 +56,11 @@ Then /^a visit for "([^\"]*)" should not be scheduled for "([^\"]*)"$/ do |child
 end
 
 Then /^I should see a scheduled visit for "([^\"]*)"$/ do |day|
-  assert_contain_within_selector('.scheduled_visits', human_date(day))
+  Then %{I should see "#{human_date(day)}" within ".scheduled_visits"}
 end
 
 Then /^I should not see a scheduled visit for "([^\"]*)"$/ do |day|
-  assert_not_contain_within_selector('.scheduled_visits', human_date(day))
+  Then %{I should not see "#{human_date(day)}" within ".scheduled_visits"}
 end
 
 Then /^a home visit for "([^\"]*)" should have happened on "([^\"]*)"$/ do |child_name, day|
@@ -68,7 +68,7 @@ Then /^a home visit for "([^\"]*)" should have happened on "([^\"]*)"$/ do |chil
 end
 
 Then /^I should see a home visit for "([^\"]*)"$/ do |day|
-  assert_contain_within_selector('.timeline', human_date(day))
+  Then %{I should see "#{human_date(day)}" within ".timeline"}
 end
 
 When /^I follow day "([^\"]*)" in the calendar$/ do |link|
@@ -79,5 +79,5 @@ end
 When /^I follow "([^\"]*)" for the visit scheduled for "([^\"]*)"$/ do |link, day|
   # FIXME this only works if there's just one scheduled visit
   raise("Unimplemented for more than one scheduled visit") if ScheduledVisit.count > 1
-  click_link_within('.scheduled_visits', link)
+  When %{I follow "#{link}" within ".scheduled_visits"}
 end

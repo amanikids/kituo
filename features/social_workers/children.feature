@@ -14,7 +14,6 @@ Feature:
 
   Scenario: Editing a child
     Given I follow "Juma Masawe"
-    And I wait for page load
     And I follow "Edit"
     And I fill in "child_name" with "Jumanne"
     And I select "Xavier Shay" from "child_social_worker_id"
@@ -27,13 +26,13 @@ Feature:
 
   Scenario: Changing the state of a child
     Given I follow "Juma Masawe"
-    And I wait for page load
     And I follow "Edit"
     And I select "Reunified" from "child_state"
     And I press "Save"
     Then I should see "Reunified"
     Then I should see a reunification event for "today"
 
+  @javascript
   Scenario: Changing the date of an event for a child
     And the following events exist:
       | Child       | Event         | Date                  |
@@ -55,6 +54,7 @@ Feature:
     Then I should not see a reunification event for "the second day of this month"
     Then I should see that the child's state is "Unknown status"
 
+  @javascript
   Scenario: Scheduling a visit from the child page
     Given I follow "Juma Masawe"
     Given I follow "Schedule a new visit"
@@ -67,6 +67,7 @@ Feature:
     Then I should see a home visit for "the first day of this month"
     And I should not see a scheduled visit for "the first day of this month"
 
+  @javascript
   Scenario: Editing a visit from the child page
     Given I follow "Juma Masawe"
     Given I follow "Edit" for the visit scheduled for "the first day of this month"
