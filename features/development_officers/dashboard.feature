@@ -13,6 +13,5 @@ Feature: Dashboard
     When I am signed in as "Joe Ventura"
     Then I should see "Kalisti Jumanne"
     When I attach the file "features/support/sample_headshot.jpg" to "child[headshot]"
-    And I wait for page load
     Then I should not see "Kalisti Jumanne"
     # TODO should Joe be able to get to any kid?

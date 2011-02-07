@@ -14,6 +14,5 @@ Feature: Dashboard
     When I am signed in as "Japhary Salum"
     Then I should see "Ramadhan Saidi"
     When I select "Godfrey Pamphil" from "child[social_worker_id]"
-    And I wait for page load
     Then I should not see "Ramadhan Saidi"
     # TODO should Joe be able to get to any kid?
