@@ -1,6 +1,7 @@
 require 'chronic'
+require 'chronic_extensions'
 
-module Helpers
+module ChronicHelpers
   def human_date(day)
     I18n.localize(
       Chronic.parse(day).to_date,
@@ -9,4 +10,4 @@ module Helpers
   end
 end
 
-World(Helpers)
+World(ChronicHelpers)
