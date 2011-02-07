@@ -9,7 +9,7 @@ Given /^the following events exist:$/ do |table|
   end
 end
 
-When /^I click "([^\"]*)" for the event that happened on "([^\"]*)"$/ do |link, day|
+When /^I follow "([^\"]*)" for the event that happened on "([^\"]*)"$/ do |link, day|
   selector = "//*[contains(text(), '#{human_date(day)}')]/ancestor::tr/descendant::a[text()='#{link}']"
   selenium.wait_for_element selector, :timeout_in_seconds => 5
   selenium.click            selector

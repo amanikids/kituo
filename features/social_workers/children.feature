@@ -13,9 +13,9 @@ Feature:
     And I am signed in as "Xavier Shay"
 
   Scenario: Editing a child
-    Given I click "Juma Masawe"
+    Given I follow "Juma Masawe"
     And I wait for page load
-    And I click "Edit"
+    And I follow "Edit"
     And I fill in "child_name" with "Jumanne"
     And I select "Xavier Shay" from "child_social_worker_id"
     And I fill in "child_location" with "Arusha"
@@ -26,9 +26,9 @@ Feature:
     And I should see "Arusha"
 
   Scenario: Changing the state of a child
-    Given I click "Juma Masawe"
+    Given I follow "Juma Masawe"
     And I wait for page load
-    And I click "Edit"
+    And I follow "Edit"
     And I select "Reunified" from "child_state"
     And I press "Save"
     Then I should see "Reunified"
@@ -39,10 +39,10 @@ Feature:
       | Child       | Event         | Date                  |
       | Juma Masawe | Reunification | Second day this month |
       | Juma Masawe | Arrival       | Third day this month  |
-    Given I click "Juma Masawe"
+    Given I follow "Juma Masawe"
     Then I should see "At Amani"
-    Given I click "Edit" for the event that happened on "the third day of this month"
-    And I click day "1" in the calendar
+    Given I follow "Edit" for the event that happened on "the third day of this month"
+    And I follow day "1" in the calendar
     Then I should see an arrival event for "the first day of this month"
     Then I should see that the child's state is "Reunified"
 
@@ -50,31 +50,31 @@ Feature:
     And the following events exist:
       | Child       | Event         | Date                  |
       | Juma Masawe | Reunification | Second day this month |
-    Given I click "Juma Masawe"
-    Given I click "Delete" for the event that happened on "the second day of this month"
+    Given I follow "Juma Masawe"
+    Given I follow "Delete" for the event that happened on "the second day of this month"
     Then I should not see a reunification event for "the second day of this month"
     Then I should see that the child's state is "Unknown status"
 
   Scenario: Scheduling a visit from the child page
-    Given I click "Juma Masawe"
-    Given I click "Schedule a new visit"
-    And I click day "2" in the calendar
+    Given I follow "Juma Masawe"
+    Given I follow "Schedule a new visit"
+    And I follow day "2" in the calendar
     Then I should see a scheduled visit for "the second day of this month"
 
   Scenario: Completing a visit from the child page
-    Given I click "Juma Masawe"
-    Given I click "Complete" for the visit scheduled for "the first day of this month"
+    Given I follow "Juma Masawe"
+    Given I follow "Complete" for the visit scheduled for "the first day of this month"
     Then I should see a home visit for "the first day of this month"
     And I should not see a scheduled visit for "the first day of this month"
 
   Scenario: Editing a visit from the child page
-    Given I click "Juma Masawe"
-    Given I click "Edit" for the visit scheduled for "the first day of this month"
-    And I click day "2" in the calendar
+    Given I follow "Juma Masawe"
+    Given I follow "Edit" for the visit scheduled for "the first day of this month"
+    And I follow day "2" in the calendar
     Then I should see a scheduled visit for "the second day of this month"
     And I should not see a scheduled visit for "the first day of this month"
 
   Scenario: Unscheduling a visit from the child page
-    Given I click "Juma Masawe"
-    Given I click "Unschedule" for the visit scheduled for "the first day of this month"
+    Given I follow "Juma Masawe"
+    Given I follow "Unschedule" for the visit scheduled for "the first day of this month"
     Then I should not see a scheduled visit for "the first day of this month"

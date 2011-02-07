@@ -16,14 +16,13 @@ end
 
 group :test do
   gem 'chronic'
-  gem 'cucumber'
+  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
   gem 'faker'
   gem 'machinist',       :require => 'machinist/active_record'
   gem 'redgreen',        :require => false
-  gem 'selenium-client', :require => false
-  gem 'selenium-rc',     :require => false
   gem 'shoulda',         :require => false
-  gem 'webrat'
 
   gem 'matchy',
         :git => 'git://github.com/jm/matchy.git',

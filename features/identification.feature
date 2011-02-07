@@ -10,5 +10,5 @@ Feature:
     Given I am not signed in
     Given I am on the english dashboard
     Then I should see "Hello"
-    And I click "Xavier Shay"
+    And I follow "Xavier Shay"
     Then I should see "Welcome, Xavier!"

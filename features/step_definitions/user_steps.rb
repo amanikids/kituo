@@ -15,5 +15,5 @@ Given /^I am not signed in$/ do
 end
 
 Then /^there should be a headshot "([^\"]*)" for caregiver "([^\"]*)"$/ do |filename, name|
-  Caregiver.find_by_name(name).headshot_file_name.should == filename
+  assert_equal filename, Caregiver.find_by_name(name).headshot_file_name
 end

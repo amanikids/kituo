@@ -71,12 +71,12 @@ Then /^I should see a home visit for "([^\"]*)"$/ do |day|
   assert_contain_within_selector('.timeline', human_date(day))
 end
 
-When /^I click day "([^\"]*)" in the calendar$/ do |link|
+When /^I follow day "([^\"]*)" in the calendar$/ do |link|
   sleep 0.5
   click_link(link)
 end
 
-When /^I click "([^\"]*)" for the visit scheduled for "([^\"]*)"$/ do |link, day|
+When /^I follow "([^\"]*)" for the visit scheduled for "([^\"]*)"$/ do |link, day|
   # FIXME this only works if there's just one scheduled visit
   raise("Unimplemented for more than one scheduled visit") if ScheduledVisit.count > 1
   click_link_within('.scheduled_visits', link)

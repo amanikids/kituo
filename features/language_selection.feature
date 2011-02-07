@@ -13,5 +13,5 @@ Feature:
 
   @webrat_problem
   Scenario: English language, for Joe and the devs
-    Given I click "English"
+    Given I follow "English"
     Then I should see "Hello!"
