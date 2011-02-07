@@ -101,23 +101,23 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cap_gun (= 0.2.4)
-  capistrano (= 2.5.19)
-  chronic (= 0.2.3)
-  cucumber (= 0.4.4)
-  english (= 0.3.1)
-  faker (= 0.3.1)
-  haml (= 2.0.9)
-  highline (= 1.5.2)
-  machinist (= 1.0.3)
+  cap_gun
+  capistrano
+  chronic
+  cucumber
+  english
+  faker
+  haml
+  highline
+  machinist
   matchy!
-  paperclip (= 2.2.8)
-  pg (= 0.10.1)
-  prawn (= 0.8.4)
-  prawnto (= 0.0.1)
-  rails (= 2.3.10)
-  redgreen (= 1.2.2)
-  selenium-client (= 1.2.18)
-  selenium-rc (= 2.2.4)
-  shoulda (= 2.10.2)
-  webrat (= 0.7.1)
+  paperclip
+  pg
+  prawn
+  prawnto
+  rails
+  redgreen
+  selenium-client
+  selenium-rc
+  shoulda
+  webrat
