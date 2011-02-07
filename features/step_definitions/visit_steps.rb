@@ -32,19 +32,10 @@ Given /^the following non-recommended children exist:$/ do |table|
 end
 
 When /^I drag "([^\"]*)" to "([^\"]*)"$/ do |child_name, date|
-  source = "//a[contains(text(),'#{child_name}')]/../../../descendant::span[@class='comment']"
-
-  date = Chronic.parse(date).to_date.to_s
-  destination = "//ul[@data-date='#{date}']"
-
-  [source, destination].each do |selector|
-    selenium.wait_for_element selector, :timeout_in_seconds => 5
-  end
-  selenium.drag_and_drop_to_object(source, destination)
-
-  wait_for do
-    run_javascript("return jQuery.activeAjaxRequestCount;") == "0"
-  end
+  date = Chronic.parse(date).to_date.to_s(:db)
+  source = page.find(:xpath, "//a[contains(text(),'#{child_name}')]/../../../descendant::span[@class='comment']")
+  target = page.find(:xpath, "//ul[@data-date='#{date}']")
+  source.drag_to(target)
 end
 
 Then /^a visit for "([^\"]*)" should be scheduled for "([^\"]*)"$/ do |child_name, day|
@@ -77,7 +68,6 @@ When /^I follow day "([^\"]*)" in the calendar$/ do |link|
 end
 
 When /^I follow "([^\"]*)" for the visit scheduled for "([^\"]*)"$/ do |link, day|
-  # FIXME this only works if there's just one scheduled visit
   raise("Unimplemented for more than one scheduled visit") if ScheduledVisit.count > 1
   When %{I follow "#{link}" within ".scheduled_visits"}
 end

@@ -8,6 +8,7 @@ Feature:
       | Role          | Name        |
       | Social Worker | Xavier Shay |
 
+  @javascript @problem
   Scenario: Rescheduling a visit
     And the following scheduled visits exist:
       | Social Worker | Child       | Date           |
@@ -17,6 +18,7 @@ Feature:
     Then a visit for "Juma Masawe" should be scheduled for "Thursday this week"
     Then a visit for "Juma Masawe" should not be scheduled for "Wednesday this week"
 
+  @javascript @problem
   Scenario: Rescheduling a visit that was missed
     And the following scheduled visits exist:
       | Social Worker | Child       | Date           |
@@ -26,6 +28,7 @@ Feature:
     Then a visit for "Juma Masawe" should be scheduled for "Thursday this week"
     Then a visit for "Juma Masawe" should not be scheduled for "Wednesday last week"
 
+  @javascript @problem
   Scenario: Scheduling a visit from my recommended list
     And the following recommended visits exist:
       | Social Worker | Child       |
@@ -39,6 +42,7 @@ Feature:
 
   Scenario: Unscheduling a visit
 
+  @javascript
   Scenario: Scheduling a visit for a child not in my recommended list
     Given the following non-recommended children exist:
       | Social Worker | Child       |
@@ -56,7 +60,6 @@ Feature:
       | Xavier Shay   | Juma Masawe | Wednesday last week |
     And I am signed in as "Xavier Shay"
     And I follow "Completed"
-    And I wait for page load
     Then a visit for "Juma Masawe" should not be scheduled for "Wednesday last week"
     And a home visit for "Juma Masawe" should have happened on "Wednesday last week"
 
