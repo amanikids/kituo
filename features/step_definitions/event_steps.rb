@@ -10,9 +10,8 @@ Given /^the following events exist:$/ do |table|
 end
 
 When /^I follow "([^\"]*)" for the event that happened on "([^\"]*)"$/ do |link, day|
-  selector = "//*[contains(text(), '#{human_date(day)}')]/ancestor::tr/descendant::a[text()='#{link}']"
-  selenium.wait_for_element selector, :timeout_in_seconds => 5
-  selenium.click            selector
+  selector = "tr[data-happened_on='#{Chronic.parse(day).to_date.to_s(:db)}']"
+  When %{I follow "#{link}" within "#{selector}"}
 end
 
 Then /^I should see an arrival event for "([^\"]*)"$/ do |day|

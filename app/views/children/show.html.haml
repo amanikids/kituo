@@ -67,12 +67,12 @@
 %table.timeline
   - @child.events.each do |event|
     - if event.is_a?(HomeVisit)
-      %tr
+      %tr{'data-happened_on' => event.happened_on}
         %td.date= l(event.happened_on, :format => :human)
         %td.notes= event.notes.blank? ? t('.home_visit') : h(event.notes)
         %td.actions
     - else
-      %tr.event
+      %tr.event{'data-happened_on' => event.happened_on}
         %td{:colspan => 2}
           - form_for(event.becomes(Event)) do |f|
             = t(event.to_state, :date => content_tag(:span, l(event.happened_on, :format => :human), :class => 'show'), :scope => 'state.sentence')
