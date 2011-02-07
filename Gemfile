@@ -1,6 +1,6 @@
 source 'http://rubygems.org/'
 
-gem 'rails',        '2.3.8', :require => false
+gem 'rails',        '2.3.10', :require => false
 
 gem 'english',      '0.3.1', :require => 'english/soundex'
 gem 'haml',         '2.0.9'

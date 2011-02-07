@@ -28,16 +28,16 @@ sw:
     dropped_out: Ametoroka
 
     sentence:
-      on_site: "Alifika Amani tarehe {{date}}"
-      boarding_offsite: "Alienda boarding tarehe {{date}}"
-      reunified: "Aliunganishwa na familia tarehe {{date}}"
-      terminated: "Alikuwa terminated tarehe {{date}}"
-      dropped_out: "Alitoroka tarehe {{date}}"
+      on_site: "Alifika Amani tarehe %{date}"
+      boarding_offsite: "Alienda boarding tarehe %{date}"
+      reunified: "Aliunganishwa na familia tarehe %{date}"
+      terminated: "Alikuwa terminated tarehe %{date}"
+      dropped_out: "Alitoroka tarehe %{date}"
 
   statistics:
-    mean: "Mean: {{mean}}"
-    median: "Median: {{median}}"
-    mode: "Mode: {{mode}}"
+    mean: "Mean: %{mean}"
+    median: "Median: %{median}"
+    mode: "Mode: %{mode}"
 
   from: kutoka
   working: Subiri
@@ -54,7 +54,7 @@ sw:
 
   dashboard:
     header:
-      welcome: "Karibu, {{name}}!"
+      welcome: "Karibu, %{name}!"
       switch_user: Mtu mwingine?
     social_worker:
       scheduled_visits: Matembezi niliyopanga
@@ -80,7 +80,7 @@ sw:
       print_roll_call_sheet: Chapisha mahudhurio ya wiki hii
       edit_your_profile: Hariri taarifa yangu
     visit:
-      last_visited: "Tulimtembelea {{date}}"
+      last_visited: "Tulimtembelea %{date}"
       never_visited: Bado hatujamtembelea
       completed: Tayari
     social_work_coordinator:
@@ -95,12 +95,12 @@ sw:
       children_found:
         zero: Hakuna mtoto mwenye jina hili.
         one: Kuna mtoto mmoja.
-        other: "Kuna watoto {{count}}."
+        other: "Kuna watoto %{count}."
 
   children:
     on_site:
       title: Watoto wanaokaa kituoni
-      subtitle: "Wiki ya {{begin_date}} hadi {{end_date}}"
+      subtitle: "Wiki ya %{begin_date} hadi %{end_date}"
 
     show:
       dashboard: Rudi kwenye ukurasa wangu
@@ -140,8 +140,8 @@ sw:
       template:
         mwa:
           header:
-            one:    "Tumeshindwa kuhifadhi {{model}} huyu kwa sababu ya jambo limoja."
-            other:  "Tumeshindwa kuhifadhi {{model}} huyu kwa sababu ya mambo {{count}}."
+            one:    "Tumeshindwa kuhifadhi %{model} huyu kwa sababu ya jambo limoja."
+            other:  "Tumeshindwa kuhifadhi %{model} huyu kwa sababu ya mambo %{count}."
 
       models:
         event:
@@ -165,9 +165,9 @@ sw:
       x_weeks_ago:
         zero: wiki hii
         one:  wiki iliyopita
-        other: "wiki {{count}} zilizopita"
+        other: "wiki %{count} zilizopita"
 
       x_weeks_from_now:
         zero: wiki hii
         one:  wiki ijayo
-        other: "wiki {{count}} zijazo"
+        other: "wiki %{count} zijazo"
