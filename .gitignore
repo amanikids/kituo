@@ -1,5 +1,4 @@
 .bundle
-.rvmrc
 config/cap_gun_password.txt
 log
 public/stylesheets/*.css
