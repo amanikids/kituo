@@ -2,7 +2,7 @@ class SingleTableInheritanceForEvents < ActiveRecord::Migration
   def self.up
     rename_table :arrivals, :events
     add_column :events, :type, :string
-    execute 'UPDATE events SET type="Arrival"'
+    execute "UPDATE events SET type='Arrival'"
   end
 
   def self.down

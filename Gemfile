@@ -4,7 +4,7 @@ gem 'rails',        '2.3.8', :require => false
 
 gem 'english',      '0.3.1', :require => 'english/soundex'
 gem 'haml',         '2.0.9'
-gem 'mysql',        '2.8.1'
+gem 'pg',           '0.10.1'
 gem 'prawn',        '0.8.4', :require => ['prawn', 'prawn/layout']
 gem 'prawnto',      '0.0.1'
 gem 'paperclip',    '2.2.8'
