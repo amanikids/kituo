@@ -13,8 +13,7 @@ module ApplicationHelper
       ),
       :scheduled_visits => %w(
         jquery-1.3.2
-        jquery-ui-1.7.2.everything.min
-        ajax_request_count)
+        jquery-ui-1.7.2.everything.min)
     }
   end
 
