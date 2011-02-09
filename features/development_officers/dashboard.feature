@@ -3,6 +3,7 @@ Feature: Dashboard
   As a development officer
   I want to do things on my dashboard
 
+  @javascript
   Scenario: Uploading a headshot for a kid without one
     Given the following users exist:
       | Role                | Name        |
