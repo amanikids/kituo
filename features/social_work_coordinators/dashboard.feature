@@ -3,6 +3,7 @@ Feature: Dashboard
   As a social work coordinator
   I want to do things on my dashboard
 
+  @javascript
   Scenario: Assigning a child to a social worker
     Given the following users exist:
       | Role                    | Name            |
