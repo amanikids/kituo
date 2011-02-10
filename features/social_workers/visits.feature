@@ -8,6 +8,12 @@ Feature:
       | Role          | Name        |
       | Social Worker | Xavier Shay |
 
+  # matthewtodd: Augh. Features dragging into a jQuery sortable are failing
+  # because driver translates target element into x, y delta to move, then
+  # steps.
+  # matthewtodd: (So, the wrong drop targets expand as the draggable passes
+  # over them, pushing the right drop target out of the precalculated drag
+  # path.)
   @javascript @problem
   Scenario: Rescheduling a visit
     And the following scheduled visits exist:
@@ -18,6 +24,12 @@ Feature:
     Then a visit for "Juma Masawe" should be scheduled for "Thursday this week"
     Then a visit for "Juma Masawe" should not be scheduled for "Wednesday this week"
 
+  # matthewtodd: Augh. Features dragging into a jQuery sortable are failing
+  # because driver translates target element into x, y delta to move, then
+  # steps.
+  # matthewtodd: (So, the wrong drop targets expand as the draggable passes
+  # over them, pushing the right drop target out of the precalculated drag
+  # path.)
   @javascript @problem
   Scenario: Rescheduling a visit that was missed
     And the following scheduled visits exist:
@@ -28,6 +40,12 @@ Feature:
     Then a visit for "Juma Masawe" should be scheduled for "Thursday this week"
     Then a visit for "Juma Masawe" should not be scheduled for "Wednesday last week"
 
+  # matthewtodd: Augh. Features dragging into a jQuery sortable are failing
+  # because driver translates target element into x, y delta to move, then
+  # steps.
+  # matthewtodd: (So, the wrong drop targets expand as the draggable passes
+  # over them, pushing the right drop target out of the precalculated drag
+  # path.)
   @javascript @problem
   Scenario: Scheduling a visit from my recommended list
     And the following recommended visits exist:
@@ -42,7 +60,13 @@ Feature:
 
   Scenario: Unscheduling a visit
 
-  @javascript
+  # matthewtodd: Augh. Features dragging into a jQuery sortable are failing
+  # because driver translates target element into x, y delta to move, then
+  # steps.
+  # matthewtodd: (So, the wrong drop targets expand as the draggable passes
+  # over them, pushing the right drop target out of the precalculated drag
+  # path.)
+  @javascript @problem
   Scenario: Scheduling a visit for a child not in my recommended list
     Given the following non-recommended children exist:
       | Social Worker | Child       |
