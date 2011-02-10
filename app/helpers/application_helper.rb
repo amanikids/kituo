@@ -1,13 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  def badged(text, count)
-    if count.zero?
-      text
-    else
-      text + ' ' + content_tag(:span, count, :class => 'badge')
-    end
-  end
-
   def link_to_with_current(name, current, options = {}, html_options = {})
     html_options.merge!(:class => 'current') if current
     link_to name, options, html_options
