@@ -5,9 +5,19 @@ GIT
   specs:
     matchy (0.1.0)
 
+GIT
+  remote: git://github.com/sandal/prawn.git
+  revision: 89ba0ebf7ac3705756330a25ab4c88e4c71e36d8
+  tag: 0.10.2
+  submodules: true
+  specs:
+    prawn (0.10.2)
+      pdf-reader (>= 0.8.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
+    Ascii85 (1.0.0)
     actionmailer (2.3.11)
       actionpack (= 2.3.11)
     actionpack (2.3.11)
@@ -65,14 +75,9 @@ GEM
     paperclip (2.3.8)
       activerecord
       activesupport
+    pdf-reader (0.9.1)
+      Ascii85 (>= 0.9)
     pg (0.10.1)
-    prawn (0.8.4)
-      prawn-core (>= 0.8.4, < 0.9)
-      prawn-layout (>= 0.8.4, < 0.9)
-      prawn-security (>= 0.8.4, < 0.9)
-    prawn-core (0.8.4)
-    prawn-layout (0.8.4)
-    prawn-security (0.8.4)
     prawnto (0.0.1)
       prawn
       rails (>= 2.1)
@@ -118,7 +123,7 @@ DEPENDENCIES
   matchy!
   paperclip
   pg
-  prawn
+  prawn!
   prawnto
   rails (~> 2.3)
   redgreen

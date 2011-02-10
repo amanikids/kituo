@@ -6,7 +6,10 @@ gem 'aws-s3',   :require => false
 gem 'english',  :require => 'english/soundex'
 gem 'haml'
 gem 'pg'
-gem 'prawn',    :require => ['prawn', 'prawn/layout']
+gem 'prawn',
+  :git => 'git://github.com/sandal/prawn.git',
+  :tag => '0.10.2',
+  :submodules => true
 gem 'prawnto'
 gem 'paperclip'
 gem 'routing-filter'
