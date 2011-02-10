@@ -15,12 +15,7 @@ group :development do
 end
 
 group :test do
-  gem 'chronic'
-  gem 'capybara'
-  gem 'cucumber-rails'
-  gem 'database_cleaner'
   gem 'faker'
-  gem 'launchy'
   gem 'machinist',       :require => 'machinist/active_record'
   gem 'redgreen',        :require => false
   gem 'shoulda',         :require => false
@@ -28,4 +23,14 @@ group :test do
   gem 'matchy',
         :git => 'git://github.com/jm/matchy.git',
         :ref => '11861585c728be71382321221391b118d2106d88'
+end
+
+group :cucumber do
+  gem 'chronic'
+  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'launchy'
+  gem 'machinist',       :require => 'machinist/active_record'
 end

@@ -1,3 +1,5 @@
+require 'chronic'
+
 # Adds the following to Chronic, where X is first|second|third:
 #   the X day the month
 #   X day this month

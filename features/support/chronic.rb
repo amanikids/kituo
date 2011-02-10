@@ -1,4 +1,3 @@
-require 'chronic'
 require 'chronic_extensions'
 
 module ChronicHelpers

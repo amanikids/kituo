@@ -1,4 +1,5 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
+require 'chronic_extensions'
 
 class ChronicExtensionsTest < ActiveSupport::TestCase
   context '.parse' do
