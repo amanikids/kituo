@@ -12,4 +12,4 @@ Sass::Plugin.options[:style] = :expanded
 Sass::Plugin.options[:attribute_syntax] = :alternate
 
 # Tell Sass where our stylesheets are.
-Sass::Plugin.options[:template_location] = Rails.root.join('app', 'views', 'stylesheets').to_s
+Sass::Plugin.options[:template_location] = Rails.root.join('app', 'stylesheets').to_s
