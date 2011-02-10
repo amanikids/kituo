@@ -33,7 +33,7 @@ end
 
 When /^I drag "([^\"]*)" to "([^\"]*)"$/ do |child_name, date|
   date = Chronic.parse(date).to_date.to_s(:db)
-  source = page.find(:xpath, "//a[contains(text(),'#{child_name}')]/../../../descendant::span[@class='comment']")
+  source = page.find(:xpath, "//a[contains(text(),'#{child_name}')]/ancestor::li")
   target = page.find(:xpath, "//ul[@data-date='#{date}']")
   source.drag_to(target)
 end
