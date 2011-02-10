@@ -26,7 +26,6 @@ group :test do
 end
 
 group :cucumber do
-  gem 'chronic'
   gem 'capybara'
   gem 'cucumber-rails'
   gem 'database_cleaner'

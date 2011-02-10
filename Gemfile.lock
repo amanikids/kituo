@@ -40,8 +40,6 @@ GEM
     celerity (0.8.7)
     childprocess (0.1.6)
       ffi (~> 0.6.3)
-    chronic (0.2.3)
-      hoe (>= 1.2.1)
     configuration (1.2.0)
     cucumber (0.10.0)
       builder (>= 2.1.2)
@@ -62,9 +60,6 @@ GEM
       json (~> 1.4.6)
     haml (2.0.9)
     highline (1.5.2)
-    hoe (2.6.1)
-      rake (>= 0.8.7)
-      rubyforge (>= 2.0.4)
     json (1.4.6)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -108,8 +103,6 @@ GEM
     right_aws (2.0.0)
       right_http_connection (>= 1.2.1)
     right_http_connection (1.2.4)
-    rubyforge (2.0.4)
-      json_pure (>= 1.1.7)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.2)
       childprocess (~> 0.1.5)
@@ -128,7 +121,6 @@ DEPENDENCIES
   cap_gun
   capistrano
   capybara
-  chronic
   cucumber-rails
   database_cleaner
   english
