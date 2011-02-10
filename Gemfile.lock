@@ -75,8 +75,9 @@ GEM
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
-    paperclip (2.2.8)
-      right_aws
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     pg (0.10.1)
     prawn (0.8.4)
       prawn-core (>= 0.8.4, < 0.9)
@@ -100,9 +101,6 @@ GEM
       rake (>= 0.8.3)
     rake (0.8.7)
     redgreen (1.2.2)
-    right_aws (2.0.0)
-      right_http_connection (>= 1.2.1)
-    right_http_connection (1.2.4)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.2)
       childprocess (~> 0.1.5)
