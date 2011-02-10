@@ -10,12 +10,6 @@ gem 'prawn',    :require => ['prawn', 'prawn/layout']
 gem 'prawnto'
 gem 'paperclip'
 
-group :development do
-  gem 'capistrano', :require => false
-  gem 'cap_gun',    :require => false
-  gem 'highline',   :require => false
-end
-
 group :test do
   gem 'faker'
   gem 'machinist', :require => 'machinist/active_record'

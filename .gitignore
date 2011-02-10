@@ -1,5 +1,4 @@
 .bundle
-config/cap_gun_password.txt
 log
 public/stylesheets/*.css
 public/system/caregivers/headshots
