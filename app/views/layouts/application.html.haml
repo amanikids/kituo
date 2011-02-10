@@ -4,7 +4,7 @@
 %html{html_attrs}
   %head
     = stylesheet_link_tag 'reset', controller_name
-    = yield(:css)
+    = yield(:head)
     - js 'change_locale'
     = javascript_tags
     - other_locales.each do |code, name|
