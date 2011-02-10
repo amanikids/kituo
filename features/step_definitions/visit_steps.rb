@@ -1,36 +1,3 @@
-Given /^the following scheduled visits exist:$/ do |table|
-  table.hashes.each do |hash|
-    social_worker = Caregiver.find_by_name(hash['Social Worker'])
-    ScheduledVisit.make(
-      :scheduled_for  => parse_date(hash['Date']),
-      :child => Child.make(
-        :name          => hash['Child'],
-        :location      => hash['Location'] || "Moshi",
-        :social_worker => social_worker))
-  end
-end
-
-Given /^the following recommended visits exist:$/ do |table|
-  table.hashes.each do |hash|
-    social_worker = Caregiver.find_by_name(hash['Social Worker'])
-    Child.make(
-      :name          => hash['Child'],
-      :social_worker => social_worker,
-      :state         => 'on_site')
-  end
-end
-
-Given /^the following non-recommended children exist:$/ do |table|
-  table.hashes.each do |hash|
-    social_worker = Caregiver.find_by_name(hash['Social Worker'])
-    child = Child.make(
-      :name          => hash['Child'],
-      :social_worker => social_worker,
-      :state         => 'on_site')
-    child.home_visits.make
-  end
-end
-
 When /^I drag "([^\"]*)" to "([^\"]*)"$/ do |child_name, date|
   date = parse_date(date).to_date.to_s(:db)
   source = page.find(:xpath, "//a[contains(text(),'#{child_name}')]/ancestor::li")

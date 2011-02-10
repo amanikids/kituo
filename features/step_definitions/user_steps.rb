@@ -1,12 +1,3 @@
-Given /^the following users exist:$/ do |table|
-  table.hashes.each do |user_hash|
-    Caregiver.make(
-      :name => user_hash['Name'],
-      :role => user_hash['Role'].downcase.tr(' ', '_')
-    )
-  end
-end
-
 Given /^I am not signed in$/ do
   visit path_to("the english dashboard")
   unless current_url.ends_with?("/session/new")
