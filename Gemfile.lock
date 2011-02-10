@@ -88,6 +88,8 @@ GEM
       rake (>= 0.8.3)
     rake (0.8.7)
     redgreen (1.2.2)
+    routing-filter (0.2.3)
+      actionpack
     rubyzip (0.9.4)
     selenium-webdriver (0.1.2)
       childprocess (~> 0.1.5)
@@ -120,4 +122,5 @@ DEPENDENCIES
   prawnto
   rails (~> 2.3)
   redgreen
+  routing-filter
   shoulda

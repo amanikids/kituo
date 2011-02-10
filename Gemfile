@@ -9,6 +9,7 @@ gem 'pg'
 gem 'prawn',    :require => ['prawn', 'prawn/layout']
 gem 'prawnto'
 gem 'paperclip'
+gem 'routing-filter'
 
 group :test do
   gem 'faker'

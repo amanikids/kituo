@@ -1,3 +1,0 @@
-[submodule "vendor/plugins/routing-filter"]
-	path = vendor/plugins/routing-filter
-	url = git://github.com/matthewtodd/routing-filter.git
