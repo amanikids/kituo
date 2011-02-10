@@ -2,6 +2,7 @@ source 'http://rubygems.org/'
 
 gem 'rails', '~> 2.3', :require => false
 
+gem 'aws-s3',   :require => false
 gem 'english',  :require => 'english/soundex'
 gem 'haml'
 gem 'pg'
