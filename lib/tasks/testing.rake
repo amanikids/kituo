@@ -34,7 +34,7 @@ begin
   end
 
   remove_task :default
-  task :default => ['test:units', 'test:functionals', 'features', 'test:locales']
+  task :default => ['test:units', 'test:functionals', 'cucumber', 'test:locales']
 rescue LoadError
   puts "If you'd like to run the features, please install cucumber."
 end
