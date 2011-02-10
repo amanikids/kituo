@@ -15,7 +15,7 @@ group :test do
   gem 'faker'
   gem 'machinist', :require => 'machinist/active_record'
   gem 'redgreen',  :require => false
-  gem 'shoulda',   :require => false
+  gem 'shoulda'
 
   gem 'matchy',
         :git => 'git://github.com/jm/matchy.git',

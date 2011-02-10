@@ -5,10 +5,6 @@ require 'test_help'
 require File.join(File.dirname(__FILE__), 'blueprints')
 require 'redgreen' if STDOUT.tty?
 
-# Running from rake, if we just require 'shoulda', shoulda sees the Spec
-# constant defined by Cucumber (loaded in lib/tasks/testing.rake) and thinks
-# it should run in RSpec mode instead of Test::Unit mode. Bad shoulda.
-require 'shoulda/test_unit'
 Shoulda.autoload_macros Gem.loaded_specs['paperclip'].full_gem_path, '.'
 
 class ActiveSupport::TestCase
