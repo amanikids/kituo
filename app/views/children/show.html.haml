@@ -1,9 +1,9 @@
-- content_for(:head) do
-  = stylesheet_link_tag('/jquery-ui-theme/jquery-ui-1.7.2.custom.css')
-  = stylesheet_link_tag('datepicker')
+- content_for :head do
+  = stylesheet_link_tag '/jquery-ui-theme/jquery-ui-1.7.2.custom.css'
+  = stylesheet_link_tag 'datepicker'
+  = javascript_include_tag 'inline_edit'
+  = javascript_include_tag 'child_scheduled_visits'
 
-- js 'inline_edit'
-- js 'child_scheduled_visits'
 
 - form_for(@child, :html => { :multipart => true, :id => 'edit-child' }) do |form|
   %h1
