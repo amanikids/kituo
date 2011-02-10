@@ -33,6 +33,10 @@ Rails::Initializer.run do |config|
   config.i18n.load_path << Rails.root.join('vendor', 'rails-i18n', 'rails', 'locale', 'sw.yml')
   config.i18n.default_locale = :sw
 
+  config.middleware.use Rack::Static,
+    :urls => ['/stylesheets'],
+    :root => 'tmp'
+
   config.after_initialize do
     require 'date_extensions'
   end
