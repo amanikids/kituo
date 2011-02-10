@@ -68,4 +68,3 @@ Given /^the following non-recommended children exist:$/ do |table|
     child.home_visits.make
   end
 end
-
