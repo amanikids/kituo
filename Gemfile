@@ -20,6 +20,7 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'faker'
+  gem 'launchy'
   gem 'machinist',       :require => 'machinist/active_record'
   gem 'redgreen',        :require => false
   gem 'shoulda',         :require => false
