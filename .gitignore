@@ -1,6 +1,5 @@
 .bundle
 log
 public/stylesheets/*.css
-public/system/caregivers/headshots
-public/system/children/headshots
+public/system
 tmp
