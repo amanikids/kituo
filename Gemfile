@@ -1,12 +1,13 @@
 source 'http://rubygems.org/'
 
+gem 'rails', '~> 2.3', :require => false
+
 gem 'english',  :require => 'english/soundex'
 gem 'haml'
 gem 'pg'
 gem 'prawn',    :require => ['prawn', 'prawn/layout']
 gem 'prawnto'
 gem 'paperclip'
-gem 'rails',    :require => false
 
 group :development do
   gem 'capistrano', :require => false
