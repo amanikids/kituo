@@ -16,9 +16,9 @@ end
 
 group :test do
   gem 'faker'
-  gem 'machinist',       :require => 'machinist/active_record'
-  gem 'redgreen',        :require => false
-  gem 'shoulda',         :require => false
+  gem 'machinist', :require => 'machinist/active_record'
+  gem 'redgreen',  :require => false
+  gem 'shoulda',   :require => false
 
   gem 'matchy',
         :git => 'git://github.com/jm/matchy.git',
@@ -32,5 +32,5 @@ group :cucumber do
   gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
-  gem 'machinist',       :require => 'machinist/active_record'
+  gem 'machinist', :require => 'machinist/active_record'
 end
