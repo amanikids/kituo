@@ -239,15 +239,15 @@ class ChildTest < ActiveSupport::TestCase
       end
 
       should "use the child's headshot if the duplicate doesn't have one" do
-        child     = Child.make(:headshot => Rails.root.join('test', 'sample_headshot.jpg').open)
+        child     = Child.make(:headshot => Rails.root.join('test', 'fixtures', 'sample_headshot.jpg').open)
         duplicate = Child.make(:headshot => nil)
         child.resolve_duplicate!(duplicate)
         duplicate.reload.headshot.file?.should == true
       end
 
       should "not use the child's headshot if the duplicate already has one" do
-        child     = Child.make(:headshot => Rails.root.join('test', 'sample_headshot.jpg').open)
-        duplicate = Child.make(:headshot => Rails.root.join('test', 'sample_headshot_two.jpg').open)
+        child     = Child.make(:headshot => Rails.root.join('test', 'fixtures', 'sample_headshot.jpg').open)
+        duplicate = Child.make(:headshot => Rails.root.join('test', 'fixtures', 'sample_headshot_two.jpg').open)
         child.resolve_duplicate!(duplicate)
         duplicate.reload.headshot.original_filename.should == 'sample_headshot_two.jpg'
       end
