@@ -1,6 +1,5 @@
 .bundle
 .environment
 log
-public/stylesheets/*.css
 public/system
 tmp
