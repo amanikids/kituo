@@ -18,6 +18,11 @@ gem 'prawnto'
 gem 'paperclip'
 gem 'routing-filter'
 
+group :development do
+  gem 'heroku',
+    :require => false
+end
+
 group :test do
   gem 'faker'
   gem 'machinist',
