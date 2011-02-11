@@ -4,7 +4,9 @@ desc 'Generate a developer-local configuration file.'
 # clean.
 file '.environment' do |task|
   environment = {
-    'SECRET_TOKEN' => ActiveSupport::SecureRandom.hex(64)
+    'AMAZON_ACCESS_KEY_ID'     => 'Set to use script/s3console.',
+    'AMAZON_SECRET_ACCESS_KEY' => 'Set to use script/s3console.',
+    'SECRET_TOKEN'             => ActiveSupport::SecureRandom.hex(64)
   }
 
   Rails.root.join(task.name).open('w') do |io|

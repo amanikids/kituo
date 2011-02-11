@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+# Inspired by aws-s3's s3sh, but uses heroku-environment to set credentials.
+require 'rubygems'
+require 'aws/s3'
+require 'heroku-environment'
+require 'irb'
+
+if ENV['AMAZON_ACCESS_KEY_ID'] && ENV['AMAZON_SECRET_ACCESS_KEY']
+  AWS::S3::Base.establish_connection!(
+    :access_key_id     => ENV['AMAZON_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AMAZON_SECRET_ACCESS_KEY']
+  )
+end
+
+include AWS::S3
+
+IRB.start
