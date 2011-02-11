@@ -64,6 +64,7 @@ GEM
     gherkin (2.3.3)
       json (~> 1.4.6)
     haml (2.0.9)
+    heroku-environment (0.0.1)
     json (1.4.6)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -118,6 +119,7 @@ DEPENDENCIES
   english
   faker
   haml
+  heroku-environment
   launchy
   machinist
   matchy!

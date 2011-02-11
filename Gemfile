@@ -8,6 +8,7 @@ gem 'aws-s3',
 gem 'english',
   :require => 'english/soundex'
 gem 'haml'
+gem 'heroku-environment'
 gem 'pg'
 gem 'prawn',
   :git => 'git://github.com/sandal/prawn.git',

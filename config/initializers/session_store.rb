@@ -6,7 +6,7 @@
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
   :key         => '_kituo_session',
-  :secret      => '35c77a0bda0be89509fec56ffb8cf781c23fcbd9064b41adee91ee04d19148b05044c9273da691f8a4da1583647acfe5ac17cbf627ed66235c1ffb20c6b8dfec'
+  :secret      => ENV['SECRET_TOKEN']
 }
 
 # Use the database for sessions instead of the cookie-based default,
