@@ -1,9 +1,12 @@
-source 'http://rubygems.org/'
+source :rubygems
 
-gem 'rails', '~> 2.3', :require => false
+gem 'rails', '~> 2.3',
+  :require => false
 
-gem 'aws-s3',   :require => false
-gem 'english',  :require => 'english/soundex'
+gem 'aws-s3',
+  :require => false
+gem 'english',
+  :require => 'english/soundex'
 gem 'haml'
 gem 'pg'
 gem 'prawn',
@@ -16,13 +19,14 @@ gem 'routing-filter'
 
 group :test do
   gem 'faker'
-  gem 'machinist', :require => 'machinist/active_record'
-  gem 'redgreen',  :require => false
-  gem 'shoulda'
-
+  gem 'machinist',
+    :require => 'machinist/active_record'
   gem 'matchy',
-        :git => 'git://github.com/jm/matchy.git',
-        :ref => '11861585c728be71382321221391b118d2106d88'
+    :git => 'git://github.com/jm/matchy.git',
+    :ref => '11861585c728be71382321221391b118d2106d88'
+  gem 'redgreen',
+    :require => false
+  gem 'shoulda'
 end
 
 group :cucumber do
@@ -31,5 +35,6 @@ group :cucumber do
   gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
-  gem 'machinist', :require => 'machinist/active_record'
+  gem 'machinist',
+    :require => 'machinist/active_record'
 end
