@@ -39,3 +39,8 @@ group :cucumber do
   gem 'machinist',
     :require => 'machinist/active_record'
 end
+
+group :production do
+  gem 'rack-ssl',
+    :require => 'rack/ssl'
+end

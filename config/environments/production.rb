@@ -26,3 +26,9 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+# Insert these just after Rack::Lock.
+config.middleware.insert 1, 'Rack::SSL'
+config.middleware.insert 2, 'Rack::Auth::Basic' do |username, password|
+  username == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']
+end

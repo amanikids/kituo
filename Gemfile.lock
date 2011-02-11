@@ -83,6 +83,8 @@ GEM
       prawn
       rails (>= 2.1)
     rack (1.1.0)
+    rack-ssl (1.2.0)
+      rack
     rack-test (0.5.7)
       rack (>= 1.0)
     rails (2.3.11)
@@ -127,6 +129,7 @@ DEPENDENCIES
   pg
   prawn!
   prawnto
+  rack-ssl
   rails (~> 2.3)
   redgreen
   routing-filter
