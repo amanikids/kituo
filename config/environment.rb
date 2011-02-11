@@ -36,8 +36,4 @@ Rails::Initializer.run do |config|
   config.middleware.use Rack::Static,
     :urls => ['/stylesheets'],
     :root => 'tmp'
-
-  config.after_initialize do
-    require 'date_extensions'
-  end
 end
