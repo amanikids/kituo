@@ -5,8 +5,8 @@
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_kituo_session',
-  :secret      => ENV['SECRET_TOKEN']
+  :key    => '_kituo_session',
+  :secret => ENV['SECRET_TOKEN']
 }
 
 # Use the database for sessions instead of the cookie-based default,
