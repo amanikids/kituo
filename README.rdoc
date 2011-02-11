@@ -11,6 +11,7 @@ http://amanikids.org
   brew install imagemagick
   brew install postgresql
   bundle
+  rake .environment
   rake db:setup
   rake
 
