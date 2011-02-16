@@ -1,14 +1,13 @@
 def start_and_wait_for(command)
   pid = fork do
     puts command
-    exec command
+    exec "#{command} >/dev/null 2>&1"
   end
 
   sleep 5 # this could be smarter, looking for an open port
 
   at_exit do
     Process.kill('INT', pid)
-    sleep 5
   end
 end
 
