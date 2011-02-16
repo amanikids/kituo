@@ -18,6 +18,7 @@ namespace :mchungaji do
       start_and_wait_for 'taps server -p 5000 postgres://localhost/kituo_development login password'
       sh 'rake db:drop db:create'
       sh 'taps push mysql://root@localhost/kituo_production http://login:password@localhost:5000'
+      sh 'rsync -rz --delete mchungaji:/var/www/apps/kituo_production/shared/system public'
     end
 
     task :staging do
