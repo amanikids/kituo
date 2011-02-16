@@ -25,17 +25,5 @@ namespace :mchungaji do
       sh 'taps push mysql2://root@127.0.0.1:3306/kituo_production http://login:password@localhost:5000'
       sh 'rsync -rz --delete mchungaji:/var/www/apps/kituo_production/shared/system public'
     end
-
-    task :staging do
-      start_and_wait_for 'ssh -L 3306:localhost:3306 -N mchungaji'
-      sh 'heroku pg:reset --remote staging'
-      sh 'heroku db:push mysql2://root@127.0.0.1:3306/kituo_production --remote staging --disable-compression'
-    end
-
-    task :production do
-      start_and_wait_for 'ssh -L 3306:localhost:3306 -N mchungaji'
-      sh 'heroku pg:reset --remote production'
-      sh 'heroku db:push mysql2://root@127.0.0.1:3306/kituo_production --remote production --disable-compression'
-    end
   end
 end
