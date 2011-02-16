@@ -4,10 +4,11 @@ def start_and_wait_for(command)
     exec "#{command} >/dev/null 2>&1"
   end
 
-  sleep 5 # this could be smarter, looking for an open port
+  sleep 5
 
   at_exit do
     Process.kill('INT', pid)
+    Process.wait(pid, Process::WNOHANG)
   end
 end
 
@@ -19,7 +20,8 @@ namespace :mchungaji do
     task :development do
       start_and_wait_for 'ssh -L 3306:localhost:3306 -N mchungaji'
       start_and_wait_for 'taps server -p 5000 postgres://localhost/kituo_development login password'
-      sh 'rake db:drop db:create'
+      Rake::Task['db:drop'].invoke
+      Rake::Task['db:create'].invoke
       sh 'taps push mysql2://root@127.0.0.1:3306/kituo_production http://login:password@localhost:5000'
       sh 'rsync -rz --delete mchungaji:/var/www/apps/kituo_production/shared/system public'
     end
