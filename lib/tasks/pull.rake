@@ -33,6 +33,7 @@ namespace :pull do
 
     desc 'Clone production s3 data to staging'
     task :s3 => :environment do
+      require 'aws/s3'
       require 'aws/s3/bucket_extensions'
       require 'aws/s3/object_extensions'
 
