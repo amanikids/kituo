@@ -24,13 +24,13 @@ namespace :mchungaji do
     task :staging do
       start_and_wait_for 'ssh -L 3306:mchungaji:3306 -N mchungaji'
       sh 'heroku pg:reset --remote staging'
-      sh 'heroku db:push mysql://root@localhost/kituo_production --remote staging'
+      sh 'heroku db:push mysql://root@localhost/kituo_production --remote staging --disable-compression'
     end
 
     task :production do
       start_and_wait_for 'ssh -L 3306:mchungaji:3306 -N mchungaji'
       sh 'heroku pg:reset --remote production'
-      sh 'heroku db:push mysql://root@localhost/kituo_production --remote production'
+      sh 'heroku db:push mysql://root@localhost/kituo_production --remote production --disable-compression'
     end
   end
 end
