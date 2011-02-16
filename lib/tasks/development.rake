@@ -7,7 +7,7 @@ namespace :development do
 
     namespace :production do
       task :db do
-        sh 'heroku pg:reset'
+        sh 'heroku pg:reset --db SHARED_DATABASE_URL --remote production'
         sh 'heroku db:push --remote production'
       end
 
@@ -22,11 +22,10 @@ namespace :development do
           root.find do |path|
             next unless path.file?
 
-            AWS::S3::S3Object.store(
-              path.relative_path_from(root).to_s,
-              path,
-              'amanikids-kituo-production'
-            )
+            key = path.relative_path_from(root).to_s
+
+            puts key
+            AWS::S3::S3Object.store(key, path.read, 'amanikids-kituo')
           end
         end
       end
