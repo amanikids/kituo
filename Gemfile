@@ -21,6 +21,10 @@ gem 'routing-filter'
 group :development do
   gem 'heroku',
     :require => false
+  gem 'mysql2',
+    :require => false
+  gem 'taps',
+    :require => false
 end
 
 group :test do
