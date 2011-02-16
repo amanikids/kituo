@@ -9,12 +9,7 @@ class Caregiver < ActiveRecord::Base
   has_many :children, :foreign_key => :social_worker_id
   has_many :scheduled_visits, :through => :children
 
-  has_attached_file :headshot,
-    :url => '/system/:class/:attachment/:id/:style/:basename.:extension',
-    :path => ':rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension',
-    :styles => { :default => '150x150#' },
-    :default_style => :default,
-    :default_url => "/images/headshot-:style.jpg"
+  has_attached_file :headshot
 
   before_validation :normalize_name
   validates_presence_of :name
