@@ -5,6 +5,9 @@ Paperclip::Attachment.default_options.tap do |options|
     :styles        => { :default => '150x150#' }
   })
 
+  # Sillily, we made a headshot attachment on both the Child and the Caregiver
+  # models. Since the default Paperclip paths don't include the class name, we
+  # have to override them here to avoid collisions.
   if Rails.env.production?
     options.merge({
       :storage        => :s3,
