@@ -9,7 +9,7 @@ Paperclip::Attachment.default_options.tap do |options|
     options.merge({
       :storage        => :s3,
       :bucket         => ENV['S3_BUCKET'],
-      :path           => '/:class/:attachment/:id/:style/:basename.:extension',
+      :path           => '/:class/:attachment/:id/:style/:filename',
       :s3_credentials => {
         :access_key_id     => ENV['AMAZON_ACCESS_KEY_ID'],
         :secret_access_key => ENV['AMAZON_SECRET_ACCESS_KEY']
@@ -17,7 +17,7 @@ Paperclip::Attachment.default_options.tap do |options|
     })
   else
     options.merge({
-      :url => '/system/:class/:attachment/:id/:style/:basename.:extension'
+      :url => '/system/:class/:attachment/:id/:style/:filename'
     })
   end
 end
