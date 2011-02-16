@@ -1,5 +1,5 @@
 Paperclip::Attachment.default_options.tap do |options|
-  options.merge({
+  options.merge!({
     :default_style => :default,
     :default_url   => '/images/:attachment-:style.jpg',
     :styles        => { :default => '150x150#' }
@@ -9,7 +9,7 @@ Paperclip::Attachment.default_options.tap do |options|
   # models. Since the default Paperclip paths don't include the class name, we
   # have to override them here to avoid collisions.
   if Rails.env.production?
-    options.merge({
+    options.merge!({
       :storage        => :s3,
       :bucket         => ENV['S3_BUCKET'],
       :path           => '/:class/:attachment/:id/:style/:filename',
@@ -19,7 +19,7 @@ Paperclip::Attachment.default_options.tap do |options|
       }
     })
   else
-    options.merge({
+    options.merge!({
       :url => '/system/:class/:attachment/:id/:style/:filename'
     })
   end
