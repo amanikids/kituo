@@ -37,7 +37,7 @@ Manages the social workers. Traditionally just one. They want to:
 
 === Development officer
 
-Tradiontionally just one. They want to:
+Traditionally just one. They want to:
 
 * Get an overview of how long kids are staying at Amani
 * Upload headshots of the kids
