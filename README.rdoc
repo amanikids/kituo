@@ -22,7 +22,7 @@ http://amanikids.org
 There are about 5 social workers at Amani. They want to:
 
 * Schedule home visits, either to try and arrange a reunification of a child
-  with their extended family, or to check up on such an arragement. This
+  with their extended family, or to check up on such an arrangement. This
   normally happens every month or so - see the RecommendedVisit model for
   typical guidelines.
 
@@ -48,7 +48,7 @@ Traditionally just one. They want to:
   supported.
 
 * Authentication is not required - social workers often masquerade as others
-  when they are on leave - and there is no private data. The indentification
+  when they are on leave - and there is no private data. The identification
   page is for convenience and better usability (we can provide a home page that
   is directly useful to the person).
 
