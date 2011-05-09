@@ -1,7 +1,7 @@
 if Rails.env.development?
   require 'faker'
   require 'machinist/active_record'
-  require 'test/blueprints'
+  require './test/blueprints'
 
   [Caregiver, ScheduledVisit, Child].each(&:delete_all)
 
